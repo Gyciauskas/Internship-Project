@@ -10,8 +10,8 @@ namespace DemoCode
     {
         static void Main(string[] args)
         {
-            // Change console foreground color to yellow
-            Console.ForegroundColor = ConsoleColor.Yellow;
+            // Changed console foreground color to blue
+            Console.ForegroundColor = ConsoleColor.Blue;
 
             Console.WriteLine("Hello Present Connection!");
             Console.ReadLine();
