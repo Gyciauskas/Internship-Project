@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentConnection.Internship7.Iot.Console", "PresentConnection.Internship7.Iot.Console.csproj", "{22DB42CD-5479-480B-812F-947EBE23EA90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PresentConnection.Internship7.Iot.Domain", "..\PresentConnection.Internship7.Iot.Domain\PresentConnection.Internship7.Iot.Domain.csproj", "{4CEA827C-9F55-4A5D-9CFC-6DA307FF132E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22DB42CD-5479-480B-812F-947EBE23EA90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22DB42CD-5479-480B-812F-947EBE23EA90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22DB42CD-5479-480B-812F-947EBE23EA90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22DB42CD-5479-480B-812F-947EBE23EA90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CEA827C-9F55-4A5D-9CFC-6DA307FF132E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CEA827C-9F55-4A5D-9CFC-6DA307FF132E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CEA827C-9F55-4A5D-9CFC-6DA307FF132E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CEA827C-9F55-4A5D-9CFC-6DA307FF132E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

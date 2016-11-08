@@ -1,9 +1,0 @@
-C:\Work\pc-internshio-7\samplecode\samplecode\bin\Debug\samplecode.exe.config
-C:\Work\pc-internshio-7\samplecode\samplecode\bin\Debug\samplecode.exe
-C:\Work\pc-internshio-7\samplecode\samplecode\bin\Debug\samplecode.pdb
-C:\Work\pc-internshio-7\samplecode\samplecode\obj\Debug\samplecode.csprojResolveAssemblyReference.cache
-C:\Work\pc-internshio-7\samplecode\samplecode\obj\Debug\samplecode.exe
-C:\Work\pc-internshio-7\samplecode\samplecode\obj\Debug\samplecode.pdb
-C:\Users\Gytis\Source\Repos\pc-internship-7\samplecode\samplecode\bin\Debug\samplecode.exe.config
-C:\Users\Gytis\Source\Repos\pc-internship-7\samplecode\samplecode\obj\Debug\samplecode.exe
-C:\Users\Gytis\Source\Repos\pc-internship-7\samplecode\samplecode\obj\Debug\samplecode.pdb
