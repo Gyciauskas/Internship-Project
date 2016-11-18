@@ -3,7 +3,7 @@
     public class DisplayImage
     {
         public string ImageName { get; set; }
-        public string Width { get; set; }
+        public string Widht { get; set; }
         public string Height { get; set; }
     }
 }
