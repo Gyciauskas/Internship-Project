@@ -80,9 +80,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Component.cs" />
     <Compile Include="DisplayImage.cs" />
+    <Compile Include="DisplayUrl.cs" />
     <Compile Include="Manufacturer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\ComponentValidator.cs" />
     <Compile Include="Validators\ManufacturerValidator.cs" />
   </ItemGroup>
   <ItemGroup>
