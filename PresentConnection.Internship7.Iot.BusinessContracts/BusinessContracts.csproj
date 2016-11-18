@@ -76,6 +76,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDashboardService.cs" />
     <Compile Include="IComponentService.cs" />
     <Compile Include="IManufacturerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

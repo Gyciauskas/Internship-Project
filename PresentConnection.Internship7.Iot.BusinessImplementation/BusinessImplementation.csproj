@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DashboardService.cs" />
     <Compile Include="ComponentService.cs" />
     <Compile Include="ManufacturerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

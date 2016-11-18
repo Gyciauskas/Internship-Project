@@ -86,6 +86,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="DashboardTests.cs" />
     <Compile Include="ComponentsTests.cs" />
     <Compile Include="ManufacturersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
