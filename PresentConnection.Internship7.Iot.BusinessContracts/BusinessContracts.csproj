@@ -78,6 +78,7 @@
   <ItemGroup>
     <Compile Include="IComponentService.cs" />
     <Compile Include="IManufacturerService.cs" />
+    <Compile Include="ISettingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
