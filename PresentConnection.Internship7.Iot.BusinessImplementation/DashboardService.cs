@@ -56,7 +56,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             return deleteResult.DeletedCount == 1;
         }
 
-        public List<Dashboard> GetAllDashboard(string userId = "")
+        public List<Dashboard> GetAllDashboards(string userId = "")
         {
             var filterBuilder = Builders<Dashboard>.Filter;
             var filter = filterBuilder.Empty;

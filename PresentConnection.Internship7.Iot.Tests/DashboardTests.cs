@@ -40,7 +40,7 @@ namespace PresentConnection.Internship7.Iot.Tests
          
             var dashboard = new Dashboard()
             {
-                UserId = "Raspberry PI",
+                UserId = "7",
                 Widgets = widgets
 
             };
@@ -55,7 +55,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Dashboard")]
-        public void Can_get_dashboard_by_id()
+        public void Can_get_dashboards_by_id()
         {
             Widget widget = new Widget();
             widget.Type = "test";
@@ -65,7 +65,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var dashboard = new Dashboard()
             {
-                UserId = "Raspberry PI",
+                UserId = "8",
                 Widgets = widgets
             };
 
@@ -76,7 +76,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var dashboardFromDb = dashboardService.GetDashboard(dashboard.Id.ToString());
             dashboardFromDb.Id.ShouldNotBeNull();
-            dashboardFromDb.UserId.ShouldEqual("Raspberry PI");
+            dashboardFromDb.UserId.ShouldEqual("8");
             dashboardFromDb.ShouldNotBeNull();
         }
 
@@ -84,7 +84,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Dashboard")]
-        public void Can_get_all_dashboard()
+        public void Can_get_all_dashboards()
         {
             Widget widget = new Widget();
             widget.Type = "test";
@@ -94,7 +94,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var dashboard1 = new Dashboard()
             {
-                UserId = "Raspberry PI",
+                UserId = "10",
                 Widgets = widgets
             };
             Widget widget2 = new Widget();
@@ -105,7 +105,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var dashboard2 = new Dashboard()
             {
-                UserId = "Raspberry PI2",
+                UserId = "22",
                 Widgets = widgets2
             };
 
@@ -120,7 +120,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
 
-            var dashboards = dashboardService.GetAllDashboard();
+            var dashboards = dashboardService.GetAllDashboards();
 
             dashboards.ShouldBe<List<Dashboard>>();
             (dashboards.Count > 0).ShouldBeTrue();
@@ -130,7 +130,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Dashboard")]
-        public void Can_get_all_dashboards_by_name()
+        public void Can_get_all_dashboards_by_userId()
         {
             Widget widget1 = new Widget();
             widget1.Type = "test";
@@ -140,7 +140,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var dashboard1 = new Dashboard()
             {
-                UserId = "Raspberry PI3",
+                UserId = "44",
                 Widgets = widgets1
             };
 
@@ -152,7 +152,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var dashboard2 = new Dashboard()
             {
-                UserId = "Raspberry PI2",
+                UserId = "35",
                 Widgets = widgets2
             };
 
@@ -165,34 +165,34 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var dashboard3 = new Dashboard()
             {
-                UserId = "Arduino",
+                UserId = "33",
                 Widgets = widgets3
             };
 
             dashboardService.CreateDashboard(dashboard1);
             dashboard1.ShouldNotBeNull();
-            dashboard1.Id.ShouldNotBeNull();
+            dashboard1.UserId.ShouldNotBeNull();
 
 
             dashboardService.CreateDashboard(dashboard2);
             dashboard2.ShouldNotBeNull();
-            dashboard2.Id.ShouldNotBeNull();
+            dashboard2.UserId.ShouldNotBeNull();
 
             dashboardService.CreateDashboard(dashboard3);
             dashboard3.ShouldNotBeNull();
             dashboard3.Id.ShouldNotBeNull();
 
-            var dashboards = dashboardService.GetAllDashboard("Arduino");
+            var dashboards = dashboardService.GetAllDashboards("33");
 
             dashboards.ShouldBe<List<Dashboard>>();
-            //dashboards.Count.ShouldEqual(1);
+            dashboards.Count.ShouldEqual(1);
         }
 
 
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Dashboard")]
-        public void Can_update_dashboard_to_database()
+        public void Can_update_dashboards_to_database()
         {
             Widget widget = new Widget();
             widget.Type = "test";
@@ -202,7 +202,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var dashboard = new Dashboard()
             {
-                UserId = "Raspberry PI",
+                UserId = "88",
                 Widgets = widgets
             };
 
@@ -213,20 +213,20 @@ namespace PresentConnection.Internship7.Iot.Tests
             dashboard.Id.ShouldNotBeNull();
 
             // Update name and send update to db
-            dashboard.UserId = "Arduino";
+            dashboard.UserId = "53";
             dashboardService.UdpdateDashboard(dashboard);
 
             // Get item from db and check if name was updated
             var dashboardFromDb = dashboardService.GetDashboard(dashboard.Id.ToString());
             dashboardFromDb.ShouldNotBeNull();
-            dashboardFromDb.UserId.ShouldEqual("Arduino");
+            dashboardFromDb.UserId.ShouldEqual("53");
         }
 
 
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Dashboard")]
-        public void Can_delete_dashboard_from_database()
+        public void Can_delete_dashboards_from_database()
         {
             Widget widget = new Widget();
             widget.Type = "test";
@@ -258,14 +258,14 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
 
-        [TearDown]
-        public void Dispose()
-        {
-            var dashboards = dashboardService.GetAllDashboard();
-            foreach (var dashboard in dashboards)
-            {
-                dashboardService.DeleteDashboard(dashboard.Id.ToString());
-            }
-        }
+        //[TearDown]
+        //public void Dispose()
+        //{
+        //    var dashboards = dashboardService.GetAllDashboards();
+        //    foreach (var dashboard in dashboards)
+        //    {
+        //        dashboardService.DeleteDashboard(dashboard.Id.ToString());
+        //    }
+        //}
     }
 }

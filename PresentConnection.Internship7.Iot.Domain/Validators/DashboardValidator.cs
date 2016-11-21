@@ -7,7 +7,8 @@ namespace PresentConnection.Internship7.Iot.Domain
         public DashboardValidator()
         {
             RuleFor(r => r.UserId).NotEmpty();
-            RuleFor(r => r.Widgets).NotEmpty(); //////???
+            RuleFor(r => r.Widgets).NotEmpty();
+            
         }
 
     }

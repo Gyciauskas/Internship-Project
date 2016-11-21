@@ -8,7 +8,7 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
         string CreateDashboard(Dashboard dashboard);
         void UdpdateDashboard(Dashboard dashboard);
         bool DeleteDashboard(string id);
-        List<Dashboard> GetAllDashboard(string userId = "");
+        List<Dashboard> GetAllDashboards(string userId = "");
         Dashboard GetDashboard(string id);
     }
 }
