@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Validators\WidgetValidator.cs" />
     <Compile Include="Widget.cs" />
     <Compile Include="Dashboard.cs" />
     <Compile Include="Component.cs" />
