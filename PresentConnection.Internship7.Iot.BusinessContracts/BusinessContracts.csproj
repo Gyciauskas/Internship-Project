@@ -29,6 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CodeMash.Net, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CodeMash.Net.1.0.1.1\lib\net45\CodeMash.Net.dll</HintPath>
@@ -78,6 +81,7 @@
   <ItemGroup>
     <Compile Include="IDashboardService.cs" />
     <Compile Include="IComponentService.cs" />
+    <Compile Include="ILookupService.cs" />
     <Compile Include="IManufacturerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
