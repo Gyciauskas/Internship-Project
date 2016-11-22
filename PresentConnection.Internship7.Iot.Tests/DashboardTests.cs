@@ -65,7 +65,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             widget.Query = "test";
 
             widget.Configuration = new Dictionary<string, string>();
-            widget.Configuration.Add("as", "as");
+            widget.Configuration.Add("test", "test");
 
 
             List<Widget> widgets = new List<Widget>();

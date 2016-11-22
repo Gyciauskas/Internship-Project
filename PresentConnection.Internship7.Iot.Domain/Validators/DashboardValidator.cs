@@ -8,7 +8,6 @@ namespace PresentConnection.Internship7.Iot.Domain
         {
             RuleFor(r => r.UserId).NotEmpty();
             RuleFor(r => r.Widgets).NotEmpty();
-
             RuleFor(r => r.Widgets).SetCollectionValidator(new WidgetValidator());
 
         }
@@ -21,10 +20,10 @@ namespace PresentConnection.Internship7.Iot.Domain
         {
             RuleFor(x => x.Type).NotEmpty();
             RuleFor(x => x.Query).NotEmpty();
-
             RuleFor(x => x.Configuration).NotEmpty();
         }
     }
 
-  
+
+    
 }

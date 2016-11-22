@@ -8,4 +8,5 @@ namespace PresentConnection.Internship7.Iot.Domain
         public string Query { get; set; } // query as json
         public Dictionary<string, string> Configuration { get; set; } // config for widget - agenda, width, colors....
     }
+
 }
