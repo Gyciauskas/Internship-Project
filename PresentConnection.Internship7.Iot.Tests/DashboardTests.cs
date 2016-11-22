@@ -288,14 +288,14 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
 
-        //[TearDown]
-        //public void Dispose()
-        //{
-        //    var dashboards = dashboardService.GetAllDashboards();
-        //    foreach (var dashboard in dashboards)
-        //    {
-        //        dashboardService.DeleteDashboard(dashboard.Id.ToString());
-        //    }
-        //}
+        [TearDown]
+        public void Dispose()
+        {
+            var dashboards = dashboardService.GetAllDashboards();
+            foreach (var dashboard in dashboards)
+            {
+                dashboardService.DeleteDashboard(dashboard.Id.ToString());
+            }
+        }
     }
 }
