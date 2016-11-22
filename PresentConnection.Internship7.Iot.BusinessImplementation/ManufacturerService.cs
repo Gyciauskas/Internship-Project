@@ -8,6 +8,8 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using PresentConnection.Internship7.Iot.Utils;
 
+
+
 namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class ManufacturerService : IManufacturerService
