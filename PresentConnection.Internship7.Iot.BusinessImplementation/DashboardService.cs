@@ -63,8 +63,8 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
             if (!string.IsNullOrEmpty(userId))
             {
-                var findByNameFilter = Builders<Dashboard>.Filter.Eq(x => x.UserId, userId);
-                filter = filter & findByNameFilter;
+                var findByUserIdFilter = Builders<Dashboard>.Filter.Eq(x => x.UserId, userId);
+                filter = filter & findByUserIdFilter;
             }
 
             var dashboard = Db.Find(filter);

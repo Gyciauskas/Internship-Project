@@ -52,6 +52,36 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
 
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Dashboard")]
+
+        public void Cannot_insert_dashboard_to_database_when_widgetType_is_not_provided()
+        {
+
+            Widget widget = new Widget();
+            widget.Type = "";
+            widget.Query = "test";
+
+            widget.Configuration = new Dictionary<string, string>();
+            widget.Configuration.Add("as", "as");
+
+
+            List<Widget> widgets = new List<Widget>();
+            widgets.Add(widget);
+
+
+            var dashboard = new Dashboard()
+            {
+                UserId = "8",
+                Widgets = widgets
+
+            };
+
+            typeof(BusinessException).ShouldBeThrownBy(() => dashboardService.CreateDashboard(dashboard));
+        }
+
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Dashboard")]
