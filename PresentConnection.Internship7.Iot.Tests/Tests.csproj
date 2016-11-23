@@ -89,6 +89,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ClientConnectionsTests.cs" />
     <Compile Include="ComponentsTests.cs" />
     <Compile Include="LookupsTests.cs" />
     <Compile Include="ManufacturersTests.cs" />
