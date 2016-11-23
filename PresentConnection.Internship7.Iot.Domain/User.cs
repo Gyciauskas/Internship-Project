@@ -13,14 +13,14 @@ namespace PresentConnection.Internship7.Iot.Domain
         public  User()
         {
             Rules = new List<string>();
-            Permisions = new List<string>();
+            Permissions = new List<string>();
 
         }
 
         public string FullName { get; set; }
         public List<string> Rules { get; set; }
-        public List<string> Permisions { get; set; }
+        public List<string> Permissions { get; set; }
         public string Email { get; set; }
 
-    }
+        }
 }

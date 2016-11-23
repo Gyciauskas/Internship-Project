@@ -14,6 +14,5 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
         bool DeleteUser(string id);
         List<User> GetAllUsers(string name = "");
         User GetUser(string id);
-
     }
 }

@@ -13,9 +13,9 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class UserService:IUserService
     {
+
         public string CreateUser(User user)
         {
-
             UserValidator validator = new UserValidator();
             ValidationResult results = validator.Validate(user);
 
@@ -30,6 +30,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
                 throw new BusinessException("Cannot create user", results.Errors);
             }
         }
+
         public void UpdateUser(User user)
         {
             UserValidator validator = new UserValidator();
