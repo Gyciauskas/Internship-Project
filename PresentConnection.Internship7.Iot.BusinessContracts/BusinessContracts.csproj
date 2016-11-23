@@ -79,6 +79,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
+    <Compile Include="IClientService.cs" />
     <Compile Include="IClientConnectionService.cs" />
     <Compile Include="IComponentService.cs" />
     <Compile Include="ILookupService.cs" />

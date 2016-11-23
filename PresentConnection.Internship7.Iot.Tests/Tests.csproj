@@ -46,6 +46,9 @@
       <HintPath>..\packages\CodeMash.Net.1.0.1.1\lib\net45\CodeMash.Net.DataContracts.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="MongoDB.Bson, Version=2.3.0.157, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MongoDB.Bson.2.3.0\lib\net45\MongoDB.Bson.dll</HintPath>
       <Private>True</Private>
@@ -89,6 +92,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="ClientsTests.cs" />
     <Compile Include="ClientConnectionsTests.cs" />
     <Compile Include="ComponentsTests.cs" />
     <Compile Include="LookupsTests.cs" />
