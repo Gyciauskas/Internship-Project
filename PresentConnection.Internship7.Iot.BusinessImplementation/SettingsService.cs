@@ -30,7 +30,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
         }
 
 
-        public Settings GetSettings()
+        public Settings GetSettings(string id)
         {
             var settings = Db.Find<Settings>(_ => true).FirstOrDefault();
             return settings;

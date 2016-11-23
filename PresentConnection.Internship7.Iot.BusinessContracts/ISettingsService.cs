@@ -7,7 +7,7 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
     public interface ISetingsService
     {
        void UdateOrInsertSettings(Settings settings);
-       Settings GetSettings();
+       Settings GetSettings(string id);
     
     }
 }

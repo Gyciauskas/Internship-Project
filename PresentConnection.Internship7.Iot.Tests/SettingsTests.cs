@@ -28,22 +28,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             }
           }
         };
-
-        BsonDocument item2 = new BsonDocument
-        {
-          { "ModelName", "Display-HD" },
-          { "UniqueName",
-             new BsonDocument
-             {
-               { "ImageName", "Float" },
-               { "Width", "500" },
-               { "Height", "300" },
-
-            }
-          }
-        };
-
-       
+                      
         [SetUp]
         public void SetUp()
         {
@@ -56,7 +41,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Settings")]
         public void Can_update_or_insert_settings_to_database()
         {
-            
+        
             var settings = new Settings
             {
                 SettingsAsJson = item
@@ -97,8 +82,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             {
                 SettingsAsJson = item
             };
-          //  settingsService.CreateSettings(settings);
-
+       
             settings.ShouldNotBeNull();
             settings.Id.ShouldNotBeNull();
         
@@ -106,19 +90,14 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             settingsFromDb.ShouldNotBeNull();
             settingsFromDb.SettingsAsJson.ShouldNotBeNull();
-            }
-                     
+        }
+        
 
-
-        //[TearDown]
-        //public void Dispose()
-        //{
-        //    var settings = settingService.GetAllSettings();
-        //    foreach (var setting in settings)
-        //    {
-        //     settingService.DeleteSetting(setting.Id.ToString());
-        //    }
-        //}
+        [TearDown]
+        public void Dispose()
+        {
+            var settings = Db.Find<Settings>(x => true);
+        }
 
     }
 }
