@@ -96,6 +96,8 @@
     <Compile Include="ClientsTests.cs" />
     <Compile Include="ClientConnectionsTests.cs" />
     <Compile Include="ComponentsTests.cs" />
+    <Compile Include="ConnectionGroupsTests.cs" />
+    <Compile Include="ConnectionsTests.cs" />
     <Compile Include="LookupsTests.cs" />
     <Compile Include="ManufacturersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
