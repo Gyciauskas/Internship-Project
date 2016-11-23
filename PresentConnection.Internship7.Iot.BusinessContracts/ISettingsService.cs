@@ -1,16 +1,14 @@
 ﻿using PresentConnection.Internship7.Iot.Domain;
 using System.Collections.Generic;
+using System;
 
 namespace PresentConnection.Internship7.Iot.BusinessContracts
 {
     public interface ISetingsService
     {
-        string CreateSetting(Setting setting);
-        void UpdateSetting(Setting setting);
-        bool DeleteSetting(string id);
-        Setting GetSetting(string id);
-        List<Setting> GetAllSettings(string name="");
-       
+       void UdateOrInsertSettings(Settings settings);
+       Settings GetSettings();
+    
     }
 }
 

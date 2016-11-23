@@ -13,31 +13,15 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class SettingsService:ISetingsService
     {
-        public string CreateSetting(Setting setting)
+       
+        public void UdateOrInsertSettings(Settings settings)
         {
             SettingsValidator validator = new SettingsValidator();
-            ValidationResult results = validator.Validate(setting);
+            ValidationResult results = validator.Validate(settings);
             bool validationSucceeded = results.IsValid;
             if (validationSucceeded)
             {
-                Db.InsertOne(setting);
-                return setting.Id.ToString();
-            }
-            else
-            {
-                throw new BusinessException("Cannot create setting", results.Errors);
-            }
-        }
-
-
-        public void UpdateSetting(Setting setting)
-        {
-            SettingsValidator validator = new SettingsValidator();
-            ValidationResult results = validator.Validate(setting);
-            bool validationSucceeded = results.IsValid;
-            if (validationSucceeded)
-            {
-                Db.FindOneAndReplace(x => x.Id == setting.Id, setting);
+                Db.FindOneAndReplace<Settings>(Builders<Settings>.Filter.Eq(x => x.Id, settings.Id), settings, new FindOneAndReplaceOptions<Settings> { IsUpsert = true });
             }
             else
             {
@@ -46,40 +30,11 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
         }
 
 
-        public bool DeleteSetting(string id)
+        public Settings GetSettings()
         {
-            var deleteResult = Db.DeleteOne<Setting>(x => x.Id == ObjectId.Parse(id));
-            return deleteResult.DeletedCount == 1;
-        }
-
-
-        public Setting GetSettings()
-        {
-            var settings = Db.Find<Setting>(_ => true).FirstOrDefault();
+            var settings = Db.Find<Settings>(_ => true).FirstOrDefault();
             return settings;
         }
-
-        public List<Setting> GetAllSettings(string name = "")
-        {
-            var filterBuilder = Builders<Setting>.Filter;
-            var filter = filterBuilder.Empty;
-
-            if (!string.IsNullOrEmpty(name))
-            {
-                var findByNameFilter = Builders<Setting>.Filter.Eq(x => x.SettingsAsJson, name);
-                filter = filter & findByNameFilter;
-            }
-
-            var settings = Db.Find(filter);
-            return settings;
-        }
-
-
-        public Setting GetSetting(string id)
-        {
-            return Db.FindOneById<Setting>(id);
-        }
-
 
     }
 }

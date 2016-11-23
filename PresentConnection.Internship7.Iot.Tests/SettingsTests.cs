@@ -13,133 +13,112 @@ namespace PresentConnection.Internship7.Iot.Tests
     [TestFixture]
     public class SettingsTests
     {
-        private ISetingsService settingService;
+        private ISetingsService settingsService;
 
-        object GetSetting;
+        BsonDocument item = new BsonDocument
+        {
+          { "ModelName", "Display" },
+          { "UniqueName", 
+             new BsonDocument
+             {
+               { "ImageName", "Float" },
+               { "Width", "400" },
+               { "Height", "150" },
+              
+            }
+          }
+        };
 
+        BsonDocument item2 = new BsonDocument
+        {
+          { "ModelName", "Display-HD" },
+          { "UniqueName",
+             new BsonDocument
+             {
+               { "ImageName", "Float" },
+               { "Width", "500" },
+               { "Height", "300" },
+
+            }
+          }
+        };
+
+       
         [SetUp]
         public void SetUp()
         {
-            settingService = new SettingsService();
+            settingsService = new SettingsService();
         }
 
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.Setting")]
-        public void Can_insert_setting_to_database()
+        [Category("IntegrationTests.Settings")]
+        public void Can_update_or_insert_settings_to_database()
         {
-            var setting = new Setting
+            
+            var settings = new Settings
             {
-                SettingsAsJson = "username",
+                SettingsAsJson = item
+     
             };
 
-            settingService.CreateSetting(setting);
+            settingsService.UdateOrInsertSettings(settings);
 
-            setting.ShouldNotBeNull();
-            setting.Id.ShouldNotBeNull();
+            settings.ShouldNotBeNull();
+            settings.Id.ShouldNotBeNull();
         }
 
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.Setting")]
-        public void Cannot_insert_setting_to_database_when_jason_is_not_provided()
+        [Category("IntegrationTests.Settings")]
+        public void Cannot_insert_settings_to_database_when_jason_is_not_provided()
         {
-            var setting = new Setting
+            BsonDocument item1 = new BsonDocument
+        {
+          
+        };
+            var settings = new Settings
             {
-                SettingsAsJson = "",
+                SettingsAsJson = item1
             };
 
-            typeof(BusinessException).ShouldBeThrownBy(() => settingService.CreateSetting(setting));
+            typeof(BusinessException).ShouldBeThrownBy(() => settingsService.UdateOrInsertSettings(settings));
         }
 
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.Setting")]
-        public void Can_get_one_setting()
+        [Category("IntegrationTests.Settings")]
+        public void Can_get_one_settings()
         {
-            var setting = new Setting
+            var settings = new Settings
             {
-                SettingsAsJson = "username",
+                SettingsAsJson = item
             };
-            settingService.CreateSetting(setting);
+          //  settingsService.CreateSettings(settings);
 
-            setting.ShouldNotBeNull();
-            setting.Id.ShouldNotBeNull();
+            settings.ShouldNotBeNull();
+            settings.Id.ShouldNotBeNull();
         
-            var settingFromDb = Db.Find<Setting>(_ => true).FirstOrDefault();
+            var settingsFromDb = Db.Find<Settings>(_ => true).FirstOrDefault();
 
-            settingFromDb.ShouldNotBeNull();
-            settingFromDb.SettingsAsJson.ShouldNotBeNull();
+            settingsFromDb.ShouldNotBeNull();
+            settingsFromDb.SettingsAsJson.ShouldNotBeNull();
             }
+                     
 
 
-        [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Setting")]
-        public void Can_update_settings_to_database()
-        {
-
-            var setting = new Setting
-            {
-                SettingsAsJson = "level",
-            };
-
-            settingService.CreateSetting(setting);
-
-            // First insert setting to db
-            setting.ShouldNotBeNull();
-            setting.Id.ShouldNotBeNull();
-
-            // Update name and send update to db
-            setting.SettingsAsJson = "username";
-            settingService.UpdateSetting(setting);
-
-            // Get item from db and check if name was updated
-            var settingFromDb = settingService.GetSetting(setting.Id.ToString());
-            settingFromDb.ShouldNotBeNull();
-            settingFromDb.SettingsAsJson.ShouldEqual("username");
-        }
-
-
-        [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Setting")]
-        public void Can_delete_setting_from_database()
-        {
-             var setting = new Setting
-            {
-                SettingsAsJson = "level",
-            };
-            settingService.CreateSetting(setting);
-         
-            // First insert setting to db
-            setting.ShouldNotBeNull();
-            setting.Id.ShouldNotBeNull();
-
-            // Delete setting from db
-            settingService.DeleteSetting(setting.Id.ToString());
-
-            // Get item from db and check if name was updated
-            var settingFromDb = settingService.GetSetting(setting.Id.ToString());
-
-            // issue with CodeMash library. Should return null when not found - not default object
-            settingFromDb.ShouldNotBeNull();
-            settingFromDb.Id.ShouldEqual(ObjectId.Empty);
-          }
-
-
-        [TearDown]
-        public void Dispose()
-        {
-            var settings = settingService.GetAllSettings();
-            foreach (var setting in settings)
-            {
-             settingService.DeleteSetting(setting.Id.ToString());
-            }
-        }
+        //[TearDown]
+        //public void Dispose()
+        //{
+        //    var settings = settingService.GetAllSettings();
+        //    foreach (var setting in settings)
+        //    {
+        //     settingService.DeleteSetting(setting.Id.ToString());
+        //    }
+        //}
 
     }
 }

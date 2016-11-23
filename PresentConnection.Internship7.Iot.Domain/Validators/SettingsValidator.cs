@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PresentConnection.Internship7.Iot.Domain.Validators
 {
-    public class SettingsValidator:AbstractValidator<Setting>
+    public class SettingsValidator:AbstractValidator<Settings>
     {
         public SettingsValidator()
         {
