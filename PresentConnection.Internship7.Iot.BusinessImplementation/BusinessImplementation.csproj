@@ -80,11 +80,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientService.cs" />
+    <Compile Include="ClientConnectionService.cs" />
     <Compile Include="ComponentService.cs" />
     <Compile Include="LookupService.cs" />
     <Compile Include="ManufacturerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsService.cs" />
+    <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PresentConnection.Internship7.Iot.BusinessContracts\BusinessContracts.csproj">
