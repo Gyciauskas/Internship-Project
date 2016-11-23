@@ -93,7 +93,7 @@
     <Compile Include="Validators\ComponentValidator.cs" />
     <Compile Include="Validators\LookupValidator.cs" />
     <Compile Include="Validators\ManufacturerValidator.cs" />
-    <Compile Include="Validators\SettingValidator.cs" />
+    <Compile Include="Validators\SettingsValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

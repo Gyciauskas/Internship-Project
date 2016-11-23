@@ -82,7 +82,7 @@
     <Compile Include="IComponentService.cs" />
     <Compile Include="ILookupService.cs" />
     <Compile Include="IManufacturerService.cs" />
-    <Compile Include="ISettingService.cs" />
+    <Compile Include="ISettingsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

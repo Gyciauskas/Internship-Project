@@ -12,6 +12,5 @@ namespace PresentConnection.Internship7.Iot.Domain
     public class Setting : EntityBase
     {
         public string SettingsAsJson { get; set; }
-
     }
 }

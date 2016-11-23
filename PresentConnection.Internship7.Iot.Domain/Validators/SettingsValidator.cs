@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 
 namespace PresentConnection.Internship7.Iot.Domain.Validators
 {
-    public class SettingValidator:AbstractValidator<Setting>
+    public class SettingsValidator:AbstractValidator<Setting>
     {
-        public SettingValidator()
-            {
+        public SettingsValidator()
+        {
             RuleFor(r => r.SettingsAsJson).NotEmpty();
-
         }
-
-
     }
 }

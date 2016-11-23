@@ -7,14 +7,15 @@ using MongoDB.Driver;
 using PresentConnection.Internship7.Iot.Utils;
 using PresentConnection.Internship7.Iot.Domain.Validators;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
-    public class SettingService:ISetingService
+    public class SettingsService:ISetingsService
     {
         public string CreateSetting(Setting setting)
         {
-            SettingValidator validator = new SettingValidator();
+            SettingsValidator validator = new SettingsValidator();
             ValidationResult results = validator.Validate(setting);
             bool validationSucceeded = results.IsValid;
             if (validationSucceeded)
@@ -26,12 +27,12 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             {
                 throw new BusinessException("Cannot create setting", results.Errors);
             }
-
         }
+
 
         public void UpdateSetting(Setting setting)
         {
-            SettingValidator validator = new SettingValidator();
+            SettingsValidator validator = new SettingsValidator();
             ValidationResult results = validator.Validate(setting);
             bool validationSucceeded = results.IsValid;
             if (validationSucceeded)
@@ -44,10 +45,18 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             }
         }
 
+
         public bool DeleteSetting(string id)
         {
             var deleteResult = Db.DeleteOne<Setting>(x => x.Id == ObjectId.Parse(id));
             return deleteResult.DeletedCount == 1;
+        }
+
+
+        public Setting GetSettings()
+        {
+            var settings = Db.Find<Setting>(_ => true).FirstOrDefault();
+            return settings;
         }
 
         public List<Setting> GetAllSettings(string name = "")
@@ -65,11 +74,10 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             return settings;
         }
 
+
         public Setting GetSetting(string id)
         {
-
             return Db.FindOneById<Setting>(id);
-
         }
 
 
