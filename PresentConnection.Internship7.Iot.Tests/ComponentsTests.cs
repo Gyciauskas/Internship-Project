@@ -186,7 +186,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             componentService.CreateComponent(component);
 
-            // First insert manufacturer to db
+            // First insert component to db
             component.ShouldNotBeNull();
             component.Id.ShouldNotBeNull();
 
@@ -214,11 +214,11 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             componentService.CreateComponent(component);
 
-            // First insert manufacturer to db
+            // First insert component to db
             component.ShouldNotBeNull();
             component.Id.ShouldNotBeNull();
 
-            // Delete manufacturer from db
+            // Delete component from db
             componentService.DeleteComponent(component.Id.ToString());
 
             // Get item from db and check if name was updated
