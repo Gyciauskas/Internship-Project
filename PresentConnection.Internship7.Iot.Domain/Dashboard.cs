@@ -15,6 +15,7 @@ namespace PresentConnection.Internship7.Iot.Domain
         {
             Widgets = new List<Widget>();
             
+
         }
 
 

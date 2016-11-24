@@ -27,10 +27,10 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
 
             Widget widget = new Widget();
-            widget.Type = "test";
+            
             widget.Query = "test";
 
-            widget.Configuration = new Dictionary<string, string>();
+            widget.Configuration = new Dictionary<string, object>();
             widget.Configuration.Add("test","test");
             
 
@@ -61,10 +61,12 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
 
             Widget widget = new Widget();
-            widget.Type = "";
+            
             widget.Query = "test";
 
-            widget.Configuration = new Dictionary<string, string>();
+
+
+            widget.Configuration = new Dictionary<string, object>();
             widget.Configuration.Add("test", "test");
 
 
@@ -88,7 +90,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Can_get_dashboards_by_id()
         {
             Widget widget = new Widget();
-            widget.Type = "test";
+           
             widget.Query = "test";
             List<Widget> widgets = new List<Widget>();
             widgets.Add(widget);
@@ -117,7 +119,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Can_get_all_dashboards()
         {
             Widget widget = new Widget();
-            widget.Type = "test";
+           
             widget.Query = "test";
             List<Widget> widgets = new List<Widget>();
             widgets.Add(widget);
@@ -128,7 +130,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Widgets = widgets
             };
             Widget widget2 = new Widget();
-            widget2.Type = "test";
+            
             widget2.Query = "test";
             List<Widget> widgets2 = new List<Widget>();
             widgets2.Add(widget2);
@@ -163,7 +165,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Can_get_all_dashboards_by_userId()
         {
             Widget widget1 = new Widget();
-            widget1.Type = "test";
+            
             widget1.Query = "test";
             List<Widget> widgets1 = new List<Widget>();
             widgets1.Add(widget1);
@@ -175,7 +177,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             };
 
             Widget widget2 = new Widget();
-            widget2.Type = "test";
+            
             widget2.Query = "test";
             List<Widget> widgets2 = new List<Widget>();
             widgets2.Add(widget2);
@@ -188,7 +190,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
             Widget widget3 = new Widget();
-            widget3.Type = "test";
+            
             widget3.Query = "test";
             List<Widget> widgets3 = new List<Widget>();
             widgets3.Add(widget3);
@@ -225,7 +227,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Can_update_dashboards_to_database()
         {
             Widget widget = new Widget();
-            widget.Type = "test";
+            
             widget.Query = "test";
             List<Widget> widgets = new List<Widget>();
             widgets.Add(widget);
@@ -259,7 +261,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Can_delete_dashboards_from_database()
         {
             Widget widget = new Widget();
-            widget.Type = "test";
+            
             widget.Query = "test";
             List<Widget> widgets = new List<Widget>();
             widgets.Add(widget);
@@ -288,14 +290,14 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
 
-        [TearDown]
-        public void Dispose()
-        {
-            var dashboards = dashboardService.GetAllDashboards();
-            foreach (var dashboard in dashboards)
-            {
-                dashboardService.DeleteDashboard(dashboard.Id.ToString());
-            }
-        }
+        //[TearDown]
+        //public void Dispose()
+        //{
+        //    var dashboards = dashboardService.GetAllDashboards();
+        //    foreach (var dashboard in dashboards)
+        //    {
+        //        dashboardService.DeleteDashboard(dashboard.Id.ToString());
+        //    }
+        //}
     }
 }
