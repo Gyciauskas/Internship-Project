@@ -20,11 +20,10 @@ namespace PresentConnection.Internship7.Iot.Domain
     {
         public WidgetValidator()
         {
-
-
-            RuleFor(x => x.).IsInEnum();
-
+            RuleFor(x => x.Validation);
         }
+
+
     }
 
 
