@@ -86,6 +86,8 @@
     <Compile Include="Client.cs" />
     <Compile Include="ClientConnection.cs" />
     <Compile Include="Component.cs" />
+    <Compile Include="Connection.cs" />
+    <Compile Include="ConnectionGroup.cs" />
     <Compile Include="DisplayImage.cs" />
     <Compile Include="DisplayUrl.cs" />
     <Compile Include="Invoice.cs" />
@@ -97,6 +99,8 @@
     <Compile Include="Validators\ClientValidator.cs" />
     <Compile Include="Validators\ClientConnectionValidator.cs" />
     <Compile Include="Validators\ComponentValidator.cs" />
+    <Compile Include="Validators\ConnectionGroupValidator.cs" />
+    <Compile Include="Validators\ConnectionValidator.cs" />
     <Compile Include="Validators\LookupValidator.cs" />
     <Compile Include="Validators\ManufacturerValidator.cs" />
     <Compile Include="Validators\UserValidator.cs" />
