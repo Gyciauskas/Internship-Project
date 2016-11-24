@@ -7,12 +7,14 @@ using CodeMash.Net;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
+    public enum PowerResourceType { Battery, Voltage }
     [CollectionName("Devices")]
     public class Device : EntityBase
     {
         public Device()
         {
             Images = new List<DisplayImage>();
+            AvailablePowerResources = new List<PowerResourceType>();
             DefaultRules = new List<string>();
             DefaultCommands = new List<string>();
             AvailableComponents = new List<string>();
@@ -25,7 +27,7 @@ namespace PresentConnection.Internship7.Iot.Domain
         public string UniqueName { get; set; } // e.g. raspberry-pi-3
         public List<DisplayImage> Images { get; set; }
         public string DefaultFirmwareVersion { get; set; }
-//        public List<PowerResourceType> AvailablePowerResources { get; set; }
+        public List<PowerResourceType> AvailablePowerResources { get; set; }
         public int InstalledRAMInKB { get; set; } // in KB
         public string Processor { get; set; }
         public bool IsVisible { get; set; }
