@@ -50,12 +50,6 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             }
         }
 
-        public bool DeleteDashboard(string id)
-        {
-            var deleteResult = Db.DeleteOne<Dashboard>(x => x.Id == ObjectId.Parse(id));
-            return deleteResult.DeletedCount == 1;
-        }
-
         public List<Dashboard> GetAllDashboards(string userId = "")
         {
             var filterBuilder = Builders<Dashboard>.Filter;
@@ -63,12 +57,19 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
             if (!string.IsNullOrEmpty(userId))
             {
-                var findByUserIdFilter = Builders<Dashboard>.Filter.Eq(x => x.UserId, userId);
-                filter = filter & findByUserIdFilter;
+                var findByuserIdFilter = Builders<Dashboard>.Filter.Eq(x => x.UserId, userId);
+                filter = filter & findByuserIdFilter;
             }
 
             var dashboard = Db.Find(filter);
             return dashboard;
+        }
+
+
+        public bool DeleteDashboard(string id)
+        {
+            var deleteResult = Db.DeleteOne<Dashboard>(x => x.Id == ObjectId.Parse(id));
+            return deleteResult.DeletedCount == 1;
         }
 
         public Dashboard GetDashboard(string id)

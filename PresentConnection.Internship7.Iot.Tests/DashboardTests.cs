@@ -5,7 +5,7 @@ using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using System.Collections.Generic;
 using PresentConnection.Internship7.Iot.Utils;
-
+using CodeMash.Net;
 
 namespace PresentConnection.Internship7.Iot.Tests
 {
@@ -30,7 +30,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             Widget widget = new Widget();
             
             widget.Query = "test";
-            widget.Type = Domain.Validators.Enums.Type.BatChart;
+            widget.Type = Type.BatChart;
 
 
             widget.Configuration = new Dictionary<string, object>();
@@ -67,7 +67,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             
             
             widget.Query = "test";
-            widget.Type = Domain.Validators.Enums.Type.NotSet;
+            widget.Type = Type.NotSet;
 
 
             widget.Configuration = new Dictionary<string, object>();
@@ -96,7 +96,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             Widget widget = new Widget();
 
             widget.Query = "test2";
-            widget.Type = Domain.Validators.Enums.Type.BatChart;
+            widget.Type = Type.BatChart;
 
 
             widget.Configuration = new Dictionary<string, object>();
@@ -125,120 +125,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             dashboardFromDb.ShouldNotBeNull();
         }
 
-
-        [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Dashboard")]
-        public void Can_get_all_dashboards()
-        {
-            Widget widget = new Widget();
-            widget.Query = "test";
-            widget.Type = Domain.Validators.Enums.Type.BatChart;
-
-
-            List<Widget> widgets = new List<Widget>();
-            widgets.Add(widget);
-
-            var dashboard1 = new Dashboard()
-            {
-                UserId = "10",
-                Widgets = widgets
-            };
-            Widget widget2 = new Widget();
-            
-            widget2.Query = "test";
-            widget2.Type = Domain.Validators.Enums.Type.BatChart;
-            List<Widget> widgets2 = new List<Widget>();
-            widgets2.Add(widget2);
-
-            var dashboard2 = new Dashboard()
-            {
-                UserId = "22",
-                Widgets = widgets2
-            };
-
-            dashboardService.CreateDashboard(dashboard1);
-            dashboard1.ShouldNotBeNull();
-            dashboard1.Id.ShouldNotBeNull();
-
-
-            dashboardService.CreateDashboard(dashboard2);
-            dashboard2.ShouldNotBeNull();
-            dashboard2.Id.ShouldNotBeNull();
-
-
-
-            var dashboards = dashboardService.GetAllDashboards();
-
-            dashboards.ShouldBe<List<Dashboard>>();
-            (dashboards.Count > 0).ShouldBeTrue();
-        }
-
-
-        [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Dashboard")]
-        public void Can_get_all_dashboards_by_userId()
-        {
-            Widget widget1 = new Widget();
-            widget1.Query = "test";
-            widget1.Type = Domain.Validators.Enums.Type.BatChart;
-
-            List<Widget> widgets1 = new List<Widget>();
-            widgets1.Add(widget1);
-
-            var dashboard1 = new Dashboard()
-            {
-                UserId = "44",
-                Widgets = widgets1
-            };
-
-            Widget widget2 = new Widget();
-            widget2.Query = "test";
-            widget2.Type = Domain.Validators.Enums.Type.BatChart;
-            List<Widget> widgets2 = new List<Widget>();
-            widgets2.Add(widget2);
-
-            var dashboard2 = new Dashboard()
-            {
-                UserId = "35",
-                Widgets = widgets2
-            };
-
-
-            Widget widget3 = new Widget();
-            widget3.Query = "test";
-            widget3.Type = Domain.Validators.Enums.Type.BatChart;
-
-            List<Widget> widgets3 = new List<Widget>();
-            widgets3.Add(widget3);
-
-            var dashboard3 = new Dashboard()
-            {
-                UserId = "33",
-                Widgets = widgets3
-            };
-
-            dashboardService.CreateDashboard(dashboard1);
-            dashboard1.ShouldNotBeNull();
-            dashboard1.UserId.ShouldNotBeNull();
-
-
-            dashboardService.CreateDashboard(dashboard2);
-            dashboard2.ShouldNotBeNull();
-            dashboard2.UserId.ShouldNotBeNull();
-
-            dashboardService.CreateDashboard(dashboard3);
-            dashboard3.ShouldNotBeNull();
-            dashboard3.Id.ShouldNotBeNull();
-
-            var dashboards = dashboardService.GetAllDashboards("33");
-
-            dashboards.ShouldBe<List<Dashboard>>();
-            dashboards.Count.ShouldEqual(1);
-        }
-
-
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Dashboard")]
@@ -246,7 +132,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
             Widget widget = new Widget();
             widget.Query = "test";
-            widget.Type = Domain.Validators.Enums.Type.BatChart;
+            widget.Type = Type.BatChart;
 
             List<Widget> widgets = new List<Widget>();
             widgets.Add(widget);
@@ -282,7 +168,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             Widget widget = new Widget();
 
             widget.Query = "test";
-            widget.Type = Domain.Validators.Enums.Type.BatChart;
+            widget.Type = Type.BatChart;
 
 
             widget.Configuration = new Dictionary<string, object>();
@@ -321,7 +207,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         [TearDown]
         public void Dispose()
         {
-            var dashboards = dashboardService.GetAllDashboards();
+
+            var dashboards = dashboardService.GetDashboard();
             foreach (var dashboard in dashboards)
             {
                 dashboardService.DeleteDashboard(dashboard.Id.ToString());

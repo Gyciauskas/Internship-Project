@@ -18,7 +18,7 @@ namespace PresentConnection.Internship7.Iot.Domain
     {
         public WidgetValidator()
         {
-            RuleFor(x => x.Type).NotEqual(Validators.Enums.Type.NotSet);
+            RuleFor(x => x.Type).NotEqual(Type.NotSet);
         }
 
 

@@ -1,5 +1,4 @@
-﻿using PresentConnection.Internship7.Iot.Domain.Validators.Enums;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
