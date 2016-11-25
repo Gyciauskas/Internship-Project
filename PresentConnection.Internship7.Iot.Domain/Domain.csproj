@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="ClientConnection.cs" />
+    <Compile Include="Collaborator.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="ConnectionGroup.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Subscription.cs" />
     <Compile Include="Validators\ClientValidator.cs" />
     <Compile Include="Validators\ClientConnectionValidator.cs" />
+    <Compile Include="Validators\CollaboratorValidator.cs" />
     <Compile Include="Validators\ComponentValidator.cs" />
     <Compile Include="Validators\ConnectionGroupValidator.cs" />
     <Compile Include="Validators\ConnectionValidator.cs" />
