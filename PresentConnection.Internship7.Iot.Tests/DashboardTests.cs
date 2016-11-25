@@ -93,15 +93,24 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Can_get_dashboards_by_id()
         {
             Widget widget = new Widget();
-           
-            widget.Query = "test";
+
+            widget.Query = "test2";
+            widget.Type = TypeEnums.Type.BatChart;
+
+
+            widget.Configuration = new Dictionary<string, object>();
+            widget.Configuration.Add("test2", "test2");
+
+
             List<Widget> widgets = new List<Widget>();
             widgets.Add(widget);
 
+
             var dashboard = new Dashboard()
             {
-                UserId = "8",
+                UserId = "19",
                 Widgets = widgets
+
             };
 
             dashboardService.CreateDashboard(dashboard);
@@ -111,7 +120,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var dashboardFromDb = dashboardService.GetDashboard(dashboard.Id.ToString());
             dashboardFromDb.Id.ShouldNotBeNull();
-            dashboardFromDb.UserId.ShouldEqual("8");
+            dashboardFromDb.UserId.ShouldEqual("19");
             dashboardFromDb.ShouldNotBeNull();
         }
 
@@ -122,8 +131,10 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Can_get_all_dashboards()
         {
             Widget widget = new Widget();
-           
             widget.Query = "test";
+            widget.Type = TypeEnums.Type.BatChart;
+
+
             List<Widget> widgets = new List<Widget>();
             widgets.Add(widget);
 
@@ -135,6 +146,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             Widget widget2 = new Widget();
             
             widget2.Query = "test";
+            widget2.Type = TypeEnums.Type.BatChart;
             List<Widget> widgets2 = new List<Widget>();
             widgets2.Add(widget2);
 
@@ -168,8 +180,9 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Can_get_all_dashboards_by_userId()
         {
             Widget widget1 = new Widget();
-            
             widget1.Query = "test";
+            widget1.Type = TypeEnums.Type.BatChart;
+
             List<Widget> widgets1 = new List<Widget>();
             widgets1.Add(widget1);
 
@@ -180,8 +193,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             };
 
             Widget widget2 = new Widget();
-            
             widget2.Query = "test";
+            widget2.Type = TypeEnums.Type.BatChart;
             List<Widget> widgets2 = new List<Widget>();
             widgets2.Add(widget2);
 
@@ -193,8 +206,9 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
             Widget widget3 = new Widget();
-            
             widget3.Query = "test";
+            widget3.Type = TypeEnums.Type.BatChart;
+
             List<Widget> widgets3 = new List<Widget>();
             widgets3.Add(widget3);
 
@@ -230,8 +244,9 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Can_update_dashboards_to_database()
         {
             Widget widget = new Widget();
-            
             widget.Query = "test";
+            widget.Type = TypeEnums.Type.BatChart;
+
             List<Widget> widgets = new List<Widget>();
             widgets.Add(widget);
 
