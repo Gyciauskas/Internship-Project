@@ -85,6 +85,7 @@
     <Compile Include="ComponentService.cs" />
     <Compile Include="ConectionService.cs" />
     <Compile Include="ConnectionGroupService.cs" />
+    <Compile Include="DeviceService.cs" />
     <Compile Include="LookupService.cs" />
     <Compile Include="ManufacturerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

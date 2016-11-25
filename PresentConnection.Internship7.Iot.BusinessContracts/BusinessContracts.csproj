@@ -84,6 +84,7 @@
     <Compile Include="IComponentService.cs" />
     <Compile Include="IConnectionGroupService.cs" />
     <Compile Include="IConnectionService.cs" />
+    <Compile Include="IDeviceService.cs" />
     <Compile Include="ILookupService.cs" />
     <Compile Include="IManufacturerService.cs" />
     <Compile Include="IUserService.cs" />
