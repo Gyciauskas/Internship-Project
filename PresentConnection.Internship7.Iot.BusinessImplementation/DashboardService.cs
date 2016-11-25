@@ -50,31 +50,15 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             }
         }
 
-        public List<Dashboard> GetAllDashboards(string userId = "")
-        {
-            var filterBuilder = Builders<Dashboard>.Filter;
-            var filter = filterBuilder.Empty;
-
-            if (!string.IsNullOrEmpty(userId))
-            {
-                var findByuserIdFilter = Builders<Dashboard>.Filter.Eq(x => x.UserId, userId);
-                filter = filter & findByuserIdFilter;
-            }
-
-            var dashboard = Db.Find(filter);
-            return dashboard;
-        }
-
-
         public bool DeleteDashboard(string id)
         {
             var deleteResult = Db.DeleteOne<Dashboard>(x => x.Id == ObjectId.Parse(id));
             return deleteResult.DeletedCount == 1;
         }
 
-        public Dashboard GetDashboard(string id)
+        public Dashboard GetDashboard(string userId)
         {
-            return Db.FindOneById<Dashboard>(id);
+            return Db.FindOneById<Dashboard>(userId);
         }
 
 

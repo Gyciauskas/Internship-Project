@@ -203,12 +203,10 @@ namespace PresentConnection.Internship7.Iot.Tests
             dashboardFromDb.Id.ShouldEqual(ObjectId.Empty);
         }
 
-
         [TearDown]
         public void Dispose()
         {
-
-            var dashboards = dashboardService.GetDashboard();
+            var dashboards = Db.Find<Dashboard>(x => true);
             foreach (var dashboard in dashboards)
             {
                 dashboardService.DeleteDashboard(dashboard.Id.ToString());
