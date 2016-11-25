@@ -6,6 +6,7 @@ using PresentConnection.Internship7.Iot.Domain;
 using System.Collections.Generic;
 using PresentConnection.Internship7.Iot.Utils;
 
+
 namespace PresentConnection.Internship7.Iot.Tests
 {
     [TestFixture]
@@ -29,6 +30,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             Widget widget = new Widget();
             
             widget.Query = "test";
+            widget.Type = TypeEnums.Type.BatChart;
+
 
             widget.Configuration = new Dictionary<string, object>();
             widget.Configuration.Add("test","test");
@@ -63,7 +66,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             Widget widget = new Widget();
             
             widget.Query = "test";
-
+            widget.Type = TypeEnums.Type.NotSet;
 
 
             widget.Configuration = new Dictionary<string, object>();
@@ -290,14 +293,14 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
 
-        //[TearDown]
-        //public void Dispose()
-        //{
-        //    var dashboards = dashboardService.GetAllDashboards();
-        //    foreach (var dashboard in dashboards)
-        //    {
-        //        dashboardService.DeleteDashboard(dashboard.Id.ToString());
-        //    }
-        //}
+        [TearDown]
+        public void Dispose()
+        {
+            var dashboards = dashboardService.GetAllDashboards();
+            foreach (var dashboard in dashboards)
+            {
+                dashboardService.DeleteDashboard(dashboard.Id.ToString());
+            }
+        }
     }
 }

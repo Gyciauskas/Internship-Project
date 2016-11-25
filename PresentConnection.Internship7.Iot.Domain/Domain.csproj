@@ -84,7 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Validators\DashboardValidator.cs" />
-    <Compile Include="Enums.cs" />
+    <Compile Include="TypeEnums.cs" />
     <Compile Include="Widget.cs" />
     <Compile Include="Dashboard.cs" />
     <Compile Include="Component.cs" />
