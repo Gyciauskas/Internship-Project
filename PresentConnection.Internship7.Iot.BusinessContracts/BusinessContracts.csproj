@@ -85,8 +85,10 @@
     <Compile Include="IComponentService.cs" />
     <Compile Include="IConnectionGroupService.cs" />
     <Compile Include="IConnectionService.cs" />
+    <Compile Include="IDeviceService.cs" />
     <Compile Include="ILookupService.cs" />
     <Compile Include="IManufacturerService.cs" />
+    <Compile Include="IRunningDeviceSimulationsService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
