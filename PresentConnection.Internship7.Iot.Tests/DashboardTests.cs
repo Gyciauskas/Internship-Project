@@ -60,7 +60,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("Iot")]
         [Category("IntegrationTests.Dashboard")]
 
-        public void Cannot_insert_dashboard_to_database_when_widgetType_is_not_provided()
+        public void Cannot_insert_dashboard_to_database_when_widgetType_is_NotSet()
         {
 
             Widget widget = new Widget();
@@ -264,15 +264,24 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Can_delete_dashboards_from_database()
         {
             Widget widget = new Widget();
-            
+
             widget.Query = "test";
+            widget.Type = TypeEnums.Type.BatChart;
+
+
+            widget.Configuration = new Dictionary<string, object>();
+            widget.Configuration.Add("test", "test");
+
+
             List<Widget> widgets = new List<Widget>();
             widgets.Add(widget);
 
+
             var dashboard = new Dashboard()
             {
-                UserId = "Raspberry PI",
+                UserId = "88",
                 Widgets = widgets
+
             };
 
             dashboardService.CreateDashboard(dashboard);
