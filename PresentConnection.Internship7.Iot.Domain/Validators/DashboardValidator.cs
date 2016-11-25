@@ -14,7 +14,7 @@ namespace PresentConnection.Internship7.Iot.Domain
 
     }
 
-    public class WidgetValidator : InlineValidator<Widget>
+    public class WidgetValidator : InlineValidator<Widget> 
     {
         public WidgetValidator()
         {
