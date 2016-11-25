@@ -14,9 +14,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
     public class SettingsService:ISetingsService
     {
 
-        bool Condition1 = true;
-        bool Condition2 = true;
-
+      
         public void UpdateOrInsertSettings(Settings settings)
         {
           
