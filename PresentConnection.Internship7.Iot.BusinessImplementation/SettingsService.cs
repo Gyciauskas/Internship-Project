@@ -13,24 +13,32 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class SettingsService:ISetingsService
     {
-       
-        public void UdateOrInsertSettings(Settings settings)
+
+        bool Condition1 = true;
+        bool Condition2 = true;
+
+        public void UpdateOrInsertSettings(Settings settings)
         {
+          
+
             SettingsValidator validator = new SettingsValidator();
             ValidationResult results = validator.Validate(settings);
             bool validationSucceeded = results.IsValid;
             if (validationSucceeded)
             {
+
                 Db.FindOneAndReplace<Settings>(Builders<Settings>.Filter.Eq(x => x.Id, settings.Id), settings, new FindOneAndReplaceOptions<Settings> { IsUpsert = true });
+          
             }
-            else
+
+            else 
             {
                 throw new BusinessException("Cannot update setting", results.Errors);
             }
         }
 
 
-        public Settings GetSettings(string id)
+        public Settings GetSettings()
         {
             var settings = Db.Find<Settings>(_ => true).FirstOrDefault();
             return settings;
