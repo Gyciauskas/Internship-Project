@@ -15,20 +15,24 @@ namespace PresentConnection.Internship7.Iot.Domain
             RuleFor(r => r.ModelName).NotEmpty();
             RuleFor(r => r.UniqueName).NotEmpty();
             RuleFor(r => r.Images.Count).GreaterThan(0);
-        }
-    }
-
-    public class DeviceUniqueNameValidator : AbstractValidator<Device>
-    {
-        public DeviceUniqueNameValidator()
-        {
-            RuleFor(x => x.UniqueName).Must(ValidUniqueName).WithMessage("Name is not unique");
+            RuleFor(x => x).Must(ValidUniqueName).WithMessage("Name is not unique");
         }
 
-        private bool ValidUniqueName(string uniqueName)
+        private bool ValidUniqueName(Device device)
         {
-            var deviceFromDb = Db.FindOne<Device>(x => x.UniqueName == uniqueName);
-            return deviceFromDb.UniqueName != uniqueName;
+            var deviceFromDb = Db.FindOne<Device>(x => x.UniqueName == device.UniqueName);
+            if ( (deviceFromDb.UniqueName == device.UniqueName) && (deviceFromDb.Id != device.Id))
+            {
+                return false;
+            }
+            else
+            {
+                if (Db.Count<Device>(x => x.UniqueName == device.UniqueName) >= 2)
+                {
+                    return false;
+                }
+                return true;
+            }
         }
     }
 }
