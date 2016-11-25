@@ -30,7 +30,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             Widget widget = new Widget();
             
             widget.Query = "test";
-            widget.Type = TypeEnums.Type.BatChart;
+            widget.Type = Domain.Validators.Enums.Type.BatChart;
 
 
             widget.Configuration = new Dictionary<string, object>();
@@ -65,8 +65,9 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             Widget widget = new Widget();
             
+            
             widget.Query = "test";
-            widget.Type = TypeEnums.Type.NotSet;
+            widget.Type = Domain.Validators.Enums.Type.NotSet;
 
 
             widget.Configuration = new Dictionary<string, object>();
@@ -95,7 +96,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             Widget widget = new Widget();
 
             widget.Query = "test2";
-            widget.Type = TypeEnums.Type.BatChart;
+            widget.Type = Domain.Validators.Enums.Type.BatChart;
 
 
             widget.Configuration = new Dictionary<string, object>();
@@ -132,7 +133,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
             Widget widget = new Widget();
             widget.Query = "test";
-            widget.Type = TypeEnums.Type.BatChart;
+            widget.Type = Domain.Validators.Enums.Type.BatChart;
 
 
             List<Widget> widgets = new List<Widget>();
@@ -146,7 +147,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             Widget widget2 = new Widget();
             
             widget2.Query = "test";
-            widget2.Type = TypeEnums.Type.BatChart;
+            widget2.Type = Domain.Validators.Enums.Type.BatChart;
             List<Widget> widgets2 = new List<Widget>();
             widgets2.Add(widget2);
 
@@ -181,7 +182,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
             Widget widget1 = new Widget();
             widget1.Query = "test";
-            widget1.Type = TypeEnums.Type.BatChart;
+            widget1.Type = Domain.Validators.Enums.Type.BatChart;
 
             List<Widget> widgets1 = new List<Widget>();
             widgets1.Add(widget1);
@@ -194,7 +195,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             Widget widget2 = new Widget();
             widget2.Query = "test";
-            widget2.Type = TypeEnums.Type.BatChart;
+            widget2.Type = Domain.Validators.Enums.Type.BatChart;
             List<Widget> widgets2 = new List<Widget>();
             widgets2.Add(widget2);
 
@@ -207,7 +208,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             Widget widget3 = new Widget();
             widget3.Query = "test";
-            widget3.Type = TypeEnums.Type.BatChart;
+            widget3.Type = Domain.Validators.Enums.Type.BatChart;
 
             List<Widget> widgets3 = new List<Widget>();
             widgets3.Add(widget3);
@@ -245,7 +246,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
             Widget widget = new Widget();
             widget.Query = "test";
-            widget.Type = TypeEnums.Type.BatChart;
+            widget.Type = Domain.Validators.Enums.Type.BatChart;
 
             List<Widget> widgets = new List<Widget>();
             widgets.Add(widget);
@@ -281,7 +282,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             Widget widget = new Widget();
 
             widget.Query = "test";
-            widget.Type = TypeEnums.Type.BatChart;
+            widget.Type = Domain.Validators.Enums.Type.BatChart;
 
 
             widget.Configuration = new Dictionary<string, object>();
