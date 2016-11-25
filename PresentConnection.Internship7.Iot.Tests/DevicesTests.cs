@@ -112,6 +112,49 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Device")]
+        public void Cannot_insert_device_to_database_when_uniquename_is_not_unique()
+        {
+            var device = new Device()
+            {
+                ModelName = "Raspberry PI 3",
+                UniqueName = "raspberry-pi-3",
+                Images =
+                {
+                    new DisplayImage()
+                    {
+                       ImageName = "RaspberryLogo",
+                       Widht = "600px",
+                       Height = "250px"
+                    }
+                }
+            };
+
+            var device2 = new Device()
+            {
+                ModelName = "Device 2",
+                UniqueName = "raspberry-pi-3",
+                Images =
+                {
+                    new DisplayImage()
+                    {
+                       ImageName = "DeviceLogo",
+                       Widht = "600px",
+                       Height = "250px"
+                    }
+                }
+            };
+
+            deviceService.CreateDevice(device);
+
+            device.ShouldNotBeNull();
+            device.Id.ShouldNotBeNull();
+
+            typeof(BusinessException).ShouldBeThrownBy(() => deviceService.CreateDevice(device2));
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Device")]
         public void Can_get_device_by_id()
         {
             var device = new Device()

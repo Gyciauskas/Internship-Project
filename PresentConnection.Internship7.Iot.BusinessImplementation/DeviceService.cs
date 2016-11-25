@@ -18,8 +18,10 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
         public string CreateDevice(Device device)
         {
             DeviceValidator validator = new DeviceValidator();
+            DeviceUniqueNameValidator uniqueNameValidator = new DeviceUniqueNameValidator();
             ValidationResult results = validator.Validate(device);
-            bool validationSucceeded = results.IsValid;
+            ValidationResult results2 = uniqueNameValidator.Validate(device);
+            bool validationSucceeded = results.IsValid && results2.IsValid;
             if (validationSucceeded)
             {
                 Db.InsertOne(device);
