@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="ClientsTests.cs" />
     <Compile Include="ClientConnectionsTests.cs" />
+    <Compile Include="DashboardTests.cs" />
     <Compile Include="ComponentsTests.cs" />
     <Compile Include="ConnectionGroupsTests.cs" />
     <Compile Include="ConnectionsTests.cs" />
@@ -107,7 +108,9 @@
     <Compile Include="UsersTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

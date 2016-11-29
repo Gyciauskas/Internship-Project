@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="ClientService.cs" />
     <Compile Include="ClientConnectionService.cs" />
+    <Compile Include="DashboardService.cs" />
     <Compile Include="ComponentService.cs" />
     <Compile Include="ConectionService.cs" />
     <Compile Include="ConnectionGroupService.cs" />

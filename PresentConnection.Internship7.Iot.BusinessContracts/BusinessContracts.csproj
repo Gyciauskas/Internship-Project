@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDashboardService.cs" />
     <Compile Include="IClientService.cs" />
     <Compile Include="IClientConnectionService.cs" />
     <Compile Include="IComponentService.cs" />
