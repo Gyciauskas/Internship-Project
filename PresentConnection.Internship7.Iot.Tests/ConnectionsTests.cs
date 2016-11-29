@@ -38,7 +38,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     {
                         Height = "600px",
                         ImageName = "DropboxLogo",
-                        Widht = "250px"
+                        Width = "250px"
                     }
                 },
                 Url = "url",
@@ -66,7 +66,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     {
                         Height = "600px",
                         ImageName = "DropboxLogo",
-                        Widht = "250px"
+                        Width = "250px"
                     }
                 },
                 Url = "url",
@@ -91,7 +91,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     {
                         Height = "600px",
                         ImageName = "DropboxLogo",
-                        Widht = "250px"
+                        Width = "250px"
                     }
                 },
                 Url = "url",
@@ -133,7 +133,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     {
                         Height = "600px",
                         ImageName = "DropboxLogo",
-                        Widht = "250px"
+                        Width = "250px"
                     }
                 },
                 Url = "",
@@ -158,7 +158,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     {
                         Height = "600px",
                         ImageName = "DropboxLogo",
-                        Widht = "250px"
+                        Width = "250px"
                     }
                 },
                 Url = "url",
@@ -183,7 +183,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     {
                         Height = "600px",
                         ImageName = "DropboxLogo",
-                        Widht = "250px"
+                        Width = "250px"
                     }
                 },
                 Url = "url",
@@ -216,7 +216,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     {
                         Height = "600px",
                         ImageName = "DropboxLogo",
-                        Widht = "250px"
+                        Width = "250px"
                     }
                 },
                 Url = "url1",
@@ -233,7 +233,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     {
                         Height = "600px",
                         ImageName = "SendGridLogo",
-                        Widht = "250px"
+                        Width = "250px"
                     }
                 },
                 Url = "url2",
@@ -269,7 +269,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     {
                         Height = "600px",
                         ImageName = "DropboxLogo",
-                        Widht = "250px"
+                        Width = "250px"
                     }
                 },
                 Url = "url",
@@ -304,7 +304,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     {
                         Height = "600px",
                         ImageName = "DropboxLogo",
-                        Widht = "250px"
+                        Width = "250px"
                     }
                 },
                 Url = "url",

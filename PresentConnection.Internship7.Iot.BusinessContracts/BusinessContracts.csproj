@@ -80,6 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IClientRecipeService.cs" />
+    <Compile Include="IDashboardService.cs" />
     <Compile Include="IClientService.cs" />
     <Compile Include="IClientConnectionService.cs" />
     <Compile Include="IComponentService.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="IDeviceService.cs" />
     <Compile Include="ILookupService.cs" />
     <Compile Include="IManufacturerService.cs" />
+    <Compile Include="ISettingsService.cs" />
     <Compile Include="IRunningDeviceSimulationsService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
