@@ -10,7 +10,7 @@ namespace PresentConnection.Internship7.Iot.Domain
     [CollectionName("Components")]
     public class Component : EntityBase
     {
-        public int DeletedCount;
+     
 
         public Component()
         {
