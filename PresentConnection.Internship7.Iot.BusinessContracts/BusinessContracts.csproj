@@ -90,6 +90,7 @@
     <Compile Include="IDeviceService.cs" />
     <Compile Include="ILookupService.cs" />
     <Compile Include="IManufacturerService.cs" />
+    <Compile Include="IRecipeService.cs" />
     <Compile Include="ISettingsService.cs" />
     <Compile Include="IRunningDeviceSimulationsService.cs" />
     <Compile Include="IUserDeviceService.cs" />
