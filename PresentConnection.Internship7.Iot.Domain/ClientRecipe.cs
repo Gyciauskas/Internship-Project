@@ -9,10 +9,10 @@ namespace PresentConnection.Internship7.Iot.Domain
     {
         public string RecipeId { get; set; }
         public string ClientId { get; set; }
-        public Dictionary<string, object> configuration { get; set; }
+        public Dictionary<string, object> Configuration { get; set; }
         public ClientRecipe()
         {
-            configuration = new Dictionary<string, object>();
+            Configuration = new Dictionary<string, object>();
         }
     }
 }

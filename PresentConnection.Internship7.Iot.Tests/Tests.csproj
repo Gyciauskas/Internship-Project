@@ -96,6 +96,7 @@
     <Compile Include="ClientRecipeTests.cs" />
     <Compile Include="ClientsTests.cs" />
     <Compile Include="ClientConnectionsTests.cs" />
+    <Compile Include="CollaboratorTests.cs" />
     <Compile Include="DashboardTests.cs" />
     <Compile Include="ComponentsTests.cs" />
     <Compile Include="ConnectionGroupsTests.cs" />

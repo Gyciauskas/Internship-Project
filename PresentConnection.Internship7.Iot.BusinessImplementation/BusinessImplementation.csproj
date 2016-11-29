@@ -83,6 +83,7 @@
     <Compile Include="ClientRecipeService.cs" />
     <Compile Include="ClientService.cs" />
     <Compile Include="ClientConnectionService.cs" />
+    <Compile Include="CollaboratorService.cs" />
     <Compile Include="DashboardService.cs" />
     <Compile Include="ComponentService.cs" />
     <Compile Include="ConectionService.cs" />
