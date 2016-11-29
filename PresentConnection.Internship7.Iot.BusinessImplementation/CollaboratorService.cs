@@ -53,7 +53,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             return deleteResult.DeletedCount == 1;
         }
 
-        public List<Collaborator> GetAllCollaborator(string name = "")
+        public List<Collaborator> GetAllCollaborators(string name = "")
         {
             var filterBuilder = Builders<Collaborator>.Filter;
             var filter = filterBuilder.Empty;

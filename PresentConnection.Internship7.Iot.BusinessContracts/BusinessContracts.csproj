@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDashboardService.cs" />
     <Compile Include="IClientService.cs" />
     <Compile Include="IClientConnectionService.cs" />
     <Compile Include="ICollaboratorService.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="IDeviceService.cs" />
     <Compile Include="ILookupService.cs" />
     <Compile Include="IManufacturerService.cs" />
+    <Compile Include="ISettingsService.cs" />
     <Compile Include="IRunningDeviceSimulationsService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

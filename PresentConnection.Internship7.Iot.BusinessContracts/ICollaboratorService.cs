@@ -8,7 +8,7 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
         string CreateCollaborator(Collaborator collaborator);
         void UpdateCollaborator(Collaborator collaborator);
         bool DeleteCollaborator(string id);
-        List<Collaborator> GetAllCollaborator(string name = "");
+        List<Collaborator> GetAllCollaborators(string name = "");
         Collaborator GetCollaborator(string id);
     }
 }

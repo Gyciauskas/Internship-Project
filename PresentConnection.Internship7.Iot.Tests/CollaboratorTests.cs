@@ -12,11 +12,21 @@ namespace PresentConnection.Internship7.Iot.Tests
     public class CollaboratorTests
     {
         private ICollaboratorService collaboratorService;
+        private Collaborator collaborator;
 
         [SetUp]
         public void SetUp()
         {
             collaboratorService = new CollaboratorService();
+            collaborator = new Collaborator
+            {
+                UserId = "125",
+                Email = "TestName125@testemail.com",
+                Name = "TestName125",
+                Phone = "860000125",
+                PermissionsSet = new List<string> { "Write", "Read", "Change" }
+            };
+
         }
 
         [Test]
@@ -24,18 +34,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Collaborator")]
         public void Can_insert_collaborator_to_database()
         {
-            List<string> PermSet = new List<string>();
-            PermSet.Add("Write");
-            PermSet.Add("Read");
-            PermSet.Add("Change");
-            var collaborator = new Collaborator()
-            {
-                UserId = "125",
-                Email = "TestName125@testemail.com",
-                Name = "TestName125",
-                Phone = "860000125",
-                PermissionsSet = PermSet,
-            };
             collaboratorService.CreateCollaborator(collaborator);
 
             collaborator.ShouldNotBeNull();
@@ -48,18 +46,20 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Collaborator")]
         public void Cannot_insert_collaborator_to_database_when_userid_is_not_provided()
         {
-            List<string> PermSet = new List<string>();
-            PermSet.Add("Write");
-            PermSet.Add("Read");
-            PermSet.Add("Change");
+            /*List<string> permSet = new List<string>();
+            permSet.Add("Write");
+            permSet.Add("Read");
+            permSet.Add("Change");
             var collaborator = new Collaborator()
             {
                 UserId = "",
                 Email = "TestName125@testemail.com",
                 Name = "TestName125",
                 Phone = "860000125",
-                PermissionsSet = PermSet,
-            };
+                PermissionsSet = permSet,
+            };*/
+
+            collaborator.UserId = string.Empty;
 
             typeof(BusinessException).ShouldBeThrownBy(() => collaboratorService.CreateCollaborator(collaborator));
         }
@@ -69,17 +69,17 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Collaborator")]
         public void Cannot_insert_collaborator_to_database_when_email_is_not_provided()
         {
-            List<string> PermSet = new List<string>();
-            PermSet.Add("Write");
-            PermSet.Add("Read");
-            PermSet.Add("Change");
+            List<string> permSet = new List<string>();
+            permSet.Add("Write");
+            permSet.Add("Read");
+            permSet.Add("Change");
             var collaborator = new Collaborator()
             {
                 UserId = "125",
                 Email = "",
                 Name = "TestName125",
                 Phone = "860000125",
-                PermissionsSet = PermSet,
+                PermissionsSet = permSet,
             };
 
             typeof(BusinessException).ShouldBeThrownBy(() => collaboratorService.CreateCollaborator(collaborator));
@@ -91,17 +91,17 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Collaborator")]
         public void Can_get_collaborator_by_id()
         {
-            List<string> PermSet = new List<string>();
-            PermSet.Add("Write");
-            PermSet.Add("Read");
-            PermSet.Add("Change");
+            List<string> permSet = new List<string>();
+            permSet.Add("Write");
+            permSet.Add("Read");
+            permSet.Add("Change");
             var collaborator = new Collaborator()
             {
                 UserId = "125",
                 Email = "TestName125@testemail.com",
                 Name = "TestName125",
                 Phone = "860000125",
-                PermissionsSet = PermSet,
+                PermissionsSet = permSet,
             };
             collaboratorService.CreateCollaborator(collaborator);
 
@@ -111,7 +111,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             var collaboratorFromDb = collaboratorService.GetCollaborator(collaborator.Id.ToString());
             collaboratorFromDb.ShouldNotBeNull();
             collaboratorFromDb.Id.ShouldNotBeNull();
-            collaboratorFromDb.Name.ShouldEqual("Raspberry PI");
+            collaboratorFromDb.Name.ShouldEqual("TestName125");
 
         }
 
@@ -121,30 +121,30 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Collaborator")]
         public void Can_get_all_collaborators()
         {
-            List<string> PermSet = new List<string>();
-            PermSet.Add("Write");
-            PermSet.Add("Read");
-            PermSet.Add("Change");
+            List<string> permSet = new List<string>();
+            permSet.Add("Write");
+            permSet.Add("Read");
+            permSet.Add("Change");
             var collaborator1 = new Collaborator()
             {
                 UserId = "125",
                 Email = "TestName125@testemail.com",
                 Name = "TestName125",
                 Phone = "860000125",
-                PermissionsSet = PermSet,
+                PermissionsSet = permSet,
             };
 
-            List<string> PermSet2 = new List<string>();
-            PermSet.Add("Write");
-            PermSet.Add("Read");
-            PermSet.Add("Change");
+            List<string> permSet2 = new List<string>();
+            permSet.Add("Write");
+            permSet.Add("Read");
+            permSet.Add("Change");
             var collaborator2 = new Collaborator()
             {
                 UserId = "124",
                 Email = "TestName124@testemail.com",
                 Name = "TestName124",
                 Phone = "860000124",
-                PermissionsSet = PermSet2,
+                PermissionsSet = permSet2,
             };
 
             collaboratorService.CreateCollaborator(collaborator1);
@@ -158,7 +158,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
 
-            var collaborators = collaboratorService.GetAllCollaborator();
+            var collaborators = collaboratorService.GetAllCollaborators();
 
             collaborators.ShouldBe<List<Collaborator>>();
             (collaborators.Count > 0).ShouldBeTrue();
@@ -170,43 +170,43 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Collaborator")]
         public void Can_get_all_collaborators_by_name()
         {
-            List<string> PermSet = new List<string>();
-            PermSet.Add("Write");
-            PermSet.Add("Read");
-            PermSet.Add("Change");
+            List<string> permSet = new List<string>();
+            permSet.Add("Write");
+            permSet.Add("Read");
+            permSet.Add("Change");
             var collaborator1 = new Collaborator()
             {
                 UserId = "125",
                 Email = "TestName125@testemail.com",
-                Name = "TestName125",
+                Name = "TestName1258888",
                 Phone = "860000125",
-                PermissionsSet = PermSet,
+                PermissionsSet = permSet,
             };
 
-            List<string> PermSet2 = new List<string>();
-            PermSet.Add("Write");
-            PermSet.Add("Read");
-            PermSet.Add("Change");
+            List<string> permSet2 = new List<string>();
+            permSet.Add("Write");
+            permSet.Add("Read");
+            permSet.Add("Change");
             var collaborator2 = new Collaborator()
             {
                 UserId = "124",
                 Email = "TestName124@testemail.com",
-                Name = "TestName124",
+                Name = "TestName12488888",
                 Phone = "860000124",
-                PermissionsSet = PermSet2,
+                PermissionsSet = permSet2,
             };
 
-            List<string> PermSet3 = new List<string>();
-            PermSet.Add("Write");
-            PermSet.Add("Read");
-            PermSet.Add("Change");
+            List<string> permSet3 = new List<string>();
+            permSet.Add("Write");
+            permSet.Add("Read");
+            permSet.Add("Change");
             var collaborator3 = new Collaborator()
             {
                 UserId = "123",
                 Email = "TestName123@testemail.com",
-                Name = "TestName123",
+                Name = "TestName12388888",
                 Phone = "860000123",
-                PermissionsSet = PermSet,
+                PermissionsSet = permSet3,
             };
 
             collaboratorService.CreateCollaborator(collaborator1);
@@ -222,7 +222,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             collaborator3.ShouldNotBeNull();
             collaborator3.Id.ShouldNotBeNull();
             
-            var collaborators = collaboratorService.GetAllCollaborator("My Collaborator");
+            var collaborators = collaboratorService.GetAllCollaborators("TestName12388888");
 
             collaborators.ShouldBe<List<Collaborator>>();
             collaborators.Count.ShouldEqual(1);
@@ -234,17 +234,17 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Collaborator")]
         public void Can_update_collaborator_to_database()
         {
-            List<string> PermSet = new List<string>();
-            PermSet.Add("Write");
-            PermSet.Add("Read");
-            PermSet.Add("Change");
+            List<string> permSet = new List<string>();
+            permSet.Add("Write");
+            permSet.Add("Read");
+            permSet.Add("Change");
             var collaborator = new Collaborator()
             {
                 UserId = "125",
                 Email = "TestName125@testemail.com",
                 Name = "TestName125",
                 Phone = "860000125",
-                PermissionsSet = PermSet,
+                PermissionsSet = permSet,
             };
 
             collaboratorService.CreateCollaborator(collaborator);
@@ -269,17 +269,17 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Collaborator")]
         public void Can_delete_collaborator_from_database()
         {
-            List<string> PermSet = new List<string>();
-            PermSet.Add("Write");
-            PermSet.Add("Read");
-            PermSet.Add("Change");
+            List<string> permSet = new List<string>();
+            permSet.Add("Write");
+            permSet.Add("Read");
+            permSet.Add("Change");
             var collaborator = new Collaborator()
             {
                 UserId = "125",
                 Email = "TestName125@testemail.com",
                 Name = "TestName125",
                 Phone = "860000125",
-                PermissionsSet = PermSet,
+                PermissionsSet = permSet,
             };
 
             collaboratorService.CreateCollaborator(collaborator);
@@ -303,7 +303,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [TearDown]
         public void Dispose()
         {
-            var collaborators = collaboratorService.GetAllCollaborator();
+            var collaborators = collaboratorService.GetAllCollaborators();
             foreach (var collaborator in collaborators)
             {
                 collaboratorService.DeleteCollaborator(collaborator.Id.ToString());
