@@ -92,6 +92,7 @@
     <Compile Include="IManufacturerService.cs" />
     <Compile Include="ISettingsService.cs" />
     <Compile Include="IRunningDeviceSimulationsService.cs" />
+    <Compile Include="IUserDeviceService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

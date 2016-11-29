@@ -108,6 +108,7 @@
     <Compile Include="SettingsTests.cs" />
     <Compile Include="RunningDeviceSimulationsTests.cs" />
     <Compile Include="TestExtensions.cs" />
+    <Compile Include="UserDevicesTests.cs" />
     <Compile Include="UsersTests.cs" />
   </ItemGroup>
   <ItemGroup>
