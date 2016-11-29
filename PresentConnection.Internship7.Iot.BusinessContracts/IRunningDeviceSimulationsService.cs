@@ -9,10 +9,10 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
 {
     public interface IRunningDeviceSimulationsService
     {
-        string CreateRunningDeviceSimulations(RunningDeviceSimulations runningDeviceSimulations);
-        void UdpdateRunningDeviceSimulations(RunningDeviceSimulations runningDeviceSimulations);
+        string CreateRunningDeviceSimulations(RunningDeviceSimulation runningDeviceSimulation);
+        void UdpdateRunningDeviceSimulations(RunningDeviceSimulation runningDeviceSimulation);
         bool DeleteRunningDeviceSimulations(string id);
-        List<RunningDeviceSimulations> GetAllRunningDeviceSimulations(string name = "");
-        RunningDeviceSimulations GetRunningDeviceSimulations(string id);
+        List<RunningDeviceSimulation> GetAllRunningDeviceSimulations(string name = "");
+        RunningDeviceSimulation GetRunningDeviceSimulations(string id);
     }
 }

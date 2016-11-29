@@ -1,11 +1,10 @@
 ﻿using CodeMash.Net;
-using System;
 using System.Collections.Generic;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    [CollectionName("Recipes")]
-    public class Recipe : EntityBase
+    [CollectionName(Statics.Collections.Recipes)]
+    public class Recipe : EntityBase, IEntityWithUniqueName
     {
         public Recipe()
         {

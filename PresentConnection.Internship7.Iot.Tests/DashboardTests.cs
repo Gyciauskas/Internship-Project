@@ -30,7 +30,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             Widget widget = new Widget();
             
             widget.Query = "test";
-            widget.Type = Type.BatChart;
+            widget.WidgetType = WidgetType.BatChart;
 
 
             widget.Configuration = new Dictionary<string, object>();
@@ -67,7 +67,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             
             
             widget.Query = "test";
-            widget.Type = Type.NotSet;
+            widget.WidgetType = WidgetType.NotSet;
 
 
             widget.Configuration = new Dictionary<string, object>();
@@ -96,7 +96,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             Widget widget = new Widget();
 
             widget.Query = "test2";
-            widget.Type = Type.BatChart;
+            widget.WidgetType = WidgetType.BatChart;
 
 
             widget.Configuration = new Dictionary<string, object>();
@@ -132,7 +132,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
             Widget widget = new Widget();
             widget.Query = "test";
-            widget.Type = Type.BatChart;
+            widget.WidgetType = WidgetType.BatChart;
 
             List<Widget> widgets = new List<Widget>();
             widgets.Add(widget);
@@ -168,7 +168,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             Widget widget = new Widget();
 
             widget.Query = "test";
-            widget.Type = Type.BatChart;
+            widget.WidgetType = WidgetType.BatChart;
 
 
             widget.Configuration = new Dictionary<string, object>();

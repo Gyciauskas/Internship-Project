@@ -1,23 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CodeMash.Net;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    public enum SimulationType
+    [CollectionName(Statics.Collections.RunningDeviceSimulations)]
+    public class RunningDeviceSimulation : EntityBase
     {
-        NotSet,
-        Telemetry,
-        GPS,
-        ManufacturyMashine
-    }
+        public RunningDeviceSimulation()
+        {
+            SimulationType = SimulationType.NotSet;
+            Configuration = new Dictionary<string, object>();
+        }
 
-    [CollectionName("RunningDeviceSimulations")]
-    public class RunningDeviceSimulations : EntityBase
-    {
         public string DeviceId { get; set; }
         public SimulationType SimulationType { get; set; }
         public Dictionary<string, object> Configuration { get; set; }

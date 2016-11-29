@@ -7,7 +7,7 @@ using FluentValidation;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    public class RunningDeviceSimulationsValidator : AbstractValidator<RunningDeviceSimulations>
+    public class RunningDeviceSimulationsValidator : AbstractValidator<RunningDeviceSimulation>
     {
         public RunningDeviceSimulationsValidator()
         {

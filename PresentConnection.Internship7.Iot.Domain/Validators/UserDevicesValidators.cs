@@ -3,7 +3,7 @@ using CodeMash.Net;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    public class UserDeviceValidators : AbstractValidator<UserDevices>
+    public class UserDeviceValidators : AbstractValidator<UserDevice>
     {
         public UserDeviceValidators()
         {
@@ -17,16 +17,16 @@ namespace PresentConnection.Internship7.Iot.Domain
             // is unique  RuleFor(r => r.DeviceDisplayId). 
             RuleFor(x => x).Must(ValidDeviceDisplayId).WithMessage("Name is not unique");
         }
-        private bool ValidDeviceDisplayId(UserDevices userDevice)
+        private bool ValidDeviceDisplayId(UserDevice userDevice)
         {
-            var UserDevicesFromDb = Db.FindOne<UserDevices>(x => x.DeviceDisplayId == userDevice.DeviceDisplayId);
+            var UserDevicesFromDb = Db.FindOne<UserDevice>(x => x.DeviceDisplayId == userDevice.DeviceDisplayId);
             if ((UserDevicesFromDb.DeviceDisplayId == userDevice.DeviceDisplayId) && (UserDevicesFromDb.Id != userDevice.Id))
             {
                 return false;
             }
             else
             {
-                if (Db.Count<UserDevices>(x => x.DeviceDisplayId == userDevice.DeviceDisplayId) >= 2)
+                if (Db.Count<UserDevice>(x => x.DeviceDisplayId == userDevice.DeviceDisplayId) >= 2)
                 {
                     return false;
                 }
