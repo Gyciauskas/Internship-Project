@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="ClientConnection.cs" />
+    <Compile Include="ClientRecipe.cs" />
     <Compile Include="Validators\DashboardValidator.cs" />
     <Compile Include="TypeEnums.cs" />
     <Compile Include="Widget.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="RunningDeviceSimulations.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Subscription.cs" />
+    <Compile Include="Validators\ClientRecipeValidator.cs" />
     <Compile Include="Validators\ClientValidator.cs" />
     <Compile Include="Validators\ClientConnectionValidator.cs" />
     <Compile Include="Validators\ComponentValidator.cs" />

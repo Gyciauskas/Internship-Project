@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IClientRecipeService.cs" />
     <Compile Include="IDashboardService.cs" />
     <Compile Include="IClientService.cs" />
     <Compile Include="IClientConnectionService.cs" />
