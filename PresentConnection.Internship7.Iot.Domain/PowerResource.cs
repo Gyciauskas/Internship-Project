@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    public class Class1
+    public class PowerResource
     {
+        public enum PowerResourceType { Battery, Voltage }
+        public int PercentageValue { get; set; }
     }
 }

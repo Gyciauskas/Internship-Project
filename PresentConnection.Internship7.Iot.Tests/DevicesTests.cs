@@ -37,7 +37,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     new DisplayImage()
                     {
                        ImageName = "RaspberryLogo",
-                       Widht = "600px",
+                       Width = "600px",
                        Height = "250px"
                     }
                 }
@@ -62,7 +62,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     new DisplayImage()
                     {
                        ImageName = "RaspberryLogo",
-                       Widht = "600px",
+                       Width = "600px",
                        Height = "250px"
                     }
                 }
@@ -85,7 +85,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     new DisplayImage()
                     {
                        ImageName = "RaspberryLogo",
-                       Widht = "600px",
+                       Width = "600px",
                        Height = "250px"
                     }
                 }
@@ -123,7 +123,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     new DisplayImage()
                     {
                        ImageName = "RaspberryLogo",
-                       Widht = "600px",
+                       Width = "600px",
                        Height = "250px"
                     }
                 }
@@ -138,7 +138,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     new DisplayImage()
                     {
                        ImageName = "DeviceLogo",
-                       Widht = "600px",
+                       Width = "600px",
                        Height = "250px"
                     }
                 }
@@ -166,7 +166,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     new DisplayImage()
                     {
                        ImageName = "RaspberryLogo",
-                       Widht = "600px",
+                       Width = "600px",
                        Height = "250px"
                     }
                 }
@@ -196,7 +196,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     new DisplayImage()
                     {
                        ImageName = "RaspberryLogo",
-                       Widht = "600px",
+                       Width = "600px",
                        Height = "250px"
                     }
                 }
@@ -211,7 +211,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     new DisplayImage()
                     {
                        ImageName = "DeviceLogo",
-                       Widht = "600px",
+                       Width = "600px",
                        Height = "250px"
                     }
                 }
@@ -245,7 +245,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     new DisplayImage()
                     {
                        ImageName = "RaspberryLogo",
-                       Widht = "600px",
+                       Width = "600px",
                        Height = "250px"
                     }
                 }
@@ -260,7 +260,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     new DisplayImage()
                     {
                        ImageName = "Device2Logo",
-                       Widht = "600px",
+                       Width = "600px",
                        Height = "250px"
                     }
                 }
@@ -275,7 +275,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     new DisplayImage()
                     {
                        ImageName = "Device3Logo",
-                       Widht = "600px",
+                       Width = "600px",
                        Height = "250px"
                     }
                 }
@@ -313,7 +313,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     new DisplayImage()
                     {
                        ImageName = "RaspberryLogo",
-                       Widht = "600px",
+                       Width = "600px",
                        Height = "250px"
                     }
                 }
@@ -345,7 +345,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                     new DisplayImage()
                     {
                        ImageName = "RaspberryLogo",
-                       Widht = "600px",
+                       Width = "600px",
                        Height = "250px"
                     }
                 }
