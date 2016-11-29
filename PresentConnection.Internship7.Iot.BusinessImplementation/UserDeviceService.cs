@@ -12,7 +12,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class UserDeviceService : IUserDeviceService
     {
-        public string CreateUserDevice(UserDevices userDevice)
+        public string CreateUserDevice(UserDevice userDevice)
         {
             UserDeviceValidators validator = new UserDeviceValidators();
             ValidationResult results = validator.Validate(userDevice);
@@ -30,7 +30,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             }
         }
 
-        public void UpdateUserDevice(UserDevices userDevice)
+        public void UpdateUserDevice(UserDevice userDevice)
         {
             UserDeviceValidators validator = new UserDeviceValidators();
             ValidationResult results = validator.Validate(userDevice);
@@ -48,18 +48,18 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
         public bool DeleteUserDevice(string id)
         {
-            var deleteResult = Db.DeleteOne<UserDevices>(x => x.Id == ObjectId.Parse(id));
+            var deleteResult = Db.DeleteOne<UserDevice>(x => x.Id == ObjectId.Parse(id));
             return deleteResult.DeletedCount == 1;
         }
 
-        public List<UserDevices> GetAllUserDevices(string userId = "")
+        public List<UserDevice> GetAllUserDevices(string userId = "")
         {
-            var filterBuilder = Builders<UserDevices>.Filter;
+            var filterBuilder = Builders<UserDevice>.Filter;
             var filter = filterBuilder.Empty;
 
             if (!string.IsNullOrEmpty(userId))
             {
-                var findByNameFilter = Builders<UserDevices>.Filter.Eq(x => x.UserId, userId);
+                var findByNameFilter = Builders<UserDevice>.Filter.Eq(x => x.UserId, userId);
                 filter = filter & findByNameFilter;
             }
 
@@ -67,9 +67,9 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             return userDevices;
         }
 
-        public UserDevices GetUserDevice(string id)
+        public UserDevice GetUserDevice(string id)
         {
-            return Db.FindOneById<UserDevices>(id);
+            return Db.FindOneById<UserDevice>(id);
         }
     }
 }

@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CodeMash.Net;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    public enum PowerResourceType { Battery, Voltage }
-    [CollectionName("Devices")]
-    public class Device : EntityBase
+    [CollectionName(Statics.Collections.Devices)]
+    public class Device : EntityBase, IEntityWithUniqueName
     {
         public Device()
         {
@@ -23,20 +19,52 @@ namespace PresentConnection.Internship7.Iot.Domain
         }
 
         public string ManufacturerId { get; set; }
-        public string ModelName { get; set; } // e.g. Raspberry PI 3
-        public string UniqueName { get; set; } // e.g. raspberry-pi-3
+        /// <summary>
+        /// e.g. Raspberry PI 3
+        /// </summary>
+        public string ModelName { get; set; }
+
+        /// <summary>
+        /// e.g. raspberry-pi-3
+        /// </summary>
+        public string UniqueName { get; set; } 
+
+        [BsonIgnore]
         public List<DisplayImage> Images { get; set; }
         public string DefaultFirmwareVersion { get; set; }
         public List<PowerResourceType> AvailablePowerResources { get; set; }
-        public int InstalledRAMInKB { get; set; } // in KB
+        /// <summary>
+        /// in KB
+        /// </summary>
+        public int InstalledRAMInKB { get; set; } 
         public string Processor { get; set; }
         public bool IsVisible { get; set; }
-        public List<string> DefaultRules { get; set; } // e.g. OnInitFailedSendNotificationToDashboard
-        public List<string> DefaultCommands { get; set; } // e.g. Ping, ChangeDeviceState
-        public List<string> AvailableComponents { get; set; } // e.g. component Ids.
-        public List<string> SimilarDevices { get; set; } // from other Vendors
-        public string HowToConnectDescription { get; set; } // for end-user
-        public string TechnicalInstructionsHowToConnect { get; set; } // for admin-developer
+        /// <summary>
+        /// e.g. OnInitFailedSendNotificationToDashboard
+        /// </summary>
+        public List<string> DefaultRules { get; set; }
+        /// <summary>
+        /// e.g. Ping, ChangeDeviceState
+        /// </summary>
+        public List<string> DefaultCommands { get; set; }
+
+        /// <summary>
+        /// e.g. component Ids.
+        /// </summary>
+        public List<string> AvailableComponents { get; set; }
+
+        /// <summary>
+        /// from other Vendors
+        /// </summary>
+        public List<string> SimilarDevices { get; set; }
+        /// <summary>
+        /// for end-user
+        /// </summary>
+        public string HowToConnectDescription { get; set; }
+        /// <summary>
+        /// for admin-developer
+        /// </summary>
+        public string TechnicalInstructionsHowToConnect { get; set; }  
         public string DownloadImagePath { get; set; }
         public List<DisplayUrl> ArticlesUrls { get; set; }
         public string BuyUrl { get; set; }

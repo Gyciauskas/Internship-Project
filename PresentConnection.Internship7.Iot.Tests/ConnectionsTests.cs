@@ -36,9 +36,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 {
                     new DisplayImage()
                     {
-                        Height = "600px",
-                        ImageName = "DropboxLogo",
-                        Width = "250px"
+                        SeoFileName = "DropboxLogo",
+                        Tag = "250px"
                     }
                 },
                 Url = "url",
@@ -64,9 +63,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 {
                     new DisplayImage()
                     {
-                        Height = "600px",
-                        ImageName = "DropboxLogo",
-                        Width = "250px"
+                        SeoFileName = "DropboxLogo",
+                        Tag = "250px"
                     }
                 },
                 Url = "url",
@@ -89,9 +87,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 {
                     new DisplayImage()
                     {
-                        Height = "600px",
-                        ImageName = "DropboxLogo",
-                        Width = "250px"
+                        SeoFileName = "DropboxLogo",
+                        Tag = "250px"
                     }
                 },
                 Url = "url",
@@ -131,9 +128,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 {
                     new DisplayImage()
                     {
-                        Height = "600px",
-                        ImageName = "DropboxLogo",
-                        Width = "250px"
+                        SeoFileName = "DropboxLogo",
+                        Tag = "250px"
                     }
                 },
                 Url = "",
@@ -156,9 +152,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 {
                     new DisplayImage()
                     {
-                        Height = "600px",
-                        ImageName = "DropboxLogo",
-                        Width = "250px"
+                        SeoFileName = "DropboxLogo",
+                        Tag = "250px"
                     }
                 },
                 Url = "url",
@@ -181,9 +176,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 {
                     new DisplayImage()
                     {
-                        Height = "600px",
-                        ImageName = "DropboxLogo",
-                        Width = "250px"
+                        SeoFileName = "DropboxLogo",
+                        Tag = "250px"
                     }
                 },
                 Url = "url",
@@ -214,9 +208,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 {
                     new DisplayImage()
                     {
-                        Height = "600px",
-                        ImageName = "DropboxLogo",
-                        Width = "250px"
+                        SeoFileName = "DropboxLogo",
+                        Tag = "250px"
                     }
                 },
                 Url = "url1",
@@ -231,9 +224,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 {
                     new DisplayImage()
                     {
-                        Height = "600px",
-                        ImageName = "SendGridLogo",
-                        Width = "250px"
+                        SeoFileName = "SendGridLogo",
+                        Tag = "250px"
                     }
                 },
                 Url = "url2",
@@ -267,9 +259,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 {
                     new DisplayImage()
                     {
-                        Height = "600px",
-                        ImageName = "DropboxLogo",
-                        Width = "250px"
+                        SeoFileName = "DropboxLogo",
+                        Tag = "250px"
                     }
                 },
                 Url = "url",
@@ -302,9 +293,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 {
                     new DisplayImage()
                     {
-                        Height = "600px",
-                        ImageName = "DropboxLogo",
-                        Width = "250px"
+                        SeoFileName = "DropboxLogo",
+                        Tag = "250px"
                     }
                 },
                 Url = "url",

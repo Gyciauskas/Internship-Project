@@ -25,7 +25,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevice")]
         public void Can_insert_userDevice_to_database()
         {
-            var userDevice = new UserDevices()
+            var userDevice = new UserDevice()
             {
                 //UserId, DeviceId, DeviceDisplayId, Latitude, Longitude, AuthKey1, AuthKey2 mandatory fields
                 UserId = "Lukas",
@@ -48,7 +48,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevice")]
         public void Cannot_insert_userDevice_to_database_when_UserId_is_not_provided()
         {
-            var userDevice = new UserDevices()
+            var userDevice = new UserDevice()
             {
                 UserId = "",
                 DeviceId = "11111",
@@ -67,7 +67,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevice")]
         public void Cannot_insert_userDevice_to_database_when_DeviceId_is_not_provided()
         {
-            var userDevice = new UserDevices()
+            var userDevice = new UserDevice()
             {
                 UserId = "Lukas",
                 DeviceId = "",
@@ -86,7 +86,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevice")]
         public void Cannot_insert_userDevice_to_database_when_DeviceDisplayId_is_not_provided()
         {
-            var userDevice = new UserDevices()
+            var userDevice = new UserDevice()
             {
                 UserId = "Lukas",
                 DeviceId = "11111",
@@ -105,7 +105,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Device")]
         public void Cannot_insert_device_to_database_when_uniquename_is_not_unique()
         {
-            var userDevice = new UserDevices()
+            var userDevice = new UserDevice()
             {
                 UserId = "Lukas",
                 DeviceId = "11111",
@@ -116,7 +116,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            var userDevice2 = new UserDevices()
+            var userDevice2 = new UserDevice()
             {
                 UserId = "Tadas",
                 DeviceId = "22222",
@@ -140,7 +140,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevice")]
         public void Cannot_insert_userDevice_to_database_when_Latitude_is_not_provided()
         {
-            var userDevice = new UserDevices()
+            var userDevice = new UserDevice()
             {
                 UserId = "Lukas",
                 DeviceId = "11111",
@@ -158,7 +158,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevice")]
         public void Cannot_insert_userDevice_to_database_when_Longtitude_is_not_provided()
         {
-            var userDevice = new UserDevices()
+            var userDevice = new UserDevice()
             {
                 UserId = "Lukas",
                 DeviceId = "11111",
@@ -176,7 +176,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevice")]
         public void Cannot_insert_userDevice_to_database_when_AuthKey1_is_not_provided()
         {
-            var userDevice = new UserDevices()
+            var userDevice = new UserDevice()
             {
                 UserId = "Lukas",
                 DeviceId = "11111",
@@ -194,7 +194,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevice")]
         public void Cannot_insert_userDevice_to_database_when_AuthKey2_is_not_provided()
         {
-            var userDevice = new UserDevices()
+            var userDevice = new UserDevice()
             {
                 UserId = "Lukas",
                 DeviceId = "11111",
@@ -213,7 +213,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevice")]
         public void Can_get_userDevice_by_id()
         {
-            var userDevice = new UserDevices()
+            var userDevice = new UserDevice()
             {
                 UserId = "Lukas",
                 DeviceId = "11111",
@@ -241,7 +241,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevice")]
         public void Can_get_all_userDevice()
         {
-            var userDevice1 = new UserDevices()
+            var userDevice1 = new UserDevice()
             {
                 UserId = "Lukas",
                 DeviceId = "11111",
@@ -252,7 +252,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            var userDevice2 = new UserDevices()
+            var userDevice2 = new UserDevice()
             {
                 UserId = "Tomas",
                 DeviceId = "22222",
@@ -276,7 +276,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var userDevices = userDeviceService.GetAllUserDevices();
 
-            userDevices.ShouldBe<List<UserDevices>>();
+            userDevices.ShouldBe<List<UserDevice>>();
             (userDevices.Count > 0).ShouldBeTrue();
         }
 
@@ -286,7 +286,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevice")]
         public void Can_get_all_userDevice_by_name()
         {
-            var userDevice1 = new UserDevices()
+            var userDevice1 = new UserDevice()
             {
                 UserId = "Lukas",
                 DeviceId = "11111",
@@ -297,7 +297,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            var userDevice2 = new UserDevices()
+            var userDevice2 = new UserDevice()
             {
                 UserId = "Tomas",
                 DeviceId = "22222",
@@ -308,7 +308,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            var userDevice3 = new UserDevices()
+            var userDevice3 = new UserDevice()
             {
                 UserId = "Tadas",
                 DeviceId = "33333",
@@ -334,7 +334,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             
             var userDevices = userDeviceService.GetAllUserDevices("Tadas");
 
-            userDevices.ShouldBe<List<UserDevices>>();
+            userDevices.ShouldBe<List<UserDevice>>();
             userDevices.Count.ShouldEqual(1);
         }
 
@@ -343,7 +343,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevices")]
         public void Can_update_userDevice_to_database()
         {
-            var userDevice = new  UserDevices()
+            var userDevice = new  UserDevice()
             {
                 UserId = "Matas",
                 DeviceId = "33333",
@@ -376,7 +376,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevices")]
         public void Can_delete_userDevice_from_database()
         {
-            var userDevice = new UserDevices()
+            var userDevice = new UserDevice()
             {
                 UserId = "Lukas",
                 DeviceId = "11111",

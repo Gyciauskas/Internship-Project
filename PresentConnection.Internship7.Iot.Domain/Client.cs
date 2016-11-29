@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CodeMash.Net;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    [CollectionName("Clients")]
+    [CollectionName(Statics.Collections.Clients)]
     public class Client : EntityBase
     {
         public Client()
         {
             Invoices = new List<Invoice>();
-            Subscriptions = new List<Subscription>();
+            Subscriptions = new List<Subscription> { new Subscription() };
         }
 
         public string UserId { get; set; }

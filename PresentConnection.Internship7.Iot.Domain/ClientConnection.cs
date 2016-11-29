@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    [CollectionName("ClientConnections")]
+    [CollectionName(Statics.Collections.ClientConnections)]
     public class ClientConnection : EntityBase
     {
         public ClientConnection()

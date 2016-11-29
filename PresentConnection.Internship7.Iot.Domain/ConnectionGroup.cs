@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CodeMash.Net;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    [CollectionName("ConnectionGroups")]
-    public class ConnectionGroup : EntityBase
+    [CollectionName(Statics.Collections.ConnectionGroups)]
+    public class ConnectionGroup : EntityBase, IEntityWithUniqueName
     {
         public ConnectionGroup()
         {

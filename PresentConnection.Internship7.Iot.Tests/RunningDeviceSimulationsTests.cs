@@ -28,7 +28,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.RunningDeviceSimulations")]
         public void Can_insert_runningDeviceSimulations_to_database()
         {
-            var runningDeviceSimulations = new RunningDeviceSimulations()
+            var runningDeviceSimulations = new RunningDeviceSimulation()
             {
                 DeviceId = "123",
                 SimulationType = SimulationType.GPS
@@ -45,7 +45,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.RunningDeviceSimulations")]
         public void Cannot_insert_runningDeviceSimulations_to_database_when_deviceid_is_not_provided()
         {
-            var runningDeviceSimulations = new RunningDeviceSimulations()
+            var runningDeviceSimulations = new RunningDeviceSimulation()
             {
                 DeviceId = "",
                 SimulationType = SimulationType.GPS
@@ -59,7 +59,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.RunningDeviceSimulations")]
         public void Cannot_insert_runningDeviceSimulations_to_database_when_simulationtype_is_not_provided()
         {
-            var runningDeviceSimulations = new RunningDeviceSimulations()
+            var runningDeviceSimulations = new RunningDeviceSimulation()
             {
                 DeviceId = "123"                
             };
@@ -73,7 +73,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.RunningDeviceSimulations")]
         public void Can_get_runningDeviceSimulations_by_id()
         {
-            var runningDeviceSimulations = new RunningDeviceSimulations()
+            var runningDeviceSimulations = new RunningDeviceSimulation()
             {
                 DeviceId = "123",
                 SimulationType = SimulationType.GPS
@@ -96,13 +96,13 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.RunningDeviceSimulations")]
         public void Can_get_all_runningDeviceSimulations()
         {
-            var runningDeviceSimulations1 = new RunningDeviceSimulations()
+            var runningDeviceSimulations1 = new RunningDeviceSimulation()
             {
                 DeviceId = "123",
                 SimulationType = SimulationType.GPS
             };
 
-            var runningDeviceSimulations2 = new RunningDeviceSimulations()
+            var runningDeviceSimulations2 = new RunningDeviceSimulation()
             {
                 DeviceId = "456",
                 SimulationType = SimulationType.ManufacturyMashine
@@ -121,7 +121,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var allRunningDeviceSimulations = runningDeviceSimulationsService.GetAllRunningDeviceSimulations();
 
-            allRunningDeviceSimulations.ShouldBe<List<RunningDeviceSimulations>>();
+            allRunningDeviceSimulations.ShouldBe<List<RunningDeviceSimulation>>();
             (allRunningDeviceSimulations.Count > 0).ShouldBeTrue();
         }
 
@@ -131,19 +131,19 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.RunningDeviceSimulations")]
         public void Can_get_all_runningDeviceSimulations_by_name()
         {
-            var runningDeviceSimulations1 = new RunningDeviceSimulations()
+            var runningDeviceSimulations1 = new RunningDeviceSimulation()
             {
                 DeviceId = "123",
                 SimulationType = SimulationType.GPS
             };
 
-            var runningDeviceSimulations2 = new RunningDeviceSimulations()
+            var runningDeviceSimulations2 = new RunningDeviceSimulation()
             {
                 DeviceId = "456",
                 SimulationType = SimulationType.ManufacturyMashine
             };
 
-            var runningDeviceSimulations3 = new RunningDeviceSimulations()
+            var runningDeviceSimulations3 = new RunningDeviceSimulation()
             {
                 DeviceId = "789",
                 SimulationType = SimulationType.Telemetry
@@ -164,7 +164,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var allRunningDeviceSimulations = runningDeviceSimulationsService.GetAllRunningDeviceSimulations("123");
 
-            allRunningDeviceSimulations.ShouldBe<List<RunningDeviceSimulations>>();
+            allRunningDeviceSimulations.ShouldBe<List<RunningDeviceSimulation>>();
             allRunningDeviceSimulations.Count.ShouldEqual(1);
         }
 
@@ -174,7 +174,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.RunningDeviceSimulations")]
         public void Can_update_runningDeviceSimulations_to_database()
         {
-            var runningDeviceSimulations = new RunningDeviceSimulations()
+            var runningDeviceSimulations = new RunningDeviceSimulation()
             {
                 DeviceId = "123",
                 SimulationType = SimulationType.GPS
@@ -199,7 +199,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.RunningDeviceSimulations")]
         public void Can_delete_runningDeviceSimulations_from_database()
         {
-            var runningDeviceSimulations = new RunningDeviceSimulations()
+            var runningDeviceSimulations = new RunningDeviceSimulation()
             {
                 DeviceId = "123",
                 SimulationType = SimulationType.GPS
