@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IClientRecipeService.cs" />
     <Compile Include="IDashboardService.cs" />
     <Compile Include="IClientService.cs" />
     <Compile Include="IClientConnectionService.cs" />
@@ -95,13 +96,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\PresentConnection.Internship7.Iot.Domain\Domain.csproj">
       <Project>{4cea827c-9f55-4a5d-9cfc-6da307ff132e}</Project>
       <Name>Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
