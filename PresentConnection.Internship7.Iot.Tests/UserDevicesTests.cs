@@ -338,39 +338,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             userDevices.Count.ShouldEqual(1);
         }
 
-        /*[Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Collaborator")]
-        public void Can_update_collaborator_to_database()
-        {
-            List<string> permSet = new List<string>();
-            permSet.Add("Write");
-            permSet.Add("Read");
-            permSet.Add("Change");
-            var collaborator = new Collaborator()
-            {
-                UserId = "125",
-                Email = "TestName125@testemail.com",
-                Name = "TestName125",
-                Phone = "860000125",
-                PermissionsSet = permSet,
-            };
-
-            collaboratorService.CreateCollaborator(collaborator);
-
-            // First insert collaborator to db
-            collaborator.ShouldNotBeNull();
-            collaborator.Id.ShouldNotBeNull();
-
-            // Update name and send update to db
-            collaborator.Name = "TestName126";
-            collaboratorService.UpdateCollaborator(collaborator);
-
-            // Get item from db and check if name was updated
-            var collaboratorFromDb = collaboratorService.GetCollaborator(collaborator.Id.ToString());
-            collaboratorFromDb.ShouldNotBeNull();
-            collaboratorFromDb.Name.ShouldEqual("TestName126");
-        }*/
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.UserDevices")]
