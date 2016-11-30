@@ -36,7 +36,7 @@
             public const string RunningDeviceSimulations = "RunningDeviceSimulations";
             public const string Settings = "Settings";
             public const string Users = "UserAuth";
-            public const string UserDevices = "UserDevices";
+            public const string ClientDevices = "ClientDevices";
             public const string Lookups = "Lookups";
 
         }

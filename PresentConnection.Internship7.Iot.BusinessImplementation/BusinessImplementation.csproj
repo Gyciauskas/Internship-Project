@@ -95,7 +95,7 @@
     <Compile Include="RecipeService.cs" />
     <Compile Include="RunningDeviceSimulationsService.cs" />
     <Compile Include="SettingsService.cs" />
-    <Compile Include="UserDeviceService.cs" />
+    <Compile Include="ClientDeviceService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>

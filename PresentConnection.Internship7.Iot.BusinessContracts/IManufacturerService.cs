@@ -5,7 +5,7 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
 {
     public interface IManufacturerService
     {
-        string CreateManufacturer(Manufacturer manufacturer);
+        void CreateManufacturer(Manufacturer manufacturer);
         void UdpdateManufacturer(Manufacturer manufacturer);
         bool DeleteManufacturer(string id);
         List<Manufacturer> GetAllManufacturers(string name = "");

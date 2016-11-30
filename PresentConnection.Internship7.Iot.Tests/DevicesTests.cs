@@ -36,9 +36,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Device")]
         public void Can_insert_device_to_database()
         {
-            
             deviceService.CreateDevice(goodDevice);
-
             goodDevice.ShouldNotBeNull();
             goodDevice.Id.ShouldNotBeNull();
         }

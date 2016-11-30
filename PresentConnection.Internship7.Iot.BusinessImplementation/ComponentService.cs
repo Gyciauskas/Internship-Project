@@ -1,29 +1,25 @@
 ﻿using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
 using CodeMash.Net;
-using FluentValidation.Results;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using PresentConnection.Internship7.Iot.Utils;
-
-
 
 namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class ComponentService : IComponentService
     {
 
-        public string CreateComponent(Component component)
+        public void CreateComponent(Component component)
         {
-            ComponentValidator validator = new ComponentValidator();
-            ValidationResult results = validator.Validate(component);
-            bool validationSucceeded = results.IsValid;
+            var validator = new ComponentValidator();
+            var results = validator.Validate(component);
+            var validationSucceeded = results.IsValid;
+
             if (validationSucceeded)
             {
                 Db.InsertOne(component);
-                return component.Id.ToString();
             }
             else
             {
@@ -34,9 +30,10 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
         public void UpdateComponent(Component component)
         {
-            ComponentValidator validator = new ComponentValidator();
-            ValidationResult results = validator.Validate(component);
-            bool validationSucceeded = results.IsValid;
+            var validator = new ComponentValidator();
+            var results = validator.Validate(component);
+            var validationSucceeded = results.IsValid;
+
             if (validationSucceeded)
             {
                 Db.FindOneAndReplace(x => x.Id == component.Id, component);
@@ -73,9 +70,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
         public Component GetComponent(string id)
         {
-
             return Db.FindOneById<Component>(id);
-
         }
 
     }

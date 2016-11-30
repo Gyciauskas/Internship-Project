@@ -7,7 +7,7 @@ namespace PresentConnection.Internship7.Iot.Domain
     {
         public DashboardValidator()
         {
-            RuleFor(r => r.UserId).NotEmpty();
+            RuleFor(r => r.ClientId).NotEmpty();
             RuleFor(r => r.Widgets).SetCollectionValidator(new WidgetValidator());
 
         }
@@ -20,10 +20,5 @@ namespace PresentConnection.Internship7.Iot.Domain
         {
             RuleFor(x => x.WidgetType).NotEqual(WidgetType.NotSet);
         }
-
-
     }
-
-
-
 }

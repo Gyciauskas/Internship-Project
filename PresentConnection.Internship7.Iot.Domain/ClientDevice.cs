@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    [CollectionName("UserDevices")]
-    public class UserDevice : EntityBase
+    [CollectionName(Statics.Collections.ClientDevices)]
+    public class ClientDevice : EntityBase
     {
-        public UserDevice()
+        public ClientDevice()
         {
             Rules = new Dictionary<string, object>();
             Commands = new Dictionary<string, object>();
@@ -15,7 +15,7 @@ namespace PresentConnection.Internship7.Iot.Domain
             SimulationType = SimulationType.NotSet;
         }
 
-        public string UserId { get; set; }
+        public string ClientId { get; set; }
         public string DeviceId { get; set; }
         public string DeviceDisplayId { get; set; }
         public bool IsEnabled { get; set; }// when user register device but don't do real action yet

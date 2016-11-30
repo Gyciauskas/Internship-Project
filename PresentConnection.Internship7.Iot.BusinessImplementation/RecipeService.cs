@@ -2,28 +2,24 @@
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
 using CodeMash.Net;
-using FluentValidation.Results;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using PresentConnection.Internship7.Iot.Utils;
 using PresentConnection.Internship7.Iot.Domain.Validators;
-using System;
 
 namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class RecipeService : IRecipeService
     {
-        public string CreateRecipe(Recipe recipe)
+        public void CreateRecipe(Recipe recipe)
         {
-            RecipeValidator validator = new RecipeValidator();
-            ValidationResult results = validator.Validate(recipe);
-
-            bool validationSucceeded = results.IsValid;
+            var validator = new RecipeValidator();
+            var results = validator.Validate(recipe);
+            var validationSucceeded = results.IsValid;
 
             if (validationSucceeded)
             {
                 Db.InsertOne(recipe);
-                return recipe.Id.ToString();
             }
             else
             {
@@ -33,10 +29,9 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
         public void UpdateRecipe(Recipe recipe)
         {
-            RecipeValidator validator = new RecipeValidator();
-            ValidationResult results = validator.Validate(recipe);
-
-            bool validationSucceeded = results.IsValid;
+            var validator = new RecipeValidator();
+            var results = validator.Validate(recipe);
+            var validationSucceeded = results.IsValid;
 
             if (validationSucceeded)
             {

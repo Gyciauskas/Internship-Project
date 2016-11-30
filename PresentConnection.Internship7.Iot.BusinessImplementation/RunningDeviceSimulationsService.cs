@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CodeMash.Net;
-using FluentValidation.Results;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using PresentConnection.Internship7.Iot.BusinessContracts;
@@ -15,17 +10,15 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class RunningDeviceSimulationsService : IRunningDeviceSimulationsService
     {
-        public string CreateRunningDeviceSimulations(RunningDeviceSimulation runningDeviceSimulation)
+        public void CreateRunningDeviceSimulations(RunningDeviceSimulation runningDeviceSimulation)
         {
-            RunningDeviceSimulationsValidator validator = new RunningDeviceSimulationsValidator();
-            ValidationResult results = validator.Validate(runningDeviceSimulation);
-
-            bool validationSucceeded = results.IsValid;
+            var validator = new RunningDeviceSimulationsValidator();
+            var results = validator.Validate(runningDeviceSimulation);
+            var validationSucceeded = results.IsValid;
 
             if (validationSucceeded)
             {
                 Db.InsertOne(runningDeviceSimulation);
-                return runningDeviceSimulation.Id.ToString();
             }
             else
             {
@@ -35,10 +28,9 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
         public void UdpdateRunningDeviceSimulations(RunningDeviceSimulation runningDeviceSimulation)
         {
-            RunningDeviceSimulationsValidator validator = new RunningDeviceSimulationsValidator();
-            ValidationResult results = validator.Validate(runningDeviceSimulation);
-
-            bool validationSucceeded = results.IsValid;
+            var validator = new RunningDeviceSimulationsValidator();
+            var results = validator.Validate(runningDeviceSimulation);
+            var validationSucceeded = results.IsValid;
 
             if (validationSucceeded)
             {
