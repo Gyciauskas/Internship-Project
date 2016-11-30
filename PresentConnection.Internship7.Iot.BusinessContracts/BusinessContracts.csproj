@@ -93,7 +93,7 @@
     <Compile Include="IRecipeService.cs" />
     <Compile Include="ISettingsService.cs" />
     <Compile Include="IRunningDeviceSimulationsService.cs" />
-    <Compile Include="IUserDeviceService.cs" />
+    <Compile Include="IClientDeviceService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

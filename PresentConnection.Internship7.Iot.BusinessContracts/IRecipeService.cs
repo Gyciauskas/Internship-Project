@@ -5,7 +5,7 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
 {
     public interface IRecipeService
     {
-        string CreateRecipe(Recipe recipe);
+        void CreateRecipe(Recipe recipe);
         void UpdateRecipe(Recipe recipe);
         bool DeleteRecipe(string id);
         List<Recipe> GetAllRecipes(string name = "");

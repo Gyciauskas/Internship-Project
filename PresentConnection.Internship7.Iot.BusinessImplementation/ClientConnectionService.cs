@@ -16,34 +16,41 @@ namespace BusinessImplementation
         ///     Insert document to mongodb database
         ///     return clientId as string
         /// </summary>
-        public string CreateClientConnection(ClientConnection clientconnection)
+        public void CreateClientConnection(ClientConnection clientconnection)
         {
-            ClientConnectionValidator validator = new ClientConnectionValidator();
-            ValidationResult results = validator.Validate(clientconnection);
-
-            bool validationSucceeded = results.IsValid;
+            var validator = new ClientConnectionValidator();
+            var results = validator.Validate(clientconnection);
+            var validationSucceeded = results.IsValid;
 
             if (validationSucceeded)
             {
                 Db.InsertOne(clientconnection);
-                return clientconnection.ClientId.ToString();
             }
             else
             {
-                throw new BusinessException("Cannot create clientconnection", results.Errors);
+                throw new BusinessException("Cannot create client connection", results.Errors);
             }
         }
 
         /// <summary>
-        ///    delete document by them Id
-        ///    check result, it should be equal to 1
-        ///    return result as bool
+        ///     Update existing document in db, before check validation
+        ///     if clientId or connectionId empty, throw exception
+        ///     otherwise, update in db
         /// </summary>
-        public bool DeleteClientConnection(string id)
+        public void UpdateClientConnection(ClientConnection clientconnection)
         {
-            var deleteResult = Db.DeleteOne<ClientConnection>(x => x.Id == ObjectId.Parse(id));
+            var validator = new ClientConnectionValidator();
+            var results = validator.Validate(clientconnection);
+            var validationSucceeded = results.IsValid;
 
-            return deleteResult.DeletedCount == 1;
+            if (validationSucceeded)
+            {
+                Db.FindOneAndReplace(x => x.Id == clientconnection.Id, clientconnection);
+            }
+            else
+            {
+                throw new BusinessException("Cannot update client connection", results.Errors);
+            }
         }
 
         /// <summary>
@@ -69,32 +76,23 @@ namespace BusinessImplementation
         /// <summary>
         ///     Find document by Id and result it back
         /// </summary>
-        public ClientConnection GetClientConnection(string Id)
+        public ClientConnection GetClientConnection(string id)
         {
-            return Db.FindOneById<ClientConnection>(Id);
+            return Db.FindOneById<ClientConnection>(id);
         }
 
         /// <summary>
-        ///     Update existing document in db, before check validation
-        ///     if clientId or connectionId empty, throw exception
-        ///     otherwise, update in db
+        ///    delete document by them Id
+        ///    check result, it should be equal to 1
+        ///    return result as bool
         /// </summary>
-        public void UpdateClientConnection(ClientConnection clientconnection)
+        public bool DeleteClientConnection(string id)
         {
-            ClientConnectionValidator validator = new ClientConnectionValidator();
-            ValidationResult results = validator.Validate(clientconnection);
-
-            bool validationSucceeded = results.IsValid;
-
-            if (validationSucceeded)
-            {
-                Db.FindOneAndReplace(x => x.Id == clientconnection.Id, clientconnection);
-            }
-            else
-            {
-                throw new BusinessException("Cannot update clientconnection", results.Errors);
-            }
+            var deleteResult = Db.DeleteOne<ClientConnection>(x => x.Id == ObjectId.Parse(id));
+            return deleteResult.DeletedCount == 1;
         }
+
+
     }
 }
 

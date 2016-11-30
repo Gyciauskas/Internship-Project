@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
 using CodeMash.Net;
@@ -11,10 +10,10 @@ using PresentConnection.Internship7.Iot.Domain.Validators;
 
 namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
-    public class UserService:IUserService
+    public class UserService : IUserService
     {
 
-        public string CreateUser(User user)
+        public void CreateUser(User user)
         {
             UserValidator validator = new UserValidator();
             ValidationResult results = validator.Validate(user);
@@ -23,7 +22,6 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             if (validationSucceeded)
             {
                 Db.InsertOne(user);
-                return user.Id.ToString();
             }
             else
             {

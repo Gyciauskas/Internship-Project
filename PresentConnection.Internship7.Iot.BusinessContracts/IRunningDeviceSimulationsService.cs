@@ -9,7 +9,7 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
 {
     public interface IRunningDeviceSimulationsService
     {
-        string CreateRunningDeviceSimulations(RunningDeviceSimulation runningDeviceSimulation);
+        void CreateRunningDeviceSimulations(RunningDeviceSimulation runningDeviceSimulation);
         void UdpdateRunningDeviceSimulations(RunningDeviceSimulation runningDeviceSimulation);
         bool DeleteRunningDeviceSimulations(string id);
         List<RunningDeviceSimulation> GetAllRunningDeviceSimulations(string name = "");

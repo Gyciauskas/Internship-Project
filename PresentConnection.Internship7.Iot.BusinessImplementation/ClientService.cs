@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CodeMash.Net;
 using FluentValidation.Results;
 using MongoDB.Bson;
@@ -15,16 +11,15 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class ClientService : IClientService
     {
-        public string CreateClient(Client client)
+        public void CreateClient(Client client)
         {
-            ClientValidator validator = new ClientValidator();
-            ValidationResult results = validator.Validate(client);
+            var validator = new ClientValidator();
+            var results = validator.Validate(client);
+            var validationSucceeded = results.IsValid;
 
-            bool validationSucceeded = results.IsValid;
             if (validationSucceeded)
             {
                 Db.InsertOne(client);
-                return client.Id.ToString();
             }
             else
             {
@@ -34,10 +29,10 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
         public void UpdateClient(Client client)
         {
-            ClientValidator validator = new ClientValidator();
-            ValidationResult results = validator.Validate(client);
+            var validator = new ClientValidator();
+            var results = validator.Validate(client);
+            var validationSucceeded = results.IsValid;
 
-            bool validationSucceeded = results.IsValid;
             if (validationSucceeded)
             {
                 Db.FindOneAndReplace(x => x.Id == client.Id, client);

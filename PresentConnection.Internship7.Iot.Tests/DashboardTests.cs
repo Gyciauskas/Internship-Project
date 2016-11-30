@@ -4,8 +4,10 @@ using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using PresentConnection.Internship7.Iot.Utils;
 using CodeMash.Net;
+using MongoDB.Driver;
 
 namespace PresentConnection.Internship7.Iot.Tests
 {
@@ -43,13 +45,13 @@ namespace PresentConnection.Internship7.Iot.Tests
          
             var dashboard = new Dashboard()
             {
-                UserId = "7",
+                ClientId = "7",
                 Widgets = widgets
 
             };
 
 
-            dashboardService.CreateDashboard(dashboard);
+            dashboardService.UpdateDashboard(dashboard);
             dashboard.ShouldNotBeNull();
             dashboard.Id.ShouldNotBeNull();
         }
@@ -80,18 +82,18 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var dashboard = new Dashboard()
             {
-                UserId = "8",
+                ClientId = "8",
                 Widgets = widgets
 
             };
 
-            typeof(BusinessException).ShouldBeThrownBy(() => dashboardService.CreateDashboard(dashboard));
+            typeof(BusinessException).ShouldBeThrownBy(() => dashboardService.UpdateDashboard(dashboard));
         }
 
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Dashboard")]
-        public void Can_get_dashboards_by_id()
+        public void Can_get_dashboard_by_client_id()
         {
             Widget widget = new Widget();
 
@@ -109,19 +111,19 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var dashboard = new Dashboard()
             {
-                UserId = "19",
+                ClientId = "19",
                 Widgets = widgets
 
             };
 
-            dashboardService.CreateDashboard(dashboard);
+            dashboardService.UpdateDashboard(dashboard);
 
             dashboard.ShouldNotBeNull();
             dashboard.Id.ShouldNotBeNull();
 
-            var dashboardFromDb = dashboardService.GetDashboard(dashboard.Id.ToString());
+            var dashboardFromDb = dashboardService.GetDashboard(dashboard.ClientId);
             dashboardFromDb.Id.ShouldNotBeNull();
-            dashboardFromDb.UserId.ShouldEqual("19");
+            dashboardFromDb.ClientId.ShouldEqual("19");
             dashboardFromDb.ShouldNotBeNull();
         }
 
@@ -139,69 +141,27 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var dashboard = new Dashboard()
             {
-                UserId = "88",
+                ClientId = "88",
                 Widgets = widgets
             };
 
-            dashboardService.CreateDashboard(dashboard);
+            dashboardService.UpdateDashboard(dashboard);
 
             // First insertdashboard to db
             dashboard.ShouldNotBeNull();
             dashboard.Id.ShouldNotBeNull();
 
             // Update name and send update to db
-            dashboard.UserId = "53";
-            dashboardService.UdpdateDashboard(dashboard);
+            dashboard.ClientId = "53";
+            dashboardService.UpdateDashboard(dashboard);
 
             // Get item from db and check if name was updated
-            var dashboardFromDb = dashboardService.GetDashboard(dashboard.Id.ToString());
+            var dashboardFromDb = dashboardService.GetDashboard(dashboard.ClientId);
             dashboardFromDb.ShouldNotBeNull();
-            dashboardFromDb.UserId.ShouldEqual("53");
+            dashboardFromDb.ClientId.ShouldEqual("53");
         }
 
 
-        [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Dashboard")]
-        public void Can_delete_dashboards_from_database()
-        {
-            Widget widget = new Widget();
-
-            widget.Query = "test";
-            widget.WidgetType = WidgetType.BatChart;
-
-
-            widget.Configuration = new Dictionary<string, object>();
-            widget.Configuration.Add("test", "test");
-
-
-            List<Widget> widgets = new List<Widget>();
-            widgets.Add(widget);
-
-
-            var dashboard = new Dashboard()
-            {
-                UserId = "88",
-                Widgets = widgets
-
-            };
-
-            dashboardService.CreateDashboard(dashboard);
-
-            // First insert dashboard to db
-            dashboard.ShouldNotBeNull();
-            dashboard.Id.ShouldNotBeNull();
-
-            // Delete dashboard from db
-            dashboardService.DeleteDashboard(dashboard.Id.ToString());
-
-            // Get item from db and check if name was updated
-            var dashboardFromDb = dashboardService.GetDashboard(dashboard.Id.ToString());
-
-            // issue with CodeMash library. Should return null when not found - not default object
-            dashboardFromDb.ShouldNotBeNull();
-            dashboardFromDb.Id.ShouldEqual(ObjectId.Empty);
-        }
 
         [TearDown]
         public void Dispose()
@@ -209,7 +169,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             var dashboards = Db.Find<Dashboard>(x => true);
             foreach (var dashboard in dashboards)
             {
-                dashboardService.DeleteDashboard(dashboard.Id.ToString());
+                Db.FindOneAndDelete(Builders<Dashboard>.Filter.Eq(x => x.Id, dashboard.Id));
             }
         }
     }
