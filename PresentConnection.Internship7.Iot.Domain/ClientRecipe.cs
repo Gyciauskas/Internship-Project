@@ -4,7 +4,7 @@ using CodeMash.Net;
 namespace PresentConnection.Internship7.Iot.Domain
 {
     [CollectionName(Statics.Collections.ClientRecipes)]
-    public class ClientRecipe : EntityBase
+    public class ClientRecipe : EntityBase, IEntityWithSensitiveData
     {
         public ClientRecipe()
         {

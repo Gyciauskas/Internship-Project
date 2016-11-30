@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using PresentConnection.Internship7.Iot.Utils;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using BusinessImplementation;
+using CodeMash.Net;
 
 namespace PresentConnection.Internship7.Iot.Tests
 {
@@ -162,7 +163,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             clientconnection2.Id.ShouldNotBeNull();
 
             // Get inserted documents
-            var clientconnections = clientconnservice.GetAllClientConnections();
+            var clientconnections = clientconnservice.GetClientConnections("1");
 
             clientconnections.ShouldBe<List<ClientConnection>>();
             (clientconnections.Count > 0).ShouldBeTrue();
@@ -222,7 +223,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             clientconnection3.Id.ShouldNotBeNull();
 
             // Get inserted documents and test 
-            var clientconnections = clientconnservice.GetAllClientConnections("1");
+            var clientconnections = clientconnservice.GetClientConnections("1");
 
             clientconnections.ShouldBe<List<ClientConnection>>();
             clientconnections.Count.ShouldEqual(1);
@@ -300,10 +301,11 @@ namespace PresentConnection.Internship7.Iot.Tests
         [TearDown]
         public void Dispose()
         {
-            var clientconnections = clientconnservice.GetAllClientConnections();
-            foreach (var clientconnection in clientconnections)
+            var clientConnections = Db.Find<ClientConnection>(_ => true);
+            
+            foreach (var clientConnection in clientConnections)
             {
-                clientconnservice.DeleteClientConnection(clientconnection.Id.ToString());
+                Db.DeleteOne<ClientConnection>(x => x.Id == clientConnection.Id);
             }
         }
     }

@@ -57,19 +57,15 @@ namespace BusinessImplementation
         ///     Get all documents in db or with same clientId
         ///     return list with documents
         /// </summary>
-        public List<ClientConnection> GetAllClientConnections(string clientId = "")
+        public List<ClientConnection> GetClientConnections(string clientId)
         {
-            var filterBuilder = Builders<ClientConnection>.Filter;
-            var filter = filterBuilder.Empty;
-
-            if (!string.IsNullOrEmpty(clientId))
+            if (string.IsNullOrEmpty(clientId))
             {
-                var findByclientIdFilter = Builders<ClientConnection>.Filter.Eq(x => x.ClientId, clientId);
-                filter = filter & findByclientIdFilter;
+                return new List<ClientConnection>();
             }
 
+            var filter = Builders<ClientConnection>.Filter.Eq(x => x.ClientId, clientId);
             var clientconnections = Db.Find(filter);
-
             return clientconnections;
         }
 
