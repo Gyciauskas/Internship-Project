@@ -188,6 +188,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             (devices.Count > 0).ShouldBeTrue();
         }
 
+
+
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Device")]
@@ -299,7 +301,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
                 .ShouldNotBeNull("Received different error message");
 
-            exception.Message.ShouldEqual("Cannot create device");
+            exception.Message.ShouldEqual("Cannot update device");
         }
 
         [Test]
