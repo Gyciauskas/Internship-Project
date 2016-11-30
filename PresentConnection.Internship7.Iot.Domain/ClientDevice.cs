@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace PresentConnection.Internship7.Iot.Domain
 {
     [CollectionName(Statics.Collections.ClientDevices)]
-    public class ClientDevice : EntityBase
+    public class ClientDevice : EntityBase, IEntityWithSensitiveData
     {
         public ClientDevice()
         {
