@@ -34,11 +34,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "Dropbox",
                 Images =
                 {
-                    new DisplayImage()
-                    {
-                        SeoFileName = "DropboxLogo",
-                        Tag = "250px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 },
                 Url = "url",
                 Description = "description"
@@ -61,11 +57,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "Dropbox",
                 Images =
                 {
-                    new DisplayImage()
-                    {
-                        SeoFileName = "DropboxLogo",
-                        Tag = "250px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 },
                 Url = "url",
                 Description = "description"
@@ -85,11 +77,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "",
                 Images =
                 {
-                    new DisplayImage()
-                    {
-                        SeoFileName = "DropboxLogo",
-                        Tag = "250px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 },
                 Url = "url",
                 Description = "description"
@@ -107,7 +95,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             {
                 UniqueName = "UNdropbox",
                 Name = "Dropbox",
-                Images = {},
+                Images = null,
                 Url = "url",
                 Description = "description"
             };
@@ -126,11 +114,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "Dropbox",
                 Images =
                 {
-                    new DisplayImage()
-                    {
-                        SeoFileName = "DropboxLogo",
-                        Tag = "250px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 },
                 Url = "",
                 Description = "description"
@@ -150,11 +134,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "Dropbox",
                 Images =
                 {
-                    new DisplayImage()
-                    {
-                        SeoFileName = "DropboxLogo",
-                        Tag = "250px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 },
                 Url = "url",
                 Description = ""
@@ -174,11 +154,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "Dropbox",
                 Images =
                 {
-                    new DisplayImage()
-                    {
-                        SeoFileName = "DropboxLogo",
-                        Tag = "250px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 },
                 Url = "url",
                 Description = "description"
@@ -206,11 +182,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "Dropbox",
                 Images =
                 {
-                    new DisplayImage()
-                    {
-                        SeoFileName = "DropboxLogo",
-                        Tag = "250px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 },
                 Url = "url1",
                 Description = "description1"
@@ -222,11 +194,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "SendGrid",
                 Images =
                 {
-                    new DisplayImage()
-                    {
-                        SeoFileName = "SendGridLogo",
-                        Tag = "250px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 },
                 Url = "url2",
                 Description = "description2"
@@ -257,11 +225,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "Dropbox",
                 Images =
                 {
-                    new DisplayImage()
-                    {
-                        SeoFileName = "DropboxLogo",
-                        Tag = "250px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 },
                 Url = "url",
                 Description = "description"
@@ -291,11 +255,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "Dropbox",
                 Images =
                 {
-                    new DisplayImage()
-                    {
-                        SeoFileName = "DropboxLogo",
-                        Tag = "250px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 },
                 Url = "url",
                 Description = "description"

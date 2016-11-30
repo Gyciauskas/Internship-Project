@@ -8,13 +8,13 @@ namespace PresentConnection.Internship7.Iot.Domain
     {
         public RecipeConnection()
         {
-            Images = new List<DisplayImage>();
+            Images = new List<string>();
         }
 
         public string UniqueName { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<DisplayImage> Images { get; set; } // see description for class DisplayImage
+        public List<string> Images { get; set; } // see description for class DisplayImage
         public string ConnectionId { get; set; }
         public string DeviceId { get; set; }
         public string ComponentId { get; set; }
