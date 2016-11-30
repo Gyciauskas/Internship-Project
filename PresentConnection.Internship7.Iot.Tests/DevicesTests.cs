@@ -36,9 +36,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Device")]
         public void Can_insert_device_to_database()
         {
-            
             deviceService.CreateDevice(goodDevice);
-
             goodDevice.ShouldNotBeNull();
             goodDevice.Id.ShouldNotBeNull();
         }
@@ -299,7 +297,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
                 .ShouldNotBeNull("Received different error message");
 
-            exception.Message.ShouldEqual("Cannot create device");
+            exception.Message.ShouldEqual("Cannot update device");
         }
 
         [Test]

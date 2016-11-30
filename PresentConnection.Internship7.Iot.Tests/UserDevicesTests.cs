@@ -12,23 +12,23 @@ namespace PresentConnection.Internship7.Iot.Tests
     [TestFixture]
     public class UserDevicesTests
     {
-        private IUserDeviceService userDeviceService;
+        private IClientDeviceService _clientDeviceService;
 
         [SetUp]
         public void SetUp()
         {
-            userDeviceService = new UserDeviceService();
+            _clientDeviceService = new ClientDeviceService();
         }
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.UserDevice")]
+        [Category("IntegrationTests.ClientDevice")]
         public void Can_insert_userDevice_to_database()
         {
-            var userDevice = new UserDevice()
+            var userDevice = new ClientDevice()
             {
                 //UserId, DeviceId, DeviceDisplayId, Latitude, Longitude, AuthKey1, AuthKey2 mandatory fields
-                UserId = "Lukas",
+                ClientId = "Lukas",
                 DeviceId = "11111",
                 DeviceDisplayId = "Lukas11111",
                 Latitude = "10",
@@ -36,7 +36,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey1 = Guid.NewGuid().ToString(),
                 AuthKey2 = Guid.NewGuid().ToString()
             };
-            userDeviceService.CreateUserDevice(userDevice);
+            _clientDeviceService.CreateClientDevice(userDevice);
 
             userDevice.ShouldNotBeNull();
             userDevice.Id.ShouldNotBeNull();
@@ -45,12 +45,12 @@ namespace PresentConnection.Internship7.Iot.Tests
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.UserDevice")]
+        [Category("IntegrationTests.ClientDevice")]
         public void Cannot_insert_userDevice_to_database_when_UserId_is_not_provided()
         {
-            var userDevice = new UserDevice()
+            var userDevice = new ClientDevice()
             {
-                UserId = "",
+                ClientId = "",
                 DeviceId = "11111",
                 DeviceDisplayId = "Lukas11111",
                 Latitude = "10",
@@ -59,17 +59,17 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            typeof(BusinessException).ShouldBeThrownBy(() => userDeviceService.CreateUserDevice(userDevice));
+            typeof(BusinessException).ShouldBeThrownBy(() => _clientDeviceService.CreateClientDevice(userDevice));
         }
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.UserDevice")]
+        [Category("IntegrationTests.ClientDevice")]
         public void Cannot_insert_userDevice_to_database_when_DeviceId_is_not_provided()
         {
-            var userDevice = new UserDevice()
+            var userDevice = new ClientDevice()
             {
-                UserId = "Lukas",
+                ClientId = "Lukas",
                 DeviceId = "",
                 DeviceDisplayId = "Lukas11111", // needs to be unique
                 Latitude = "10",
@@ -78,17 +78,17 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            typeof(BusinessException).ShouldBeThrownBy(() => userDeviceService.CreateUserDevice(userDevice));
+            typeof(BusinessException).ShouldBeThrownBy(() => _clientDeviceService.CreateClientDevice(userDevice));
         }
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.UserDevice")]
+        [Category("IntegrationTests.ClientDevice")]
         public void Cannot_insert_userDevice_to_database_when_DeviceDisplayId_is_not_provided()
         {
-            var userDevice = new UserDevice()
+            var userDevice = new ClientDevice()
             {
-                UserId = "Lukas",
+                ClientId = "Lukas",
                 DeviceId = "11111",
                 DeviceDisplayId = "", // needs to be unique
                 Latitude = "10",
@@ -97,7 +97,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            typeof(BusinessException).ShouldBeThrownBy(() => userDeviceService.CreateUserDevice(userDevice));
+            typeof(BusinessException).ShouldBeThrownBy(() => _clientDeviceService.CreateClientDevice(userDevice));
         }
 
         [Test]
@@ -105,9 +105,9 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Device")]
         public void Cannot_insert_device_to_database_when_uniquename_is_not_unique()
         {
-            var userDevice = new UserDevice()
+            var userDevice = new ClientDevice()
             {
-                UserId = "Lukas",
+                ClientId = "Lukas",
                 DeviceId = "11111",
                 DeviceDisplayId = "Lukas11111", // needs to be unique
                 Latitude = "10",
@@ -116,9 +116,9 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            var userDevice2 = new UserDevice()
+            var userDevice2 = new ClientDevice()
             {
-                UserId = "Tadas",
+                ClientId = "Tadas",
                 DeviceId = "22222",
                 DeviceDisplayId = "Lukas11111", // needs to be unique
                 Latitude = "5",
@@ -127,22 +127,22 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            userDeviceService.CreateUserDevice(userDevice);
+            _clientDeviceService.CreateClientDevice(userDevice);
 
             userDevice.ShouldNotBeNull();
             userDevice.Id.ShouldNotBeNull();
 
-            typeof(BusinessException).ShouldBeThrownBy(() => userDeviceService.CreateUserDevice(userDevice2));
+            typeof(BusinessException).ShouldBeThrownBy(() => _clientDeviceService.CreateClientDevice(userDevice2));
         }
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.UserDevice")]
+        [Category("IntegrationTests.ClientDevice")]
         public void Cannot_insert_userDevice_to_database_when_Latitude_is_not_provided()
         {
-            var userDevice = new UserDevice()
+            var userDevice = new ClientDevice()
             {
-                UserId = "Lukas",
+                ClientId = "Lukas",
                 DeviceId = "11111",
                 DeviceDisplayId = "Lukas11111", // needs to be unique
                 Latitude = "",
@@ -150,17 +150,17 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey1 = Guid.NewGuid().ToString(),
                 AuthKey2 = Guid.NewGuid().ToString()
             };
-            typeof(BusinessException).ShouldBeThrownBy(() => userDeviceService.CreateUserDevice(userDevice));
+            typeof(BusinessException).ShouldBeThrownBy(() => _clientDeviceService.CreateClientDevice(userDevice));
         }
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.UserDevice")]
+        [Category("IntegrationTests.ClientDevice")]
         public void Cannot_insert_userDevice_to_database_when_Longtitude_is_not_provided()
         {
-            var userDevice = new UserDevice()
+            var userDevice = new ClientDevice()
             {
-                UserId = "Lukas",
+                ClientId = "Lukas",
                 DeviceId = "11111",
                 DeviceDisplayId = "Lukas11111", // needs to be unique
                 Latitude = "10",
@@ -168,17 +168,17 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey1 = Guid.NewGuid().ToString(),
                 AuthKey2 = Guid.NewGuid().ToString()
             };
-            typeof(BusinessException).ShouldBeThrownBy(() => userDeviceService.CreateUserDevice(userDevice));
+            typeof(BusinessException).ShouldBeThrownBy(() => _clientDeviceService.CreateClientDevice(userDevice));
         }
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.UserDevice")]
+        [Category("IntegrationTests.ClientDevice")]
         public void Cannot_insert_userDevice_to_database_when_AuthKey1_is_not_provided()
         {
-            var userDevice = new UserDevice()
+            var userDevice = new ClientDevice()
             {
-                UserId = "Lukas",
+                ClientId = "Lukas",
                 DeviceId = "11111",
                 DeviceDisplayId = "Lukas11111", // needs to be unique
                 Latitude = "10",
@@ -186,17 +186,17 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey1 = "",
                 AuthKey2 = Guid.NewGuid().ToString()
             };
-            typeof(BusinessException).ShouldBeThrownBy(() => userDeviceService.CreateUserDevice(userDevice));
+            typeof(BusinessException).ShouldBeThrownBy(() => _clientDeviceService.CreateClientDevice(userDevice));
         }
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.UserDevice")]
+        [Category("IntegrationTests.ClientDevice")]
         public void Cannot_insert_userDevice_to_database_when_AuthKey2_is_not_provided()
         {
-            var userDevice = new UserDevice()
+            var userDevice = new ClientDevice()
             {
-                UserId = "Lukas",
+                ClientId = "Lukas",
                 DeviceId = "11111",
                 DeviceDisplayId = "Lukas11111", // needs to be unique
                 Latitude = "10",
@@ -204,18 +204,18 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey1 = Guid.NewGuid().ToString(),
                 AuthKey2 = ""
             };
-            typeof(BusinessException).ShouldBeThrownBy(() => userDeviceService.CreateUserDevice(userDevice));
+            typeof(BusinessException).ShouldBeThrownBy(() => _clientDeviceService.CreateClientDevice(userDevice));
         }
 
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.UserDevice")]
+        [Category("IntegrationTests.ClientDevice")]
         public void Can_get_userDevice_by_id()
         {
-            var userDevice = new UserDevice()
+            var userDevice = new ClientDevice()
             {
-                UserId = "Lukas",
+                ClientId = "Lukas",
                 DeviceId = "11111",
                 DeviceDisplayId = "Lukas11111",
                 Latitude = "10",
@@ -223,27 +223,27 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey1 = Guid.NewGuid().ToString(),
                 AuthKey2 = Guid.NewGuid().ToString()
             };
-            userDeviceService.CreateUserDevice(userDevice);
+            _clientDeviceService.CreateClientDevice(userDevice);
 
             userDevice.ShouldNotBeNull();
             userDevice.Id.ShouldNotBeNull();
 
-            var userDeviceFromDb = userDeviceService.GetUserDevice(userDevice.Id.ToString());
+            var userDeviceFromDb = _clientDeviceService.GetClientDevice(userDevice.Id.ToString());
             userDeviceFromDb.ShouldNotBeNull();
             userDeviceFromDb.Id.ShouldNotBeNull();
-            userDeviceFromDb.UserId.ShouldEqual("Lukas");
+            userDeviceFromDb.ClientId.ShouldEqual("Lukas");
 
         }
 
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.UserDevice")]
+        [Category("IntegrationTests.ClientDevice")]
         public void Can_get_all_userDevice()
         {
-            var userDevice1 = new UserDevice()
+            var userDevice1 = new ClientDevice()
             {
-                UserId = "Lukas",
+                ClientId = "Lukas",
                 DeviceId = "11111",
                 DeviceDisplayId = "Lukas11111", // needs to be unique
                 Latitude = "10",
@@ -252,9 +252,9 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            var userDevice2 = new UserDevice()
+            var userDevice2 = new ClientDevice()
             {
-                UserId = "Tomas",
+                ClientId = "Tomas",
                 DeviceId = "22222",
                 DeviceDisplayId = "Tomas22222", // needs to be unique
                 Latitude = "20",
@@ -263,32 +263,32 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            userDeviceService.CreateUserDevice(userDevice1);
+            _clientDeviceService.CreateClientDevice(userDevice1);
             userDevice1.ShouldNotBeNull();
             userDevice1.Id.ShouldNotBeNull();
 
 
-            userDeviceService.CreateUserDevice(userDevice2);
+            _clientDeviceService.CreateClientDevice(userDevice2);
             userDevice2.ShouldNotBeNull();
             userDevice2.Id.ShouldNotBeNull();
 
 
 
-            var userDevices = userDeviceService.GetAllUserDevices();
+            var userDevices = _clientDeviceService.GetAllClientDevices(string.Empty);
 
-            userDevices.ShouldBe<List<UserDevice>>();
+            userDevices.ShouldBe<List<ClientDevice>>();
             (userDevices.Count > 0).ShouldBeTrue();
         }
 
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.UserDevice")]
+        [Category("IntegrationTests.ClientDevice")]
         public void Can_get_all_userDevice_by_name()
         {
-            var userDevice1 = new UserDevice()
+            var userDevice1 = new ClientDevice()
             {
-                UserId = "Lukas",
+                ClientId = "Lukas",
                 DeviceId = "11111",
                 DeviceDisplayId = "Lukas11111",
                 Latitude = "10",
@@ -297,9 +297,9 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            var userDevice2 = new UserDevice()
+            var userDevice2 = new ClientDevice()
             {
-                UserId = "Tomas",
+                ClientId = "Tomas",
                 DeviceId = "22222",
                 DeviceDisplayId = "Tomas22222", // needs to be unique
                 Latitude = "20",
@@ -308,9 +308,9 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            var userDevice3 = new UserDevice()
+            var userDevice3 = new ClientDevice()
             {
-                UserId = "Tadas",
+                ClientId = "Tadas",
                 DeviceId = "33333",
                 DeviceDisplayId = "Tadas33333", // needs to be unique
                 Latitude = "15",
@@ -319,22 +319,22 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            userDeviceService.CreateUserDevice(userDevice1);
+            _clientDeviceService.CreateClientDevice(userDevice1);
             userDevice1.ShouldNotBeNull();
             userDevice1.Id.ShouldNotBeNull();
 
 
-            userDeviceService.CreateUserDevice(userDevice2);
+            _clientDeviceService.CreateClientDevice(userDevice2);
             userDevice2.ShouldNotBeNull();
             userDevice2.Id.ShouldNotBeNull();
 
-            userDeviceService.CreateUserDevice(userDevice3);
+            _clientDeviceService.CreateClientDevice(userDevice3);
             userDevice3.ShouldNotBeNull();
             userDevice3.Id.ShouldNotBeNull();
             
-            var userDevices = userDeviceService.GetAllUserDevices("Tadas");
+            var userDevices = _clientDeviceService.GetAllClientDevices("Tadas");
 
-            userDevices.ShouldBe<List<UserDevice>>();
+            userDevices.ShouldBe<List<ClientDevice>>();
             userDevices.Count.ShouldEqual(1);
         }
 
@@ -343,9 +343,9 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevices")]
         public void Can_update_userDevice_to_database()
         {
-            var userDevice = new  UserDevice()
+            var userDevice = new  ClientDevice()
             {
-                UserId = "Matas",
+                ClientId = "Matas",
                 DeviceId = "33333",
                 DeviceDisplayId = "Matas33333",
                 Latitude = "8",
@@ -354,20 +354,20 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            userDeviceService.CreateUserDevice(userDevice);
+            _clientDeviceService.CreateClientDevice(userDevice);
 
             // First insert userDevice to db
             userDevice.ShouldNotBeNull();
             userDevice.Id.ShouldNotBeNull();
 
             // Update name and send update to db
-            userDevice.UserId = "Matukas";
-            userDeviceService.UpdateUserDevice(userDevice);
+            userDevice.ClientId = "Matukas";
+            _clientDeviceService.UpdateClientDevice(userDevice);
 
             // Get item from db and check if name was updated
-            var userDevicesFromDb = userDeviceService.GetUserDevice(userDevice.Id.ToString());
+            var userDevicesFromDb = _clientDeviceService.GetClientDevice(userDevice.Id.ToString());
             userDevicesFromDb.ShouldNotBeNull();
-            userDevicesFromDb.UserId.ShouldEqual("Matukas");
+            userDevicesFromDb.ClientId.ShouldEqual("Matukas");
         }
 
 
@@ -376,9 +376,9 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.UserDevices")]
         public void Can_delete_userDevice_from_database()
         {
-            var userDevice = new UserDevice()
+            var userDevice = new ClientDevice()
             {
-                UserId = "Lukas",
+                ClientId = "Lukas",
                 DeviceId = "11111",
                 DeviceDisplayId = "Lukas11111",
                 Latitude = "10",
@@ -387,17 +387,17 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString()
             };
 
-            userDeviceService.CreateUserDevice(userDevice);
+            _clientDeviceService.CreateClientDevice(userDevice);
 
             // First insert userDevice to db
             userDevice.ShouldNotBeNull();
             userDevice.Id.ShouldNotBeNull();
 
             // Delete userDevice from db
-            userDeviceService.DeleteUserDevice(userDevice.Id.ToString());
+            _clientDeviceService.DeleteClientDevice(userDevice.Id.ToString());
 
             // Get item from db and check if name was updated
-            var userDeviceFromDb = userDeviceService.GetUserDevice(userDevice.Id.ToString());
+            var userDeviceFromDb = _clientDeviceService.GetClientDevice(userDevice.Id.ToString());
 
             // issue with CodeMash library. Should return null when not found - not default object
             userDeviceFromDb.ShouldNotBeNull();
@@ -408,10 +408,10 @@ namespace PresentConnection.Internship7.Iot.Tests
         [TearDown]
         public void Dispose()
         {
-            var userDevices = userDeviceService.GetAllUserDevices();
+            var userDevices = _clientDeviceService.GetAllClientDevices(string.Empty);
             foreach (var userDevice in userDevices)
             {
-                userDeviceService.DeleteUserDevice(userDevice.Id.ToString());
+                _clientDeviceService.DeleteClientDevice(userDevice.Id.ToString());
             }
         }
     }

@@ -5,7 +5,7 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
 {
     public interface IClientConnectionService
     {
-        string CreateClientConnection(ClientConnection clientconnection);
+        void CreateClientConnection(ClientConnection clientconnection);
         void UpdateClientConnection(ClientConnection clientconnection);
         List<ClientConnection> GetAllClientConnections(string clientId = "");
         ClientConnection GetClientConnection(string id);

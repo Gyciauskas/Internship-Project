@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CodeMash.Net;
 using FluentValidation.Results;
 using MongoDB.Bson;
@@ -15,16 +11,15 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class LookupService : ILookupService
     {
-        public string CreateLookup(Lookup lookup)
+        public void CreateLookup(Lookup lookup)
         {
-            LookupValidator validator = new LookupValidator();
-            ValidationResult results = validator.Validate(lookup);
+            var validator = new LookupValidator();
+            var results = validator.Validate(lookup);
+            var validationSucceeded = results.IsValid;
 
-            bool validationSucceeded = results.IsValid;
             if (validationSucceeded)
             {
                 Db.InsertOne(lookup);
-                return lookup.Id.ToString();
             }
             else
             {
@@ -34,10 +29,10 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
         public void UpdateLookup(Lookup lookup)
         {
-            LookupValidator validator = new LookupValidator();
-            ValidationResult results = validator.Validate(lookup);
+            var validator = new LookupValidator();
+            var results = validator.Validate(lookup);
+            var validationSucceeded = results.IsValid;
 
-            bool validationSucceeded = results.IsValid;
             if (validationSucceeded)
             {
                 Db.FindOneAndReplace(x => x.Id == lookup.Id, lookup);

@@ -5,7 +5,7 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
 {
     public interface IComponentService
     {
-        string CreateComponent(Component component);
+        void CreateComponent(Component component);
         void UpdateComponent(Component component);
         bool DeleteComponent(string id);
         List<Component> GetAllComponents(string name = "");

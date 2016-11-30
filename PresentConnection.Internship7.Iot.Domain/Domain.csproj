@@ -94,7 +94,7 @@
     <Compile Include="Statics.cs" />
     <Compile Include="SubscriptionSpan.cs" />
     <Compile Include="SubscriptionType.cs" />
-    <Compile Include="UserDevice.cs" />
+    <Compile Include="ClientDevice.cs" />
     <Compile Include="Validators\DashboardValidator.cs" />
     <Compile Include="WidgetType.cs" />
     <Compile Include="Validators\Common\ListMustContainItemValidator.cs" />

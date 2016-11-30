@@ -12,6 +12,7 @@ namespace PresentConnection.Internship7.Iot.Domain
             Subscriptions = new List<Subscription> { new Subscription() };
         }
 
+        public string Name { get; set; }
         public string UserId { get; set; }
         public List<Invoice> Invoices { get; set; }
         public List<Subscription> Subscriptions { get; set; }

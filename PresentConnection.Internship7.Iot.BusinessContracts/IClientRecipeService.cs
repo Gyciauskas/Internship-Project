@@ -5,10 +5,10 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
 {
     public interface IClientRecipeService
     {
-        string CreateClientRecipe(ClientRecipe clientRecipe);
+        void CreateClientRecipe(ClientRecipe clientRecipe);
         void UpdateClientRecipe(ClientRecipe clientRecipe);
         bool DeleteClientRecipe(string id);
-        List<ClientRecipe> GetAllClientRecipes(string recipeId = "");
+        List<ClientRecipe> GetAllClientRecipes(string clientId = "");
         ClientRecipe GetClientRecipe(string id);
     }
 }

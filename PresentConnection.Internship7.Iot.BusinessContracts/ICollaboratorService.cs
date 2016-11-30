@@ -5,7 +5,7 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
 {
     public interface ICollaboratorService
     {
-        string CreateCollaborator(Collaborator collaborator);
+        void CreateCollaborator(Collaborator collaborator);
         void UpdateCollaborator(Collaborator collaborator);
         bool DeleteCollaborator(string id);
         List<Collaborator> GetAllCollaborators(string name = "");
