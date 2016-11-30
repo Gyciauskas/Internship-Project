@@ -75,6 +75,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             businessException.ShouldNotBeNull();
             businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property Images should contain at least one item!"))
                 .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create device");
         }
 
         [Test]
@@ -102,6 +104,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
                 .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create device");
         }
 
 
@@ -119,6 +123,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
                 .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create device");
         }
 
         [Test]
@@ -135,6 +141,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
                 .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create device");
         }
 
         [Test]
@@ -290,6 +298,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
                 .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create device");
         }
 
         [Test]
@@ -297,22 +307,13 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Device")]
         public void Can_delete_device_from_database()
         {
-            var device = new Device
-            {
-                ModelName = "Raspberry PI 3",
-                UniqueName = "raspberry-pi-3",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                }
-            };
-            deviceService.CreateDevice(device);
+            deviceService.CreateDevice(goodDevice);
 
-            device.ShouldNotBeNull();
-            device.Id.ShouldNotBeNull();
+            goodDevice.ShouldNotBeNull();
+            goodDevice.Id.ShouldNotBeNull();
 
-            deviceService.DeleteDevice(device.Id.ToString());
-            var deviceFromDb = deviceService.GetDevice(device.Id.ToString());
+            deviceService.DeleteDevice(goodDevice.Id.ToString());
+            var deviceFromDb = deviceService.GetDevice(goodDevice.Id.ToString());
 
             deviceFromDb.ShouldNotBeNull();
             deviceFromDb.Id.ShouldEqual(ObjectId.Empty);
