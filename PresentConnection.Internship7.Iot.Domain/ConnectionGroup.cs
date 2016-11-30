@@ -9,12 +9,12 @@ namespace PresentConnection.Internship7.Iot.Domain
         public ConnectionGroup()
         {
             RelatedConnections = new List<string>();
-            Images = new List<DisplayImage>();
+            Images = new List<string>();
         }
 
         public string UniqueName { get; set; }
         public string Name { get; set; }
         public List<string> RelatedConnections { get; set; }
-        public List<DisplayImage> Images { get; set; }
+        public List<string> Images { get; set; }
     }
 }

@@ -90,7 +90,6 @@
     <Compile Include="IEntityWithUniqueName.cs" />
     <Compile Include="PowerResource.cs" />
     <Compile Include="PowerResourceType.cs" />
-    <Compile Include="Reference.cs" />
     <Compile Include="SimulationType.cs" />
     <Compile Include="Statics.cs" />
     <Compile Include="SubscriptionSpan.cs" />

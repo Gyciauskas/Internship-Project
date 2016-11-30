@@ -8,13 +8,13 @@ namespace PresentConnection.Internship7.Iot.Domain
     {
         public Connection()
         {
-            Images = new List<DisplayImage>();
+            Images = new List<string>();
             JavascriptLibs = new List<string>();
         }
 
         public string UniqueName { get; set; }
         public string Name { get; set; }
-        public List<DisplayImage> Images { get; set; }
+        public List<string> Images { get; set; }
         public string Url { get; set; }
         public string DocumentationUrl { get; set; }
         public string Description { get; set; }

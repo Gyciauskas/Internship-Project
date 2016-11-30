@@ -25,11 +25,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 UniqueName = "raspberry-pi-3",
                 Images =
                 {
-                    new DisplayImage
-                    {
-                        SeoFileName = "RaspberryLogo",
-                        Tag = "600px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 }
             };
 
@@ -95,11 +91,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 UniqueName = "raspberry-pi-3",
                 Images =
                 {
-                    new DisplayImage
-                    {
-                       SeoFileName = "DeviceLogo",
-                       Tag = "600px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 }
             };
 
@@ -174,11 +166,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 UniqueName = "device-2",
                 Images =
                 {
-                    new DisplayImage
-                    {
-                       SeoFileName = "DeviceLogo",
-                       Tag = "600px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 }
             };
 
@@ -203,11 +191,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 UniqueName = "raspberry-pi-3",
                 Images =
                 {
-                    new DisplayImage
-                    {
-                       SeoFileName = "RaspberryLogo",
-                       Tag = "600px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 }
             };
 
@@ -217,11 +201,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 UniqueName = "device-2",
                 Images =
                 {
-                    new DisplayImage
-                    {
-                       SeoFileName = "Device2Logo",
-                       Tag = "600px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 }
             };
 
@@ -231,11 +211,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 UniqueName = "device-3",
                 Images =
                 {
-                    new DisplayImage
-                    {
-                       SeoFileName = "Device3Logo",
-                       Tag = "600px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 }
             };
 
@@ -268,11 +244,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 UniqueName = "raspberry-pi-3",
                 Images =
                 {
-                    new DisplayImage
-                    {
-                       SeoFileName = "RaspberryLogo",
-                       Tag = "600px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 }
             };
             deviceService.CreateDevice(device);
@@ -301,11 +273,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 UniqueName = "raspberry-pi-2",
                 Images =
                 {
-                    new DisplayImage
-                    {
-                       SeoFileName = "RaspberryLogo",
-                       Tag = "600px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 }
             };
             deviceService.CreateDevice(device);
@@ -335,11 +303,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 UniqueName = "raspberry-pi-3",
                 Images =
                 {
-                    new DisplayImage
-                    {
-                       SeoFileName = "RaspberryLogo",
-                       Tag = "600px"
-                    }
+                    "5821dcc11e9f341d4c6d0994"
                 }
             };
             deviceService.CreateDevice(device);

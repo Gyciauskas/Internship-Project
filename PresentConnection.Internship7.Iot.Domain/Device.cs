@@ -9,7 +9,7 @@ namespace PresentConnection.Internship7.Iot.Domain
     {
         public Device()
         {
-            Images = new List<DisplayImage>();
+            Images = new List<string>();
             AvailablePowerResources = new List<PowerResourceType>();
             DefaultRules = new List<string>();
             DefaultCommands = new List<string>();
@@ -30,7 +30,7 @@ namespace PresentConnection.Internship7.Iot.Domain
         public string UniqueName { get; set; } 
 
         [BsonIgnore]
-        public List<DisplayImage> Images { get; set; }
+        public List<string> Images { get; set; }
         public string DefaultFirmwareVersion { get; set; }
         public List<PowerResourceType> AvailablePowerResources { get; set; }
         /// <summary>
