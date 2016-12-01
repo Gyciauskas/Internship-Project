@@ -196,6 +196,110 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Manufacturer")]
+        public void Can_get_all_manufacturers_by_case_insensetive_name()
+        {
+            var manufacturer1 = new Manufacturer()
+            {
+                Name = "Raspberry PI",
+                Description = "...",
+                IsVisible = true,
+                UniqueName = "raspberry-pi",
+                Url = "raspberry-pi"
+            };
+
+            var manufacturer2 = new Manufacturer()
+            {
+                Name = "Arduino",
+                Description = "...",
+                IsVisible = true,
+                UniqueName = "arduino",
+                Url = "arduino"
+            };
+
+            var manufacturer3 = new Manufacturer()
+            {
+                Name = "My Manufacturer",
+                Description = "...",
+                IsVisible = true,
+                UniqueName = "my manu",
+                Url = ""
+            };
+
+            manufacturerService.CreateManufacturer(manufacturer1);
+            manufacturer1.ShouldNotBeNull();
+            manufacturer1.Id.ShouldNotBeNull();
+
+
+            manufacturerService.CreateManufacturer(manufacturer2);
+            manufacturer2.ShouldNotBeNull();
+            manufacturer2.Id.ShouldNotBeNull();
+
+            manufacturerService.CreateManufacturer(manufacturer3);
+            manufacturer3.ShouldNotBeNull();
+            manufacturer3.Id.ShouldNotBeNull();
+
+            var manufacturers = manufacturerService.GetAllManufacturers("my manufacturer");
+
+            manufacturers.ShouldBe<List<Manufacturer>>();
+            manufacturers.Count.ShouldEqual(1);
+        }
+
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Manufacturer")]
+        public void Can_get_all_manufacturers_by_incomplete_name()
+        {
+            var manufacturer1 = new Manufacturer()
+            {
+                Name = "Raspberry PI",
+                Description = "...",
+                IsVisible = true,
+                UniqueName = "raspberry-pi",
+                Url = "raspberry-pi"
+            };
+
+            var manufacturer2 = new Manufacturer()
+            {
+                Name = "Arduino",
+                Description = "...",
+                IsVisible = true,
+                UniqueName = "arduino",
+                Url = "arduino"
+            };
+
+            var manufacturer3 = new Manufacturer()
+            {
+                Name = "My Manufacturer",
+                Description = "...",
+                IsVisible = true,
+                UniqueName = "my manu",
+                Url = ""
+            };
+
+            manufacturerService.CreateManufacturer(manufacturer1);
+            manufacturer1.ShouldNotBeNull();
+            manufacturer1.Id.ShouldNotBeNull();
+
+
+            manufacturerService.CreateManufacturer(manufacturer2);
+            manufacturer2.ShouldNotBeNull();
+            manufacturer2.Id.ShouldNotBeNull();
+
+            manufacturerService.CreateManufacturer(manufacturer3);
+            manufacturer3.ShouldNotBeNull();
+            manufacturer3.Id.ShouldNotBeNull();
+
+            var manufacturers = manufacturerService.GetAllManufacturers("manufacturer");
+
+            manufacturers.ShouldBe<List<Manufacturer>>();
+            manufacturers.Count.ShouldEqual(1);
+        }
+
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Manufacturer")]
         public void Can_update_manufacturer_to_database()
         {
             var manufacturer = new Manufacturer()
