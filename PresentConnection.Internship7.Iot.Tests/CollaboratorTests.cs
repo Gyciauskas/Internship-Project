@@ -24,7 +24,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Email = "TestName125@testemail.com",
                 Name = "TestName125",
                 Phone = "860000125",
-                PermissionsSet = new List<string> { "Write", "Read", "Change" }
+                Permissions = new List<string> { "Write", "Read", "Change" }
             };
 
         }
@@ -56,7 +56,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Email = "TestName125@testemail.com",
                 Name = "TestName125",
                 Phone = "860000125",
-                PermissionsSet = permSet,
+                Permissions = permSet,
             };*/
 
             collaborator.UserId = string.Empty;
@@ -79,7 +79,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Email = "",
                 Name = "TestName125",
                 Phone = "860000125",
-                PermissionsSet = permSet,
+                Permissions = permSet,
             };
 
             typeof(BusinessException).ShouldBeThrownBy(() => collaboratorService.CreateCollaborator(collaborator));
@@ -101,7 +101,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Email = "TestName125@testemail.com",
                 Name = "TestName125",
                 Phone = "860000125",
-                PermissionsSet = permSet,
+                Permissions = permSet,
             };
             collaboratorService.CreateCollaborator(collaborator);
 
@@ -131,7 +131,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Email = "TestName125@testemail.com",
                 Name = "TestName125",
                 Phone = "860000125",
-                PermissionsSet = permSet,
+                Permissions = permSet,
             };
 
             List<string> permSet2 = new List<string>();
@@ -144,7 +144,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Email = "TestName124@testemail.com",
                 Name = "TestName124",
                 Phone = "860000124",
-                PermissionsSet = permSet2,
+                Permissions = permSet2,
             };
 
             collaboratorService.CreateCollaborator(collaborator1);
@@ -180,7 +180,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Email = "TestName125@testemail.com",
                 Name = "TestName1258888",
                 Phone = "860000125",
-                PermissionsSet = permSet,
+                Permissions = permSet,
             };
 
             List<string> permSet2 = new List<string>();
@@ -193,7 +193,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Email = "TestName124@testemail.com",
                 Name = "TestName12488888",
                 Phone = "860000124",
-                PermissionsSet = permSet2,
+                Permissions = permSet2,
             };
 
             List<string> permSet3 = new List<string>();
@@ -206,7 +206,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Email = "TestName123@testemail.com",
                 Name = "TestName12388888",
                 Phone = "860000123",
-                PermissionsSet = permSet3,
+                Permissions = permSet3,
             };
 
             collaboratorService.CreateCollaborator(collaborator1);
@@ -244,7 +244,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Email = "TestName125@testemail.com",
                 Name = "TestName125",
                 Phone = "860000125",
-                PermissionsSet = permSet,
+                Permissions = permSet,
             };
 
             collaboratorService.CreateCollaborator(collaborator);
@@ -279,7 +279,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Email = "TestName125@testemail.com",
                 Name = "TestName125",
                 Phone = "860000125",
-                PermissionsSet = permSet,
+                Permissions = permSet,
             };
 
             collaboratorService.CreateCollaborator(collaborator);

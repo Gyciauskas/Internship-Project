@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PresentConnection.Internship7.Iot.Domain
+﻿namespace PresentConnection.Internship7.Iot.Domain
 {
     public class PowerResource
     {
-        public enum PowerResourceType { Battery, Voltage }
-        public int PercentageValue { get; set; }
+        public PowerResource()
+        {
+            Type = PowerResourceType.NotSet;
+        }
+
+        public PowerResourceType Type { get; set; }
+        public int Value { get; set; }
     }
 }

@@ -1,30 +1,24 @@
 ﻿using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
 using CodeMash.Net;
-using FluentValidation.Results;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using PresentConnection.Internship7.Iot.Utils;
-
-
 
 namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class ManufacturerService : IManufacturerService
     {
-        public string CreateManufacturer(Manufacturer manufacturer)
+        public void CreateManufacturer(Manufacturer manufacturer)
         {
-            ManufacturerValidator validator = new ManufacturerValidator();
-            ValidationResult results = validator.Validate(manufacturer);
-
-            bool validationSucceeded = results.IsValid;
+            var validator = new ManufacturerValidator();
+            var results = validator.Validate(manufacturer);
+            var validationSucceeded = results.IsValid;
 
             if (validationSucceeded)
             {
                 Db.InsertOne(manufacturer);
-                return manufacturer.Id.ToString();
             }
             else
             {
@@ -34,10 +28,9 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
         public void UdpdateManufacturer(Manufacturer manufacturer)
         {
-            ManufacturerValidator validator = new ManufacturerValidator();
-            ValidationResult results = validator.Validate(manufacturer);
-
-            bool validationSucceeded = results.IsValid;
+            var validator = new ManufacturerValidator();
+            var results = validator.Validate(manufacturer);
+            var validationSucceeded = results.IsValid;
 
             if (validationSucceeded)
             {

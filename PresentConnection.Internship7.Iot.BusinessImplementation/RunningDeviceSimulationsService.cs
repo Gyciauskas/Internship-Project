@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CodeMash.Net;
-using FluentValidation.Results;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using PresentConnection.Internship7.Iot.BusinessContracts;
@@ -15,55 +10,52 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class RunningDeviceSimulationsService : IRunningDeviceSimulationsService
     {
-        public string CreateRunningDeviceSimulations(RunningDeviceSimulations runningDeviceSimulations)
+        public void CreateRunningDeviceSimulations(RunningDeviceSimulation runningDeviceSimulation)
         {
-            RunningDeviceSimulationsValidator validator = new RunningDeviceSimulationsValidator();
-            ValidationResult results = validator.Validate(runningDeviceSimulations);
-
-            bool validationSucceeded = results.IsValid;
+            var validator = new RunningDeviceSimulationsValidator();
+            var results = validator.Validate(runningDeviceSimulation);
+            var validationSucceeded = results.IsValid;
 
             if (validationSucceeded)
             {
-                Db.InsertOne(runningDeviceSimulations);
-                return runningDeviceSimulations.Id.ToString();
+                Db.InsertOne(runningDeviceSimulation);
             }
             else
             {
-                throw new BusinessException("Cannot create runningDeviceSimulations", results.Errors);
+                throw new BusinessException("Cannot create runningDeviceSimulation", results.Errors);
             }
         }
 
-        public void UdpdateRunningDeviceSimulations(RunningDeviceSimulations runningDeviceSimulations)
+        public void UdpdateRunningDeviceSimulations(RunningDeviceSimulation runningDeviceSimulation)
         {
-            RunningDeviceSimulationsValidator validator = new RunningDeviceSimulationsValidator();
-            ValidationResult results = validator.Validate(runningDeviceSimulations);
-
-            bool validationSucceeded = results.IsValid;
+            var validator = new RunningDeviceSimulationsValidator();
+            var results = validator.Validate(runningDeviceSimulation);
+            var validationSucceeded = results.IsValid;
 
             if (validationSucceeded)
             {
-                Db.FindOneAndReplace(x => x.Id == runningDeviceSimulations.Id, runningDeviceSimulations);
+                Db.FindOneAndReplace(x => x.Id == runningDeviceSimulation.Id, runningDeviceSimulation);
             }
             else
             {
-                throw new BusinessException("Cannot update runningDeviceSimulations", results.Errors);
+                throw new BusinessException("Cannot update runningDeviceSimulation", results.Errors);
             }
         }
 
         public bool DeleteRunningDeviceSimulations(string id)
         {
-            var deleteResult = Db.DeleteOne<RunningDeviceSimulations>(x => x.Id == ObjectId.Parse(id));
+            var deleteResult = Db.DeleteOne<RunningDeviceSimulation>(x => x.Id == ObjectId.Parse(id));
             return deleteResult.DeletedCount == 1;
         }
 
-        public List<RunningDeviceSimulations> GetAllRunningDeviceSimulations(string name = "")
+        public List<RunningDeviceSimulation> GetAllRunningDeviceSimulations(string name = "")
         {
-            var filterBuilder = Builders<RunningDeviceSimulations>.Filter;
+            var filterBuilder = Builders<RunningDeviceSimulation>.Filter;
             var filter = filterBuilder.Empty;
 
             if (!string.IsNullOrEmpty(name))
             {
-                var findByNameFilter = Builders<RunningDeviceSimulations>.Filter.Eq(x => x.DeviceId, name);
+                var findByNameFilter = Builders<RunningDeviceSimulation>.Filter.Eq(x => x.DeviceId, name);
                 filter = filter & findByNameFilter;
             }
 
@@ -71,9 +63,9 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             return runningDeviceSimulations;
         }
 
-        public RunningDeviceSimulations GetRunningDeviceSimulations(string id)
+        public RunningDeviceSimulation GetRunningDeviceSimulations(string id)
         {
-            return Db.FindOneById<RunningDeviceSimulations>(id);
+            return Db.FindOneById<RunningDeviceSimulation>(id);
         }
     }
 }

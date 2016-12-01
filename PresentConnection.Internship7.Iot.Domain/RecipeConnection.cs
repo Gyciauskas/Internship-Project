@@ -1,18 +1,20 @@
-﻿using PresentConnection.Internship7.Iot.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using CodeMash.Net;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    public class RecipeConnection
+    [CollectionName(Statics.Collections.RecipeConnections)]
+    public class RecipeConnection : EntityBase, IEntityWithUniqueName
     {
+        public RecipeConnection()
+        {
+            Images = new List<string>();
+        }
+
         public string UniqueName { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public DisplayImage Image { get; set; }
+        public List<string> Images { get; set; } // see description for class DisplayImage
         public string ConnectionId { get; set; }
         public string DeviceId { get; set; }
         public string ComponentId { get; set; }

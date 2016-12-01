@@ -83,19 +83,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Client")]
-        public void Cannot_insert_client_to_database_when_subscription_is_not_provided()
-        {
-            var client = new Client()
-            {
-                UserId = "UserID",
-                Subscriptions = {}
-            };
-            typeof(BusinessException).ShouldBeThrownBy(() => clientService.CreateClient(client));
-        }
-
-        [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Client")]
         public void Can_get_client_by_id()
         {
             var client = new Client()

@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CodeMash.Net;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    [CollectionName("Connections")]
-    public class Connection : EntityBase
+    [CollectionName(Statics.Collections.Connections)]
+    public class Connection : EntityBase, IEntityWithUniqueName
     {
         public Connection()
         {
-            Images = new List<DisplayImage>();
+            Images = new List<string>();
             JavascriptLibs = new List<string>();
         }
 
         public string UniqueName { get; set; }
         public string Name { get; set; }
-        public List<DisplayImage> Images { get; set; }
+        public List<string> Images { get; set; }
         public string Url { get; set; }
         public string DocumentationUrl { get; set; }
         public string Description { get; set; }

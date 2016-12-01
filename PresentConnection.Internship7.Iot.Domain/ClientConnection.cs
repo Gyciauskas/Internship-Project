@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    [CollectionName("ClientConnections")]
-    public class ClientConnection : EntityBase
+    [CollectionName(Statics.Collections.ClientConnections)]
+    public class ClientConnection : EntityBase, IEntityWithSensitiveData
     {
         public ClientConnection()
         {

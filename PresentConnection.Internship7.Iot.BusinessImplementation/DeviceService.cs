@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CodeMash.Net;
-using FluentValidation.Results;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using PresentConnection.Internship7.Iot.BusinessContracts;
@@ -15,15 +10,15 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class DeviceService : IDeviceService
     {
-        public string CreateDevice(Device device)
+        public void CreateDevice(Device device)
         {
-            DeviceValidator validator = new DeviceValidator();
-            ValidationResult results = validator.Validate(device);
-            bool validationSucceeded = results.IsValid;
+            var validator = new DeviceValidator();
+            var results = validator.Validate(device);
+            var validationSucceeded = results.IsValid;
+
             if (validationSucceeded)
             {
                 Db.InsertOne(device);
-                return device.Id.ToString();
             }
             else
             {
@@ -33,9 +28,10 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
         public void UpdateDevice(Device device)
         {
-            DeviceValidator validator = new DeviceValidator();
-            ValidationResult results = validator.Validate(device);
-            bool validationSucceeded = results.IsValid;
+            var validator = new DeviceValidator();
+            var results = validator.Validate(device);
+            var validationSucceeded = results.IsValid;
+
             if (validationSucceeded)
             {
                 Db.FindOneAndReplace(x => x.Id == device.Id, device);

@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    public class Invoice
+    public class Invoice 
     {
         public string FullName { get; set; }
         public DateTime CreatedOn { get; set; }

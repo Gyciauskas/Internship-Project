@@ -16,22 +16,65 @@ namespace BusinessImplementation
         ///     Insert document to mongodb database
         ///     return clientId as string
         /// </summary>
-        public string CreateClientConnection(ClientConnection clientconnection)
+        public void CreateClientConnection(ClientConnection clientconnection)
         {
-            ClientConnectionValidator validator = new ClientConnectionValidator();
-            ValidationResult results = validator.Validate(clientconnection);
-
-            bool validationSucceeded = results.IsValid;
+            var validator = new ClientConnectionValidator();
+            var results = validator.Validate(clientconnection);
+            var validationSucceeded = results.IsValid;
 
             if (validationSucceeded)
             {
                 Db.InsertOne(clientconnection);
-                return clientconnection.ClientId.ToString();
             }
             else
             {
-                throw new BusinessException("Cannot create clientconnection", results.Errors);
+                throw new BusinessException("Cannot create client connection", results.Errors);
             }
+        }
+
+        /// <summary>
+        ///     Update existing document in db, before check validation
+        ///     if clientId or connectionId empty, throw exception
+        ///     otherwise, update in db
+        /// </summary>
+        public void UpdateClientConnection(ClientConnection clientconnection)
+        {
+            var validator = new ClientConnectionValidator();
+            var results = validator.Validate(clientconnection);
+            var validationSucceeded = results.IsValid;
+
+            if (validationSucceeded)
+            {
+                Db.FindOneAndReplace(x => x.Id == clientconnection.Id, clientconnection);
+            }
+            else
+            {
+                throw new BusinessException("Cannot update client connection", results.Errors);
+            }
+        }
+
+        /// <summary>
+        ///     Get all documents in db or with same clientId
+        ///     return list with documents
+        /// </summary>
+        public List<ClientConnection> GetClientConnections(string clientId)
+        {
+            if (string.IsNullOrEmpty(clientId))
+            {
+                return new List<ClientConnection>();
+            }
+
+            var filter = Builders<ClientConnection>.Filter.Eq(x => x.ClientId, clientId);
+            var clientconnections = Db.Find(filter);
+            return clientconnections;
+        }
+
+        /// <summary>
+        ///     Find document by Id and result it back
+        /// </summary>
+        public ClientConnection GetClientConnection(string id)
+        {
+            return Db.FindOneById<ClientConnection>(id);
         }
 
         /// <summary>
@@ -42,59 +85,10 @@ namespace BusinessImplementation
         public bool DeleteClientConnection(string id)
         {
             var deleteResult = Db.DeleteOne<ClientConnection>(x => x.Id == ObjectId.Parse(id));
-
             return deleteResult.DeletedCount == 1;
         }
 
-        /// <summary>
-        ///     Get all documents in db or with same clientId
-        ///     return list with documents
-        /// </summary>
-        public List<ClientConnection> GetAllClientConnections(string clientId = "")
-        {
-            var filterBuilder = Builders<ClientConnection>.Filter;
-            var filter = filterBuilder.Empty;
 
-            if (!string.IsNullOrEmpty(clientId))
-            {
-                var findByclientIdFilter = Builders<ClientConnection>.Filter.Eq(x => x.ClientId, clientId);
-                filter = filter & findByclientIdFilter;
-            }
-
-            var clientconnections = Db.Find(filter);
-
-            return clientconnections;
-        }
-
-        /// <summary>
-        ///     Find document by Id and result it back
-        /// </summary>
-        public ClientConnection GetClientConnection(string Id)
-        {
-            return Db.FindOneById<ClientConnection>(Id);
-        }
-
-        /// <summary>
-        ///     Update existing document in db, before check validation
-        ///     if clientId or connectionId empty, throw exception
-        ///     otherwise, update in db
-        /// </summary>
-        public void UpdateClientConnection(ClientConnection clientconnection)
-        {
-            ClientConnectionValidator validator = new ClientConnectionValidator();
-            ValidationResult results = validator.Validate(clientconnection);
-
-            bool validationSucceeded = results.IsValid;
-
-            if (validationSucceeded)
-            {
-                Db.FindOneAndReplace(x => x.Id == clientconnection.Id, clientconnection);
-            }
-            else
-            {
-                throw new BusinessException("Cannot update clientconnection", results.Errors);
-            }
-        }
     }
 }
 

@@ -13,7 +13,7 @@ namespace PresentConnection.Internship7.Iot.Domain
         {
             RuleFor(r => r.UniqueName).NotEmpty();
             RuleFor(r => r.Name).NotEmpty();
-            RuleFor(r => r.Images.Count).GreaterThan(0);
+            RuleFor(r => r.Images).MustContainAtLeastOneItem();
             RuleFor(r => r.Url).NotEmpty();
             RuleFor(r => r.Description).NotEmpty();
         }

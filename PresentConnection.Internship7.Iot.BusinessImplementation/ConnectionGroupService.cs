@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using CodeMash.Net;
 using FluentValidation.Results;
 using MongoDB.Bson;
@@ -15,34 +11,35 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class ConnectionGroupService : IConnectionGroupService
     {
-        public string CreateConnectionGroup(ConnectionGroup connectionGroup)
+        public void CreateConnectionGroup(ConnectionGroup connectionGroup)
         {
-            ConnectionGroupValidator validator = new ConnectionGroupValidator();
-            ValidationResult results = validator.Validate(connectionGroup);
-            bool validationSucceeded = results.IsValid;
+            var validator = new ConnectionGroupValidator();
+            var results = validator.Validate(connectionGroup);
+            var validationSucceeded = results.IsValid;
+
             if (validationSucceeded)
             {
                 Db.InsertOne(connectionGroup);
-                return connectionGroup.Id.ToString();
             }
             else
             {
-                throw new BusinessException("Cannot create connectiongroup", results.Errors);
+                throw new BusinessException("Cannot create connection group", results.Errors);
             }
         }
 
         public void UpdateConnectionGroup(ConnectionGroup connectionGroup)
         {
-            ConnectionGroupValidator validator = new ConnectionGroupValidator();
-            ValidationResult results = validator.Validate(connectionGroup);
-            bool validationSucceded = results.IsValid;
+            var validator = new ConnectionGroupValidator();
+            var results = validator.Validate(connectionGroup);
+            var validationSucceded = results.IsValid;
+
             if (validationSucceded)
             {
                 Db.FindOneAndReplace(x => x.Id == connectionGroup.Id, connectionGroup);
             }
             else
             {
-                throw new BusinessException("Cannot update connectiongroup", results.Errors);
+                throw new BusinessException("Cannot update connection group", results.Errors);
             }
         }
 

@@ -1,24 +1,17 @@
 ﻿using CodeMash.Net;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
-    [CollectionName("Components")]
-    public class Component : EntityBase
+    [CollectionName(Statics.Collections.Components)]
+    public class Component : EntityBase, IEntityWithUniqueName
     {
-     
-
         public Component()
         {
-            Images = new List<DisplayImage>();
+            Images = new List<string>();
             ArticlesUrls = new List<DisplayUrl>();
             DefaultRules = new List<string>();
             DefaultCommands = new List<string>();
-
         }
 
         public string ModelName { get; set; }
@@ -28,7 +21,7 @@ namespace PresentConnection.Internship7.Iot.Domain
         public string ManufacturerId { get; set; }
         public string HowToConnectDescription { get; set; }
         public string TechnicalInstructionsHowToConnect { get; set; }
-        public List<DisplayImage> Images { get; set; }
+        public List<string> Images { get; set; }
         public List<DisplayUrl> ArticlesUrls { get; set; }
         public List<string> DefaultRules { get; set; }
         public List<string> DefaultCommands { get; set; }

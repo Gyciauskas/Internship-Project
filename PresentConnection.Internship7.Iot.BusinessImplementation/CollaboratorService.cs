@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
 using CodeMash.Net;
-using FluentValidation.Results;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using PresentConnection.Internship7.Iot.Utils;
@@ -12,17 +10,16 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class CollaboratorService : ICollaboratorService
     {
-        public string CreateCollaborator(Collaborator collaborator)
+        public void CreateCollaborator(Collaborator collaborator)
         {
-            CollaboratorValidator validator = new CollaboratorValidator();
-            ValidationResult results = validator.Validate(collaborator);
+            var validator = new CollaboratorValidator();
+            var results = validator.Validate(collaborator);
 
-            bool validationSucceeded = results.IsValid;
+            var validationSucceeded = results.IsValid;
 
             if (validationSucceeded)
             {
                 Db.InsertOne(collaborator);
-                return collaborator.Id.ToString();
             }
             else
             {
@@ -32,10 +29,9 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
         public void UpdateCollaborator(Collaborator collaborator)
         {
-            CollaboratorValidator validator = new CollaboratorValidator();
-            ValidationResult results = validator.Validate(collaborator);
-
-            bool validationSucceeded = results.IsValid;
+            var validator = new CollaboratorValidator();
+            var results = validator.Validate(collaborator);
+            var validationSucceeded = results.IsValid;
 
             if (validationSucceeded)
             {

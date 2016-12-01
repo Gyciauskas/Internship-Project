@@ -87,11 +87,25 @@
     <Compile Include="ClientConnection.cs" />
     <Compile Include="Collaborator.cs" />
     <Compile Include="ClientRecipe.cs" />
+    <Compile Include="IEntityWithSensitiveData.cs" />
+    <Compile Include="IEntityWithUniqueName.cs" />
     <Compile Include="PowerResource.cs" />
-    <Compile Include="UserDevices.cs" />
+    <Compile Include="PowerResourceType.cs" />
+    <Compile Include="SimulationType.cs" />
+    <Compile Include="Statics.cs" />
+    <Compile Include="SubscriptionSpan.cs" />
+    <Compile Include="SubscriptionType.cs" />
+    <Compile Include="ClientDevice.cs" />
+    <Compile Include="Validators\Common\SensitiveDataValidator.cs" />
+    <Compile Include="Validators\Common\SensitiveListDataValidator.cs" />
     <Compile Include="Validators\DashboardValidator.cs" />
-    <Compile Include="TypeEnums.cs" />
-    <Compile Include="Validators\UserDevicesValidators.cs" />
+    <Compile Include="Validators\Common\RecordPermissionValidator.cs" />
+    <Compile Include="Validators\Common\RecordsPermissionValidator.cs" />
+    <Compile Include="WidgetType.cs" />
+    <Compile Include="Validators\Common\ListMustContainItemValidator.cs" />
+    <Compile Include="Validators\Common\UniqueNameValidator.cs" />
+    <Compile Include="Validators\ClientDeviceValidator.cs" />
+    <Compile Include="Validators\Common\ValidatorExtensions.cs" />
     <Compile Include="Widget.cs" />
     <Compile Include="Dashboard.cs" />
     <Compile Include="Component.cs" />
@@ -107,7 +121,7 @@
     <Compile Include="Recipe.cs" />
     <Compile Include="RecipeConnection.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="RunningDeviceSimulations.cs" />
+    <Compile Include="RunningDeviceSimulation.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Subscription.cs" />
     <Compile Include="Validators\ClientRecipeValidator.cs" />
@@ -128,6 +142,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
