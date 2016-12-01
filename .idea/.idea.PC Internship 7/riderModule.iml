@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.BusinessContracts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Domain" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Tests" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Utils" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.BusinessContracts/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.BusinessContracts/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Domain/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Domain/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Tests/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Tests/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Utils/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Utils/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../packages" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

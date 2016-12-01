@@ -6,7 +6,7 @@ namespace PresentConnection.Internship7.Iot.Domain
 {
     public static class ValidatorExtensions
     {
-        public static IRuleBuilderOptions<T, IList<TElement>> MustContainAtLeastOneItem<T, TElement>(this IRuleBuilder<T, IList<TElement>> ruleBuilder)
+        public static IRuleBuilderOptions<T, List<TElement>> MustContainAtLeastOneItem<T, TElement>(this IRuleBuilder<T, List<TElement>> ruleBuilder)
         {
             return ruleBuilder.SetValidator(new ListMustContainItemValidator<TElement>());
         }
