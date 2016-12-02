@@ -5,10 +5,10 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
 {
     public interface IClientDeviceService
     {
-        void CreateClientDevice(ClientDevice clientDevice);
-        void UpdateClientDevice(ClientDevice clientDevice);
-        bool DeleteClientDevice(string id);
-        List<ClientDevice> GetAllClientDevices(string clientId);
-        ClientDevice GetClientDevice(string id);
+        void CreateClientDevice(ClientDevice clientDevice, string responsibleClientId);
+        void UpdateClientDevice(ClientDevice clientDevice, string responsibleClientId);
+        bool DeleteClientDevice(string id, string responsibleClientId);
+        List<ClientDevice> GetClientDevices(string clientId, string responsibleClientId);
+        ClientDevice GetClientDevice(string id, string responsibleClientId);
     }
 }

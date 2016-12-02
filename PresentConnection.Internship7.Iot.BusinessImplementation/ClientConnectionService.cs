@@ -1,9 +1,11 @@
-﻿using CodeMash.Net;
+﻿using System;
+using CodeMash.Net;
 using PresentConnection.Internship7.Iot.Domain;
 using FluentValidation.Results;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using System.Collections.Generic;
+using System.Linq;
 using PresentConnection.Internship7.Iot.Utils;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 
@@ -16,9 +18,9 @@ namespace BusinessImplementation
         ///     Insert document to mongodb database
         ///     return clientId as string
         /// </summary>
-        public void CreateClientConnection(ClientConnection clientconnection)
+        public void CreateClientConnection(ClientConnection clientconnection, string responsibleClientId)
         {
-            var validator = new ClientConnectionValidator();
+            var validator = new ClientConnectionValidator(responsibleClientId);
             var results = validator.Validate(clientconnection);
             var validationSucceeded = results.IsValid;
 
@@ -37,9 +39,19 @@ namespace BusinessImplementation
         ///     if clientId or connectionId empty, throw exception
         ///     otherwise, update in db
         /// </summary>
-        public void UpdateClientConnection(ClientConnection clientconnection)
+        public void UpdateClientConnection(ClientConnection clientconnection, string responsibleClientId)
         {
-            var validator = new ClientConnectionValidator();
+            try
+            {
+                GetClientConnection(clientconnection.Id.ToString(), responsibleClientId);
+            }
+            catch (BusinessException e)
+            {
+
+                throw new BusinessException("You don't have permissions to update this client connection", e);
+            }
+
+            var validator = new ClientConnectionValidator(responsibleClientId);
             var results = validator.Validate(clientconnection);
             var validationSucceeded = results.IsValid;
 
@@ -57,28 +69,47 @@ namespace BusinessImplementation
         ///     Get all documents in db or with same clientId
         ///     return list with documents
         /// </summary>
-        public List<ClientConnection> GetAllClientConnections(string clientId = "")
+        public List<ClientConnection> GetClientConnections(string clientId, string responsibleClientId)
         {
-            var filterBuilder = Builders<ClientConnection>.Filter;
-            var filter = filterBuilder.Empty;
-
-            if (!string.IsNullOrEmpty(clientId))
+            if (string.IsNullOrEmpty(clientId))
             {
-                var findByclientIdFilter = Builders<ClientConnection>.Filter.Eq(x => x.ClientId, clientId);
-                filter = filter & findByclientIdFilter;
+                return new List<ClientConnection>();
             }
 
-            var clientconnections = Db.Find(filter);
+            var filter = Builders<ClientConnection>.Filter.Eq(x => x.ClientId, clientId);
+            var clientConnections = Db.Find(filter);
 
-            return clientconnections;
+            var validator = new RecordsPermissionValidator(responsibleClientId);
+            var results = validator.Validate(clientConnections.Cast<IEntityWithSensitiveData>().ToList());
+            var validationSucceeded = results.IsValid;
+
+            if (validationSucceeded)
+            {
+                return clientConnections;
+            }
+            throw new BusinessException("You don't have permissions to get client connections", results.Errors);
         }
 
         /// <summary>
         ///     Find document by Id and result it back
         /// </summary>
-        public ClientConnection GetClientConnection(string id)
+        public ClientConnection GetClientConnection(string id, string responsibleClientId)
         {
-            return Db.FindOneById<ClientConnection>(id);
+            var clientConnection = Db.FindOneById<ClientConnection>(id);
+            if (clientConnection == null)
+            {
+                return null;
+            }
+
+            var validator = new RecordPermissionValidator(responsibleClientId);
+            var results = validator.Validate(clientConnection);
+            var validationSucceeded = results.IsValid;
+
+            if (validationSucceeded)
+            {
+                return clientConnection;
+            }
+            throw new BusinessException("You don't have permissions to get client connection", results.Errors);
         }
 
         /// <summary>
@@ -86,8 +117,17 @@ namespace BusinessImplementation
         ///    check result, it should be equal to 1
         ///    return result as bool
         /// </summary>
-        public bool DeleteClientConnection(string id)
+        public bool DeleteClientConnection(string id, string responsibleClientId)
         {
+            try
+            {
+                GetClientConnection(id, responsibleClientId);
+            }
+            catch (BusinessException e)
+            {
+                
+                throw new BusinessException("You don't have permissions to delete this client connection", e);
+            }
             var deleteResult = Db.DeleteOne<ClientConnection>(x => x.Id == ObjectId.Parse(id));
             return deleteResult.DeletedCount == 1;
         }
