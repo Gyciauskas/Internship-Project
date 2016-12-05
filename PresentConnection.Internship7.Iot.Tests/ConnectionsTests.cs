@@ -217,6 +217,135 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Connection")]
+        public void Can_get_all_connections_by_name()
+        {
+            var connection1 = new Connection
+            {
+                UniqueName = "UNdropbox",
+                Name = "Dropbox",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Url = "url1",
+                Description = "description1"
+            };
+
+            var connection2 = new Connection
+            {
+                UniqueName = "UNsendgrid",
+                Name = "SendGrid",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Url = "url2",
+                Description = "description2"
+            };
+
+            connectionService.CreateConnection(connection1);
+            connection1.ShouldNotBeNull();
+            connection1.Id.ShouldNotBeNull();
+
+            connectionService.CreateConnection(connection2);
+            connection2.ShouldNotBeNull();
+            connection2.Id.ShouldNotBeNull();
+
+            var connections = connectionService.GetAllConnections("SendGrid");
+
+            connections.ShouldBe<List<Connection>>();
+            connections.Count.ShouldEqual(1);
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Connection")]
+        public void Can_get_all_connections_by_case_insensetive_name()
+        {
+            var connection1 = new Connection
+            {
+                UniqueName = "UNdropbox",
+                Name = "Dropbox",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Url = "url1",
+                Description = "description1"
+            };
+
+            var connection2 = new Connection
+            {
+                UniqueName = "UNsendgrid",
+                Name = "SendGrid",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Url = "url2",
+                Description = "description2"
+            };
+
+            connectionService.CreateConnection(connection1);
+            connection1.ShouldNotBeNull();
+            connection1.Id.ShouldNotBeNull();
+
+            connectionService.CreateConnection(connection2);
+            connection2.ShouldNotBeNull();
+            connection2.Id.ShouldNotBeNull();
+
+            var connections = connectionService.GetAllConnections("sendgrid");
+
+            connections.ShouldBe<List<Connection>>();
+            connections.Count.ShouldEqual(1);
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Connection")]
+        public void Can_get_all_connections_by_incomplete_name()
+        {
+            var connection1 = new Connection
+            {
+                UniqueName = "UNdropbox",
+                Name = "Dropbox",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Url = "url1",
+                Description = "description1"
+            };
+
+            var connection2 = new Connection
+            {
+                UniqueName = "UNsendgrid",
+                Name = "SendGrid",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Url = "url2",
+                Description = "description2"
+            };
+
+            connectionService.CreateConnection(connection1);
+            connection1.ShouldNotBeNull();
+            connection1.Id.ShouldNotBeNull();
+
+            connectionService.CreateConnection(connection2);
+            connection2.ShouldNotBeNull();
+            connection2.Id.ShouldNotBeNull();
+
+            var connections = connectionService.GetAllConnections("Send");
+
+            connections.ShouldBe<List<Connection>>();
+            connections.Count.ShouldEqual(1);
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Connection")]
         public void Can_update_connection_to_database()
         {
             var connection = new Connection

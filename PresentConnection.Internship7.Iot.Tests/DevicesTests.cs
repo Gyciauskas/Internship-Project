@@ -242,6 +242,112 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Device")]
+        public void Can_get_all_devices_by_case_insensetive_name()
+        {
+            var device1 = new Device
+            {
+                ModelName = "Raspberry PI 3",
+                UniqueName = "raspberry-pi-3",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                }
+            };
+
+            var device2 = new Device
+            {
+                ModelName = "Device 2",
+                UniqueName = "device-2",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                }
+            };
+
+            var device3 = new Device
+            {
+                ModelName = "Device 3",
+                UniqueName = "device-3",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                }
+            };
+
+            deviceService.CreateDevice(device1);
+            device1.ShouldNotBeNull();
+            device1.Id.ShouldNotBeNull();
+
+            deviceService.CreateDevice(device2);
+            device2.ShouldNotBeNull();
+            device2.Id.ShouldNotBeNull();
+
+            deviceService.CreateDevice(device3);
+            device3.ShouldNotBeNull();
+            device3.Id.ShouldNotBeNull();
+
+            var devices = deviceService.GetAllDevices("device 3");
+
+            devices.ShouldBe<List<Device>>();
+            devices.Count.ShouldEqual(1);
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Device")]
+        public void Can_get_all_devices_by_incomplete_name()
+        {
+            var device1 = new Device
+            {
+                ModelName = "Raspberry PI 3",
+                UniqueName = "raspberry-pi-3",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                }
+            };
+
+            var device2 = new Device
+            {
+                ModelName = "Device 2",
+                UniqueName = "device-2",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                }
+            };
+
+            var device3 = new Device
+            {
+                ModelName = "Device 3",
+                UniqueName = "device-3",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                }
+            };
+
+            deviceService.CreateDevice(device1);
+            device1.ShouldNotBeNull();
+            device1.Id.ShouldNotBeNull();
+
+            deviceService.CreateDevice(device2);
+            device2.ShouldNotBeNull();
+            device2.Id.ShouldNotBeNull();
+
+            deviceService.CreateDevice(device3);
+            device3.ShouldNotBeNull();
+            device3.Id.ShouldNotBeNull();
+
+            var devices = deviceService.GetAllDevices("device");
+
+            devices.ShouldBe<List<Device>>();
+            devices.Count.ShouldEqual(2);
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Device")]
         public void Can_update_device_to_database()
         {
             var device = new Device

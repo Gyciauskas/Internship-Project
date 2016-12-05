@@ -59,7 +59,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
             if (!string.IsNullOrEmpty(name))
             {
-                var findByNameFilter = Builders<Component>.Filter.Eq(x => x.ModelName, name);
+                var findByNameFilter = Builders<Component>.Filter.Regex(x => x.ModelName, new BsonRegularExpression(name, "i"));
                 filter = filter & findByNameFilter;
             }
 
