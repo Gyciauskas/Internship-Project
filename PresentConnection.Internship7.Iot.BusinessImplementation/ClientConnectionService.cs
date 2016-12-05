@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PresentConnection.Internship7.Iot.Utils;
 using PresentConnection.Internship7.Iot.BusinessContracts;
+using PresentConnection.Internship7.Iot.BusinessImplementation;
 
 namespace BusinessImplementation
 {
@@ -27,10 +28,18 @@ namespace BusinessImplementation
             if (validationSucceeded)
             {
                 Db.InsertOne(clientconnection);
+
+                // Create and insert dashboard to db
+                IDashboardService dashboardService = new DashboardService();
+
+                var dashboard = new Dashboard { ClientId = clientconnection.ClientId };
+
+                // To pass validation, I have to put to dashboard ClientId.
+                dashboardService.UpdateDashboard(dashboard);
             }
             else
             {
-                throw new BusinessException("Cannot create client connection", results.Errors);
+                throw new BusinessException("Couldn't create client connection", results.Errors);
             }
         }
 
@@ -61,7 +70,7 @@ namespace BusinessImplementation
             }
             else
             {
-                throw new BusinessException("Cannot update client connection", results.Errors);
+                throw new BusinessException("Couldn't update client connection", results.Errors);
             }
         }
 
