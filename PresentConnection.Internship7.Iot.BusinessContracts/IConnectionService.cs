@@ -8,7 +8,7 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
         void CreateConnection(Connection connection);
         void UpdateConnection(Connection connection);
         bool DeleteConnection(string id);
-        List<Connection> GetAllConnections();
+        List<Connection> GetAllConnections(string name = "");
         Connection GetConnection(string id);
     }
 }

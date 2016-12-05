@@ -137,19 +137,19 @@ namespace PresentConnection.Internship7.Iot.Tests
             var component1 = new Component
             {
                 ModelName = "WiFi Adapter",
-                UniqueName = "raspberry-pi-adapter",
+                UniqueName = "raspberry-pi-wifi-adapter",
             };
 
             var component2 = new Component
             {
                 ModelName = "Display",
-                UniqueName = "raspberry-pi-adapter",
+                UniqueName = "raspberry-pi-display",
             };
 
             var component3 = new Component
             {
                 ModelName = "Camera",
-                UniqueName = "raspberry-pi-adapter",
+                UniqueName = "raspberry-pi-camera",
             };
 
 
@@ -165,7 +165,91 @@ namespace PresentConnection.Internship7.Iot.Tests
             component3.ShouldNotBeNull();
             component3.Id.ShouldNotBeNull();
 
-            var components = componentService.GetAllComponents("Display");
+            var components = componentService.GetAllComponents("WiFi Adapter");
+
+            components.ShouldBe<List<Component>>();
+            components.Count.ShouldEqual(1);
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Component")]
+        public void Can_get_all_components_by_case_insensetive_name()
+        {
+            var component1 = new Component
+            {
+                ModelName = "WiFi Adapter",
+                UniqueName = "raspberry-pi-wifi-adapter",
+            };
+
+            var component2 = new Component
+            {
+                ModelName = "Display",
+                UniqueName = "raspberry-pi-display",
+            };
+
+            var component3 = new Component
+            {
+                ModelName = "Camera",
+                UniqueName = "raspberry-pi-camera",
+            };
+
+
+            componentService.CreateComponent(component1);
+            component1.ShouldNotBeNull();
+            component1.Id.ShouldNotBeNull();
+
+            componentService.CreateComponent(component2);
+            component2.ShouldNotBeNull();
+            component2.Id.ShouldNotBeNull();
+
+            componentService.CreateComponent(component3);
+            component3.ShouldNotBeNull();
+            component3.Id.ShouldNotBeNull();
+
+            var components = componentService.GetAllComponents("display");
+
+            components.ShouldBe<List<Component>>();
+            components.Count.ShouldEqual(1);
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Component")]
+        public void Can_get_all_components_by_incomplete_name()
+        {
+            var component1 = new Component
+            {
+                ModelName = "WiFi Adapter",
+                UniqueName = "raspberry-pi-wifi-adapter",
+            };
+
+            var component2 = new Component
+            {
+                ModelName = "Display",
+                UniqueName = "raspberry-pi-display",
+            };
+
+            var component3 = new Component
+            {
+                ModelName = "Camera",
+                UniqueName = "raspberry-pi-camera",
+            };
+
+
+            componentService.CreateComponent(component1);
+            component1.ShouldNotBeNull();
+            component1.Id.ShouldNotBeNull();
+
+            componentService.CreateComponent(component2);
+            component2.ShouldNotBeNull();
+            component2.Id.ShouldNotBeNull();
+
+            componentService.CreateComponent(component3);
+            component3.ShouldNotBeNull();
+            component3.Id.ShouldNotBeNull();
+
+            var components = componentService.GetAllComponents("displ");
 
             components.ShouldBe<List<Component>>();
             components.Count.ShouldEqual(1);

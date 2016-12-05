@@ -48,9 +48,19 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             return deleteResult.DeletedCount == 1;
         }
 
-        public List<Connection> GetAllConnections()
+        public List<Connection> GetAllConnections(string name= "")
         {
-            return Db.Find(Builders<Connection>.Filter.Empty);
+            var filterBuilder = Builders<Connection>.Filter;
+            var filter = filterBuilder.Empty;
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                var findByNameFilter = Builders<Connection>.Filter.Regex(x => x.Name, new BsonRegularExpression(name, "i"));
+                filter = filter & findByNameFilter;
+            }
+
+            var connections = Db.Find(filter);
+            return connections;
         }
 
         public Connection GetConnection(string id)
