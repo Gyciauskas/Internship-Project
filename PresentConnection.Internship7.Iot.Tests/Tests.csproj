@@ -135,6 +135,14 @@
       <Project>{4cea827c-9f55-4a5d-9cfc-6da307ff132e}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PresentConnection.Internship7.Iot.ServiceModels\ServiceModels.csproj">
+      <Project>{53e82ac1-dd1d-4c66-b55f-f9f4acfb2f40}</Project>
+      <Name>ServiceModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PresentConnection.Internship7.Iot.Services\Services.csproj">
+      <Project>{801a0f89-d5f6-49a6-bcea-6624388c98a4}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PresentConnection.Internship7.Iot.Utils\Utils.csproj">
       <Project>{a7016afa-c2d5-4251-b7d7-c5015b6a001b}</Project>
       <Name>Utils</Name>
