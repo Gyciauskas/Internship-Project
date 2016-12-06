@@ -72,7 +72,31 @@ namespace PresentConnection.Internship7.Iot.Tests
             exception.Message.ShouldEqual("Cannot create client device");
             
         }
-        
+
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.ClientDevice")]
+        public void Device_status_constrains()
+        {
+            var userDevice = new ClientDevice
+            {
+                ClientId = "OtherClientId",
+                DeviceId = "11111",
+                DeviceDisplayId = "Lukas11111",
+                Latitude = "10",
+                Longitude = "20",
+                AuthKey1 = Guid.NewGuid().ToString(),
+                AuthKey2 = Guid.NewGuid().ToString(),
+            };
+
+            userDevice.DeviceStatuses.Clear();
+            userDevice.DeviceStatuses.Add(DeviceStatus.Connected);
+            userDevice.DeviceStatuses.Count.ShouldEqual(1);
+           
+
+        }
+
 
         [Test]
         [Category("Iot")]
