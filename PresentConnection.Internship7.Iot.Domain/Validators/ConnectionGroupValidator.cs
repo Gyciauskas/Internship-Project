@@ -12,7 +12,9 @@ namespace PresentConnection.Internship7.Iot.Domain
         public ConnectionGroupValidator()
         {
             RuleFor(r => r.UniqueName).NotEmpty();
+            RuleFor(x => x).UniqueNameIsInCorrectFormatAndUnique();
             RuleFor(r => r.Name).NotEmpty();
+            RuleFor(r => r.Images).MustContainAtLeastOneItem();
         }
     }
 }

@@ -186,6 +186,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             (devices.Count > 0).ShouldBeTrue();
         }
 
+
+
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Device")]
