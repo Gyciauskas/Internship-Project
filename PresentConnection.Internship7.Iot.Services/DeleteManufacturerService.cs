@@ -10,9 +10,11 @@ namespace PresentConnection.Internship7.Iot.Services
 
         public DeleteManufacturerResponse Any(DeleteManufacturer request)
         {
-            var response = new DeleteManufacturerResponse();
-
-            ManufacturerService.DeleteManufacturer(request.Id);
+            var response = new DeleteManufacturerResponse
+            {
+                IsDeleted = ManufacturerService.DeleteManufacturer(request.Id)
+            };
+            
             return response;
         }
     }

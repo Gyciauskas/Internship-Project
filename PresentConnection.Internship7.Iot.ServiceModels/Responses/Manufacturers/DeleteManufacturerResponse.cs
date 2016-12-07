@@ -2,5 +2,6 @@
 {
     public class DeleteManufacturerResponse
     {
+        public bool IsDeleted { get; set; }
     }
 }
