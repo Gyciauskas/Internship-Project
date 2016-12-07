@@ -13,11 +13,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new UpdateDeviceResponse();
 
-            var device = new Device
-            {
-                ModelName = request.ModelName,
-                UniqueName = request.UniqueName
-            }.PopulateWithNonDefaultValues(request);
+            var device = DeviceService.GetDevice(request.Id).PopulateWith(request);
 
             // Temporary because it's ignored then object is serialized but is used in validation
             // so I have to add it if I want to test 
