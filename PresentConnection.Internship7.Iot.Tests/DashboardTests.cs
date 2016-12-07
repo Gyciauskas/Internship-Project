@@ -62,30 +62,9 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("Iot")]
         [Category("IntegrationTests.Dashboard")]
 
-        public void Cannot_insert_dashboard_to_database_when_widgetType_is_NotSet()
+        public void Cannot_insert_dashboard_to_database_when_clientId_is_NotSet()
         {
-
-            Widget widget = new Widget();
-            
-            
-            widget.Query = "test";
-            widget.WidgetType = WidgetType.NotSet;
-
-
-            widget.Configuration = new Dictionary<string, object>();
-            widget.Configuration.Add("test", "test");
-
-
-            List<Widget> widgets = new List<Widget>();
-            widgets.Add(widget);
-
-
-            var dashboard = new Dashboard()
-            {
-                ClientId = "8",
-                Widgets = widgets
-
-            };
+            var dashboard = new Dashboard();
 
             typeof(BusinessException).ShouldBeThrownBy(() => dashboardService.UpdateDashboard(dashboard));
         }
