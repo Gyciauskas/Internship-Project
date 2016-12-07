@@ -5,18 +5,27 @@
       <sourceFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.BusinessContracts" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Domain" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Services" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Tests" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Utils" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.WebApp" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.BusinessContracts/bin" />
       <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.BusinessContracts/obj" />
       <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation/bin" />
       <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation/obj" />
       <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Domain/bin" />
       <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Domain/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Services/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Services/obj" />
       <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Tests/bin" />
       <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Tests/obj" />
       <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Utils/bin" />
       <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.Utils/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.WebApp/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../PresentConnection.Internship7.Iot.WebApp/obj" />
       <excludeFolder url="file://$MODULE_DIR$/../../packages" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
