@@ -84,9 +84,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateDeviceService.cs" />
     <Compile Include="CreateManufacturerService.cs" />
+    <Compile Include="DeleteDeviceService.cs" />
+    <Compile Include="GetDeviceService.cs" />
+    <Compile Include="GetDevicesService.cs" />
     <Compile Include="GetManufacturersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateDeviceService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

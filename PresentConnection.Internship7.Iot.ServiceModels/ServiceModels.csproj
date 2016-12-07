@@ -75,8 +75,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Requests\Devices\CreateDevice.cs" />
+    <Compile Include="Requests\Devices\DeleteDevice.cs" />
+    <Compile Include="Requests\Devices\GetDevice.cs" />
+    <Compile Include="Requests\Devices\GetDevices.cs" />
+    <Compile Include="Requests\Devices\UpdateDevice.cs" />
     <Compile Include="Requests\Manufacturers\CreateManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\GetManufacturers.cs" />
+    <Compile Include="Responses\Devices\CreateDeviceResponse.cs" />
+    <Compile Include="Responses\Devices\DeleteDeviceResponse.cs" />
+    <Compile Include="Responses\Devices\GetDeviceResponse.cs" />
+    <Compile Include="Responses\Devices\GetDevicesResponse.cs" />
+    <Compile Include="Responses\Devices\UpdateDeviceResponse.cs" />
     <Compile Include="Responses\Manufacturers\CreateManufacturerResponse.cs" />
     <Compile Include="Responses\Manufacturers\GetManufacturersResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
