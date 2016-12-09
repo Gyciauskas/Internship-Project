@@ -77,9 +77,19 @@
   <ItemGroup>
     <Compile Include="Requests\Manufacturers\CreateManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\GetManufacturers.cs" />
+    <Compile Include="Requests\Recipes\CreateRecipe.cs" />
+    <Compile Include="Requests\Recipes\DeleteRecipe.cs" />
+    <Compile Include="Requests\Recipes\GetRecipe.cs" />
+    <Compile Include="Requests\Recipes\GetRecipes.cs" />
+    <Compile Include="Requests\Recipes\UpdateRecipe.cs" />
     <Compile Include="Responses\Manufacturers\CreateManufacturerResponse.cs" />
     <Compile Include="Responses\Manufacturers\GetManufacturersResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Responses\Recipes\CreateRecipeResponse.cs" />
+    <Compile Include="Responses\Recipes\DeleteRecipeResponse.cs" />
+    <Compile Include="Responses\Recipes\GetRecipeResponse.cs" />
+    <Compile Include="Responses\Recipes\GetRecipesResponse.cs" />
+    <Compile Include="Responses\Recipes\UpdateRecipeResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PresentConnection.Internship7.Iot.Domain\Domain.csproj">
@@ -90,6 +100,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
