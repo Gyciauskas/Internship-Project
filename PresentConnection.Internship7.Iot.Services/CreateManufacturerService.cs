@@ -13,11 +13,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new CreateManufacturerResponse();
 
-            var manufacturer = new Manufacturer
-            {
-                Name = request.Name,
-                UniqueName = request.UniqueName
-            };
+            var manufacturer = new Manufacturer().PopulateWith(request);
             ManufacturerService.CreateManufacturer(manufacturer);
 
             return response;

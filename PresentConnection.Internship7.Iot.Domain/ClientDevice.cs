@@ -14,20 +14,20 @@ namespace PresentConnection.Internship7.Iot.Domain
             Components = new Dictionary<string, object>();
             PowerResource = new PowerResource();
             SimulationType = SimulationType.NotSet;
-            DeviceStatuses = new List<DeviceStatus> { DeviceStatus.Registered };
+            DeviceStatuses = new List<DeviceStatus>(); // { DeviceStatus.Registered };
         }
 
         public string ClientId { get; set; }
         public string DeviceId { get; set; }
         public string DeviceDisplayId { get; set; }
 
-        // when user register device but don't do real action yet
+        // when user registers device but doesn't do real action yet
         public bool IsEnabled
         {
             get { return DeviceStatuses.Last() != DeviceStatus.Unregistered; }
         }
 
-        // when user establish connection from device
+        // when user establishes connection from device
         public DeviceStatus IsConnected
         {
             get { return DeviceStatuses.Last(); }
@@ -47,11 +47,4 @@ namespace PresentConnection.Internship7.Iot.Domain
         public bool IsSimulationDevice { get; set; }
         public string CreatedBy { get; set; }
     }
-
-//    public class List<T> 
-//    {
-//    
-//
-//      
-//    }
 }
