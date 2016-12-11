@@ -75,8 +75,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Requests\Components\CreateComponent.cs" />
+    <Compile Include="Requests\Components\GetComponents.cs" />
     <Compile Include="Requests\Manufacturers\CreateManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\GetManufacturers.cs" />
+    <Compile Include="Responses\Components\CreateComponentResponse.cs" />
+    <Compile Include="Responses\Components\GetComponentsResponse.cs" />
     <Compile Include="Responses\Manufacturers\CreateManufacturerResponse.cs" />
     <Compile Include="Responses\Manufacturers\GetManufacturersResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,6 +94,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

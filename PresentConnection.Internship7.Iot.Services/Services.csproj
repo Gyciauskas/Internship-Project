@@ -84,7 +84,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateComponentService.cs" />
     <Compile Include="CreateManufacturerService.cs" />
+    <Compile Include="GetComponentsService.cs" />
     <Compile Include="GetManufacturersService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
