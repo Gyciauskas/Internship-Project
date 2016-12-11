@@ -88,6 +88,7 @@
     <Compile Include="Collaborator.cs" />
     <Compile Include="ClientRecipe.cs" />
     <Compile Include="DeviceStatus.cs" />
+    <Compile Include="IDeviceStatus.cs" />
     <Compile Include="IEntityWithSensitiveData.cs" />
     <Compile Include="IEntityWithUniqueName.cs" />
     <Compile Include="PowerResource.cs" />

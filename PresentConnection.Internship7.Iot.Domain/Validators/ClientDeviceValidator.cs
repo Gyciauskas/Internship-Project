@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using System.Collections.Generic;
+using FluentValidation;
 using CodeMash.Net;
 
 namespace PresentConnection.Internship7.Iot.Domain
@@ -17,6 +18,7 @@ namespace PresentConnection.Internship7.Iot.Domain
             RuleFor(r => r).CheckAccessPermissions(clientId);
             RuleFor(x => x).Must(ValidDeviceDisplayId).WithMessage("Name is not unique");
         }
+
         private static bool ValidDeviceDisplayId(ClientDevice clientDevice)
         {
             var clientDeviceFromDb = Db.FindOne<ClientDevice>(x => x.DeviceDisplayId == clientDevice.DeviceDisplayId);
