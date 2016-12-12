@@ -15,10 +15,6 @@ namespace PresentConnection.Internship7.Iot.Services
 
             var device = DeviceService.GetDevice(request.Id).PopulateWith(request);
 
-            // Temporary because it's ignored then object is serialized but is used in validation
-            // so I have to add it if I want to test 
-            device.Images.Add("5821dcc11e9f341d4c6d0994");
-
             DeviceService.UpdateDevice(device);
 
             return response;

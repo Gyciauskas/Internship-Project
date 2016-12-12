@@ -13,12 +13,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new CreateDeviceResponse();
 
-            var device = new Device
-            {
-                ModelName = request.ModelName,
-                UniqueName = request.UniqueName,
-                Images = request.Images
-            };
+            var device = new Device().PopulateWith(request);
             DeviceService.CreateDevice(device);
 
             return response;
