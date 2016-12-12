@@ -2,18 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e8bd68c-6dd7-44f2-8ec6-c6f447b4ec8a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Requests/Recipes/CreateRecipe.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Requests/Recipes/DeleteRecipe.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Requests/Recipes/GetRecipe.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Requests/Recipes/GetRecipes.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Requests/Recipes/UpdateRecipe.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Responses/Recipes/CreateRecipeResponse.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Responses/Recipes/DeleteRecipeResponse.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Responses/Recipes/GetRecipeResponse.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Responses/Recipes/GetRecipesResponse.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Responses/Recipes/UpdateRecipeResponse.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/CreateRecipeService.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/DeleteRecipeService.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/GetRecipeService.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/GetRecipesService.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/UpdateRecipeService.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/ComponentValidator.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/ComponentValidator.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/ConnectionGroupValidator.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/ConnectionGroupValidator.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/ConnectionValidator.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/ConnectionValidator.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/ManufacturerValidator.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/ManufacturerValidator.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/RecipeValidator.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/RecipeValidator.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ComponentsTests.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ComponentsTests.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ConnectionGroupsTests.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ConnectionGroupsTests.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ConnectionsTests.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ConnectionsTests.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/DevicesTests.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/DevicesTests.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Requests/Manufacturers/GetManufacturers.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Requests/Manufacturers/GetManufacturers.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Responses/Manufacturers/GetManufacturersResponse.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/Responses/Manufacturers/GetManufacturersResponse.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/ServiceModels.csproj" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/ServiceModels.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/CreateManufacturerService.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/CreateManufacturerService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/GetManufacturersService.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/GetManufacturersService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/Services.csproj" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/Services.csproj" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ManufacturersTests.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ManufacturersTests.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/RecipeTests.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/RecipeTests.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.WebApp/AppHost.cs" afterPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.WebApp/AppHost.cs" />
     </list>
     <ignored path="PC Internship 7.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,94 +51,91 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ConnectionsTests.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ConnectionsTests.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="334" column="0" selection-start-line="334" selection-start-column="0" selection-end-line="334" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceModels.csproj" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/ServiceModels.csproj">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="82">
+              <caret line="90" column="77" selection-start-line="90" selection-start-column="77" selection-end-line="90" selection-end-column="77" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManufacturersTests.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ManufacturersTests.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="244" column="20" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
               <folding>
-                <marker date="1481116968000" expanded="true" signature="6:313" ph="..." />
-                <marker date="1481116968000" expanded="true" signature="363:11642" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="416:11640" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="560:908" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="680:896" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="816:882" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="1054:1229" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="1408:1678" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="1867:2138" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="2314:2900" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="3077:3966" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="3205:3418" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="3338:3404" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="4156:4773" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="4990:5607" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="5744:6180" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="6316:6982" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="6444:6654" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="6574:6640" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="7126:8575" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="7192:7409" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="7329:7395" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="7467:7678" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="7598:7664" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="7736:7947" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="7867:7933" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="8721:9455" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="8786:9002" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="8922:8988" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="9648:10735" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="9775:9991" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="9911:9977" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="10883:11336" ph="{...}" />
-                <marker date="1481116968000" expanded="true" signature="11394:11633" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="6:313" ph="..." />
+                <marker date="1481554296000" expanded="true" signature="364:14260" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="420:14258" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="576:1027" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="708:1020" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="877:943" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="1179:1369" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="1550:1830" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="2017:2305" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="2487:3393" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="2630:2833" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="2753:2819" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="3589:4221" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="4444:5076" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="5258:5860" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="6003:6476" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="6618:7435" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="6761:7074" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="6931:6997" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="7585:8962" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="7729:8043" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="7900:7966" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="8109:8423" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="8280:8346" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="9129:10790" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="9203:9466" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="9532:9780" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="9846:10095" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="10952:12610" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="11026:11289" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="11355:11603" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="11669:11918" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="12763:13289" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="13443:13939" ph="{...}" />
+                <marker date="1481554296000" expanded="true" signature="13989:14252" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConnectionsTests.cs" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ConnectionsTests.cs">
+      <file leaf-file-name="ManufacturerService.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation/ManufacturerService.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="295" column="30" selection-start-line="295" selection-start-column="30" selection-end-line="295" selection-end-column="30" />
+            <state relative-caret-position="391">
+              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
               <folding>
-                <marker date="1481118132000" expanded="true" signature="6:376" ph="..." />
-                <marker date="1481118132000" expanded="true" signature="427:15145" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="481:15143" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="629:1041" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="752:1030" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="876:942" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="1189:1369" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="1552:1827" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="2005:2969" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="2138:2417" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="2263:2329" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="3161:3783" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="4002:4624" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="4810:5975" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="4942:5221" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="5067:5133" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="6152:6422" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="6600:7192" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="7368:7637" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="7821:8095" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="8234:8683" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="8821:9582" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="8954:9232" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="9078:9144" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="9728:10898" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="9796:10069" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="9913:9979" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="10129:10404" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="10248:10314" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="11061:12231" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="11129:11402" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="11246:11312" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="11462:11737" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="11581:11647" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="12388:13554" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="12456:12729" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="12573:12639" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="12789:13064" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="12908:12974" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="13702:14223" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="14373:14840" ph="{...}" />
-                <marker date="1481118132000" expanded="true" signature="14890:15137" ph="{...}" />
+                <marker date="1481116815000" expanded="true" signature="6:249" ph="..." />
+                <marker date="1481116815000" expanded="true" signature="317:2323" ph="{...}" />
+                <marker date="1481116815000" expanded="true" signature="379:2321" ph="{...}" />
+                <marker date="1481116815000" expanded="true" signature="451:889" ph="{...}" />
+                <marker date="1481116815000" expanded="true" signature="957:1433" ph="{...}" />
+                <marker date="1481116815000" expanded="true" signature="1484:1647" ph="{...}" />
+                <marker date="1481116815000" expanded="true" signature="1720:2186" ph="{...}" />
+                <marker date="1481116815000" expanded="true" signature="2242:2315" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -135,7 +144,7 @@
       <file leaf-file-name="ConectionService.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation/ConectionService.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="32">
+            <state relative-caret-position="238">
               <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <marker date="1481116815000" expanded="true" signature="6:249" ph="..." />
@@ -154,14 +163,9 @@
       <file leaf-file-name="ConnectionValidator.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/ConnectionValidator.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding>
-                <marker date="1481116825000" expanded="true" signature="6:139" ph="..." />
-                <marker date="1481116825000" expanded="true" signature="191:657" ph="{...}" />
-                <marker date="1481116825000" expanded="true" signature="262:655" ph="{...}" />
-                <marker date="1481116825000" expanded="true" signature="305:649" ph="{...}" />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -173,7 +177,6 @@
               <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
               <folding>
                 <marker date="1481113595000" expanded="true" signature="6:77" ph="..." />
-                <marker date="1481113595000" expanded="true" signature="129:1380" ph="{...}" />
                 <marker date="1481113595000" expanded="true" signature="175:1378" ph="{...}" />
                 <marker date="1481113595000" expanded="true" signature="331:442" ph="{...}" />
                 <marker date="1481113595000" expanded="true" signature="636:738" ph="{...}" />
@@ -187,7 +190,7 @@
       <file leaf-file-name="UniqueNameValidator.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/Common/UniqueNameValidator.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
+            <state relative-caret-position="369">
               <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <marker date="1481113595000" expanded="true" signature="6:93" ph="..." />
@@ -203,35 +206,9 @@
       <file leaf-file-name="ClientConnectionsTests.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ClientConnectionsTests.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="270" column="20" selection-start-line="270" selection-start-column="20" selection-end-line="270" selection-end-column="20" />
-              <folding>
-                <marker date="1481116815000" expanded="true" signature="6:363" ph="..." />
-                <marker date="1481116815000" expanded="true" signature="414:12037" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="456:12035" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="670:1115" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="988:1104" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="1276:1523" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="1726:2340" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="2535:2782" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="2981:3231" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="3383:3930" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="4081:4925" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="4163:4279" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="5088:6337" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="5200:5316" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="5390:5507" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="6493:8017" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="6605:6721" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="6795:6912" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="8178:8836" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="8994:10009" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="9263:9422" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="10172:10576" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="10734:11372" ph="{...}" />
-                <marker date="1481116815000" expanded="true" signature="11382:11504" ph="/* After every test, delete all records from db ... */" />
-                <marker date="1481116815000" expanded="true" signature="11553:12029" ph="{...}" />
-              </folding>
+            <state relative-caret-position="3077">
+              <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -248,13 +225,17 @@
         <option value="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/Common/ValidatorExtensions.cs" />
         <option value="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/ConnectionValidator.cs" />
         <option value="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ConnectionsTests.cs" />
+        <option value="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/ServiceModels.csproj" />
+        <option value="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/Services.csproj" />
+        <option value="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ManufacturersTests.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
-    <option name="width" value="1280" />
-    <option name="height" value="736" />
+    <option name="x" value="329" />
+    <option name="y" value="140" />
+    <option name="width" value="1608" />
+    <option name="height" value="1113" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -341,11 +322,12 @@
       <workItem from="1480586194930" duration="1327000" />
       <workItem from="1481115502066" duration="284000" />
       <workItem from="1481117252406" duration="903000" />
+      <workItem from="1481553357400" duration="862000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2710000" />
+    <option name="totallyTimeSpent" value="3572000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -357,23 +339,23 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1280" height="736" extended-state="6" />
+    <frame x="329" y="140" width="1608" height="1113" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Errors in solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.504644" sideWeight="0.51941746" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.427175" sideWeight="0.20332481" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942328" sideWeight="0.49744245" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UnitTesting" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.504644" sideWeight="0.48058254" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="UnitTesting" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.427175" sideWeight="0.7966752" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Change Signature" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25809062" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20716113" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4117647" sideWeight="0.48058254" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4115347" sideWeight="0.47570333" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -389,11 +371,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ConnectionsTests.cs</url>
-          <line>327</line>
-          <properties startOffset="11752" endOffset="11800" documentPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ConnectionsTests.cs" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ConnectionsTests.cs</url>
           <line>303</line>
@@ -430,8 +407,14 @@
           <properties startOffset="704" endOffset="865" documentPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/Common/UniqueNameValidator.cs" />
           <option name="timeStamp" value="7" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation/ManufacturerService.cs</url>
+          <line>24</line>
+          <properties startOffset="791" endOffset="865" documentPath="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation/ManufacturerService.cs" />
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -440,42 +423,85 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ConnectionsTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation/ConectionService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
-            <marker date="1481116968000" expanded="true" signature="6:313" ph="..." />
-            <marker date="1481116968000" expanded="true" signature="363:11642" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="416:11640" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="560:908" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="680:896" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="816:882" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="1054:1229" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="1408:1678" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="1867:2138" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="2314:2900" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="3077:3966" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="3205:3418" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="3338:3404" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="4156:4773" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="4990:5607" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="5744:6180" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="6316:6982" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="6444:6654" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="6574:6640" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7126:8575" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7192:7409" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7329:7395" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7467:7678" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7598:7664" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7736:7947" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7867:7933" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="8721:9455" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="8786:9002" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="8922:8988" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="9648:10735" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="9775:9991" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="9911:9977" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="10883:11336" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="11394:11633" ph="{...}" />
+            <marker date="1481116815000" expanded="true" signature="6:249" ph="..." />
+            <marker date="1481116815000" expanded="true" signature="317:2264" ph="{...}" />
+            <marker date="1481116815000" expanded="true" signature="374:2262" ph="{...}" />
+            <marker date="1481116815000" expanded="true" signature="440:870" ph="{...}" />
+            <marker date="1481116815000" expanded="true" signature="931:1397" ph="{...}" />
+            <marker date="1481116815000" expanded="true" signature="1446:1607" ph="{...}" />
+            <marker date="1481116815000" expanded="true" signature="1675:2133" ph="{...}" />
+            <marker date="1481116815000" expanded="true" signature="2185:2256" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/ConnectionValidator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/Common/ValidatorExtensions.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+          <folding>
+            <marker date="1481113595000" expanded="true" signature="6:77" ph="..." />
+            <marker date="1481113595000" expanded="true" signature="175:1378" ph="{...}" />
+            <marker date="1481113595000" expanded="true" signature="331:442" ph="{...}" />
+            <marker date="1481113595000" expanded="true" signature="636:738" ph="{...}" />
+            <marker date="1481113595000" expanded="true" signature="934:1047" ph="{...}" />
+            <marker date="1481113595000" expanded="true" signature="1255:1372" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/Common/UniqueNameValidator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <marker date="1481113595000" expanded="true" signature="6:93" ph="..." />
+            <marker date="1481113595000" expanded="true" signature="145:1151" ph="{...}" />
+            <marker date="1481113595000" expanded="true" signature="240:1149" ph="{...}" />
+            <marker date="1481113595000" expanded="true" signature="383:404" ph="{...}" />
+            <marker date="1481113595000" expanded="true" signature="480:1143" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ClientConnectionsTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4590">
+          <caret line="270" column="0" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ComponentsTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -504,13 +530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ManufacturersTests.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -553,76 +572,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1481116968000" expanded="true" signature="6:313" ph="..." />
-            <marker date="1481116968000" expanded="true" signature="363:11642" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="416:11640" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="560:908" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="680:896" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="816:882" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="1054:1229" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="1408:1678" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="1867:2138" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="2314:2900" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="3077:3966" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="3205:3418" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="3338:3404" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="4156:4773" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="4990:5607" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="5744:6180" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="6316:6982" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="6444:6654" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="6574:6640" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7126:8575" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7192:7409" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7329:7395" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7467:7678" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7598:7664" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7736:7947" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="7867:7933" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="8721:9455" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="8786:9002" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="8922:8988" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="9648:10735" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="9775:9991" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="9911:9977" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="10883:11336" ph="{...}" />
-            <marker date="1481116968000" expanded="true" signature="11394:11633" ph="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ClientConnectionsTests.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="270" column="20" selection-start-line="270" selection-start-column="20" selection-end-line="270" selection-end-column="20" />
-          <folding>
-            <marker date="1481116815000" expanded="true" signature="6:363" ph="..." />
-            <marker date="1481116815000" expanded="true" signature="414:12037" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="456:12035" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="670:1115" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="988:1104" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="1276:1523" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="1726:2340" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="2535:2782" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="2981:3231" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="3383:3930" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="4081:4925" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="4163:4279" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="5088:6337" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="5200:5316" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="5390:5507" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="6493:8017" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="6605:6721" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="6795:6912" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="8178:8836" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="8994:10009" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="9263:9422" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="10172:10576" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="10734:11372" ph="{...}" />
-            <marker date="1481116815000" expanded="true" signature="11382:11504" ph="/* After every test, delete all records from db ... */" />
-            <marker date="1481116815000" expanded="true" signature="11553:12029" ph="{...}" />
-          </folding>
+        <state relative-caret-position="3077">
+          <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -630,26 +588,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-          <folding>
-            <marker date="1481113595000" expanded="true" signature="6:53" ph="..." />
-            <marker date="1481113595000" expanded="true" signature="105:801" ph="{...}" />
-            <marker date="1481113595000" expanded="true" signature="225:799" ph="{...}" />
-            <marker date="1481113595000" expanded="true" signature="259:369" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/Common/UniqueNameValidator.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <marker date="1481113595000" expanded="true" signature="6:93" ph="..." />
-            <marker date="1481113595000" expanded="true" signature="145:1151" ph="{...}" />
-            <marker date="1481113595000" expanded="true" signature="240:1149" ph="{...}" />
-            <marker date="1481113595000" expanded="true" signature="383:404" ph="{...}" />
-            <marker date="1481113595000" expanded="true" signature="480:1143" ph="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -659,7 +597,6 @@
           <caret line="15" column="50" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
           <folding>
             <marker date="1481113595000" expanded="true" signature="6:77" ph="..." />
-            <marker date="1481113595000" expanded="true" signature="129:1380" ph="{...}" />
             <marker date="1481113595000" expanded="true" signature="175:1378" ph="{...}" />
             <marker date="1481113595000" expanded="true" signature="331:442" ph="{...}" />
             <marker date="1481113595000" expanded="true" signature="636:738" ph="{...}" />
@@ -671,20 +608,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/ConnectionValidator.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <marker date="1481116825000" expanded="true" signature="6:139" ph="..." />
-            <marker date="1481116825000" expanded="true" signature="191:657" ph="{...}" />
-            <marker date="1481116825000" expanded="true" signature="262:655" ph="{...}" />
-            <marker date="1481116825000" expanded="true" signature="305:649" ph="{...}" />
-          </folding>
+        <state relative-caret-position="255">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation/ConectionService.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
+        <state relative-caret-position="238">
           <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <marker date="1481116815000" expanded="true" signature="6:249" ph="..." />
@@ -702,50 +634,98 @@
     <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ConnectionsTests.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="258">
-          <caret line="295" column="30" selection-start-line="295" selection-start-column="30" selection-end-line="295" selection-end-column="30" />
+          <caret line="334" column="0" selection-start-line="334" selection-start-column="0" selection-end-line="334" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/Services.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.ServiceModels/ServiceModels.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="82">
+          <caret line="90" column="77" selection-start-line="90" selection-start-column="77" selection-end-line="90" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Domain/Validators/Common/UniqueNameValidator.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
-            <marker date="1481118132000" expanded="true" signature="6:376" ph="..." />
-            <marker date="1481118132000" expanded="true" signature="427:15145" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="481:15143" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="629:1041" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="752:1030" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="876:942" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="1189:1369" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="1552:1827" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="2005:2969" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="2138:2417" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="2263:2329" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="3161:3783" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="4002:4624" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="4810:5975" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="4942:5221" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="5067:5133" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="6152:6422" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="6600:7192" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="7368:7637" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="7821:8095" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="8234:8683" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="8821:9582" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="8954:9232" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="9078:9144" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="9728:10898" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="9796:10069" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="9913:9979" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="10129:10404" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="10248:10314" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="11061:12231" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="11129:11402" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="11246:11312" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="11462:11737" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="11581:11647" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="12388:13554" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="12456:12729" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="12573:12639" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="12789:13064" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="12908:12974" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="13702:14223" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="14373:14840" ph="{...}" />
-            <marker date="1481118132000" expanded="true" signature="14890:15137" ph="{...}" />
+            <marker date="1481113595000" expanded="true" signature="6:93" ph="..." />
+            <marker date="1481113595000" expanded="true" signature="145:1151" ph="{...}" />
+            <marker date="1481113595000" expanded="true" signature="240:1149" ph="{...}" />
+            <marker date="1481113595000" expanded="true" signature="383:404" ph="{...}" />
+            <marker date="1481113595000" expanded="true" signature="480:1143" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation/ManufacturerService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding>
+            <marker date="1481116815000" expanded="true" signature="6:249" ph="..." />
+            <marker date="1481116815000" expanded="true" signature="317:2323" ph="{...}" />
+            <marker date="1481116815000" expanded="true" signature="379:2321" ph="{...}" />
+            <marker date="1481116815000" expanded="true" signature="451:889" ph="{...}" />
+            <marker date="1481116815000" expanded="true" signature="957:1433" ph="{...}" />
+            <marker date="1481116815000" expanded="true" signature="1484:1647" ph="{...}" />
+            <marker date="1481116815000" expanded="true" signature="1720:2186" ph="{...}" />
+            <marker date="1481116815000" expanded="true" signature="2242:2315" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ManufacturersTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="244" column="20" selection-start-line="244" selection-start-column="20" selection-end-line="244" selection-end-column="20" />
+          <folding>
+            <marker date="1481554296000" expanded="true" signature="6:313" ph="..." />
+            <marker date="1481554296000" expanded="true" signature="364:14260" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="420:14258" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="576:1027" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="708:1020" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="877:943" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="1179:1369" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="1550:1830" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="2017:2305" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="2487:3393" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="2630:2833" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="2753:2819" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="3589:4221" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="4444:5076" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="5258:5860" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="6003:6476" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="6618:7435" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="6761:7074" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="6931:6997" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="7585:8962" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="7729:8043" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="7900:7966" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="8109:8423" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="8280:8346" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="9129:10790" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="9203:9466" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="9532:9780" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="9846:10095" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="10952:12610" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="11026:11289" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="11355:11603" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="11669:11918" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="12763:13289" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="13443:13939" ph="{...}" />
+            <marker date="1481554296000" expanded="true" signature="13989:14252" ph="{...}" />
           </folding>
         </state>
       </provider>

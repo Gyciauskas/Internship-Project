@@ -14,6 +14,7 @@ namespace PresentConnection.Internship7.Iot.Services
             {
                 Manufacturers = ManufacturerService.GetAllManufacturers(request.Name)
             };
+
             return response;
         }
     }

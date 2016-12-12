@@ -9,7 +9,6 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
         {
             Manufacturers = new List<Manufacturer>();
         }
-        public List<Manufacturer> Manufacturers { get; set; }
-        
+        public List<Manufacturer> Manufacturers { get; set; }      
     }
 }
