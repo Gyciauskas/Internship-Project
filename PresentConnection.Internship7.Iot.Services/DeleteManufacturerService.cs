@@ -4,17 +4,17 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class GetManufacturersService : Service
+    public class DeleteManufacturerService : Service
     {
         public IManufacturerService ManufacturerService { get; set; }
 
-        public GetManufacturersResponse Any(GetManufacturers request)
+        public DeleteManufacturerResponse Any(DeleteManufacturer request)
         {
-            var response = new GetManufacturersResponse
+            var response = new DeleteManufacturerResponse
             {
-                Manufacturers = ManufacturerService.GetAllManufacturers(request.Name)
+                IsDeleted = ManufacturerService.DeleteManufacturer(request.Id)
             };
-
+            
             return response;
         }
     }

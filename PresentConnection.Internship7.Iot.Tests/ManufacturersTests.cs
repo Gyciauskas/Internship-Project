@@ -250,7 +250,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Description = "...",
                 IsVisible = true,
                 UniqueName = "raspberry-pi",
-                Url = "raspberry-pi"
+                Url = "raspberry-pi",
+                Images = new List<string> { "Image1" }
             };
 
             var manufacturer2 = new Manufacturer()
@@ -259,7 +260,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Description = "...",
                 IsVisible = true,
                 UniqueName = "arduino",
-                Url = "arduino"
+                Url = "arduino",
+                Images = new List<string> { "Image1" }
             };
 
             var manufacturer3 = new Manufacturer()
@@ -267,8 +269,9 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "My Manufacturer",
                 Description = "...",
                 IsVisible = true,
-                UniqueName = "my manu",
-                Url = ""
+                UniqueName = "my-manu",
+                Url = "",
+                Images = new List<string> { "Image1" }
             };
 
             manufacturerService.CreateManufacturer(manufacturer1);
@@ -302,7 +305,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Description = "...",
                 IsVisible = true,
                 UniqueName = "raspberry-pi",
-                Url = "raspberry-pi"
+                Url = "raspberry-pi",
+                Images = new List<string> { "Image1" }
             };
 
             var manufacturer2 = new Manufacturer()
@@ -311,7 +315,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Description = "...",
                 IsVisible = true,
                 UniqueName = "arduino",
-                Url = "arduino"
+                Url = "arduino",
+                Images = new List<string> { "Image1" }
             };
 
             var manufacturer3 = new Manufacturer()
@@ -319,8 +324,9 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "My Manufacturer",
                 Description = "...",
                 IsVisible = true,
-                UniqueName = "my manu",
-                Url = ""
+                UniqueName = "my-manu",
+                Url = "",
+                Images = new List<string> { "Image1" }
             };
 
             manufacturerService.CreateManufacturer(manufacturer1);

@@ -4,17 +4,16 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class GetManufacturersService : Service
+    public class GetManufacturerService : Service
     {
         public IManufacturerService ManufacturerService { get; set; }
 
-        public GetManufacturersResponse Any(GetManufacturers request)
+        public GetManufacturerResponse Any(GetManufacturer request)
         {
-            var response = new GetManufacturersResponse
+            var response = new GetManufacturerResponse
             {
-                Manufacturers = ManufacturerService.GetAllManufacturers(request.Name)
+                Manufacturer = ManufacturerService.GetManufacturer(request.Id)
             };
-
             return response;
         }
     }

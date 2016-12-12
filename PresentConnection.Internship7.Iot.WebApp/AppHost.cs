@@ -57,6 +57,7 @@ namespace PresentConnection.Internship7.Iot.WebApp
             // reusable services
 
             container.Register<IManufacturerService>(new ManufacturerService());
+            container.Register<IRecipeService>(new RecipeService());
             container.Register<IComponentService>(new ComponentService());
 
             // Caching

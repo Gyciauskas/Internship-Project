@@ -5,21 +5,21 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class CreateManufacturerService : Service
+    public class CreateRecipeService : Service
     {
-        public IManufacturerService ManufacturerService { get; set; }
+        public IRecipeService RecipeService { get; set; }
 
-        public CreateManufacturerResponse Any(CreateManufacturer request)
+        public CreateRecipeResponse Any(CreateRecipe request)
         {
-            var response = new CreateManufacturerResponse();
+            var response = new CreateRecipeResponse();
 
-            var manufacturer = new Manufacturer
+            var recipe = new Recipe
             {
                 Name = request.Name,
                 UniqueName = request.UniqueName
             };
 
-            ManufacturerService.CreateManufacturer(manufacturer);
+            RecipeService.CreateRecipe(recipe);
 
             return response;
         }
