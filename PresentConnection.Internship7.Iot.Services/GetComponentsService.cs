@@ -11,9 +11,9 @@ namespace PresentConnection.Internship7.Iot.Services
         public GetComponentsResponse Any(GetComponents request)
         {
             var response = new GetComponentsResponse
-             {
-             Components = ComponentService.GetAllComponents(request.ModelName)
-             };
+            {
+                Components = ComponentService.GetAllComponents(request.ModelName)
+            };
             return response;
         }
     }
