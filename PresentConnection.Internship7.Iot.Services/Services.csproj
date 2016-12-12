@@ -89,9 +89,17 @@
     <Compile Include="DeleteDeviceService.cs" />
     <Compile Include="GetDeviceService.cs" />
     <Compile Include="GetDevicesService.cs" />
+    <Compile Include="DeleteManufacturerService.cs" />
+    <Compile Include="GetManufacturerService.cs" />
+    <Compile Include="CreateRecipeService.cs" />
+    <Compile Include="DeleteRecipeService.cs" />
     <Compile Include="GetManufacturersService.cs" />
+    <Compile Include="GetRecipeService.cs" />
+    <Compile Include="GetRecipesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UpdateDeviceService.cs" />
+    <Compile Include="UpdateManufacturerService.cs" />
+    <Compile Include="UpdateRecipeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
