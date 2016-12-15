@@ -12,7 +12,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new UpdateConnectionResponse();
 
-            var connection = ConnectionService.GetConnection(request.Id);
+            var connection = ConnectionService.GetConnection(request.Id).PopulateWith(request);
 
             ConnectionService.UpdateConnection(connection);
 

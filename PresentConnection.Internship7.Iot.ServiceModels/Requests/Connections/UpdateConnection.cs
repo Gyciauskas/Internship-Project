@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    [Route("/connections", "PUT", Summary = "Update connection")]
+    [Route("/connections/{Id}", "PUT", Summary = "Update connection")]
     public class UpdateConnection : IReturn<UpdateConnectionResponse>
     {
         public string UniqueName { get; set; }

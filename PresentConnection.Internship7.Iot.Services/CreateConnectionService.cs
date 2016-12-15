@@ -12,14 +12,8 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new CreateConnectionResponse();
 
-            var connection = new Connection
-            {
-                Name = request.Name,
-                UniqueName = request.UniqueName,
-                Images = request.Images,
-                Url = request.Url,
-                Description = request.Description
-            };
+            var connection = new Connection().PopulateWith(request);
+
             ConnectionService.CreateConnection(connection);
             return response;
         }
