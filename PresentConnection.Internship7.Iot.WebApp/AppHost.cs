@@ -58,6 +58,7 @@ namespace PresentConnection.Internship7.Iot.WebApp
 
             container.Register<IManufacturerService>(new ManufacturerService());
             container.Register<IRecipeService>(new RecipeService());
+            container.Register<ICollaboratorService>(new CollaboratorService());
 
             // Caching
             // TODO replace with Redis when have Docker prepared

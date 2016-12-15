@@ -84,8 +84,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateCollaboratorService.cs" />
     <Compile Include="CreateManufacturerService.cs" />
+    <Compile Include="DeleteCollaboratorService.cs" />
     <Compile Include="DeleteManufacturerService.cs" />
+    <Compile Include="GetCollaboratorService.cs" />
+    <Compile Include="GetCollaboratorsService.cs" />
     <Compile Include="GetManufacturerService.cs" />
     <Compile Include="CreateRecipeService.cs" />
     <Compile Include="DeleteRecipeService.cs" />
@@ -93,6 +97,7 @@
     <Compile Include="GetRecipeService.cs" />
     <Compile Include="GetRecipesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpdateCollaboratorService.cs" />
     <Compile Include="UpdateManufacturerService.cs" />
     <Compile Include="UpdateRecipeService.cs" />
   </ItemGroup>
