@@ -67,6 +67,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -106,6 +107,7 @@
     <Compile Include="Responses\Recipes\GetRecipeResponse.cs" />
     <Compile Include="Responses\Recipes\GetRecipesResponse.cs" />
     <Compile Include="Responses\Recipes\UpdateRecipeResponse.cs" />
+    <Compile Include="Responses\ResponseBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PresentConnection.Internship7.Iot.Domain\Domain.csproj">

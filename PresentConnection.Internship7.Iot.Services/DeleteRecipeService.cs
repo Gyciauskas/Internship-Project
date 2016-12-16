@@ -12,7 +12,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new DeleteRecipeResponse
             {
-                IsDeleted = RecipeService.DeleteRecipe(request.Id)
+                Result = RecipeService.DeleteRecipe(request.Id)
             };
 
             return response;

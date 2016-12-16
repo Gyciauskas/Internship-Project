@@ -12,7 +12,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new GetRecipesResponse
             {
-                Recipes = RecipeService.GetAllRecipes(request.Name)
+                Result = RecipeService.GetAllRecipes(request.Name)
             };
 
             return response;
