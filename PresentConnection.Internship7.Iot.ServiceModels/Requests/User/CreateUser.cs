@@ -6,6 +6,6 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
     public class CreateUser : IReturn<CreateUserResponse>
     {
         public string FullName { get; set; }
-        
+        public string Email { get; set; }
     }
 }

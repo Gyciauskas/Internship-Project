@@ -84,22 +84,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateManufacturerService.cs" />
-    <Compile Include="CreateUserService.cs" />
-    <Compile Include="DeleteManufacturerService.cs" />
-    <Compile Include="DeleteUserService.cs" />
-    <Compile Include="GetManufacturerService.cs" />
-    <Compile Include="CreateRecipeService.cs" />
-    <Compile Include="DeleteRecipeService.cs" />
-    <Compile Include="GetManufacturersService.cs" />
-    <Compile Include="GetUsersService.cs" />
-    <Compile Include="GetUserService.cs" />
-    <Compile Include="GetRecipeService.cs" />
-    <Compile Include="GetRecipesService.cs" />
+    <Compile Include="Devices\CreateDeviceService.cs" />
+    <Compile Include="Manufacturers\CreateManufacturerService.cs" />
+    <Compile Include="Devices\DeleteDeviceService.cs" />
+    <Compile Include="Devices\GetDeviceService.cs" />
+    <Compile Include="Devices\GetDevicesService.cs" />
+    <Compile Include="Manufacturers\DeleteManufacturerService.cs" />
+    <Compile Include="Manufacturers\GetManufacturerService.cs" />
+    <Compile Include="Recipes\CreateRecipeService.cs" />
+    <Compile Include="Recipes\DeleteRecipeService.cs" />
+    <Compile Include="Manufacturers\GetManufacturersService.cs" />
+    <Compile Include="Recipes\GetRecipeService.cs" />
+    <Compile Include="Recipes\GetRecipesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UpdateManufacturerService.cs" />
-    <Compile Include="UpdateUserService.cs" />
-    <Compile Include="UpdateRecipeService.cs" />
+    <Compile Include="Devices\UpdateDeviceService.cs" />
+    <Compile Include="Manufacturers\UpdateManufacturerService.cs" />
+    <Compile Include="Recipes\UpdateRecipeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
