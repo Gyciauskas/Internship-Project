@@ -1,5 +1,4 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
-using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
 

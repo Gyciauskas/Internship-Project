@@ -8,7 +8,6 @@ namespace PresentConnection.Internship7.Iot.Domain
         {
             RuleFor(r => r.Email).NotEmpty();
             RuleFor(r => r.UserId).NotEmpty();
-        }
-        
+        }       
     }
 }
