@@ -2,7 +2,7 @@
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    public class UpdateDeviceResponse : ResponseBase<Device>
+    public class UpdateUserResponse : ResponseBase<User>
     {
     }
 }

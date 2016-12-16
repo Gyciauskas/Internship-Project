@@ -4,15 +4,15 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class DeleteDeviceService : Service
+    public class GetUsersService : Service
     {
-        public IDeviceService DeviceService { get; set; }
+        public IUserService UserService { get; set; }
 
-        public DeleteDeviceResponse Any(DeleteDevice request)
+        public GetUsersResponse Any(GetUsers request)
         {
-            var response = new DeleteDeviceResponse
+            var response = new GetUsersResponse
             {
-                Result = DeviceService.DeleteDevice(request.Id)
+                Result = UserService.GetAllUsers(request.FullName)
             };
 
             return response;

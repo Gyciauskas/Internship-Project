@@ -12,7 +12,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new GetDeviceResponse
             {
-                Device = DeviceService.GetDevice(request.Id)
+                Result = DeviceService.GetDevice(request.Id)
             };
             return response;
         }
