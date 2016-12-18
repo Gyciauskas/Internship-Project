@@ -12,7 +12,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new GetManufacturerResponse
             {
-                Manufacturer = ManufacturerService.GetManufacturer(request.Id)
+                Result = ManufacturerService.GetManufacturer(request.Id)
             };
             return response;
         }

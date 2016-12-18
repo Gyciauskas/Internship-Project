@@ -12,7 +12,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new DeleteCollaboratorResponse
             {
-                IsDeleted = CollaboratorService.DeleteCollaborator(request.Id)
+                Result = CollaboratorService.DeleteCollaborator(request.Id)
             };
 
             return response;

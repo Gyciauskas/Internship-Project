@@ -12,7 +12,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new DeleteManufacturerResponse
             {
-                IsDeleted = ManufacturerService.DeleteManufacturer(request.Id)
+                Result = ManufacturerService.DeleteManufacturer(request.Id)
             };
             
             return response;

@@ -91,6 +91,11 @@
     <Compile Include="Requests\Collaborators\GetCollaborator.cs" />
     <Compile Include="Requests\Collaborators\GetCollaborators.cs" />
     <Compile Include="Requests\Collaborators\UpdateCollaborator.cs" />
+    <Compile Include="Requests\Connections\CreateConnection.cs" />
+    <Compile Include="Requests\Connections\DeleteConnection.cs" />
+    <Compile Include="Requests\Connections\GetConnections.cs" />
+    <Compile Include="Requests\Connections\GetConnection.cs" />
+    <Compile Include="Requests\Connections\UpdateConnection.cs" />
     <Compile Include="Requests\Manufacturers\CreateManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\DeleteManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\GetManufacturer.cs" />
@@ -100,6 +105,11 @@
     <Compile Include="Responses\Devices\GetDeviceResponse.cs" />
     <Compile Include="Responses\Devices\GetDevicesResponse.cs" />
     <Compile Include="Responses\Devices\UpdateDeviceResponse.cs" />
+    <Compile Include="Responses\Connections\CreateConnectionResponse.cs" />
+    <Compile Include="Responses\Connections\DeleteConnectionResponse.cs" />
+    <Compile Include="Responses\Connections\GetConnectionsResponse.cs" />
+    <Compile Include="Responses\Connections\GetConnectionResponse.cs" />
+    <Compile Include="Responses\Connections\UpdateConnectionResponse.cs" />
     <Compile Include="Requests\Manufacturers\UpdateManufacturer.cs" />
     <Compile Include="Responses\User\CreateUserResponse.cs" />
     <Compile Include="Responses\User\DeleteUserResponse.cs" />

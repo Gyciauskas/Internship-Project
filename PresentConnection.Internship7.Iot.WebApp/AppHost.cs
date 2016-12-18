@@ -57,10 +57,14 @@ namespace PresentConnection.Internship7.Iot.WebApp
             // reusable services
 
             container.Register<IManufacturerService>(new ManufacturerService());
+<<<<<<< HEAD
 
             container.Register<IDeviceService>(new DeviceService());
             
 
+=======
+            container.Register<IConnectionService>(new ConectionService());
+>>>>>>> origin/REST_Connection
             container.Register<IRecipeService>(new RecipeService());
             container.Register<ICollaboratorService>(new CollaboratorService());
 

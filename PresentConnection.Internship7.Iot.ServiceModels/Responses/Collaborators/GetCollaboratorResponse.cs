@@ -2,8 +2,7 @@
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    public class GetCollaboratorResponse
+    public class GetCollaboratorResponse : ResponseBase<Collaborator>
     {
-        public Collaborator Collaborator { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new GetCollaboratorsResponse
             {
-                Collaborators = CollaboratorService.GetAllCollaborators(request.Name)
+                Result = CollaboratorService.GetAllCollaborators(request.Name)
             };
 
             return response;

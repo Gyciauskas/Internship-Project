@@ -110,6 +110,11 @@
     <Compile Include="Collaborators\GetCollaboratorService.cs" />
     <Compile Include="Collaborators\GetCollaboratorsService.cs" />
     <Compile Include="Collaborators\UpdateCollaboratorService.cs" />
+    <Compile Include="Connections\CreateConnectionService.cs" />
+    <Compile Include="Connections\DeleteConnectionService.cs" />
+    <Compile Include="Connections\GetConnectionsService.cs" />
+    <Compile Include="Connections\GetConnectonService.cs" />
+    <Compile Include="Connections\UpdateConnectionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
