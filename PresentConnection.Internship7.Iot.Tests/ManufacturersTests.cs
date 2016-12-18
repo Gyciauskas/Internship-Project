@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using NUnit.Framework;
+using System.Linq;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
@@ -12,48 +13,46 @@ namespace PresentConnection.Internship7.Iot.Tests
     public class ManufacturersTests
     {
         private IManufacturerService manufacturerService;
+        private Manufacturer goodManufacturer;
 
         [SetUp]
         public void SetUp()
         {
             manufacturerService = new ManufacturerService();
-        }
+            goodManufacturer = new Manufacturer
+            {
+                Name = "Arduino",
+                Description = "description",
+                UniqueName = "raspberry-pi-3",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Url = "url",
+                IsVisible = true
+            };
+    }
 
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Manufacturer")]
         public void Can_insert_manufacturer_to_database()
         {
-            var manufacturer = new Manufacturer()
-            {
-                Name = "Raspberry PI",
-                Description = "...",
-                IsVisible = true,
-                UniqueName = "raspberry-pi",
-                Url = "raspberry-pi"
-            };
-            manufacturerService.CreateManufacturer(manufacturer);
+            manufacturerService.CreateManufacturer(goodManufacturer);
 
-            manufacturer.ShouldNotBeNull();
-            manufacturer.Id.ShouldNotBeNull();
+            goodManufacturer.ShouldNotBeNull();
+            goodManufacturer.Id.ShouldNotBeNull();
         }
-
 
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Manufacturer")]
         public void Cannot_insert_manufacturer_to_database_when_name_is_not_provided()
         {
-            var manufacturer = new Manufacturer()
-            {
-                Name = "",
-                Description = "...",
-                IsVisible = true,
-                UniqueName = "raspberry-pi",
-                Url = "raspberry-pi"
-            };
+            goodManufacturer.Name = string.Empty;
 
-            typeof(BusinessException).ShouldBeThrownBy(() => manufacturerService.CreateManufacturer(manufacturer));
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => manufacturerService.CreateManufacturer(goodManufacturer));
+            exception.Message.ShouldEqual("Cannot create manufacturer");
         }
 
         [Test]
@@ -61,78 +60,132 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Manufacturer")]
         public void Cannot_insert_manufacturer_to_database_when_uniquename_is_not_provided()
         {
-            var manufacturer = new Manufacturer()
-            {
-                Name = "Raspberry PI",
-                Description = "...",
-                IsVisible = true,
-                UniqueName = "",
-                Url = "raspberry-pi"
-            };
+            goodManufacturer.UniqueName = string.Empty;
 
-            typeof(BusinessException).ShouldBeThrownBy(() => manufacturerService.CreateManufacturer(manufacturer));
+            var exception =   typeof(BusinessException).ShouldBeThrownBy(() => manufacturerService.CreateManufacturer(goodManufacturer));
+            exception.Message.ShouldEqual("Cannot create manufacturer");
         }
 
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Manufacturer")]
+        public void Cannot_insert_manufacturer_to_database_when_such_uniquename_exist()
+        {
+            manufacturerService.CreateManufacturer(goodManufacturer);
+
+            var manufacturer2 = new Manufacturer
+            {
+                UniqueName = "raspberry-pi-3",
+                Name = "Name 2",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                }
+            };
+
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => manufacturerService.CreateManufacturer(manufacturer2));
+
+            var businessException = exception as BusinessException;
+            businessException.ShouldNotBeNull();
+
+            businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
+            .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create manufacturer");
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Manufacturer")]
+        public void Cannot_insert_manufacturer_to_database_when_uniquename_is_not_in_correct_format()
+        {
+            goodManufacturer.UniqueName = "Raspberry PI 3";
+
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => manufacturerService.CreateManufacturer(goodManufacturer));
+
+            var businessException = exception as BusinessException;
+            businessException.ShouldNotBeNull();
+
+            businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
+            .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create manufacturer");
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Manufacturer")]
+        public void Cannot_insert_manufacturer_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
+        {
+            goodManufacturer.UniqueName = "raspberry-PI-3";
+
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => manufacturerService.CreateManufacturer(goodManufacturer));
+
+            var businessException = exception as BusinessException;
+            businessException.ShouldNotBeNull();
+
+            businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
+            .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create manufacturer");
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Manufacturer")]
+        public void Cannot_insert_manufacturer_to_database_when_image_is_not_provided()
+        {
+            goodManufacturer.Images = null;
+
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => manufacturerService.CreateManufacturer(goodManufacturer));
+
+            var businessException = exception as BusinessException;
+            businessException.ShouldNotBeNull();
+            businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property Images should contain at least one item!"))
+            .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create manufacturer");
+        }
 
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Manufacturer")]
         public void Can_get_manufacturer_by_id()
         {
-            var manufacturer = new Manufacturer()
-            {
-                Name = "Raspberry PI",
-                Description = "...",
-                IsVisible = true,
-                UniqueName = "raspberry-pi",
-                Url = "raspberry-pi"
-            };
-            manufacturerService.CreateManufacturer(manufacturer);
+            manufacturerService.CreateManufacturer(goodManufacturer);
 
-            manufacturer.ShouldNotBeNull();
-            manufacturer.Id.ShouldNotBeNull();
+            goodManufacturer.ShouldNotBeNull();
+            goodManufacturer.Id.ShouldNotBeNull();
 
-            var manufacturerFromDb = manufacturerService.GetManufacturer(manufacturer.Id.ToString());
+            var manufacturerFromDb = manufacturerService.GetManufacturer(goodManufacturer.Id.ToString());
             manufacturerFromDb.ShouldNotBeNull();
             manufacturerFromDb.Id.ShouldNotBeNull();
-            manufacturerFromDb.Name.ShouldEqual("Raspberry PI");
-
+            manufacturerFromDb.UniqueName.ShouldEqual("raspberry-pi-3");
         }
-
 
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Manufacturer")]
         public void Can_get_all_manufacturers()
         {
-            var manufacturer1 = new Manufacturer()
+            manufacturerService.CreateManufacturer(goodManufacturer);
+
+            var manufacturer2 = new Manufacturer
             {
-                Name = "Raspberry PI",
-                Description = "...",
-                IsVisible = true,
-                UniqueName = "raspberry-pi",
-                Url = "raspberry-pi"
+                Name = "Arduino1",
+                Description = "description",
+                UniqueName = "raspberry-pi-2",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Url = "url",
+                IsVisible = true
             };
-
-            var manufacturer2 = new Manufacturer()
-            {
-                Name = "Arduino",
-                Description = "...",
-                IsVisible = true,
-                UniqueName = "arduino",
-                Url = "arduino"
-            };
-
-            manufacturerService.CreateManufacturer(manufacturer1);
-            manufacturer1.ShouldNotBeNull();
-            manufacturer1.Id.ShouldNotBeNull();
-
 
             manufacturerService.CreateManufacturer(manufacturer2);
             manufacturer2.ShouldNotBeNull();
             manufacturer2.Id.ShouldNotBeNull();
-
-
 
             var manufacturers = manufacturerService.GetAllManufacturers();
 
@@ -140,43 +193,37 @@ namespace PresentConnection.Internship7.Iot.Tests
             (manufacturers.Count > 0).ShouldBeTrue();
         }
 
-
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Manufacturer")]
         public void Can_get_all_manufacturers_by_name()
         {
-            var manufacturer1 = new Manufacturer()
-            {
-                Name = "Raspberry PI",
-                Description = "...",
-                IsVisible = true,
-                UniqueName = "raspberry-pi",
-                Url = "raspberry-pi"
-            };
-
+            manufacturerService.CreateManufacturer(goodManufacturer);
             var manufacturer2 = new Manufacturer()
             {
-                Name = "Arduino",
-                Description = "...",
-                IsVisible = true,
-                UniqueName = "arduino",
-                Url = "arduino"
+                Name = "Arduino 2",
+                Description = "description",
+                UniqueName = "raspberry-pi-2",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Url = "url",
+                IsVisible = true
             };
 
             var manufacturer3 = new Manufacturer()
             {
-                Name = "My Manufacturer",
-                Description = "...",
-                IsVisible = true,
-                UniqueName = "my manu",
-                Url = ""
+                Name = "Arduino 3",
+                Description = "description",
+                UniqueName = "raspberry-pi-1",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Url = "url",
+                IsVisible = true
             };
-
-            manufacturerService.CreateManufacturer(manufacturer1);
-            manufacturer1.ShouldNotBeNull();
-            manufacturer1.Id.ShouldNotBeNull();
-
 
             manufacturerService.CreateManufacturer(manufacturer2);
             manufacturer2.ShouldNotBeNull();
@@ -186,12 +233,11 @@ namespace PresentConnection.Internship7.Iot.Tests
             manufacturer3.ShouldNotBeNull();
             manufacturer3.Id.ShouldNotBeNull();
             
-            var manufacturers = manufacturerService.GetAllManufacturers("My Manufacturer");
+            var manufacturers = manufacturerService.GetAllManufacturers("Arduino 2");
 
             manufacturers.ShouldBe<List<Manufacturer>>();
             manufacturers.Count.ShouldEqual(1);
         }
-
 
         [Test]
         [Category("Iot")]
@@ -204,7 +250,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Description = "...",
                 IsVisible = true,
                 UniqueName = "raspberry-pi",
-                Url = "raspberry-pi"
+                Url = "raspberry-pi",
+                Images = new List<string> { "Image1" }
             };
 
             var manufacturer2 = new Manufacturer()
@@ -213,7 +260,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Description = "...",
                 IsVisible = true,
                 UniqueName = "arduino",
-                Url = "arduino"
+                Url = "arduino",
+                Images = new List<string> { "Image1" }
             };
 
             var manufacturer3 = new Manufacturer()
@@ -221,8 +269,9 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "My Manufacturer",
                 Description = "...",
                 IsVisible = true,
-                UniqueName = "my manu",
-                Url = ""
+                UniqueName = "my-manu",
+                Url = "",
+                Images = new List<string> { "Image1" }
             };
 
             manufacturerService.CreateManufacturer(manufacturer1);
@@ -256,7 +305,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Description = "...",
                 IsVisible = true,
                 UniqueName = "raspberry-pi",
-                Url = "raspberry-pi"
+                Url = "raspberry-pi",
+                Images = new List<string> { "Image1" }
             };
 
             var manufacturer2 = new Manufacturer()
@@ -265,7 +315,8 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Description = "...",
                 IsVisible = true,
                 UniqueName = "arduino",
-                Url = "arduino"
+                Url = "arduino",
+                Images = new List<string> { "Image1" }
             };
 
             var manufacturer3 = new Manufacturer()
@@ -273,8 +324,9 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "My Manufacturer",
                 Description = "...",
                 IsVisible = true,
-                UniqueName = "my manu",
-                Url = ""
+                UniqueName = "my-manu",
+                Url = "",
+                Images = new List<string> { "Image1" }
             };
 
             manufacturerService.CreateManufacturer(manufacturer1);
@@ -302,64 +354,37 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Manufacturer")]
         public void Can_update_manufacturer_to_database()
         {
-            var manufacturer = new Manufacturer()
-            {
-                Name = "Raspberry PI",
-                Description = "...",
-                IsVisible = true,
-                UniqueName = "raspberry-pi",
-                Url = "raspberry-pi"
-            };
+            manufacturerService.CreateManufacturer(goodManufacturer);
 
-            manufacturerService.CreateManufacturer(manufacturer);
+            goodManufacturer.ShouldNotBeNull();
+            goodManufacturer.Id.ShouldNotBeNull();
 
-            // First insert manufacturer to db
-            manufacturer.ShouldNotBeNull();
-            manufacturer.Id.ShouldNotBeNull();
+            goodManufacturer.Name = "Arduino";
+            manufacturerService.UdpdateManufacturer(goodManufacturer);
 
-            // Update name and send update to db
-            manufacturer.Name = "Arduino";
-            manufacturerService.UdpdateManufacturer(manufacturer);
-
-            // Get item from db and check if name was updated
-            var manufacturerFromDb = manufacturerService.GetManufacturer(manufacturer.Id.ToString());
+            var manufacturerFromDb = manufacturerService.GetManufacturer(goodManufacturer.Id.ToString());
             manufacturerFromDb.ShouldNotBeNull();
             manufacturerFromDb.Name.ShouldEqual("Arduino");
         }
-
 
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Manufacturer")]
         public void Can_delete_manufacturer_from_database()
         {
-            var manufacturer = new Manufacturer()
-            {
-                Name = "Raspberry PI",
-                Description = "...",
-                IsVisible = true,
-                UniqueName = "raspberry-pi",
-                Url = "raspberry-pi"
-            };
+            manufacturerService.CreateManufacturer(goodManufacturer);
 
-            manufacturerService.CreateManufacturer(manufacturer);
+            goodManufacturer.ShouldNotBeNull();
+            goodManufacturer.Id.ShouldNotBeNull();
 
-            // First insert manufacturer to db
-            manufacturer.ShouldNotBeNull();
-            manufacturer.Id.ShouldNotBeNull();
+            manufacturerService.DeleteManufacturer(goodManufacturer.Id.ToString());
 
-            // Delete manufacturer from db
-            manufacturerService.DeleteManufacturer(manufacturer.Id.ToString());
+            var manufacturerFromDb = manufacturerService.GetManufacturer(goodManufacturer.Id.ToString());
 
-            // Get item from db and check if name was updated
-            var manufacturerFromDb = manufacturerService.GetManufacturer(manufacturer.Id.ToString());
-
-            // issue with CodeMash library. Should return null when not found - not default object
             manufacturerFromDb.ShouldNotBeNull();
             manufacturerFromDb.Id.ShouldEqual(ObjectId.Empty);
         }
 
-        
         [TearDown]
         public void Dispose()
         {

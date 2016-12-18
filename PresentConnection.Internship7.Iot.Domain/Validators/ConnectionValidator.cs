@@ -12,6 +12,7 @@ namespace PresentConnection.Internship7.Iot.Domain
         public ConnectionValidator()
         {
             RuleFor(r => r.UniqueName).NotEmpty();
+            RuleFor(x => x).UniqueNameIsInCorrectFormatAndUnique();
             RuleFor(r => r.Name).NotEmpty();
             RuleFor(r => r.Images).MustContainAtLeastOneItem();
             RuleFor(r => r.Url).NotEmpty();

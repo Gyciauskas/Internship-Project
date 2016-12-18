@@ -15,11 +15,29 @@ namespace PresentConnection.Internship7.Iot.Tests
     public class DashboardTests
     {
         private IDashboardService dashboardService;
+        private Dashboard goodDashboard;
 
         [SetUp]
         public void SetUp()
         {
             dashboardService = new DashboardService();
+
+
+            var widget = new Widget
+            {
+                Query = "test",
+                WidgetType = WidgetType.BatChart,
+                Configuration = new Dictionary<string, object> {{"test", "test"}}
+            };
+            
+            var widgets = new List<Widget> {widget};
+
+            goodDashboard = new Dashboard
+            {
+                ClientId = "5",
+                Widgets = widgets
+
+            };
         }
 
         [Test]
@@ -28,32 +46,10 @@ namespace PresentConnection.Internship7.Iot.Tests
 
         public void Can_insert_dashboard_to_database()
         {
+            dashboardService.UpdateDashboard(goodDashboard);
 
-            Widget widget = new Widget();
-            
-            widget.Query = "test";
-            widget.WidgetType = WidgetType.BatChart;
-
-
-            widget.Configuration = new Dictionary<string, object>();
-            widget.Configuration.Add("test","test");
-            
-
-            List<Widget> widgets = new List<Widget>();
-            widgets.Add(widget);
-
-         
-            var dashboard = new Dashboard()
-            {
-                ClientId = "7",
-                Widgets = widgets
-
-            };
-
-
-            dashboardService.UpdateDashboard(dashboard);
-            dashboard.ShouldNotBeNull();
-            dashboard.Id.ShouldNotBeNull();
+            goodDashboard.ShouldNotBeNull();
+            goodDashboard.Id.ShouldNotBeNull();
         }
 
 
@@ -61,33 +57,11 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Dashboard")]
-
-        public void Cannot_insert_dashboard_to_database_when_widgetType_is_NotSet()
+        public void Cannot_insert_dashboard_to_database_when_clientId_is_NotSet()
         {
+            goodDashboard.ClientId = string.Empty;
 
-            Widget widget = new Widget();
-            
-            
-            widget.Query = "test";
-            widget.WidgetType = WidgetType.NotSet;
-
-
-            widget.Configuration = new Dictionary<string, object>();
-            widget.Configuration.Add("test", "test");
-
-
-            List<Widget> widgets = new List<Widget>();
-            widgets.Add(widget);
-
-
-            var dashboard = new Dashboard()
-            {
-                ClientId = "8",
-                Widgets = widgets
-
-            };
-
-            typeof(BusinessException).ShouldBeThrownBy(() => dashboardService.UpdateDashboard(dashboard));
+            typeof(BusinessException).ShouldBeThrownBy(() => dashboardService.UpdateDashboard(goodDashboard));
         }
 
         [Test]
@@ -95,35 +69,15 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Dashboard")]
         public void Can_get_dashboard_by_client_id()
         {
-            Widget widget = new Widget();
+            dashboardService.UpdateDashboard(goodDashboard);
 
-            widget.Query = "test2";
-            widget.WidgetType = WidgetType.BatChart;
+            goodDashboard.ShouldNotBeNull();
+            goodDashboard.Id.ShouldNotBeNull();
 
+            var dashboardFromDb = dashboardService.GetDashboard(goodDashboard.ClientId);
 
-            widget.Configuration = new Dictionary<string, object>();
-            widget.Configuration.Add("test2", "test2");
-
-
-            List<Widget> widgets = new List<Widget>();
-            widgets.Add(widget);
-
-
-            var dashboard = new Dashboard()
-            {
-                ClientId = "19",
-                Widgets = widgets
-
-            };
-
-            dashboardService.UpdateDashboard(dashboard);
-
-            dashboard.ShouldNotBeNull();
-            dashboard.Id.ShouldNotBeNull();
-
-            var dashboardFromDb = dashboardService.GetDashboard(dashboard.ClientId);
             dashboardFromDb.Id.ShouldNotBeNull();
-            dashboardFromDb.ClientId.ShouldEqual("19");
+            dashboardFromDb.ClientId.ShouldEqual("3");
             dashboardFromDb.ShouldNotBeNull();
         }
 
@@ -132,12 +86,13 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Dashboard")]
         public void Can_update_dashboards_to_database()
         {
-            Widget widget = new Widget();
-            widget.Query = "test";
-            widget.WidgetType = WidgetType.BatChart;
+            var widget = new Widget
+            {
+                Query = "test",
+                WidgetType = WidgetType.BatChart
+            };
 
-            List<Widget> widgets = new List<Widget>();
-            widgets.Add(widget);
+            var widgets = new List<Widget> {widget};
 
             var dashboard = new Dashboard()
             {
@@ -152,21 +107,21 @@ namespace PresentConnection.Internship7.Iot.Tests
             dashboard.Id.ShouldNotBeNull();
 
             // Update name and send update to db
-            dashboard.ClientId = "53";
-            dashboardService.UpdateDashboard(dashboard);
+            goodDashboard.ClientId = "53";
+            dashboardService.UpdateDashboard(goodDashboard);
 
             // Get item from db and check if name was updated
-            var dashboardFromDb = dashboardService.GetDashboard(dashboard.ClientId);
+            var dashboardFromDb = dashboardService.GetDashboard(goodDashboard.ClientId);
             dashboardFromDb.ShouldNotBeNull();
             dashboardFromDb.ClientId.ShouldEqual("53");
         }
-
 
 
         [TearDown]
         public void Dispose()
         {
             var dashboards = Db.Find<Dashboard>(x => true);
+
             foreach (var dashboard in dashboards)
             {
                 Db.FindOneAndDelete(Builders<Dashboard>.Filter.Eq(x => x.Id, dashboard.Id));

@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using NUnit.Framework;
+using System.Linq;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
@@ -12,120 +13,187 @@ namespace PresentConnection.Internship7.Iot.Tests
     public class RecipeTests
     {
         private IRecipeService recipeService;
+        private Recipe goodRecipe;
+        private Recipe goodRecipe1;
+        private Recipe goodRecipe2;
 
         [SetUp]
         public void SetUp()
         {
             recipeService = new RecipeService();
+            goodRecipe = new Recipe
+            {
+                UniqueName = "raspberry-pi-1",
+                Name = "Recipe name",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Description = "description",
+                IsVisible = true
+            };
+            goodRecipe1 = new Recipe
+            {
+                UniqueName = "raspberry-pi-2",
+                Name = "Recipe name2",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Description = "description",
+                IsVisible = true
+            };
+            goodRecipe2 = new Recipe
+            {
+                UniqueName = "raspberry-pi-3",
+                Name = "Recipe name3",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Description = "description",
+                IsVisible = true
+            };
         }
 
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Recipe")]
-        public void Can_insert_manufacturer_to_database()
+        public void Can_insert_recipe_to_database()
         {
-            var recipe = new Recipe()
-            {
-                UniqueName = "img-save",
-                Name = "Saving Image",
-                Description = "...",
-                IsVisible = true
-            };
-            recipeService.CreateRecipe(recipe);
+            recipeService.CreateRecipe(goodRecipe);
 
-            recipe.ShouldNotBeNull();
-            recipe.Id.ShouldNotBeNull();
+            goodRecipe.ShouldNotBeNull();
+            goodRecipe.Id.ShouldNotBeNull();
         }
-
 
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Recipe")]
         public void Cannot_insert_recipe_to_database_when_name_is_not_provided()
         {
-            var recipe = new Recipe()
-            {
-                UniqueName = "",
-                Name = "Saving Image",
-                Description = "...",
-                IsVisible = true
-            };
+            goodRecipe.Name = string.Empty;
 
-            typeof(BusinessException).ShouldBeThrownBy(() => recipeService.CreateRecipe(recipe));
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeService.CreateRecipe(goodRecipe));
+            exception.Message.ShouldEqual("Cannot create recipe");
         }
 
         [Test]
         [Category("Iot")]
-        [Category("IntegrationTests.Manufacturer")]
+        [Category("IntegrationTests.Recipe")]
         public void Cannot_insert_recipe_to_database_when_uniquename_is_not_provided()
         {
-            var recipe = new Recipe()
-            {
-                UniqueName = "img-save",
-                Name = "",
-                Description = "...",
-                IsVisible = true
-            };
-
-            typeof(BusinessException).ShouldBeThrownBy(() => recipeService.CreateRecipe(recipe));
+            goodRecipe.UniqueName = string.Empty;
+ 
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeService.CreateRecipe(goodRecipe));
+            exception.Message.ShouldEqual("Cannot create recipe"); 
         }
 
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Recipe")]
+        public void Cannot_insert_recipe_to_database_when_such_uniquename_exist()
+        {
+            recipeService.CreateRecipe(goodRecipe);
+          
+            var recipe2 = new Recipe
+            {
+                UniqueName = "raspberry-pi-1",
+                Name = "Recipe name",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                }
+            };
+
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeService.CreateRecipe(recipe2));
+
+            var businessException = exception as BusinessException;
+            businessException.ShouldNotBeNull();
+
+            businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
+            .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create recipe");
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Recipe")]
+        public void Cannot_insert_recipe_to_database_when_uniquename_is_not_in_correct_format()
+        {
+            goodRecipe.UniqueName = "Raspberry PI 3";
+
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeService.CreateRecipe(goodRecipe));
+
+            var businessException = exception as BusinessException;
+            businessException.ShouldNotBeNull();
+
+            businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
+            .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create recipe");
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Recipe")]
+        public void Cannot_insert_recipe_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
+        {
+            goodRecipe.UniqueName = "raspberry-PI-3";
+
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeService.CreateRecipe(goodRecipe));
+
+            var businessException = exception as BusinessException;
+            businessException.ShouldNotBeNull();
+
+            businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
+            .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create recipe");
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Recipe")]
+        public void Cannot_insert_recipe_to_database_when_such_image_is_not_provided()
+        {
+            goodRecipe.Images = null;
+
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() =>recipeService.CreateRecipe(goodRecipe));
+
+            var businessException = exception as BusinessException;
+            businessException.ShouldNotBeNull();
+            businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property Images should contain at least one item!"))
+            .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create recipe");
+
+        }
 
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Recipe")]
         public void Can_get_recipe_by_id()
         {
-            var recipe = new Recipe()
-            {
-                UniqueName = "img-save",
-                Name = "Saving Image",
-                Description = "...",
-                IsVisible = true
-            };
-            recipeService.CreateRecipe(recipe);
+            recipeService.CreateRecipe(goodRecipe);
 
-            recipe.ShouldNotBeNull();
-            recipe.Id.ShouldNotBeNull();
+            goodRecipe.ShouldNotBeNull();
+            goodRecipe.Id.ShouldNotBeNull();
 
-            var recipeFromDB = recipeService.GetRecipe(recipe.Id.ToString());
+            var recipeFromDB = recipeService.GetRecipe(goodRecipe.Id.ToString());
             recipeFromDB.ShouldNotBeNull();
             recipeFromDB.Id.ShouldNotBeNull();
-            recipeFromDB.Name.ShouldEqual("Saving Image");
+            recipeFromDB.Name.ShouldEqual("Recipe name");
         }
-
 
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Recipe")]
         public void Can_get_all_recipes()
         {
-            var recipe1 = new Recipe()
-            {
-                UniqueName = "img-save",
-                Name = "Saving Image",
-                Description = "...",
-                IsVisible = true
-            };
-
-            var recipe2 = new Recipe()
-            {
-                UniqueName = "jpg-save",
-                Name = "Saving Image.jpg",
-                Description = "...",
-                IsVisible = true
-            };
-
-            recipeService.CreateRecipe(recipe1);
-            recipe1.ShouldNotBeNull();
-            recipe1.Id.ShouldNotBeNull();
-
-
-            recipeService.CreateRecipe(recipe2);
-            recipe2.ShouldNotBeNull();
-            recipe2.Id.ShouldNotBeNull();
-
-
+            recipeService.CreateRecipe(goodRecipe);
+            recipeService.CreateRecipe(goodRecipe1);
 
             var recipes = recipeService.GetAllRecipes();
 
@@ -133,50 +201,16 @@ namespace PresentConnection.Internship7.Iot.Tests
             (recipes.Count > 0).ShouldBeTrue();
         }
 
-
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Recipe")]
         public void Can_get_all_recipes_by_name()
         {
-            var recipe1 = new Recipe()
-            {
-                UniqueName = "img-save",
-                Name = "Saving Image",
-                Description = "...",
-                IsVisible = true
-            };
+            recipeService.CreateRecipe(goodRecipe);
+            recipeService.CreateRecipe(goodRecipe1);
+            recipeService.CreateRecipe(goodRecipe2);
 
-            var recipe2 = new Recipe()
-            {
-                UniqueName = "jpg-save",
-                Name = "Saving Image.jpg",
-                Description = "...",
-                IsVisible = true
-            };
-
-            var recipe3 = new Recipe()
-            {
-                UniqueName = "image",
-                Name = "Image",
-                Description = "...",
-                IsVisible = true
-            };
-
-            recipeService.CreateRecipe(recipe1);
-            recipe1.ShouldNotBeNull();
-            recipe1.Id.ShouldNotBeNull();
-
-
-            recipeService.CreateRecipe(recipe2);
-            recipe2.ShouldNotBeNull();
-            recipe2.Id.ShouldNotBeNull();
-
-            recipeService.CreateRecipe(recipe3);
-            recipe3.ShouldNotBeNull();
-            recipe3.Id.ShouldNotBeNull();
-
-            var recipes = recipeService.GetAllRecipes("Image");
+            var recipes = recipeService.GetAllRecipes("Recipe name");
 
             recipes.ShouldBe<List<Recipe>>();
             recipes.Count.ShouldEqual(1);
@@ -188,59 +222,36 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Recipe")]
         public void Can_update_recipe_to_database()
         {
-            var recipe = new Recipe()
-            {
-                UniqueName = "img-save",
-                Name = "Saving Image",
-                Description = "...",
-                IsVisible = true
-            };
+            recipeService.CreateRecipe(goodRecipe);
 
-            recipeService.CreateRecipe(recipe);
+            goodRecipe.ShouldNotBeNull();
+            goodRecipe.Id.ShouldNotBeNull();
 
-            recipe.ShouldNotBeNull();
-            recipe.Id.ShouldNotBeNull();
+            goodRecipe.Name = "Recipe name4";
+            recipeService.UpdateRecipe(goodRecipe);
 
-            recipe.Name = "Save Image.jpg";
-            recipeService.UpdateRecipe(recipe);
-
-            // Get item from db and check if name was updated
-            var recipeFromDB = recipeService.GetRecipe(recipe.Id.ToString());
+            var recipeFromDB = recipeService.GetRecipe(goodRecipe.Id.ToString());
             recipeFromDB.ShouldNotBeNull();
-            recipeFromDB.Name.ShouldEqual("Save Image.jpg");
+            recipeFromDB.Name.ShouldEqual("Recipe name4");
         }
-
 
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.Recipe")]
         public void Can_delete_recipe_from_database()
         {
-            var recipe = new Recipe()
-            {
-                UniqueName = "img-save",
-                Name = "Saving Image",
-                Description = "...",
-                IsVisible = true
-            };
+            recipeService.CreateRecipe(goodRecipe);
 
-            recipeService.CreateRecipe(recipe);
+            goodRecipe.ShouldNotBeNull();
+            goodRecipe.Id.ShouldNotBeNull();
 
-            // First insert manufacturer to db
-            recipe.ShouldNotBeNull();
-            recipe.Id.ShouldNotBeNull();
+            recipeService.DeleteRecipe(goodRecipe.Id.ToString());
 
-            // Delete manufacturer from db
-            recipeService.DeleteRecipe(recipe.Id.ToString());
+            var recipeFromDB = recipeService.GetRecipe(goodRecipe.Id.ToString());
 
-            // Get item from db and check if name was updated
-            var recipeFromDB = recipeService.GetRecipe(recipe.Id.ToString());
-
-            // issue with CodeMash library. Should return null when not found - not default object
             recipeFromDB.ShouldNotBeNull();
             recipeFromDB.Id.ShouldEqual(ObjectId.Empty);
         }
-
 
         [TearDown]
         public void Dispose()

@@ -8,17 +8,6 @@ namespace PresentConnection.Internship7.Iot.Domain
         public DashboardValidator()
         {
             RuleFor(r => r.ClientId).NotEmpty();
-            RuleFor(r => r.Widgets).SetCollectionValidator(new WidgetValidator());
-
-        }
-
-    }
-
-    public class WidgetValidator : InlineValidator<Widget> 
-    {
-        public WidgetValidator()
-        {
-            RuleFor(x => x.WidgetType).NotEqual(WidgetType.NotSet);
         }
     }
 }

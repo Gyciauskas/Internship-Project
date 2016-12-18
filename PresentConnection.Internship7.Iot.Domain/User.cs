@@ -1,5 +1,4 @@
 ﻿using CodeMash.Net;
-using System;
 using System.Collections.Generic;
 
 namespace PresentConnection.Internship7.Iot.Domain
@@ -7,11 +6,10 @@ namespace PresentConnection.Internship7.Iot.Domain
     [CollectionName("Users")]
     public class User : EntityBase
     {
-        public  User()
+        public User()
         {
             Rules = new List<string>();
             Permissions = new List<string>();
-
         }
 
         public string FullName { get; set; }
@@ -19,5 +17,5 @@ namespace PresentConnection.Internship7.Iot.Domain
         public List<string> Permissions { get; set; }
         public string Email { get; set; }
 
-        }
+    }
 }

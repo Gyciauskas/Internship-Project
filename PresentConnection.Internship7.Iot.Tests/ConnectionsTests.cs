@@ -16,11 +16,23 @@ namespace PresentConnection.Internship7.Iot.Tests
     public class ConnectionsTests
     {
         private IConnectionService connectionService;
+        private Connection goodConnection;
 
         [SetUp]
         public void SetUp()
         {
             connectionService = new ConectionService();
+            goodConnection = new Connection
+            {
+                UniqueName = "raspberry-pi-3",
+                Name = "Dropbox",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Url = "url",
+                Description = "description"
+            };
         }
 
         [Test]
@@ -28,22 +40,10 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Connection")]
         public void Can_insert_connection_to_database()
         {
-            var connection = new Connection
-            {
-                UniqueName = "UNdropbox",
-                Name = "Dropbox",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Url = "url",
-                Description = "description"
-            };
+            connectionService.CreateConnection(goodConnection);
 
-            connectionService.CreateConnection(connection);
-
-            connection.ShouldNotBeNull();
-            connection.Id.ShouldNotBeNull();
+            goodConnection.ShouldNotBeNull();
+            goodConnection.Id.ShouldNotBeNull();
         }
 
         [Test]
@@ -51,10 +51,23 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Connection")]
         public void Cannot_insert_connection_to_database_when_uniquename_is_not_provided()
         {
-            var connection = new Connection
+            goodConnection.UniqueName = string.Empty;
+
+            var exception =typeof(BusinessException).ShouldBeThrownBy(() => connectionService.CreateConnection(goodConnection));
+            exception.Message.ShouldEqual("Cannot create connection");
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Connection")]
+        public void Cannot_insert_connection_to_database_when_such_uniquename_exist()
+        {
+            connectionService.CreateConnection(goodConnection);
+
+            var connection2 = new Connection
             {
-                UniqueName = "",
-                Name = "Dropbox",
+                UniqueName = "raspberry-pi-3",
+                Name = "Dropbox2",
                 Images =
                 {
                     "5821dcc11e9f341d4c6d0994"
@@ -63,7 +76,87 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Description = "description"
             };
 
-            typeof(BusinessException).ShouldBeThrownBy(() => connectionService.CreateConnection(connection));
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => connectionService.CreateConnection(connection2));
+
+            var businessException = exception as BusinessException;
+            businessException.ShouldNotBeNull();
+
+            businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
+            .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create connection");
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Connection")]
+        public void Cannot_insert_connection_to_database_when_uniquename_is_not_in_correct_format()
+        {
+            goodConnection.UniqueName = "Raspberry PI 3";
+
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => connectionService.CreateConnection(goodConnection));
+
+            var businessException = exception as BusinessException;
+            businessException.ShouldNotBeNull();
+
+            businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
+            .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create connection");
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Connection")]
+        public void Cannot_insert_connection_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
+        {
+            goodConnection.UniqueName = "raspberry-PI-3";
+
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => connectionService.CreateConnection(goodConnection));
+
+            var businessException = exception as BusinessException;
+            businessException.ShouldNotBeNull();
+
+            businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
+            .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create connection");
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Connection")]
+        public void Cannot_update_connection_to_database_when_such_uniquename_already_exist()
+        {
+            connectionService.CreateConnection(goodConnection);
+
+            var connection = new Connection
+            {
+                UniqueName = "raspberry-pi-2",
+                Name = "Dropbox2",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Url = "url",
+                Description = "description"
+            };
+            connectionService.CreateConnection(connection);
+
+            connection.ShouldNotBeNull();
+            connection.Id.ShouldNotBeNull();
+
+            connection.UniqueName = "raspberry-pi-3";
+
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => connectionService.UpdateConnection(connection));
+
+            var businessException = exception as BusinessException;
+            businessException.ShouldNotBeNull();
+
+            businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property  should be unique in database and in correct format !"))
+            .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot update connection");
         }
 
         [Test]
@@ -71,19 +164,10 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Connection")]
         public void Cannot_insert_connection_to_database_when_name_is_not_provided()
         {
-            var connection = new Connection
-            {
-                UniqueName = "UNdropbox",
-                Name = "",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Url = "url",
-                Description = "description"
-            };
+            goodConnection.Name = string.Empty;
 
-            typeof(BusinessException).ShouldBeThrownBy(() => connectionService.CreateConnection(connection));
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => connectionService.CreateConnection(goodConnection));
+            exception.Message.ShouldEqual("Cannot create connection");
         }
 
         [Test]
@@ -91,16 +175,15 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Connection")]
         public void Cannot_insert_connection_to_database_when_image_is_not_provided()
         {
-            var connection = new Connection
-            {
-                UniqueName = "UNdropbox",
-                Name = "Dropbox",
-                Images = null,
-                Url = "url",
-                Description = "description"
-            };
+            goodConnection.Images = null;
+            var exception =  typeof(BusinessException).ShouldBeThrownBy(() => connectionService.CreateConnection(goodConnection));
 
-            typeof(BusinessException).ShouldBeThrownBy(() => connectionService.CreateConnection(connection));
+            var businessException = exception as BusinessException;
+            businessException.ShouldNotBeNull();
+            businessException?.Errors.SingleOrDefault(error => error.ErrorMessage.Equals("Property Images should contain at least one item!"))
+            .ShouldNotBeNull("Received different error message");
+
+            exception.Message.ShouldEqual("Cannot create connection");
         }
 
         [Test]
@@ -108,19 +191,10 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Connection")]
         public void Cannot_insert_connection_to_database_when_url_is_not_provided()
         {
-            var connection = new Connection
-            {
-                UniqueName = "UNdropbox",
-                Name = "Dropbox",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Url = "",
-                Description = "description"
-            };
+            goodConnection.Url = string.Empty;
 
-            typeof(BusinessException).ShouldBeThrownBy(() => connectionService.CreateConnection(connection));
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => connectionService.CreateConnection(goodConnection));
+            exception.Message.ShouldEqual("Cannot create connection");
         }
 
         [Test]
@@ -128,19 +202,10 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Connection")]
         public void Cannot_insert_connection_to_database_when_description_is_not_provided()
         {
-            var connection = new Connection
-            {
-                UniqueName = "UNdropbox",
-                Name = "Dropbox",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Url = "url",
-                Description = ""
-            };
+           goodConnection.Description = string.Empty;
 
-            typeof(BusinessException).ShouldBeThrownBy(() => connectionService.CreateConnection(connection));
+           var exception = typeof(BusinessException).ShouldBeThrownBy(() => connectionService.CreateConnection(goodConnection));
+           exception.Message.ShouldEqual("Cannot create connection");
         }
 
         [Test]
@@ -148,9 +213,27 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Connection")]
         public void Can_get_connection_by_id()
         {
-            var connection = new Connection
+            connectionService.CreateConnection(goodConnection);
+
+            goodConnection.ShouldNotBeNull();
+            goodConnection.Id.ShouldNotBeNull();
+
+            var connectionFromDb = connectionService.GetConnection(goodConnection.Id.ToString());
+            connectionFromDb.ShouldNotBeNull();
+            connectionFromDb.Id.ShouldNotBeNull();
+            connectionFromDb.UniqueName.ShouldEqual("raspberry-pi-3");
+        }
+
+        [Test]
+        [Category("Iot")]
+        [Category("IntegrationTests.Connection")]
+        public void Can_get_all_connections()
+        {
+            connectionService.CreateConnection(goodConnection);
+
+            var connection2 = new Connection
             {
-                UniqueName = "UNdropbox",
+                UniqueName = "raspberry-pi-4",
                 Name = "Dropbox",
                 Images =
                 {
@@ -159,51 +242,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Url = "url",
                 Description = "description"
             };
-
-            connectionService.CreateConnection(connection);
-
-            connection.ShouldNotBeNull();
-            connection.Id.ShouldNotBeNull();
-
-            var connectionFromDb = connectionService.GetConnection(connection.Id.ToString());
-            connectionFromDb.ShouldNotBeNull();
-            connectionFromDb.Id.ShouldNotBeNull();
-            connectionFromDb.UniqueName.ShouldEqual("UNdropbox");
-        }
-
-        [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Connection")]
-        public void Can_get_all_connections()
-        {
-            var connection1 = new Connection
-            {
-                UniqueName = "UNdropbox",
-                Name = "Dropbox",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Url = "url1",
-                Description = "description1"
-            };
-
-            var connection2 = new Connection
-            {
-                UniqueName = "UNsendgrid",
-                Name = "SendGrid",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Url = "url2",
-                Description = "description2"
-            };
-
-            connectionService.CreateConnection(connection1);
-            connection1.ShouldNotBeNull();
-            connection1.Id.ShouldNotBeNull();
-
+           
             connectionService.CreateConnection(connection2);
             connection2.ShouldNotBeNull();
             connection2.Id.ShouldNotBeNull();
@@ -221,7 +260,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
             var connection1 = new Connection
             {
-                UniqueName = "UNdropbox",
+                UniqueName = "dropbox",
                 Name = "Dropbox",
                 Images =
                 {
@@ -233,7 +272,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var connection2 = new Connection
             {
-                UniqueName = "UNsendgrid",
+                UniqueName = "sendgrid",
                 Name = "SendGrid",
                 Images =
                 {
@@ -264,7 +303,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
             var connection1 = new Connection
             {
-                UniqueName = "UNdropbox",
+                UniqueName = "dropbox",
                 Name = "Dropbox",
                 Images =
                 {
@@ -276,7 +315,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var connection2 = new Connection
             {
-                UniqueName = "UNsendgrid",
+                UniqueName = "sendgrid",
                 Name = "SendGrid",
                 Images =
                 {
@@ -294,7 +333,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             connection2.ShouldNotBeNull();
             connection2.Id.ShouldNotBeNull();
 
-            var connections = connectionService.GetAllConnections("sendgrid");
+            var connections = connectionService.GetAllConnections("sendGrid");
 
             connections.ShouldBe<List<Connection>>();
             connections.Count.ShouldEqual(1);
@@ -307,7 +346,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
             var connection1 = new Connection
             {
-                UniqueName = "UNdropbox",
+                UniqueName = "dropbox",
                 Name = "Dropbox",
                 Images =
                 {
@@ -319,7 +358,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var connection2 = new Connection
             {
-                UniqueName = "UNsendgrid",
+                UniqueName = "sendgrid",
                 Name = "SendGrid",
                 Images =
                 {
@@ -348,29 +387,17 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Connection")]
         public void Can_update_connection_to_database()
         {
-            var connection = new Connection
-            {
-                UniqueName = "UNdropbox",
-                Name = "Dropbox",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Url = "url",
-                Description = "description"
-            };
+            connectionService.CreateConnection(goodConnection);
 
-            connectionService.CreateConnection(connection);
+            goodConnection.ShouldNotBeNull();
+            goodConnection.Id.ShouldNotBeNull();
 
-            connection.ShouldNotBeNull();
-            connection.Id.ShouldNotBeNull();
+            goodConnection.UniqueName = "raspberry-pi-4";
+            connectionService.UpdateConnection(goodConnection);
 
-            connection.UniqueName = "UNedited";
-            connectionService.UpdateConnection(connection);
-
-            var connectionFromDb = connectionService.GetConnection(connection.Id.ToString());
+            var connectionFromDb = connectionService.GetConnection(goodConnection.Id.ToString());
             connectionFromDb.ShouldNotBeNull();
-            connectionFromDb.UniqueName.ShouldEqual("UNedited");
+            connectionFromDb.UniqueName.ShouldEqual("raspberry-pi-4");
         }
 
         [Test]
@@ -378,26 +405,13 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("IntegrationTests.Connection")]
         public void Can_delete_connection_from_database()
         {
-            var connection = new Connection
-            {
-                UniqueName = "UNdropbox",
-                Name = "Dropbox",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Url = "url",
-                Description = "description"
-            };
+            connectionService.CreateConnection(goodConnection);
 
-            connectionService.CreateConnection(connection);
+            goodConnection.ShouldNotBeNull();
+            goodConnection.Id.ShouldNotBeNull();
 
-            connection.ShouldNotBeNull();
-            connection.Id.ShouldNotBeNull();
-
-            connectionService.DeleteConnection(connection.Id.ToString());
-
-            var connectionFromDb = connectionService.GetConnection(connection.Id.ToString());
+            connectionService.DeleteConnection(goodConnection.Id.ToString());
+            var connectionFromDb = connectionService.GetConnection(goodConnection.Id.ToString());
 
             connectionFromDb.ShouldNotBeNull();
             connectionFromDb.Id.ShouldEqual(ObjectId.Empty);
