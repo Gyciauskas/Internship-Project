@@ -1,4 +1,6 @@
-﻿using PresentConnection.Internship7.Iot.BusinessContracts;
+﻿using System.Collections.Generic;
+using System.Linq;
+using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
@@ -8,16 +10,23 @@ namespace PresentConnection.Internship7.Iot.Services
     public class CreateManufacturerService : Service
     {
         public IManufacturerService ManufacturerService { get; set; }
+        public IImagesService ImagesService { get; set; }
 
         public CreateManufacturerResponse Any(CreateManufacturer request)
         {
             var response = new CreateManufacturerResponse();
 
+            List<string> imageIds = new List<string>();
+            foreach (var image in request.Images.Where(image => image.Length > 0))
+            {
+                imageIds.Add(ImagesService.InsertImage(image));
+            }
+
             var manufacturer = new Manufacturer
             {
                 Name = request.Name,
                 UniqueName = request.UniqueName,
-                Images = request.Images
+                Images =  imageIds
             };
 
             ManufacturerService.CreateManufacturer(manufacturer);

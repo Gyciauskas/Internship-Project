@@ -8,11 +8,11 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
     {
         public CreateManufacturer()
         {
-            Images = new List<string>();
+            Images = new List<byte[]>();
         }
 
         public string Name { get; set; }
         public string UniqueName { get; set; }
-        public List<string> Images { get; set; }
+        public List<byte[]> Images { get; set; }
     }
 }

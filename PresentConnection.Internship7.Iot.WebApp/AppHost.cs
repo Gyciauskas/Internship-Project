@@ -5,6 +5,7 @@ using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Services;
 using ServiceStack;
 using ServiceStack.Caching;
+using ServiceStack.ProtoBuf;
 using ServiceStack.Text;
 using ServiceStack.Validation;
 
@@ -57,17 +58,17 @@ namespace PresentConnection.Internship7.Iot.WebApp
             // reusable services
 
             container.Register<IManufacturerService>(new ManufacturerService());
-<<<<<<< HEAD
+
 
             container.Register<IDeviceService>(new DeviceService());
             
 
-=======
+
             container.Register<IConnectionService>(new ConectionService());
->>>>>>> origin/REST_Connection
+
             container.Register<IRecipeService>(new RecipeService());
             container.Register<ICollaboratorService>(new CollaboratorService());
-
+            container.Register<IImagesService>(new ImagesService());
 
             // Caching
             // TODO replace with Redis when have Docker prepared
@@ -82,12 +83,13 @@ namespace PresentConnection.Internship7.Iot.WebApp
                 allowedHeaders: "Content-Type, X-Requested-With, X-FormSchemaApiToken",
                 allowCredentials: true));
             Plugins.Add(new PostmanFeature());
+//            Plugins.Add(new ProtoBufFormat());
 
             // Plugins.Add(new RegistrationFeature()); 
 
             //Plugins.Add(new ValidationFeature());
             //container.RegisterValidators(typeof(CreateManufacturerService).Assembly, typeof(CreateManufacturer).Assembly);
-            
+
             //Set MVC to use the same Funq IOC as ServiceStack
             // ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));
             // ServiceStackController.CatchAllController = reqCtx => container.TryResolve<HomeController>();
