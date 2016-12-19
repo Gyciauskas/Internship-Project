@@ -81,6 +81,11 @@
     <Compile Include="Requests\Devices\GetDevice.cs" />
     <Compile Include="Requests\Devices\GetDevices.cs" />
     <Compile Include="Requests\Devices\UpdateDevice.cs" />
+    <Compile Include="Requests\RecipeConnections\CreateRecipeConnnection.cs" />
+    <Compile Include="Requests\RecipeConnections\DeleteRecipeConnection.cs" />
+    <Compile Include="Requests\RecipeConnections\GetRecipeConnection.cs" />
+    <Compile Include="Requests\RecipeConnections\GetRecipeConnections.cs" />
+    <Compile Include="Requests\RecipeConnections\UpdateRecipeConnection.cs" />
     <Compile Include="Requests\User\CreateUser.cs" />
     <Compile Include="Requests\User\DeleteUser.cs" />
     <Compile Include="Requests\User\GetUser.cs" />
@@ -111,6 +116,11 @@
     <Compile Include="Responses\Connections\GetConnectionResponse.cs" />
     <Compile Include="Responses\Connections\UpdateConnectionResponse.cs" />
     <Compile Include="Requests\Manufacturers\UpdateManufacturer.cs" />
+    <Compile Include="Responses\RecipeConnections\CreateRecipeConnectionResponse.cs" />
+    <Compile Include="Responses\RecipeConnections\DeleteRecipeConnectionResponse.cs" />
+    <Compile Include="Responses\RecipeConnections\GetRecipeConnectionResponse.cs" />
+    <Compile Include="Responses\RecipeConnections\GetRecipeConnectionsResponse.cs" />
+    <Compile Include="Responses\RecipeConnections\UpdateRecipeConnectionResponse.cs" />
     <Compile Include="Responses\User\CreateUserResponse.cs" />
     <Compile Include="Responses\User\DeleteUserResponse.cs" />
     <Compile Include="Responses\User\GetUserResponse.cs" />

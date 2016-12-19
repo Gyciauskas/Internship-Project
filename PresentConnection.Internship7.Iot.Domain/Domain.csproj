@@ -101,6 +101,7 @@
     <Compile Include="Validators\DashboardValidator.cs" />
     <Compile Include="Validators\Common\RecordPermissionValidator.cs" />
     <Compile Include="Validators\Common\RecordsPermissionValidator.cs" />
+    <Compile Include="Validators\RecipeConnectionValidator.cs" />
     <Compile Include="WidgetType.cs" />
     <Compile Include="Validators\Common\ListMustContainItemValidator.cs" />
     <Compile Include="Validators\Common\UniqueNameValidator.cs" />

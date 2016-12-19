@@ -84,6 +84,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RecipeConnections\CreateRecipeConnectionService.cs" />
+    <Compile Include="RecipeConnections\DeleteRecipeConnectionService.cs" />
+    <Compile Include="RecipeConnections\GetRecipeConnectionService.cs" />
+    <Compile Include="RecipeConnections\GetRecipeConnectionsService.cs" />
+    <Compile Include="RecipeConnections\UpdateRecipeConnectionService.cs" />
     <Compile Include="Users\CreateUserService.cs" />
     <Compile Include="Users\DeleteUserService.cs" />
     <Compile Include="Users\GetUserService.cs" />
