@@ -84,6 +84,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientDevice\CreateClientDeviceService.cs" />
+    <Compile Include="ClientDevice\DeleteClientDeviceService.cs" />
+    <Compile Include="ClientDevice\GetClientDeviceService.cs" />
+    <Compile Include="ClientDevice\GetClientDevicesService.cs" />
+    <Compile Include="ClientDevice\UpdateClientDeviceService.cs" />
+    <Compile Include="ClientRecipe\CreateClientRecipeService.cs" />
+    <Compile Include="ClientRecipe\DeleteClientRecipeService.cs" />
+    <Compile Include="ClientRecipe\GetClientRecipeService.cs" />
+    <Compile Include="ClientRecipe\GetClientRecipesService.cs" />
+    <Compile Include="ClientRecipe\UpdateClientRecipeService.cs" />
     <Compile Include="Users\CreateUserService.cs" />
     <Compile Include="Users\DeleteUserService.cs" />
     <Compile Include="Users\GetUserService.cs" />
