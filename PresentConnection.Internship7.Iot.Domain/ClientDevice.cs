@@ -15,7 +15,7 @@ namespace PresentConnection.Internship7.Iot.Domain
             Components = new Dictionary<string, object>();
             PowerResource = new PowerResource();
             SimulationType = SimulationType.NotSet;
-            DeviceStatuses = new List<DeviceStatus>(); // { DeviceStatus.Registered };
+            DeviceStatuses = new List<DeviceStatus>();
         }
 
         public string ClientId { get; set; }

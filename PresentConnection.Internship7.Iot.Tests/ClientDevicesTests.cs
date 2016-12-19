@@ -77,7 +77,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Test]
         [Category("Iot")]
         [Category("IntegrationTests.ClientDevice")]
-        public void Device_status_constrains()
+        public void Device_status_constraints()
         {
             var userDevice = new ClientDevice
             {
@@ -90,11 +90,17 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey2 = Guid.NewGuid().ToString(),
             };
 
-            userDevice.DeviceStatuses.Clear();
-            userDevice.DeviceStatuses.Add(DeviceStatus.Connected);
-            userDevice.DeviceStatuses.Count.ShouldEqual(1);
-           
+            var validator = new DeviceStatusValidator(DeviceStatus.Registered);
+            var results = validator.Validate(userDevice.DeviceStatuses);
+            bool validationSucceeded = results.IsValid;
 
+            if (validationSucceeded)
+            {
+                userDevice.DeviceStatuses.Add(DeviceStatus.Registered);
+            }
+
+            userDevice.DeviceStatuses.Count.ShouldEqual(1);
+         
         }
 
 

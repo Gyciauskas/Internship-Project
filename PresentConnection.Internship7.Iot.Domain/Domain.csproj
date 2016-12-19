@@ -98,11 +98,13 @@
     <Compile Include="SubscriptionSpan.cs" />
     <Compile Include="SubscriptionType.cs" />
     <Compile Include="ClientDevice.cs" />
+    <Compile Include="Validators\Common\DeviceStatusConstraintsValidator.cs" />
     <Compile Include="Validators\Common\SensitiveDataValidator.cs" />
     <Compile Include="Validators\Common\SensitiveListDataValidator.cs" />
     <Compile Include="Validators\DashboardValidator.cs" />
     <Compile Include="Validators\Common\RecordPermissionValidator.cs" />
     <Compile Include="Validators\Common\RecordsPermissionValidator.cs" />
+    <Compile Include="Validators\Common\DeviceStatusValidator.cs" />
     <Compile Include="WidgetType.cs" />
     <Compile Include="Validators\Common\ListMustContainItemValidator.cs" />
     <Compile Include="Validators\Common\UniqueNameValidator.cs" />

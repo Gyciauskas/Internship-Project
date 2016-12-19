@@ -25,5 +25,10 @@ namespace PresentConnection.Internship7.Iot.Domain
         {
             return ruleBuilder.SetValidator(new SensitiveListDataValidator<TElement>(clientId));
         }
+
+        public static IRuleBuilderOptions<T, List<TElement>> AddDeviceStatusPermissions<T, TElement>(this IRuleBuilder<T, List<TElement>> ruleBuilder, DeviceStatus deviceStatus)
+        {
+            return ruleBuilder.SetValidator(new DeviceStatusConstraintsValidator<TElement>(deviceStatus));
+        }
     }
 }
