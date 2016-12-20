@@ -4,15 +4,15 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class GetRecipesService : Service
+    public class GetRecipeService : Service
     {
         public IRecipeService RecipeService { get; set; }
 
-        public GetRecipesResponse Any(GetRecipes request)
+        public GetRecipeResponse Any(GetRecipe request)
         {
-            var response = new GetRecipesResponse
+            var response = new GetRecipeResponse
             {
-                Recipes = RecipeService.GetAllRecipes(request.Name)
+                Result = RecipeService.GetRecipe(request.Id)
             };
 
             return response;

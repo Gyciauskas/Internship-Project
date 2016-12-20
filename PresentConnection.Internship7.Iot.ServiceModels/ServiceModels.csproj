@@ -67,6 +67,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -75,6 +76,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Requests\Devices\CreateDevice.cs" />
+    <Compile Include="Requests\Devices\DeleteDevice.cs" />
+    <Compile Include="Requests\Devices\GetDevice.cs" />
+    <Compile Include="Requests\Devices\GetDevices.cs" />
+    <Compile Include="Requests\Devices\UpdateDevice.cs" />
+    <Compile Include="Requests\RecipeConnections\CreateRecipeConnnection.cs" />
+    <Compile Include="Requests\RecipeConnections\DeleteRecipeConnection.cs" />
+    <Compile Include="Requests\RecipeConnections\GetRecipeConnection.cs" />
+    <Compile Include="Requests\RecipeConnections\GetRecipeConnections.cs" />
+    <Compile Include="Requests\RecipeConnections\UpdateRecipeConnection.cs" />
+    <Compile Include="Requests\User\CreateUser.cs" />
+    <Compile Include="Requests\User\DeleteUser.cs" />
+    <Compile Include="Requests\User\GetUser.cs" />
+    <Compile Include="Requests\User\GetUsers.cs" />
+    <Compile Include="Requests\User\UpdateUser.cs" />
+    <Compile Include="Requests\Collaborators\CreateCollaborator.cs" />
+    <Compile Include="Requests\Collaborators\DeleteCollaborator.cs" />
+    <Compile Include="Requests\Collaborators\GetCollaborator.cs" />
+    <Compile Include="Requests\Collaborators\GetCollaborators.cs" />
+    <Compile Include="Requests\Collaborators\UpdateCollaborator.cs" />
+    <Compile Include="Requests\Connections\CreateConnection.cs" />
+    <Compile Include="Requests\Connections\DeleteConnection.cs" />
+    <Compile Include="Requests\Connections\GetConnections.cs" />
+    <Compile Include="Requests\Connections\GetConnection.cs" />
+    <Compile Include="Requests\Connections\UpdateConnection.cs" />
     <Compile Include="Requests\Components\CreateComponent.cs" />
     <Compile Include="Requests\Components\DeleteComponent.cs" />
     <Compile Include="Requests\Components\GetComponent.cs" />
@@ -84,7 +110,32 @@
     <Compile Include="Requests\Manufacturers\DeleteManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\GetManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\GetManufacturers.cs" />
+    <Compile Include="Responses\Devices\CreateDeviceResponse.cs" />
+    <Compile Include="Responses\Devices\DeleteDeviceResponse.cs" />
+    <Compile Include="Responses\Devices\GetDeviceResponse.cs" />
+    <Compile Include="Responses\Devices\GetDevicesResponse.cs" />
+    <Compile Include="Responses\Devices\UpdateDeviceResponse.cs" />
+    <Compile Include="Responses\Connections\CreateConnectionResponse.cs" />
+    <Compile Include="Responses\Connections\DeleteConnectionResponse.cs" />
+    <Compile Include="Responses\Connections\GetConnectionsResponse.cs" />
+    <Compile Include="Responses\Connections\GetConnectionResponse.cs" />
+    <Compile Include="Responses\Connections\UpdateConnectionResponse.cs" />
     <Compile Include="Requests\Manufacturers\UpdateManufacturer.cs" />
+    <Compile Include="Responses\RecipeConnections\CreateRecipeConnectionResponse.cs" />
+    <Compile Include="Responses\RecipeConnections\DeleteRecipeConnectionResponse.cs" />
+    <Compile Include="Responses\RecipeConnections\GetRecipeConnectionResponse.cs" />
+    <Compile Include="Responses\RecipeConnections\GetRecipeConnectionsResponse.cs" />
+    <Compile Include="Responses\RecipeConnections\UpdateRecipeConnectionResponse.cs" />
+    <Compile Include="Responses\User\CreateUserResponse.cs" />
+    <Compile Include="Responses\User\DeleteUserResponse.cs" />
+    <Compile Include="Responses\User\GetUserResponse.cs" />
+    <Compile Include="Responses\User\GetUsersResponse.cs" />
+    <Compile Include="Responses\User\UpdateUserResponse.cs" />
+    <Compile Include="Responses\Collaborators\CreateCollaboratorResponse.cs" />
+    <Compile Include="Responses\Collaborators\DeleteCollaboratorResponse.cs" />
+    <Compile Include="Responses\Collaborators\GetCollaboratorResponse.cs" />
+    <Compile Include="Responses\Collaborators\GetCollaboratorsResponse.cs" />
+    <Compile Include="Responses\Collaborators\UpdateCollaboratorResponse.cs" />
     <Compile Include="Responses\Components\DeleteComponentResponse.cs" />
     <Compile Include="Responses\Components\GetComponentResponse.cs" />
     <Compile Include="Responses\Components\UpdateComponentResponse.cs" />
@@ -106,6 +157,7 @@
     <Compile Include="Responses\Recipes\GetRecipeResponse.cs" />
     <Compile Include="Responses\Recipes\GetRecipesResponse.cs" />
     <Compile Include="Responses\Recipes\UpdateRecipeResponse.cs" />
+    <Compile Include="Responses\ResponseBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PresentConnection.Internship7.Iot.Domain\Domain.csproj">

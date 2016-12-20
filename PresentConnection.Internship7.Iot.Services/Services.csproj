@@ -84,6 +84,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RecipeConnections\CreateRecipeConnectionService.cs" />
+    <Compile Include="RecipeConnections\DeleteRecipeConnectionService.cs" />
+    <Compile Include="RecipeConnections\GetRecipeConnectionService.cs" />
+    <Compile Include="RecipeConnections\GetRecipeConnectionsService.cs" />
+    <Compile Include="RecipeConnections\UpdateRecipeConnectionService.cs" />
+    <Compile Include="Users\CreateUserService.cs" />
+    <Compile Include="Users\DeleteUserService.cs" />
+    <Compile Include="Users\GetUserService.cs" />
+    <Compile Include="Users\GetUsersService.cs" />
+    <Compile Include="Devices\CreateDeviceService.cs" />
+    <Compile Include="Manufacturers\CreateManufacturerService.cs" />
+    <Compile Include="Devices\DeleteDeviceService.cs" />
+    <Compile Include="Devices\GetDeviceService.cs" />
+    <Compile Include="Devices\GetDevicesService.cs" />
+    <Compile Include="Manufacturers\DeleteManufacturerService.cs" />
+    <Compile Include="Manufacturers\GetManufacturerService.cs" />
+    <Compile Include="Recipes\CreateRecipeService.cs" />
+    <Compile Include="Recipes\DeleteRecipeService.cs" />
+    <Compile Include="Manufacturers\GetManufacturersService.cs" />
+    <Compile Include="Recipes\GetRecipeService.cs" />
+    <Compile Include="Recipes\GetRecipesService.cs" />
     <Compile Include="CreateComponentService.cs" />
     <Compile Include="CreateManufacturerService.cs" />
     <Compile Include="DeleteManufacturerService.cs" />
@@ -95,8 +116,20 @@
     <Compile Include="GetRecipeService.cs" />
     <Compile Include="GetRecipesService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UpdateManufacturerService.cs" />
-    <Compile Include="UpdateRecipeService.cs" />
+    <Compile Include="Devices\UpdateDeviceService.cs" />
+    <Compile Include="Manufacturers\UpdateManufacturerService.cs" />
+    <Compile Include="Recipes\UpdateRecipeService.cs" />
+    <Compile Include="Users\UpdateUserService.cs" />
+    <Compile Include="Collaborators\CreateCollaboratorService.cs" />
+    <Compile Include="Collaborators\DeleteCollaboratorService.cs" />
+    <Compile Include="Collaborators\GetCollaboratorService.cs" />
+    <Compile Include="Collaborators\GetCollaboratorsService.cs" />
+    <Compile Include="Collaborators\UpdateCollaboratorService.cs" />
+    <Compile Include="Connections\CreateConnectionService.cs" />
+    <Compile Include="Connections\DeleteConnectionService.cs" />
+    <Compile Include="Connections\GetConnectionsService.cs" />
+    <Compile Include="Connections\GetConnectonService.cs" />
+    <Compile Include="Connections\UpdateConnectionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
