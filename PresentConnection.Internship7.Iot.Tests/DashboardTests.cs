@@ -77,7 +77,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             var dashboardFromDb = dashboardService.GetDashboard(goodDashboard.ClientId);
 
             dashboardFromDb.Id.ShouldNotBeNull();
-            dashboardFromDb.ClientId.ShouldEqual("3");
+            dashboardFromDb.ClientId.ShouldEqual("5");
             dashboardFromDb.ShouldNotBeNull();
         }
 
