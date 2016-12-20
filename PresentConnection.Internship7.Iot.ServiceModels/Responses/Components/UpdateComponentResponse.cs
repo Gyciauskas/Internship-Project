@@ -1,6 +1,6 @@
 ﻿namespace PresentConnection.Internship7.Iot.ServiceModels
-{
-    public class CreateComponentResponse
+{ 
+    public class UpdateComponentResponse
     {
     }
 }

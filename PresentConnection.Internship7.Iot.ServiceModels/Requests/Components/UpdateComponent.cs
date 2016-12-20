@@ -2,9 +2,10 @@
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    [Route("/components", "POST", Summary = "Create component")]
-    public class CreateComponent : IReturn<CreateComponentResponse>
+    [Route("/components/{Id}", "PUT", Summary = "Update component")]
+    public class UpdateComponent : IReturn<UpdateComponentResponse>
     {
+        public string Id { get; set; }
         public string ModelName { get; set; }
         public string UniqueName { get; set; }
     }

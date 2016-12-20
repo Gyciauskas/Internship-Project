@@ -76,12 +76,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Requests\Components\CreateComponent.cs" />
+    <Compile Include="Requests\Components\DeleteComponent.cs" />
+    <Compile Include="Requests\Components\GetComponent.cs" />
     <Compile Include="Requests\Components\GetComponents.cs" />
+    <Compile Include="Requests\Components\UpdateComponent.cs" />
     <Compile Include="Requests\Manufacturers\CreateManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\DeleteManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\GetManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\GetManufacturers.cs" />
     <Compile Include="Requests\Manufacturers\UpdateManufacturer.cs" />
+    <Compile Include="Responses\Components\DeleteComponentResponse.cs" />
+    <Compile Include="Responses\Components\GetComponentResponse.cs" />
+    <Compile Include="Responses\Components\UpdateComponentResponse.cs" />
     <Compile Include="Responses\Manufacturers\DeleteManufacturerResponse.cs" />
     <Compile Include="Requests\Recipes\CreateRecipe.cs" />
     <Compile Include="Requests\Recipes\DeleteRecipe.cs" />
