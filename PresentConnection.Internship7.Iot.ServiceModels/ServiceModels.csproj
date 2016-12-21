@@ -76,6 +76,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Requests\ClientConnection\CreateClientConnection.cs" />
+    <Compile Include="Requests\ClientConnection\DeleteClientConnection.cs" />
+    <Compile Include="Requests\ClientConnection\GetClientConnection.cs" />
+    <Compile Include="Requests\ClientConnection\GetClientConnections.cs" />
+    <Compile Include="Requests\ClientConnection\UpdateClientConnection.cs" />
+    <Compile Include="Requests\Client\CreateClient.cs" />
+    <Compile Include="Requests\Client\DeleteClient.cs" />
+    <Compile Include="Requests\Client\GetClient.cs" />
+    <Compile Include="Requests\Client\GetClients.cs" />
+    <Compile Include="Requests\Client\UpdateClient.cs" />
     <Compile Include="Requests\Devices\CreateDevice.cs" />
     <Compile Include="Requests\Devices\DeleteDevice.cs" />
     <Compile Include="Requests\Devices\GetDevice.cs" />
@@ -105,6 +115,16 @@
     <Compile Include="Requests\Manufacturers\DeleteManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\GetManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\GetManufacturers.cs" />
+    <Compile Include="Responses\ClientConnection\CreateClientConnectionResponse.cs" />
+    <Compile Include="Responses\ClientConnection\DeleteClientConnectionResponse.cs" />
+    <Compile Include="Responses\ClientConnection\GetClientConnectionResponse.cs" />
+    <Compile Include="Responses\ClientConnection\GetClientConnectionsResponse.cs" />
+    <Compile Include="Responses\ClientConnection\UpdateClientConnectionResponse.cs" />
+    <Compile Include="Responses\Client\CreateClientResponse.cs" />
+    <Compile Include="Responses\Client\DeleteClientResponse.cs" />
+    <Compile Include="Responses\Client\GetClientResponse.cs" />
+    <Compile Include="Responses\Client\GetClientsResponse.cs" />
+    <Compile Include="Responses\Client\UpdateClientResponse.cs" />
     <Compile Include="Responses\Devices\CreateDeviceResponse.cs" />
     <Compile Include="Responses\Devices\DeleteDeviceResponse.cs" />
     <Compile Include="Responses\Devices\GetDeviceResponse.cs" />
