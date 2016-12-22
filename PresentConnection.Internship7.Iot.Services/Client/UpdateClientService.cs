@@ -5,18 +5,21 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-        public class UpdateClientService : Service
+        public class UpdateClientService : ServiceBase
         {
             public IClientService ClientService { get; set; }
 
             public UpdateClientResponse Any(UpdateClient request)
             {
                 var response = new UpdateClientResponse();
+            
+                var client= ClientService.GetClient(request.Name);
+            
+                client = client?.PopulateWith(request);
 
-
-                var client= ClientService.GetClient(request.Name).PopulateWith(request);
                 ClientService.UpdateClient(client);
 
+                response.Result = client;
                 return response;
             }
         }

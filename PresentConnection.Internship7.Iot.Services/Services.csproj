@@ -85,6 +85,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ServiceBase.cs" />
+    <Compile Include="ClientConnection\CreateClientConnectionService.cs" />
+    <Compile Include="ClientConnection\DeleteClientConnectionService.cs" />
+    <Compile Include="ClientConnection\GetClientConnectionService.cs" />
+    <Compile Include="ClientConnection\GetClientConnectionsService.cs" />
+    <Compile Include="ClientConnection\UpdateClientConnectionService.cs" />
+    <Compile Include="Client\CreateClientService.cs" />
+    <Compile Include="Client\DeleteClientService.cs" />
+    <Compile Include="Client\GetClientService.cs" />
+    <Compile Include="Client\GetClientsService.cs" />
+    <Compile Include="Client\UpdateClientService.cs" />
     <Compile Include="RecipeConnections\CreateRecipeConnectionService.cs" />
     <Compile Include="RecipeConnections\DeleteRecipeConnectionService.cs" />
     <Compile Include="RecipeConnections\GetRecipeConnectionService.cs" />

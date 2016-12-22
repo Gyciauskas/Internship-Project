@@ -4,7 +4,7 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class GetClientsService : Service
+    public class GetClientsService : ServiceBase
     {
         public IClientService ClientsService { get; set; }
 
@@ -12,8 +12,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new GetClientsResponse
             {
-
-                clients = ClientsService.GetAllClients()
+                Result = ClientsService.GetAllClients()
             };
 
             return response;

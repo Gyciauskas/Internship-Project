@@ -9,6 +9,11 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
     [Route("/clients", "POST", Summary = "Create client")]
     public class CreateClient
     {
+        public CreateClient()
+        {
+            Subscriptions = new List<Subscription>();
+        }
+
         public string Name { get; set; }
         public List<Subscription> Subscriptions { get; set; }
     }

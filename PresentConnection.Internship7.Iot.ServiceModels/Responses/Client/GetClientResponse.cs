@@ -3,8 +3,7 @@
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    public class GetClientResponse
+    public class GetClientResponse : ResponseBase<Client>
     {
-        public Client client { get; set; }
     }
 }

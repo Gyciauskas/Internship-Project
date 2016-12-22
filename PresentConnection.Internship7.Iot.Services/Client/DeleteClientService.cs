@@ -4,7 +4,7 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class DeleteClientService : Service
+    public class DeleteClientService : ServiceBase
     {
         public IClientService ClienteService { get; set; }
 
@@ -12,7 +12,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new DeleteClientResponse
             {
-                IsDeleted = ClienteService.DeleteClient(request.Id)
+                Result = ClienteService.DeleteClient(request.Id)
             };
 
             return response;
