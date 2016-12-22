@@ -4,7 +4,7 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class DeleteManufacturerService : Service
+    public class DeleteManufacturerService : ServiceBase
     {
         public IManufacturerService ManufacturerService { get; set; }
 

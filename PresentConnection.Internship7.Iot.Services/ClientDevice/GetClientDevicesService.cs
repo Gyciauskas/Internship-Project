@@ -1,10 +1,9 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.ServiceModels;
-using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class GetClientDevicesService : Service
+    public class GetClientDevicesService : ServiceBase
     {
         public IClientDeviceService ClientDeviceService { get; set; }
 
@@ -12,7 +11,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new GetClientDevicesResponse
             {
-                ClientDevices = ClientDeviceService.GetClientDevices(request.ClientId, request.ClientId)
+                Result = ClientDeviceService.GetClientDevices(request.ClientId, UserSession.UserAuthId)
             };
 
             return response;

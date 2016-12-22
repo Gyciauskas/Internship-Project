@@ -2,8 +2,7 @@
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    public class GetClientDeviceResponse
+    public class GetClientDeviceResponse : ResponseBase<ClientDevice>
     {
-        public ClientDevice ClientDevice { get; set; }
     }
 }

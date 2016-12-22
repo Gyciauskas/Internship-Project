@@ -37,8 +37,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Settings")]
+        [Category("IntegrationTests")]
+        [Category("Settings")]
         public void Can_update_or_insert_settings_to_database()
         {
             var settings = new Settings
@@ -54,8 +54,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Settings")]
+        [Category("IntegrationTests")]
+        [Category("Settings")]
         public void Cannot_insert_settings_to_database_when_jason_is_not_provided()
         {
             BsonDocument item1 = new BsonDocument();
@@ -70,8 +70,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Settings")]
+        [Category("IntegrationTests")]
+        [Category("Settings")]
         public void Can_get_settings()
         {
             var settings = new Settings

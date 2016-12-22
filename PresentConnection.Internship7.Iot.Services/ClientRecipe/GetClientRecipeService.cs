@@ -1,10 +1,9 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.ServiceModels;
-using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class GetClientRecipeService : Service
+    public class GetClientRecipeService : ServiceBase
     {
         public IClientRecipeService ClientRecipeService { get; set; }
 
@@ -12,7 +11,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new GetClientRecipeResponse
             {
-                ClientRecipe = ClientRecipeService.GetClientRecipe(request.Id, request.ClientId)
+                Result = ClientRecipeService.GetClientRecipe(request.Id, UserSession.UserAuthId)
             };
             return response;
         }

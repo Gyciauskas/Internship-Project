@@ -84,18 +84,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
+    <Compile Include="ServiceBase.cs" />
     <Compile Include="RecipeConnections\CreateRecipeConnectionService.cs" />
     <Compile Include="RecipeConnections\DeleteRecipeConnectionService.cs" />
     <Compile Include="RecipeConnections\GetRecipeConnectionService.cs" />
     <Compile Include="RecipeConnections\GetRecipeConnectionsService.cs" />
     <Compile Include="RecipeConnections\UpdateRecipeConnectionService.cs" />
-    <Compile Include="ClientDevice\CreateClientDeviceService.cs" />
+    <Compile Include="ClientDevice\AddDeviceToClientService.cs" />
     <Compile Include="ClientDevice\DeleteClientDeviceService.cs" />
     <Compile Include="ClientDevice\GetClientDeviceService.cs" />
     <Compile Include="ClientDevice\GetClientDevicesService.cs" />
     <Compile Include="ClientDevice\UpdateClientDeviceService.cs" />
-    <Compile Include="ClientRecipe\CreateClientRecipeService.cs" />
+    <Compile Include="ClientRecipe\ApplyRecipeToClientService.cs" />
     <Compile Include="ClientRecipe\DeleteClientRecipeService.cs" />
     <Compile Include="ClientRecipe\GetClientRecipeService.cs" />
     <Compile Include="ClientRecipe\GetClientRecipesService.cs" />

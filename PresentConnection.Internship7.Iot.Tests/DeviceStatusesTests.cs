@@ -17,6 +17,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
+        [Category("UnitTests.DeviceStatusValidator")]
         public void Can_add_registered_to_first_place()
         {
             var validator = new DeviceStatusValidator(DeviceStatus.Registered);
@@ -33,6 +34,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
+        [Category("UnitTests.DeviceStatusValidator")]
         public void Cant_add_connected_to_first_place()
         {
             var validator = new DeviceStatusValidator(DeviceStatus.Connected);
@@ -48,6 +50,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
+        [Category("UnitTests.DeviceStatusValidator")]
         public void Cant_add_disconnected_to_first_place()
         {
             var validator = new DeviceStatusValidator(DeviceStatus.Disconnected);
@@ -63,6 +66,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
+        [Category("UnitTests.DeviceStatusValidator")]
         public void Cant_add_unregistered_to_first_place()
         {
             var validator = new DeviceStatusValidator(DeviceStatus.Unregistered);
@@ -78,6 +82,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
+        [Category("UnitTests.DeviceStatusValidator")]
         public void Cant_add_status_on_top_of_the_same_status()
         {
             deviceStatuses.Add(DeviceStatus.Registered);
@@ -93,6 +98,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
+        [Category("UnitTests.DeviceStatusValidator")]
         public void Can_add_status_registered_on_top_of_unregistered()
         {
             deviceStatuses.Add(DeviceStatus.Registered);
@@ -110,6 +116,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
+        [Category("UnitTests.DeviceStatusValidator")]
         public void Cant_add_status_connected_on_top_of_unregistered()
         {
             deviceStatuses.Add(DeviceStatus.Registered);
@@ -128,6 +135,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
+        [Category("UnitTests.DeviceStatusValidator")]
         public void Cant_add_status_disconnected_on_top_of_unregistered()
         {
             deviceStatuses.Add(DeviceStatus.Registered);

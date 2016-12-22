@@ -3,12 +3,7 @@ using System.Collections.Generic;
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    public class GetClientRecipesResponse
+    public class GetClientRecipesResponse : ResponseBase<List<ClientRecipe>>
     {
-        public GetClientRecipesResponse()
-        {
-            ClientRecipes = new List<ClientRecipe>();
-        }
-        public List<ClientRecipe> ClientRecipes { get; set; }      
     }
 }

@@ -76,12 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Requests\ClientDevice\CreateClientDevice.cs" />
+    <Compile Include="Requests\ClientDevice\AddDeviceToClient.cs" />
     <Compile Include="Requests\ClientDevice\DeleteClientDevice.cs" />
     <Compile Include="Requests\ClientDevice\GetClientDevice.cs" />
     <Compile Include="Requests\ClientDevice\GetClientDevices.cs" />
     <Compile Include="Requests\ClientDevice\UpdateClientDevice.cs" />
-    <Compile Include="Requests\ClientRecipe\CreateClientRecipe.cs" />
+    <Compile Include="Requests\ClientRecipe\ApplyRecipeToClient.cs" />
     <Compile Include="Requests\ClientRecipe\DeleteClientRecipe.cs" />
     <Compile Include="Requests\ClientRecipe\GetClientRecipe.cs" />
     <Compile Include="Requests\ClientRecipe\GetClientRecipes.cs" />
@@ -115,12 +115,12 @@
     <Compile Include="Requests\Manufacturers\DeleteManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\GetManufacturer.cs" />
     <Compile Include="Requests\Manufacturers\GetManufacturers.cs" />
-    <Compile Include="Responses\ClientDevice\CreateClientDeviceResponse.cs" />
+    <Compile Include="Responses\ClientDevice\AddDeviceToClientResponse.cs" />
     <Compile Include="Responses\ClientDevice\DeleteClientDeviceResponse.cs" />
     <Compile Include="Responses\ClientDevice\GetClientDeviceResponse.cs" />
     <Compile Include="Responses\ClientDevice\GetClientDevicesResponse.cs" />
     <Compile Include="Responses\ClientDevice\UpdateClientDeviceResponse.cs" />
-    <Compile Include="Responses\ClientRecipe\CreateClientRecipeResponse.cs" />
+    <Compile Include="Responses\ClientRecipe\ApplyRecipeToClientResponse.cs" />
     <Compile Include="Responses\ClientRecipe\DeleteClientRecipeResponse.cs" />
     <Compile Include="Responses\ClientRecipe\GetClientRecipeResponse.cs" />
     <Compile Include="Responses\ClientRecipe\GetClientRecipesResponse.cs" />

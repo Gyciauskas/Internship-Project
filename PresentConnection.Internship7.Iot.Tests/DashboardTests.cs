@@ -41,8 +41,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Dashboard")]
+        [Category("IntegrationTests")]
+        [Category("Dashboard")]
 
         public void Can_insert_dashboard_to_database()
         {
@@ -55,8 +55,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Dashboard")]
+        [Category("IntegrationTests")]
+        [Category("Dashboard")]
         public void Cannot_insert_dashboard_to_database_when_clientId_is_NotSet()
         {
             goodDashboard.ClientId = string.Empty;
@@ -65,8 +65,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Dashboard")]
+        [Category("IntegrationTests")]
+        [Category("Dashboard")]
         public void Can_get_dashboard_by_client_id()
         {
             dashboardService.UpdateDashboard(goodDashboard);
@@ -82,8 +82,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Dashboard")]
+        [Category("IntegrationTests")]
+        [Category("Dashboard")]
         public void Can_update_dashboards_to_database()
         {
             var widget = new Widget

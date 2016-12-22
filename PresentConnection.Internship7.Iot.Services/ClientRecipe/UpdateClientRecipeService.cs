@@ -5,18 +5,21 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class UpdateClientRecipeService : Service
+    public class UpdateClientRecipeService : ServiceBase
     {
         public IClientRecipeService ClientRecipeService { get; set; }
 
         public UpdateClientRecipeResponse Any(UpdateClientRecipe request)
         {
             var response = new UpdateClientRecipeResponse();
+            
+            var clientRecipe = ClientRecipeService.GetClientRecipe(request.Id, UserSession.UserAuthId);
 
+            clientRecipe = clientRecipe?.PopulateWith(request);
 
-            var clientRecipe = ClientRecipeService.GetClientRecipe(request.Id, request.Id).PopulateWith(request);
-            ClientRecipeService.UpdateClientRecipe(clientRecipe, request.Id);
+            ClientRecipeService.UpdateClientRecipe(clientRecipe, UserSession.UserAuthId);
 
+            response.Result = clientRecipe;
             return response;
         }
     }

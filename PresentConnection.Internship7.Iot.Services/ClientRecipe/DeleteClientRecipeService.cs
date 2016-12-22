@@ -1,10 +1,9 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.ServiceModels;
-using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class DeleteClientRecipeService : Service
+    public class DeleteClientRecipeService : ServiceBase
     {
         public IClientRecipeService ClientRecipeService { get; set; }
 
@@ -12,7 +11,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new DeleteClientRecipeResponse
             {
-                IsDeleted = ClientRecipeService.DeleteClientRecipe(request.Id, request.ClientId)
+                Result = ClientRecipeService.DeleteClientRecipe(request.Id, UserSession.UserAuthId)
             };
             
             return response;

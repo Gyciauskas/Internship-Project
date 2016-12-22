@@ -57,8 +57,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Recipe")]
+        [Category("IntegrationTests")]
+        [Category("Recipe")]
         public void Can_insert_recipe_to_database()
         {
             recipeService.CreateRecipe(goodRecipe);
@@ -68,8 +68,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Recipe")]
+        [Category("IntegrationTests")]
+        [Category("Recipe")]
         public void Cannot_insert_recipe_to_database_when_name_is_not_provided()
         {
             goodRecipe.Name = string.Empty;
@@ -79,8 +79,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Recipe")]
+        [Category("IntegrationTests")]
+        [Category("Recipe")]
         public void Cannot_insert_recipe_to_database_when_uniquename_is_not_provided()
         {
             goodRecipe.UniqueName = string.Empty;
@@ -90,8 +90,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Recipe")]
+        [Category("IntegrationTests")]
+        [Category("Recipe")]
         public void Cannot_insert_recipe_to_database_when_such_uniquename_exist()
         {
             recipeService.CreateRecipe(goodRecipe);
@@ -118,8 +118,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Recipe")]
+        [Category("IntegrationTests")]
+        [Category("Recipe")]
         public void Cannot_insert_recipe_to_database_when_uniquename_is_not_in_correct_format()
         {
             goodRecipe.UniqueName = "Raspberry PI 3";
@@ -136,8 +136,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Recipe")]
+        [Category("IntegrationTests")]
+        [Category("Recipe")]
         public void Cannot_insert_recipe_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
         {
             goodRecipe.UniqueName = "raspberry-PI-3";
@@ -154,8 +154,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Recipe")]
+        [Category("IntegrationTests")]
+        [Category("Recipe")]
         public void Cannot_insert_recipe_to_database_when_such_image_is_not_provided()
         {
             goodRecipe.Images = null;
@@ -172,8 +172,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Recipe")]
+        [Category("IntegrationTests")]
+        [Category("Recipe")]
         public void Can_get_recipe_by_id()
         {
             recipeService.CreateRecipe(goodRecipe);
@@ -188,8 +188,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Recipe")]
+        [Category("IntegrationTests")]
+        [Category("Recipe")]
         public void Can_get_all_recipes()
         {
             recipeService.CreateRecipe(goodRecipe);
@@ -202,8 +202,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Recipe")]
+        [Category("IntegrationTests")]
+        [Category("Recipe")]
         public void Can_get_all_recipes_by_name()
         {
             recipeService.CreateRecipe(goodRecipe);
@@ -218,8 +218,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Recipe")]
+        [Category("IntegrationTests")]
+        [Category("Recipe")]
         public void Can_update_recipe_to_database()
         {
             recipeService.CreateRecipe(goodRecipe);
@@ -236,8 +236,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Recipe")]
+        [Category("IntegrationTests")]
+        [Category("Recipe")]
         public void Can_delete_recipe_from_database()
         {
             recipeService.CreateRecipe(goodRecipe);

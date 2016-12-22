@@ -1,27 +1,27 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
-using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class CreateClientDeviceService : Service
+    public class AddDeviceToClientService : ServiceBase
     {
         public IClientDeviceService ClientDeviceService { get; set; }
 
-        public CreateClientDeviceResponse Any(CreateClientDevice request)
+        public AddDeviceToClientResponse Any(AddDeviceToClient request)
         {
-            var response = new CreateClientDeviceResponse();
+            var response = new AddDeviceToClientResponse();
 
             var clientDevice = new ClientDevice
             {
                 DeviceId = request.DeviceId,
-                ClientId = request.ClientId
+                ClientId = request.ClientId,
+                // TODO : add other properties later
             };
-            string clientId = request.ClientId;
 
-            ClientDeviceService.CreateClientDevice(clientDevice, clientId);
+            ClientDeviceService.CreateClientDevice(clientDevice, UserSession.UserAuthId);
 
+            response.Result = clientDevice;
             return response;
         }
     }

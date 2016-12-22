@@ -1,6 +1,8 @@
-﻿namespace PresentConnection.Internship7.Iot.ServiceModels
+﻿using PresentConnection.Internship7.Iot.Domain;
+
+namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    public class UpdateClientDeviceResponse
+    public class UpdateClientDeviceResponse : ResponseBase<ClientDevice>
     {
     }
 }

@@ -5,7 +5,7 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class UpdateClientDeviceService : Service
+    public class UpdateClientDeviceService : ServiceBase
     {
         public IClientDeviceService ClientDeviceService { get; set; }
 
@@ -13,9 +13,13 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new UpdateClientDeviceResponse();
 
-            var clientDevice = ClientDeviceService.GetClientDevice(request.Id, request.Id).PopulateWith(request);
+            var clientDevice = ClientDeviceService.GetClientDevice(request.Id, UserSession.UserAuthId);
+
+            clientDevice = clientDevice?.PopulateWith(request);
+
             ClientDeviceService.UpdateClientDevice(clientDevice, request.Id);
 
+            response.Result = clientDevice;
             return response;
         }
     }

@@ -4,7 +4,7 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class GetRecipeConnectionsService : Service
+    public class GetRecipeConnectionsService : ServiceBase
     {
         public IRecipeConnectionService RecipeConnectionsService { get; set; }
 

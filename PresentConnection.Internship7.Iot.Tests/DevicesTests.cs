@@ -32,8 +32,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Can_insert_device_to_database()
         {
             deviceService.CreateDevice(goodDevice);
@@ -42,8 +42,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Cannot_insert_device_to_database_when_modelname_is_not_provided()
         {
             goodDevice.ModelName = string.Empty;
@@ -52,8 +52,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Cannot_insert_device_to_database_when_uniquename_is_not_provided()
         {
             goodDevice.UniqueName = string.Empty;
@@ -62,8 +62,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Cannot_insert_device_to_database_when_image_is_not_provided()
         {
             goodDevice.Images = null;
@@ -78,8 +78,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Cannot_insert_device_to_database_when_such_unique_name_exist()
         {
 
@@ -108,8 +108,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Cannot_insert_device_to_database_when_uniquename_is_not_in_correct_format()
         {
             goodDevice.UniqueName = "Raspberry PI 3";
@@ -126,8 +126,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Cannot_insert_device_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
         {
             goodDevice.UniqueName = "raspberry-PI-3";
@@ -144,8 +144,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Can_get_device_by_id()
         {
             deviceService.CreateDevice(goodDevice);
@@ -160,8 +160,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Can_get_all_devices()
         {
             deviceService.CreateDevice(goodDevice);
@@ -189,8 +189,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Can_get_all_devices_by_name()
         {
             var device1 = new Device
@@ -242,8 +242,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Can_get_all_devices_by_case_insensetive_name()
         {
             var device1 = new Device
@@ -295,8 +295,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Can_get_all_devices_by_incomplete_name()
         {
             var device1 = new Device
@@ -348,8 +348,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Can_update_device_to_database()
         {
             var device = new Device
@@ -375,8 +375,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Cannot_update_device_to_database_when_such_unique_name_already_exist()
         {
             deviceService.CreateDevice(goodDevice);
@@ -409,8 +409,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Device")]
+        [Category("IntegrationTests")]
+        [Category("Device")]
         public void Can_delete_device_from_database()
         {
             deviceService.CreateDevice(goodDevice);

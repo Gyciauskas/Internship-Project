@@ -24,8 +24,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Lookup")]
+        [Category("IntegrationTests")]
+        [Category("Lookup")]
         public void Can_insert_lookup_to_database()
         {
             var lookup = new Lookup()
@@ -42,8 +42,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Lookup")]
+        [Category("IntegrationTests")]
+        [Category("Lookup")]
         public void Cannot_insert_lookup_to_database_when_name_is_not_provided()
         {
             var lookup = new Lookup()
@@ -58,8 +58,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Lookup")]
+        [Category("IntegrationTests")]
+        [Category("Lookup")]
         public void Cannot_insert_lookup_to_database_when_type_is_not_provided()
         {
             var lookup = new Lookup()
@@ -74,8 +74,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Lookup")]
+        [Category("IntegrationTests")]
+        [Category("Lookup")]
         public void Can_get_lookup_by_id()
         {
             var lookup = new Lookup()
@@ -97,8 +97,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Lookup")]
+        [Category("IntegrationTests")]
+        [Category("Lookup")]
         public void Can_get_all_lookups()
         {
             var lookup1 = new Lookup()
@@ -132,8 +132,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Lookup")]
+        [Category("IntegrationTests")]
+        [Category("Lookup")]
         public void Can_get_all_lookups_by_type()
         {
             var lookup1 = new Lookup()
@@ -179,8 +179,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Lookup")]
+        [Category("IntegrationTests")]
+        [Category("Lookup")]
         public void Can_update_lookup_to_database()
         {
             var lookup = new Lookup()
@@ -204,8 +204,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Lookup")]
+        [Category("IntegrationTests")]
+        [Category("Lookup")]
         public void Can_delete_lookup_from_database()
         {
             var lookup = new Lookup()

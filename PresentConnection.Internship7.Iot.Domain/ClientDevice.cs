@@ -23,16 +23,10 @@ namespace PresentConnection.Internship7.Iot.Domain
         public string DeviceDisplayId { get; set; }
 
         // when user registers device but doesn't do real action yet
-        public bool IsEnabled
-        {
-            get { return DeviceStatuses.Last() != DeviceStatus.Unregistered; }
-        }
-
+        public bool IsEnabled => DeviceStatuses.Last() != DeviceStatus.Unregistered;
         // when user establishes connection from device
-        public DeviceStatus IsConnected
-        {
-            get { return DeviceStatuses.Last(); }
-        }
+        public bool IsConnected => DeviceStatuses.Last() == DeviceStatus.Connected;
+
         public List<DeviceStatus> DeviceStatuses { get; set; }
         public PowerResource PowerResource { get; set; }// see below description
         public string SerialNumber { get; set; }

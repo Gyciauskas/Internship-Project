@@ -24,8 +24,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Client")]
+        [Category("IntegrationTests")]
+        [Category("Client")]
         public void Can_insert_client_to_database()
         {
             var client = new Client()
@@ -54,8 +54,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Client")]
+        [Category("IntegrationTests")]
+        [Category("Client")]
         public void Cannot_insert_client_to_database_when_userid_is_not_provided()
         {
             var client = new Client()
@@ -81,8 +81,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Client")]
+        [Category("IntegrationTests")]
+        [Category("Client")]
         public void Can_get_client_by_id()
         {
             var client = new Client()
@@ -116,8 +116,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Client")]
+        [Category("IntegrationTests")]
+        [Category("Client")]
         public void Can_get_all_clients()
         {
             var client1 = new Client()
@@ -161,8 +161,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Client")]
+        [Category("IntegrationTests")]
+        [Category("Client")]
         public void Can_update_client_to_database()
         {
             var client = new Client()
@@ -198,8 +198,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Client")]
+        [Category("IntegrationTests")]
+        [Category("Client")]
         public void Can_delete_client_from_database()
         {
             var client = new Client()

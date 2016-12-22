@@ -1,26 +1,25 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
-using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class CreateClientRecipeService : Service
+    public class ApplyRecipeToClientService : ServiceBase
     {
         public IClientRecipeService ClientRecipeService { get; set; }
 
-        public CreateClientRecipeResponse Any(CreateClientRecipe request)
+        public ApplyRecipeToClientResponse Any(ApplyRecipeToClient request)
         {
-            var response = new CreateClientRecipeResponse();
+            var response = new ApplyRecipeToClientResponse();
 
             var clientRecipe = new ClientRecipe
             {
                 RecipeId = request.RecipeId,
-                ClientId = request.ClientId
+                ClientId = UserSession.UserAuthId,
+                Configuration = request.Configuration
             };
-            string clientId = request.ClientId;
 
-            ClientRecipeService.CreateClientRecipe(clientRecipe, clientId);
+            ClientRecipeService.CreateClientRecipe(clientRecipe, UserSession.UserAuthId);
 
             return response;
         }
