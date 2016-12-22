@@ -1,5 +1,7 @@
-﻿using CodeMash.Net;
+﻿using System.Collections;
+using CodeMash.Net;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
@@ -13,13 +15,25 @@ namespace PresentConnection.Internship7.Iot.Domain
             Components = new Dictionary<string, object>();
             PowerResource = new PowerResource();
             SimulationType = SimulationType.NotSet;
+            DeviceStatuses = new List<DeviceStatus>();
         }
 
         public string ClientId { get; set; }
         public string DeviceId { get; set; }
         public string DeviceDisplayId { get; set; }
-        public bool IsEnabled { get; set; }// when user register device but don't do real action yet
-        public bool IsConnected { get; set; }// when user establish connection from device
+
+        // when user registers device but doesn't do real action yet
+        public bool IsEnabled
+        {
+            get { return DeviceStatuses.Last() != DeviceStatus.Unregistered; }
+        }
+
+        // when user establishes connection from device
+        public DeviceStatus IsConnected
+        {
+            get { return DeviceStatuses.Last(); }
+        }
+        public List<DeviceStatus> DeviceStatuses { get; set; }
         public PowerResource PowerResource { get; set; }// see below description
         public string SerialNumber { get; set; }
         public string FirmwareVersion { get; set; }// GetDefaultVersion From Device
