@@ -5,9 +5,10 @@ using PresentConnection.Internship7.Iot.ServiceModels;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    class CreateConnectionService : Service
+    public class CreateConnectionService : ServiceBase
     {
         public IConnectionService ConnectionService { get; set; }
+
         public CreateConnectionResponse Any(CreateConnection request)
         {
             var response = new CreateConnectionResponse();

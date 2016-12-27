@@ -24,8 +24,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RunningDeviceSimulations")]
+        [Category("IntegrationTests")]
+        [Category("RunningDeviceSimulations")]
         public void Can_insert_runningDeviceSimulations_to_database()
         {
             var runningDeviceSimulations = new RunningDeviceSimulation()
@@ -41,8 +41,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RunningDeviceSimulations")]
+        [Category("IntegrationTests")]
+        [Category("RunningDeviceSimulations")]
         public void Cannot_insert_runningDeviceSimulations_to_database_when_deviceid_is_not_provided()
         {
             var runningDeviceSimulations = new RunningDeviceSimulation()
@@ -55,8 +55,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RunningDeviceSimulations")]
+        [Category("IntegrationTests")]
+        [Category("RunningDeviceSimulations")]
         public void Cannot_insert_runningDeviceSimulations_to_database_when_simulationtype_is_not_provided()
         {
             var runningDeviceSimulations = new RunningDeviceSimulation()
@@ -69,8 +69,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RunningDeviceSimulations")]
+        [Category("IntegrationTests")]
+        [Category("RunningDeviceSimulations")]
         public void Can_get_runningDeviceSimulations_by_id()
         {
             var runningDeviceSimulations = new RunningDeviceSimulation()
@@ -92,8 +92,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RunningDeviceSimulations")]
+        [Category("IntegrationTests")]
+        [Category("RunningDeviceSimulations")]
         public void Can_get_all_runningDeviceSimulations()
         {
             var runningDeviceSimulations1 = new RunningDeviceSimulation()
@@ -127,8 +127,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RunningDeviceSimulations")]
+        [Category("IntegrationTests")]
+        [Category("RunningDeviceSimulations")]
         public void Can_get_all_runningDeviceSimulations_by_name()
         {
             var runningDeviceSimulations1 = new RunningDeviceSimulation()
@@ -170,8 +170,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RunningDeviceSimulations")]
+        [Category("IntegrationTests")]
+        [Category("RunningDeviceSimulations")]
         public void Can_update_runningDeviceSimulations_to_database()
         {
             var runningDeviceSimulations = new RunningDeviceSimulation()
@@ -195,8 +195,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RunningDeviceSimulations")]
+        [Category("IntegrationTests")]
+        [Category("RunningDeviceSimulations")]
         public void Can_delete_runningDeviceSimulations_from_database()
         {
             var runningDeviceSimulations = new RunningDeviceSimulation()

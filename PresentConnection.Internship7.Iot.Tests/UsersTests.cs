@@ -32,8 +32,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.User")]
+        [Category("IntegrationTests")]
+        [Category("User")]
         public void Can_insert_user_to_database()
         {
           
@@ -52,8 +52,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.User")]
+        [Category("IntegrationTests")]
+        [Category("User")]
         public void Cannot_insert_user_to_database_when_fullname_is_not_provided()
         {
           
@@ -67,8 +67,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.User")]
+        [Category("IntegrationTests")]
+        [Category("User")]
         public void Cannot_insert_user_to_database_when_rules_is_not_provided()
         {
 
@@ -85,8 +85,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.User")]
+        [Category("IntegrationTests")]
+        [Category("User")]
         public void Cannot_insert_user_to_database_when_permisions_is_not_provided()
         {
             
@@ -103,8 +103,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.User")]
+        [Category("IntegrationTests")]
+        [Category("User")]
         public void Cannot_insert_user_to_database_when_email_is_not_provided()
         {
           
@@ -118,8 +118,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.User")]
+        [Category("IntegrationTests")]
+        [Category("User")]
         public void Can_get_user_by_id()
         {
             
@@ -145,8 +145,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.User")]
+        [Category("IntegrationTests")]
+        [Category("User")]
         public void Can_get_all_users()
         {
           
@@ -181,8 +181,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.User")]
+        [Category("IntegrationTests")]
+        [Category("User")]
         public void Can_get_all_users_by_name()
         {
          
@@ -230,8 +230,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.User")]
+        [Category("IntegrationTests")]
+        [Category("User")]
         public void Can_update_user_to_database()
         {
          
@@ -259,8 +259,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.User")]
+        [Category("IntegrationTests")]
+        [Category("User")]
         public void Can_delete_user_from_database()
         {
          

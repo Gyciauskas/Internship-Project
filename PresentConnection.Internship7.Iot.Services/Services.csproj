@@ -84,6 +84,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ServiceBase.cs" />
+    <Compile Include="ClientConnection\CreateClientConnectionService.cs" />
+    <Compile Include="ClientConnection\DeleteClientConnectionService.cs" />
+    <Compile Include="ClientConnection\GetClientConnectionService.cs" />
+    <Compile Include="ClientConnection\GetClientConnectionsService.cs" />
+    <Compile Include="ClientConnection\UpdateClientConnectionService.cs" />
+    <Compile Include="Client\CreateClientService.cs" />
+    <Compile Include="Client\DeleteClientService.cs" />
+    <Compile Include="Client\GetClientService.cs" />
+    <Compile Include="Client\GetClientsService.cs" />
+    <Compile Include="Client\UpdateClientService.cs" />
     <Compile Include="Components\DeleteComponentService.cs" />
     <Compile Include="Components\GetComponentService.cs" />
     <Compile Include="Components\UpdateComponentService.cs" />
@@ -92,6 +103,16 @@
     <Compile Include="RecipeConnections\GetRecipeConnectionService.cs" />
     <Compile Include="RecipeConnections\GetRecipeConnectionsService.cs" />
     <Compile Include="RecipeConnections\UpdateRecipeConnectionService.cs" />
+    <Compile Include="ClientDevice\AddDeviceToClientService.cs" />
+    <Compile Include="ClientDevice\DeleteClientDeviceService.cs" />
+    <Compile Include="ClientDevice\GetClientDeviceService.cs" />
+    <Compile Include="ClientDevice\GetClientDevicesService.cs" />
+    <Compile Include="ClientDevice\UpdateClientDeviceService.cs" />
+    <Compile Include="ClientRecipe\ApplyRecipeToClientService.cs" />
+    <Compile Include="ClientRecipe\DeleteClientRecipeService.cs" />
+    <Compile Include="ClientRecipe\GetClientRecipeService.cs" />
+    <Compile Include="ClientRecipe\GetClientRecipesService.cs" />
+    <Compile Include="ClientRecipe\UpdateClientRecipeService.cs" />
     <Compile Include="Users\CreateUserService.cs" />
     <Compile Include="Users\DeleteUserService.cs" />
     <Compile Include="Users\GetUserService.cs" />

@@ -31,16 +31,11 @@ namespace PresentConnection.Internship7.Iot.Utils
         {
         }
 
-        public BusinessException(string message, string key)
+        public BusinessException(string message)
             : base(message)
         {
-            Key = key;
         }
 
-        public BusinessException(string message, Exception innerException, string key)
-            : base(message, innerException)
-        {
-            Key = key;
-        }
+        
     }
 }

@@ -105,6 +105,7 @@
     <Compile Include="ComponentsTests.cs" />
     <Compile Include="ConnectionGroupsTests.cs" />
     <Compile Include="ConnectionsTests.cs" />
+    <Compile Include="DeviceStatusesTests.cs" />
     <Compile Include="DevicesTests.cs" />
     <Compile Include="LookupsTests.cs" />
     <Compile Include="ManufacturersTests.cs" />

@@ -30,8 +30,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RecipeConnection")]
+        [Category("IntegrationTests")]
+        [Category("RecipeConnection")]
         public void Can_insert_recipe_connection_to_database()
         {
             // Insert to db
@@ -42,8 +42,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RecipeConnection")]
+        [Category("IntegrationTests")]
+        [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_name_is_not_provided()
         {
             recipeconnection.Name = string.Empty;
@@ -53,8 +53,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RecipeConnection")]
+        [Category("IntegrationTests")]
+        [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_uniquename_is_not_provided()
         {
             recipeconnection.UniqueName = string.Empty;
@@ -64,8 +64,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RecipeConnection")]
+        [Category("IntegrationTests")]
+        [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_such_uniquename_exist()
         {
             recipeconnService.CreateRecipeConnection(recipeconnection);
@@ -88,8 +88,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RecipeConnection")]
+        [Category("IntegrationTests")]
+        [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_uniquename_is_not_in_correct_format()
         {
             recipeconnection.UniqueName = "Raspberry PI 3";
@@ -106,8 +106,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RecipeConnection")]
+        [Category("IntegrationTests")]
+        [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
         {
             recipeconnection.UniqueName = "raspberry-PI-3";
@@ -124,8 +124,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RecipeConnection")]
+        [Category("IntegrationTests")]
+        [Category("RecipeConnection")]
         public void Can_get_recipe_connection_by_id()
         {
             // Insert to db
@@ -143,8 +143,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RecipeConnection")]
+        [Category("IntegrationTests")]
+        [Category("RecipeConnection")]
         public void Can_get_all_recipe_connections()
         {
             // Create another recipe connection
@@ -166,8 +166,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RecipeConnection")]
+        [Category("IntegrationTests")]
+        [Category("RecipeConnection")]
         public void Can_get_all_recipe_connections_by_name()
         {
             // Create another recipe connection
@@ -194,8 +194,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RecipeConnection")]
+        [Category("IntegrationTests")]
+        [Category("RecipeConnection")]
         public void Can_update_recipe_connection_to_database()
         {
             // Insert to db
@@ -215,8 +215,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.RecipeConnection")]
+        [Category("IntegrationTests")]
+        [Category("RecipeConnection")]
         public void Can_delete_recipe_connection_from_database()
         {
             // Insert to db

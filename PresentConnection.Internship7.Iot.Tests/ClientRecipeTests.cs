@@ -22,8 +22,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ClientRecipes")]
+        [Category("IntegrationTests")]
+        [Category("ClientRecipes")]
         public void Can_insert_client_recipe_to_database()
         {
             var clientR = new ClientRecipe()
@@ -37,8 +37,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ClientDevice")]
+        [Category("IntegrationTests")]
+        [Category("ClientDevice")]
         public void Cannot_insert_when_code_user_wants_to_compromise_data_and_pass_different_client_id()
         {
             var clientR = new ClientRecipe()
@@ -59,8 +59,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ClientRecipes")]
+        [Category("IntegrationTests")]
+        [Category("ClientRecipes")]
         public void Cannot_insert_client_recipe_to_database_when_recipeId_is_not_provided()
         {
             var clientR = new ClientRecipe()
@@ -73,8 +73,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ClientRecipes")]
+        [Category("IntegrationTests")]
+        [Category("ClientRecipes")]
         public void Cannot_insert_client_recipe_to_database_when_clientId_is_not_provided()
         {
             var clientR = new ClientRecipe()
@@ -87,8 +87,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ClientRecipes")]
+        [Category("IntegrationTests")]
+        [Category("ClientRecipes")]
         public void Can_get_client_recipe_by_id()
         {
             var clientR = new ClientRecipe()
@@ -109,8 +109,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ClientRecipes")]
+        [Category("IntegrationTests")]
+        [Category("ClientRecipes")]
         public void Can_get_all_client_recipes()
         {
             var clientR = new ClientRecipe()
@@ -143,8 +143,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ClientRecipes")]
+        [Category("IntegrationTests")]
+        [Category("ClientRecipes")]
         public void Can_get_all_client_recipes_by_clientId()
         {
             var clientR = new ClientRecipe()
@@ -186,8 +186,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ClientRecipes")]
+        [Category("IntegrationTests")]
+        [Category("ClientRecipes")]
         public void Cannot_get_other_client_recipes()
         {
             var clientR = new ClientRecipe()
@@ -232,8 +232,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ClientRecipes")]
+        [Category("IntegrationTests")]
+        [Category("ClientRecipes")]
         public void Can_update_client_recipe_to_database()
         {
             var clientR = new ClientRecipe()
@@ -259,8 +259,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ClientRecipes")]
+        [Category("IntegrationTests")]
+        [Category("ClientRecipes")]
         public void Cannot_update_other_client_recipe()
         {
             var clientR = new ClientRecipe()
@@ -293,8 +293,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ClientRecipes")]
+        [Category("IntegrationTests")]
+        [Category("ClientRecipes")]
         public void Can_delete_client_recipe_from_database()
         {
             var clientR = new ClientRecipe()
@@ -314,8 +314,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ClientRecipes")]
+        [Category("IntegrationTests")]
+        [Category("ClientRecipes")]
         public void Cannot_delete_other_client_recipe()
         {
             var clientR = new ClientRecipe()
