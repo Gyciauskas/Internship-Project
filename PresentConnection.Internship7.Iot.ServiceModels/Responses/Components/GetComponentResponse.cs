@@ -2,8 +2,7 @@
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    public class GetComponentResponse
+    public class GetComponentResponse : ResponseBase<Component>
     {
-        public Component Component { get; set; }
     }
 }

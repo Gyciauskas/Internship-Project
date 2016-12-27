@@ -78,16 +78,22 @@ namespace PresentConnection.Internship7.Iot.Tests
             {
                 SettingsAsJson = item
             };
-       
+            var settings1 = new Settings
+            {
+                SettingsAsJson = item
+            };
+
+          
             settings.ShouldNotBeNull();
             settings.Id.ShouldNotBeNull();
-        
+            settings1.ShouldNotBeNull();
+            settings1.Id.ShouldNotBeNull();
+           
+
             var settingsFromDb = Db.Find<Settings>(_ => true).FirstOrDefault();
+                    
 
-            settingsFromDb.ShouldNotBeNull();
-            settingsFromDb.SettingsAsJson.ShouldNotBeNull();
         }
-
 
         [TearDown]
         public void Dispose()

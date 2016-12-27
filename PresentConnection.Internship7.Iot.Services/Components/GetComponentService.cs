@@ -4,15 +4,15 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class GetComponentsService : Service
+    public class GetComponentService : Service
     {
         public IComponentService ComponentService { get; set; }
 
-        public GetComponentsResponse Any(GetComponents request)
+        public GetComponentResponse Any(GetComponent request)
         {
-            var response = new GetComponentsResponse
+            var response = new GetComponentResponse
             {
-                Components = ComponentService.GetAllComponents(request.ModelName)
+                Result = ComponentService.GetComponent(request.Id)
             };
             return response;
         }

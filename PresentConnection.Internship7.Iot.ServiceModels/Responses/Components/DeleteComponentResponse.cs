@@ -1,7 +1,6 @@
 ﻿namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    public class DeleteComponentResponse
+    public class DeleteComponentResponse : ResponseBase<bool>
     {
-        public bool IsDeleted { get; set; }
     }
 }
