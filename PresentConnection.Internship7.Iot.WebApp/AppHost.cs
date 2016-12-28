@@ -17,7 +17,7 @@ namespace PresentConnection.Internship7.Iot.WebApp
         /// </summary>
         public AppHost()
             : base("WebApp", typeof(GetManufacturersService).Assembly) { }
-
+     
         /// <summary>
         /// Application specific configuration
         /// This method should initialize any IoC resources utilized by your web service classes.
@@ -63,6 +63,7 @@ namespace PresentConnection.Internship7.Iot.WebApp
             container.Register<ICollaboratorService>(new CollaboratorService());
             container.Register<IRecipeConnectionService>(new RecipeConnectionService());
 
+            container.Register<IComponentService>(new ComponentService());
 
             // Caching
             // TODO replace with Redis when have Docker prepared
