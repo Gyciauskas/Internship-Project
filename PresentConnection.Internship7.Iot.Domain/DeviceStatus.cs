@@ -2,6 +2,7 @@
 {
     public enum DeviceStatus
     {
+        NotSet,
         Registered,
         Connected,
         Disconnected,

@@ -2,6 +2,8 @@
 using CodeMash.Net;
 using System.Collections.Generic;
 using System.Linq;
+using FluentValidation.Results;
+using PresentConnection.Internship7.Iot.Utils;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
@@ -23,11 +25,11 @@ namespace PresentConnection.Internship7.Iot.Domain
         public string DeviceDisplayId { get; set; }
 
         // when user registers device but doesn't do real action yet
-        public bool IsEnabled => DeviceStatuses.Last() != DeviceStatus.Unregistered;
+        public bool IsEnabled => DeviceStatuses.LastOrDefault() != DeviceStatus.Unregistered;
         // when user establishes connection from device
-        public bool IsConnected => DeviceStatuses.Last() == DeviceStatus.Connected;
+        public bool IsConnected => DeviceStatuses.LastOrDefault() == DeviceStatus.Connected;
 
-        public List<DeviceStatus> DeviceStatuses { get; set; }
+        private List<DeviceStatus> DeviceStatuses { get; }
         public PowerResource PowerResource { get; set; }// see below description
         public string SerialNumber { get; set; }
         public string FirmwareVersion { get; set; }// GetDefaultVersion From Device
@@ -41,5 +43,20 @@ namespace PresentConnection.Internship7.Iot.Domain
         public SimulationType SimulationType { get; set; }
         public bool IsSimulationDevice { get; set; }
         public string CreatedBy { get; set; }
+
+        public void AddDeviceStatus(DeviceStatus deviceStatus)
+        {
+            var validator = new DeviceStatusValidator(deviceStatus);
+            ValidationResult results = validator.Validate(DeviceStatuses);
+            bool validationSucceeded = results.IsValid;
+            if (validationSucceeded)
+            {
+                DeviceStatuses.Add(deviceStatus);
+            }
+            else
+            {
+                throw new BusinessException("Cannot insert device status", results.Errors);
+            }
+        }
     }
 }
