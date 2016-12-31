@@ -5,7 +5,7 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
-    public class CreateDeviceService : Service
+    public class CreateDeviceService : ServiceBase
     {
         public IDeviceService DeviceService { get; set; }
 

@@ -91,6 +91,7 @@
     <Compile Include="IImagesService.cs" />
     <Compile Include="ILookupService.cs" />
     <Compile Include="IManufacturerService.cs" />
+    <Compile Include="IRecipeConnectionService.cs" />
     <Compile Include="IRecipeService.cs" />
     <Compile Include="ISettingsService.cs" />
     <Compile Include="IRunningDeviceSimulationsService.cs" />

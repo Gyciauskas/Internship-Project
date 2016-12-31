@@ -30,8 +30,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Collaborator")]
+        [Category("IntegrationTests")]
+        [Category("Collaborator")]
         public void Can_insert_collaborator_to_database()
         {
             collaboratorService.CreateCollaborator(collaborator);
@@ -42,8 +42,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Collaborator")]
+        [Category("IntegrationTests")]
+        [Category("Collaborator")]
         public void Cannot_insert_collaborator_to_database_when_userid_is_not_provided()
         {
             /*List<string> permSet = new List<string>();
@@ -65,8 +65,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Collaborator")]
+        [Category("IntegrationTests")]
+        [Category("Collaborator")]
         public void Cannot_insert_collaborator_to_database_when_email_is_not_provided()
         {
             List<string> permSet = new List<string>();
@@ -87,8 +87,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Collaborator")]
+        [Category("IntegrationTests")]
+        [Category("Collaborator")]
         public void Can_get_collaborator_by_id()
         {
             List<string> permSet = new List<string>();
@@ -117,8 +117,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Collaborator")]
+        [Category("IntegrationTests")]
+        [Category("Collaborator")]
         public void Can_get_all_collaborators()
         {
             List<string> permSet = new List<string>();
@@ -166,8 +166,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Collaborator")]
+        [Category("IntegrationTests")]
+        [Category("Collaborator")]
         public void Can_get_all_collaborators_by_name()
         {
             List<string> permSet = new List<string>();
@@ -230,8 +230,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Collaborator")]
+        [Category("IntegrationTests")]
+        [Category("Collaborator")]
         public void Can_update_collaborator_to_database()
         {
             List<string> permSet = new List<string>();
@@ -265,8 +265,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.Collaborator")]
+        [Category("IntegrationTests")]
+        [Category("Collaborator")]
         public void Can_delete_collaborator_from_database()
         {
             List<string> permSet = new List<string>();

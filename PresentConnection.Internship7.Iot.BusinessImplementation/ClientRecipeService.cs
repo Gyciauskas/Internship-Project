@@ -117,7 +117,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             var clientRecipe = Db.FindOneById<ClientRecipe>(id);
             if (clientRecipe == null)
             {
-                return null;
+                throw new BusinessException("Cannot get client recipe with such id");
             }
             var validator = new RecordPermissionValidator(responsibleClientId);
             var results = validator.Validate(clientRecipe);

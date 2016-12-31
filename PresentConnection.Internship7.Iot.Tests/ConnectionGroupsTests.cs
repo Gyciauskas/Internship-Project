@@ -34,8 +34,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ConnectionGroup")]
+        [Category("IntegrationTests")]
+        [Category("ConnectionGroup")]
         public void Can_insert_connectionGroup_to_database()
         {
             connectionGroupService.CreateConnectionGroup(goodConnectionGroup);
@@ -45,8 +45,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ConnectionGroup")]
+        [Category("IntegrationTests")]
+        [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_uniquename_is_not_provided()
         {
            goodConnectionGroup.UniqueName =string.Empty;
@@ -56,8 +56,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ConnectionGroup")]
+        [Category("IntegrationTests")]
+        [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_such_uniquename_exist()
         {
             connectionGroupService.CreateConnectionGroup(goodConnectionGroup);
@@ -84,8 +84,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ConnectionGroup")]
+        [Category("IntegrationTests")]
+        [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_uniquename_is_not_in_correct_format()
         {
             goodConnectionGroup.UniqueName = "Raspberry PI 3";
@@ -102,8 +102,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ConnectionGroup")]
+        [Category("IntegrationTests")]
+        [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
         {
             goodConnectionGroup.UniqueName = "raspberry-PI-3";
@@ -120,8 +120,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ConnectionGroup")]
+        [Category("IntegrationTests")]
+        [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_name_is_not_provided()
         {
             goodConnectionGroup.Name = string.Empty;
@@ -131,8 +131,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ConnectionGroup")]
+        [Category("IntegrationTests")]
+        [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_image_is_not_provided()
         {
             goodConnectionGroup.Images = null;
@@ -147,8 +147,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ConnectionGroup")]
+        [Category("IntegrationTests")]
+        [Category("ConnectionGroup")]
         public void Can_get_connectionGroup_by_id()
         {
             connectionGroupService.CreateConnectionGroup(goodConnectionGroup);
@@ -163,8 +163,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ConnectionGroup")]
+        [Category("IntegrationTests")]
+        [Category("ConnectionGroup")]
         public void Can_get_all_connectionGroups()
         {
             connectionGroupService.CreateConnectionGroup(goodConnectionGroup);
@@ -190,8 +190,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ConnectionGroup")]
+        [Category("IntegrationTests")]
+        [Category("ConnectionGroup")]
         public void Can_update_connectionGroup_to_database()
         {
             connectionGroupService.CreateConnectionGroup(goodConnectionGroup);
@@ -208,8 +208,8 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("Iot")]
-        [Category("IntegrationTests.ConnectionGroup")]
+        [Category("IntegrationTests")]
+        [Category("ConnectionGroup")]
         public void Can_delete_connectionGroup_from_database()
         {
            
