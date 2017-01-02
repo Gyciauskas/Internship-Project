@@ -11,6 +11,8 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class ClientDeviceService : IClientDeviceService
     {
+        public IRunningDeviceSimulationsService RunningDeviceSimulationsService { get; set; }
+
         public void CreateClientDevice(ClientDevice clientDevice, string responsibleClientId)
         {
             var validator = new ClientDeviceValidator(responsibleClientId);
@@ -109,6 +111,45 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
                 return clientDevice;
             }
             throw new BusinessException("You don't have permissions to get client device", results.Errors);
+        }
+
+        public void DeviceStarted(string id, string responsibleClientId)
+        {
+            RunningDeviceSimulationsService = new RunningDeviceSimulationsService();
+            var clientDevice = GetClientDevice(id, responsibleClientId);
+            clientDevice?.AddDeviceStatus(DeviceStatus.Connected);
+            if (clientDevice != null && clientDevice.IsSimulationDevice)
+            {
+                var runningDeviceSimulation = new RunningDeviceSimulation
+                {
+                    DeviceId = clientDevice.DeviceId,
+                    SimulationType = clientDevice.SimulationType
+                };
+                RunningDeviceSimulationsService.CreateRunningDeviceSimulations(runningDeviceSimulation);
+            }
+            else
+            {
+                // should rise notification?
+            }
+        }
+
+        public void DeviceStopped(string id, string responsibleClientId)
+        {
+            RunningDeviceSimulationsService = new RunningDeviceSimulationsService();
+            var clientDevice = GetClientDevice(id, responsibleClientId);
+            clientDevice?.AddDeviceStatus(DeviceStatus.Disconnected);
+            if (clientDevice != null && clientDevice.IsSimulationDevice)
+            {
+                var simulations = RunningDeviceSimulationsService.GetAllRunningDeviceSimulations(clientDevice.DeviceId);
+                foreach (var simulation in simulations)
+                {
+                    RunningDeviceSimulationsService.DeleteRunningDeviceSimulations(simulation.Id.ToString());
+                }
+            }
+            else
+            {
+                // should rise notification?
+            }
         }
     }
 }

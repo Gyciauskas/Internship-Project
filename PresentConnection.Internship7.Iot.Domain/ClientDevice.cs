@@ -18,6 +18,7 @@ namespace PresentConnection.Internship7.Iot.Domain
             PowerResource = new PowerResource();
             SimulationType = SimulationType.NotSet;
             DeviceStatuses = new List<DeviceStatus>();
+            AddDeviceStatus(DeviceStatus.Registered);
         }
 
         public string ClientId { get; set; }
@@ -25,9 +26,9 @@ namespace PresentConnection.Internship7.Iot.Domain
         public string DeviceDisplayId { get; set; }
 
         // when user registers device but doesn't do real action yet
-        public bool IsEnabled => DeviceStatuses.LastOrDefault() != DeviceStatus.Unregistered;
+        public bool IsEnabled => DeviceStatuses.Last() != DeviceStatus.Unregistered;
         // when user establishes connection from device
-        public bool IsConnected => DeviceStatuses.LastOrDefault() == DeviceStatus.Connected;
+        public bool IsConnected => DeviceStatuses.Last() == DeviceStatus.Connected;
 
         private List<DeviceStatus> DeviceStatuses { get; }
         public PowerResource PowerResource { get; set; }// see below description

@@ -15,6 +15,7 @@ namespace PresentConnection.Internship7.Iot.Tests
     public class ClientDevicesTests
     {
         private IClientDeviceService clientDeviceService;
+        private IRunningDeviceSimulationsService runningDeviceSimulationsService;
         private ClientDevice goodDevice;
         private ClientDevice goodDevice2;
         private ClientDevice goodDevice3;
@@ -23,6 +24,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void SetUp()
         {
             clientDeviceService = new ClientDeviceService();
+            runningDeviceSimulationsService = new RunningDeviceSimulationsService();
             goodDevice = new ClientDevice
             {
                 //UserId, DeviceId, DeviceDisplayId, Latitude, Longitude, AuthKey1, AuthKey2 mandatory fields
@@ -34,8 +36,6 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey1 = Guid.NewGuid().ToString(),
                 AuthKey2 = Guid.NewGuid().ToString()
             };
-            goodDevice.AddDeviceStatus(DeviceStatus.Registered);
-            goodDevice.AddDeviceStatus(DeviceStatus.Connected);
 
             goodDevice2 = new ClientDevice
             {
@@ -47,8 +47,6 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey1 = Guid.NewGuid().ToString(),
                 AuthKey2 = Guid.NewGuid().ToString()
             };
-            goodDevice2.AddDeviceStatus(DeviceStatus.Registered);
-            goodDevice2.AddDeviceStatus(DeviceStatus.Connected);
 
             goodDevice3 = new ClientDevice
             {
@@ -60,8 +58,6 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey1 = Guid.NewGuid().ToString(),
                 AuthKey2 = Guid.NewGuid().ToString()
             };
-            goodDevice3.AddDeviceStatus(DeviceStatus.Registered);
-            goodDevice3.AddDeviceStatus(DeviceStatus.Connected);
         }
 
         [Test]
@@ -177,25 +173,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Test]
         [Category("IntegrationTests")]
         [Category("ClientDevice")]
-        public void Cannot_insert_userDevice_to_database_when_device_is_not_connected_and_registered()
-        {
-            var badDevice = new ClientDevice
-            {
-                //UserId, DeviceId, DeviceDisplayId, Latitude, Longitude, AuthKey1, AuthKey2 mandatory fields
-                ClientId = "Lukas",
-                DeviceId = "11111",
-                DeviceDisplayId = "Lukas11111",
-                Latitude = "10",
-                Longitude = "20",
-                AuthKey1 = Guid.NewGuid().ToString(),
-                AuthKey2 = Guid.NewGuid().ToString()
-            };
-            typeof(BusinessException).ShouldBeThrownBy(() => clientDeviceService.CreateClientDevice(badDevice, "Lukas"));
-        }
-
-        [Test]
-        [Category("IntegrationTests")]
-        [Category("ClientDevice")]
         public void Can_get_userDevice_by_id()
         {            
             clientDeviceService.CreateClientDevice(goodDevice, "Lukas");
@@ -300,8 +277,6 @@ namespace PresentConnection.Internship7.Iot.Tests
                 AuthKey1 = Guid.NewGuid().ToString(),
                 AuthKey2 = Guid.NewGuid().ToString()
             };
-            userDeviceCompromised.AddDeviceStatus(DeviceStatus.Registered);
-            userDeviceCompromised.AddDeviceStatus(DeviceStatus.Connected);
 
             var exception = typeof(BusinessException).ShouldBeThrownBy(() => clientDeviceService.UpdateClientDevice(userDeviceCompromised, "Client2"));
 
@@ -312,6 +287,52 @@ namespace PresentConnection.Internship7.Iot.Tests
                 .ShouldNotBeNull("Received different error message");
 
             exception.Message.ShouldEqual("You don't have permissions to update this client device");
+        }
+
+        [Test]
+        [Category("IntegrationTests")]
+        [Category("UserDevices")]
+        public void Can_create_running_device_simulation_when_client_device_is_started_and_is_simulation()
+        {
+            goodDevice.IsSimulationDevice = true;
+            goodDevice.SimulationType = SimulationType.GPS;
+            clientDeviceService.CreateClientDevice(goodDevice, "Lukas");
+
+            goodDevice.ShouldNotBeNull();
+            goodDevice.Id.ShouldNotBeNull();
+
+            clientDeviceService.DeviceStarted(goodDevice.Id.ToString(), "Lukas");
+            var simulations = runningDeviceSimulationsService.GetAllRunningDeviceSimulations(goodDevice.DeviceId);
+            (simulations.Count > 0).ShouldBeTrue();
+        }
+
+        [Test]
+        [Category("IntegrationTests")]
+        [Category("UserDevices")]
+        public void Can_delete_running_device_simulation_when_client_device_is_stopped_and_is_simulation()
+        {
+            goodDevice.IsSimulationDevice = true;
+            goodDevice.SimulationType = SimulationType.GPS;
+            clientDeviceService.CreateClientDevice(goodDevice, "Lukas");
+
+            goodDevice.ShouldNotBeNull();
+            goodDevice.Id.ShouldNotBeNull();
+
+            var runningDeviceSimulation = new RunningDeviceSimulation
+            {
+                DeviceId = goodDevice.DeviceId,
+                SimulationType = goodDevice.SimulationType
+            };
+            runningDeviceSimulationsService.CreateRunningDeviceSimulations(runningDeviceSimulation);
+            runningDeviceSimulation.ShouldNotBeNull();
+            runningDeviceSimulation.Id.ShouldNotBeNull();
+
+            clientDeviceService.DeviceStopped(goodDevice.Id.ToString(), "Lukas");
+            var simulationFromDb =
+                runningDeviceSimulationsService.GetRunningDeviceSimulations(runningDeviceSimulation.Id.ToString());
+            simulationFromDb.ShouldNotBeNull();
+            simulationFromDb.Id.ShouldEqual(ObjectId.Empty);
+
         }
 
         [Test]
@@ -354,6 +375,12 @@ namespace PresentConnection.Internship7.Iot.Tests
             foreach (var clientDevice in clientDevices)
             {
                 Db.DeleteOne<ClientDevice>(x => x.Id == clientDevice.Id);
+            }
+
+            var simulations = Db.Find<RunningDeviceSimulation>(_ => true);
+            foreach (var simulation in simulations)
+            {
+                Db.DeleteOne<RunningDeviceSimulation>(x => x.Id == simulation.Id);
             }
         }
     }

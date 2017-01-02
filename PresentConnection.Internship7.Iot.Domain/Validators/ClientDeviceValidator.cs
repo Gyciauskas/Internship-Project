@@ -14,8 +14,6 @@ namespace PresentConnection.Internship7.Iot.Domain
             RuleFor(r => r.Latitude).NotEmpty();
             RuleFor(r => r.AuthKey1).NotEmpty();
             RuleFor(r => r.AuthKey2).NotEmpty();
-            RuleFor(r => r.IsEnabled).Equal(true);
-            RuleFor(r => r.IsConnected).Equal(true);
             RuleFor(r => r).CheckAccessPermissions(clientId);
             RuleFor(x => x).Must(ValidDeviceDisplayId).WithMessage("Name is not unique");
         }
