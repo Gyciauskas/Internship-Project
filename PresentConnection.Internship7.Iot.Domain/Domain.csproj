@@ -104,6 +104,7 @@
     <Compile Include="Validators\DashboardValidator.cs" />
     <Compile Include="Validators\Common\RecordPermissionValidator.cs" />
     <Compile Include="Validators\Common\RecordsPermissionValidator.cs" />
+    <Compile Include="Validators\ImageValidator.cs" />
     <Compile Include="Validators\RecipeConnectionValidator.cs" />
     <Compile Include="Validators\Common\DeviceStatusValidator.cs" />
     <Compile Include="WidgetType.cs" />

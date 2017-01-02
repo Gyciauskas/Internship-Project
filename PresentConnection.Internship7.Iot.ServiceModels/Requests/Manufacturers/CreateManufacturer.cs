@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using PresentConnection.Internship7.Iot.Domain;
 using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
@@ -8,11 +9,11 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
     {
         public CreateManufacturer()
         {
-            Images = new List<byte[]>();
+            Images = new Dictionary<DisplayImage, byte[]>();
         }
 
         public string Name { get; set; }
         public string UniqueName { get; set; }
-        public List<byte[]> Images { get; set; }
+        public Dictionary<DisplayImage, byte[]> Images { get; set; }
     }
 }

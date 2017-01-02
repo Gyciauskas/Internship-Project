@@ -68,7 +68,7 @@ namespace PresentConnection.Internship7.Iot.WebApp
 
             container.Register<IRecipeService>(new RecipeService());
             container.Register<ICollaboratorService>(new CollaboratorService());
-            container.Register<IImagesService>(new ImagesService());
+            container.Register<IImageService>(new ImageService());
             container.Register<IRecipeConnectionService>(new RecipeConnectionService());
 
             container.Register<IComponentService>(new ComponentService());
@@ -92,7 +92,7 @@ namespace PresentConnection.Internship7.Iot.WebApp
 
             //Plugins.Add(new ValidationFeature());
             //container.RegisterValidators(typeof(CreateManufacturerService).Assembly, typeof(CreateManufacturer).Assembly);
-
+            
             //Set MVC to use the same Funq IOC as ServiceStack
             // ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));
             // ServiceStackController.CatchAllController = reqCtx => container.TryResolve<HomeController>();

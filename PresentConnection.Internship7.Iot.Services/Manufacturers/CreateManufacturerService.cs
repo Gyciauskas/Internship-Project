@@ -10,16 +10,16 @@ namespace PresentConnection.Internship7.Iot.Services
     public class CreateManufacturerService : ServiceBase
     {
         public IManufacturerService ManufacturerService { get; set; }
-        public IImagesService ImagesService { get; set; }
+        public IImageService ImagesService { get; set; }
 
         public CreateManufacturerResponse Any(CreateManufacturer request)
         {
             var response = new CreateManufacturerResponse();
 
             List<string> imageIds = new List<string>();
-            foreach (var image in request.Images.Where(image => image.Length > 0))
+            foreach (var image in request.Images.Where(image => image.Value.Length > 0))
             {
-                imageIds.Add(ImagesService.InsertImage(image));
+                imageIds.Add(ImagesService.InsertImage(image.Key, image.Value));
             }
 
             var manufacturer = new Manufacturer

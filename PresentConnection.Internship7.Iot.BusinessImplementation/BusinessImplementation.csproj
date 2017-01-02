@@ -90,7 +90,7 @@
     <Compile Include="ConectionService.cs" />
     <Compile Include="ConnectionGroupService.cs" />
     <Compile Include="DeviceService.cs" />
-    <Compile Include="ImagesService.cs" />
+    <Compile Include="ImageService.cs" />
     <Compile Include="LookupService.cs" />
     <Compile Include="ManufacturerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
