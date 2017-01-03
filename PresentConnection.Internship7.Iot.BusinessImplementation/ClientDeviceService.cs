@@ -117,8 +117,9 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
         {
             RunningDeviceSimulationsService = new RunningDeviceSimulationsService();
             var clientDevice = GetClientDevice(id, responsibleClientId);
-            clientDevice?.AddDeviceStatus(DeviceStatus.Connected);
-            if (clientDevice != null && clientDevice.IsSimulationDevice)
+            if (clientDevice == null) return;
+            clientDevice.AddDeviceStatus(DeviceStatus.Connected);
+            if (clientDevice.IsSimulationDevice)
             {
                 var runningDeviceSimulation = new RunningDeviceSimulation
                 {
@@ -137,10 +138,13 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
         {
             RunningDeviceSimulationsService = new RunningDeviceSimulationsService();
             var clientDevice = GetClientDevice(id, responsibleClientId);
-            clientDevice?.AddDeviceStatus(DeviceStatus.Disconnected);
-            if (clientDevice != null && clientDevice.IsSimulationDevice)
+            if (clientDevice == null) return;
+            clientDevice.AddDeviceStatus(DeviceStatus.Disconnected);
+            if (clientDevice.IsSimulationDevice)
             {
-                var simulations = RunningDeviceSimulationsService.GetAllRunningDeviceSimulations(clientDevice.DeviceId);
+                var simulations =
+                    RunningDeviceSimulationsService.GetAllRunningDeviceSimulations(clientDevice.DeviceId);
+                if (simulations == null) return;
                 foreach (var simulation in simulations)
                 {
                     RunningDeviceSimulationsService.DeleteRunningDeviceSimulations(simulation.Id.ToString());
