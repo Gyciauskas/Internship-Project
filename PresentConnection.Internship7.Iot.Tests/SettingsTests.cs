@@ -16,7 +16,7 @@ namespace PresentConnection.Internship7.Iot.Tests
     {
         private ISetingsService settingsService;
 
-        BsonDocument item = new BsonDocument
+        private BsonDocument item = new BsonDocument
         {
           { "ModelName", "Display" },
           { "UnitName", 
@@ -74,24 +74,27 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("Settings")]
         public void Can_get_settings()
         {
-            var settings = new Settings
-            {
-                SettingsAsJson = item
-            };
             var settings1 = new Settings
             {
                 SettingsAsJson = item
             };
 
-          
-            settings.ShouldNotBeNull();
-            settings.Id.ShouldNotBeNull();
-            settings1.ShouldNotBeNull();
-            settings1.Id.ShouldNotBeNull();
-           
+            var item2 = new BsonDocument
+            {
+              { "ModelName", "Display" },
+              
+            };
+            var settings2 = new Settings
+            {
+                SettingsAsJson = item2
+            };
 
-            var settingsFromDb = Db.Find<Settings>(_ => true).FirstOrDefault();
-                    
+
+            Db.InsertOne(settings1);
+            Db.InsertOne(settings2);
+
+            var settings = settingsService.GetSettings();
+            settings.Id.ShouldEqual(settings1.Id);
 
         }
 
@@ -99,6 +102,11 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Dispose()
         {
             var settings = Db.Find<Settings>(x => true);
+
+            foreach (var line in settings)
+            {
+                Db.DeleteOne<Settings>(x => x.Id == line.Id);
+            }
         }
 
     }
