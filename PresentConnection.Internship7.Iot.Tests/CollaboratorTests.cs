@@ -30,7 +30,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Collaborator")]
         public void Can_insert_collaborator_to_database()
         {
@@ -42,7 +41,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Collaborator")]
         public void Cannot_insert_collaborator_to_database_when_userid_is_not_provided()
         {
@@ -65,7 +63,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Collaborator")]
         public void Cannot_insert_collaborator_to_database_when_email_is_not_provided()
         {
@@ -87,7 +84,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Collaborator")]
         public void Can_get_collaborator_by_id()
         {
@@ -117,7 +113,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Collaborator")]
         public void Can_get_all_collaborators()
         {
@@ -166,7 +161,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Collaborator")]
         public void Can_get_all_collaborators_by_name()
         {
@@ -230,7 +224,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Collaborator")]
         public void Can_update_collaborator_to_database()
         {
@@ -265,7 +258,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Collaborator")]
         public void Can_delete_collaborator_from_database()
         {

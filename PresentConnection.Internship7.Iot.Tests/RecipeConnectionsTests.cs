@@ -30,7 +30,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("RecipeConnection")]
         public void Can_insert_recipe_connection_to_database()
         {
@@ -42,7 +41,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_name_is_not_provided()
         {
@@ -53,7 +51,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_uniquename_is_not_provided()
         {
@@ -64,7 +61,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_such_uniquename_exist()
         {
@@ -88,7 +84,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_uniquename_is_not_in_correct_format()
         {
@@ -106,7 +101,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
         {
@@ -124,7 +118,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("RecipeConnection")]
         public void Can_get_recipe_connection_by_id()
         {
@@ -143,7 +136,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("RecipeConnection")]
         public void Can_get_all_recipe_connections()
         {
@@ -166,7 +158,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("RecipeConnection")]
         public void Can_get_all_recipe_connections_by_name()
         {
@@ -194,7 +185,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("RecipeConnection")]
         public void Can_update_recipe_connection_to_database()
         {
@@ -215,7 +205,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("RecipeConnection")]
         public void Can_delete_recipe_connection_from_database()
         {

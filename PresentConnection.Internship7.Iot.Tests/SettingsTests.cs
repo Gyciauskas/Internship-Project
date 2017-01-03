@@ -37,7 +37,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Settings")]
         public void Can_update_or_insert_settings_to_database()
         {
@@ -54,7 +53,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Settings")]
         public void Cannot_insert_settings_to_database_when_jason_is_not_provided()
         {
@@ -70,7 +68,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Settings")]
         public void Can_get_settings()
         {

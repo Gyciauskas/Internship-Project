@@ -1,20 +1,79 @@
-﻿using MongoDB.Bson;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using MongoDB.Bson;
+using NSubstitute;
+using NSubstitute.Core.Arguments;
 using NUnit.Framework;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
+using PresentConnection.Internship7.Iot.Services;
 using ServiceStack;
-using Assert = NUnit.Framework.Assert;
 
 namespace PresentConnection.Internship7.Iot.Tests
 {
     [TestFixture]
-    public class ManufacturerServiceTests : TestsBase
+    public partial class ManufacturersTests : TestsBase
     {
+        private ServiceStackHost appHost;
         private IManufacturerService manufacturerService;
         private Manufacturer goodManufacturer;
-        private ServiceStackHost appHost;
+        private IManufacturerService manufacturerServiceMock;
+
+        private void SetupMocks()
+        {
+            manufacturerServiceMock = Substitute.For<IManufacturerService>();
+
+            // when pass any parameter (Id) to manufacturerService.GetManufacturer, return goodManufacturer with passed id
+            manufacturerServiceMock.GetManufacturer(Arg.Any<string>()).Returns(info => 
+            {
+                goodManufacturer.Id = ObjectId.Parse(info.ArgAt<string>(0));
+                return goodManufacturer;
+            });
+            
+            
+            // when we are trying get manufacturers, just return generated list
+            manufacturerServiceMock.GetAllManufacturers(string.Empty).Returns(info =>
+            {
+                var list = new List<Manufacturer>();
+
+                goodManufacturer.Id = ObjectId.GenerateNewId();
+                list.Add(goodManufacturer);
+
+                goodManufacturer.Id = ObjectId.GenerateNewId();
+                goodManufacturer.Name = "Object1";
+                list.Add(goodManufacturer);
+
+                goodManufacturer.Id = ObjectId.GenerateNewId();
+                goodManufacturer.Name = "Object2";
+                list.Add(goodManufacturer);
+
+                return list;
+            });
+
+            // when we are trying get manufacturers by name, just generate list and filter by name
+            manufacturerServiceMock.GetAllManufacturers(Arg.Any<string>()).Returns(info =>
+            {
+                var list = new List<Manufacturer>();
+
+                goodManufacturer.Id = ObjectId.GenerateNewId();
+                list.Add(goodManufacturer);
+
+                goodManufacturer.Id = ObjectId.GenerateNewId();
+                goodManufacturer.Name = "Object1";
+                list.Add(goodManufacturer);
+
+                goodManufacturer.Id = ObjectId.GenerateNewId();
+                goodManufacturer.Name = "Object2";
+                list.Add(goodManufacturer);
+
+                return list.Where(x => x.Name.Contains(info.ArgAt<string>(0))).ToList();
+            });
+            
+
+        }
 
         [SetUp]
         public void SetUp()
@@ -25,6 +84,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 .Start(BaseUri);
             
             manufacturerService = new ManufacturerService();
+
             goodManufacturer = new Manufacturer
             {
                 Name = "Arduino",
@@ -38,18 +98,11 @@ namespace PresentConnection.Internship7.Iot.Tests
                 IsVisible = true
             };
 
-            var manufacturers = manufacturerService.GetAllManufacturers();
-
-            foreach (var manufacturer in manufacturers)
-            {
-                manufacturerService.DeleteManufacturer(manufacturer.Id.ToString());
-            }
-
+            SetupMocks();
         }
 
 
         [Test]
-        [Category("ServiceTests")]
         [Category("Manufacturer")]
         public void Can_do_CRUD_manufacturer_to_database()
         {
@@ -149,12 +202,35 @@ namespace PresentConnection.Internship7.Iot.Tests
             deleteRequestResponse.Result.ShouldEqual(true);
         }
 
+        //[Test]
+        //[Category("Manufacturer")]
+        //public void When_i_call_create_manufacturer_service_i_call_manufacturer_service()
+        //{
+        //    var service = new CreateManufacturerService();
+        //    var mockService = Substitute.For<IManufacturerService>();
+
+        //    mockService.Received(1).CreateManufacturer(Arg.Any<Manufacturer>());
+        //    service.ManufacturerService = mockService;
+
+        //    // Do insert
+        //    service.Any(new CreateManufacturer());
+
+        //}
+
         
 
         [TearDown]
         public void Dispose()
         {
             appHost.Dispose();
+
+            var manufacturers = manufacturerService.GetAllManufacturers();
+
+            foreach (var manufacturer in manufacturers)
+            {
+                manufacturerService.DeleteManufacturer(manufacturer.Id.ToString());
+            }
+            
         }
     }
 }

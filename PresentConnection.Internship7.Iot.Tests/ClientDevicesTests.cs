@@ -23,7 +23,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Can_insert_client_device_to_database()
         {
@@ -46,7 +45,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Cannot_insert_when_code_user_wants_to_compromise_data_and_pass_different_client_id()
         {
@@ -75,7 +73,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Device_status_constraints()
         {
@@ -105,7 +102,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Cannot_insert_client_device_to_database_when_client_id_is_not_provided()
         {
@@ -124,7 +120,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Cannot_insert_client_device_to_database_when_device_id_is_not_provided()
         {
@@ -143,7 +138,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Cannot_insert_client_device_to_database_when_device_display_id_is_not_provided()
         {
@@ -162,7 +156,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Device")]
         public void Cannot_insert_client_device_to_database_when_uniquename_is_not_unique()
         {
@@ -197,7 +190,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Cannot_insert_userDevice_to_database_when_latitude_is_not_provided()
         {
@@ -215,7 +207,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Cannot_insert_client_device_to_database_when_longtitude_is_not_provided()
         {
@@ -233,7 +224,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Cannot_insert_userDevice_to_database_when_AuthKey1_is_not_provided()
         {
@@ -251,7 +241,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Cannot_insert_userDevice_to_database_when_AuthKey2_is_not_provided()
         {
@@ -270,7 +259,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Can_get_userDevice_by_id()
         {
@@ -298,7 +286,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Can_get_all_client_devices()
         {
@@ -343,7 +330,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Can_get_client_devices_by_client_id()
         {
@@ -401,7 +387,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Cannot_get_other_client_devices()
         {
@@ -464,7 +449,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
         
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Cannot_update_other_client_device()
         {
@@ -508,7 +492,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("UserDevices")]
         public void Can_delete_client_device_from_database()
         {
@@ -535,7 +518,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("UserDevices")]
         public void Cannot_delete_other_client_device()
         {

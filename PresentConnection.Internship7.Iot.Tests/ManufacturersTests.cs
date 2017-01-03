@@ -10,31 +10,9 @@ using PresentConnection.Internship7.Iot.Utils;
 namespace PresentConnection.Internship7.Iot.Tests
 {
     [TestFixture]
-    public class ManufacturersTests
+    public partial class ManufacturersTests
     {
-        private IManufacturerService manufacturerService;
-        private Manufacturer goodManufacturer;
-
-        [SetUp]
-        public void SetUp()
-        {
-            manufacturerService = new ManufacturerService();
-            goodManufacturer = new Manufacturer
-            {
-                Name = "Arduino",
-                Description = "description",
-                UniqueName = "raspberry-pi-3",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Url = "url",
-                IsVisible = true
-            };
-    }
-
         [Test]
-        [Category("IntegrationTests")]
         [Category("Manufacturer")]
         public void Can_insert_manufacturer_to_database()
         {
@@ -45,7 +23,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Manufacturer")]
         public void Cannot_insert_manufacturer_to_database_when_name_is_not_provided()
         {
@@ -56,7 +33,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
+        
         [Category("Manufacturer")]
         public void Cannot_insert_manufacturer_to_database_when_uniquename_is_not_provided()
         {
@@ -67,7 +44,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Manufacturer")]
         public void Cannot_insert_manufacturer_to_database_when_such_uniquename_exist()
         {
@@ -95,7 +71,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Manufacturer")]
         public void Cannot_insert_manufacturer_to_database_when_uniquename_is_not_in_correct_format()
         {
@@ -113,7 +88,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Manufacturer")]
         public void Cannot_insert_manufacturer_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
         {
@@ -131,7 +105,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Manufacturer")]
         public void Cannot_insert_manufacturer_to_database_when_image_is_not_provided()
         {
@@ -148,7 +121,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Manufacturer")]
         public void Can_get_manufacturer_by_id()
         {
@@ -164,7 +136,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Manufacturer")]
         public void Can_get_all_manufacturers()
         {
@@ -194,7 +165,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Manufacturer")]
         public void Can_get_all_manufacturers_by_name()
         {
@@ -240,7 +210,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Manufacturer")]
         public void Can_get_all_manufacturers_by_case_insensetive_name()
         {
@@ -295,7 +264,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Manufacturer")]
         public void Can_get_all_manufacturers_by_incomplete_name()
         {
@@ -350,7 +318,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Manufacturer")]
         public void Can_update_manufacturer_to_database()
         {
@@ -368,7 +335,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
+        
         [Category("Manufacturer")]
         public void Can_delete_manufacturer_from_database()
         {
@@ -384,15 +351,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             manufacturerFromDb.ShouldNotBeNull();
             manufacturerFromDb.Id.ShouldEqual(ObjectId.Empty);
         }
-
-        [TearDown]
-        public void Dispose()
-        {
-            var manufacturers = manufacturerService.GetAllManufacturers();
-            foreach (var manufacturer in manufacturers)
-            {
-                manufacturerService.DeleteManufacturer(manufacturer.Id.ToString());
-            }
-        }
+        
     }
 }

@@ -24,7 +24,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Client")]
         public void Can_insert_client_to_database()
         {
@@ -54,7 +53,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Client")]
         public void Cannot_insert_client_to_database_when_userid_is_not_provided()
         {
@@ -81,7 +79,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Client")]
         public void Can_get_client_by_id()
         {
@@ -116,7 +113,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Client")]
         public void Can_get_all_clients()
         {
@@ -161,7 +157,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Client")]
         public void Can_update_client_to_database()
         {
@@ -198,7 +193,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Client")]
         public void Can_delete_client_from_database()
         {

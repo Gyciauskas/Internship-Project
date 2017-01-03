@@ -22,7 +22,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientRecipes")]
         public void Can_insert_client_recipe_to_database()
         {
@@ -37,7 +36,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientDevice")]
         public void Cannot_insert_when_code_user_wants_to_compromise_data_and_pass_different_client_id()
         {
@@ -59,7 +57,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientRecipes")]
         public void Cannot_insert_client_recipe_to_database_when_recipeId_is_not_provided()
         {
@@ -73,7 +70,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientRecipes")]
         public void Cannot_insert_client_recipe_to_database_when_clientId_is_not_provided()
         {
@@ -87,7 +83,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientRecipes")]
         public void Can_get_client_recipe_by_id()
         {
@@ -109,7 +104,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientRecipes")]
         public void Can_get_all_client_recipes()
         {
@@ -143,7 +137,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientRecipes")]
         public void Can_get_all_client_recipes_by_clientId()
         {
@@ -186,7 +179,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientRecipes")]
         public void Cannot_get_other_client_recipes()
         {
@@ -232,7 +224,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientRecipes")]
         public void Can_update_client_recipe_to_database()
         {
@@ -259,7 +250,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientRecipes")]
         public void Cannot_update_other_client_recipe()
         {
@@ -293,7 +283,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientRecipes")]
         public void Can_delete_client_recipe_from_database()
         {
@@ -314,7 +303,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientRecipes")]
         public void Cannot_delete_other_client_recipe()
         {
