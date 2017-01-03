@@ -22,7 +22,8 @@ namespace PresentConnection.Internship7.Iot.Services
             };
 
             ConnectionGroupService.CreateConnectionGroup(connectionGroup);
-
+            
+            response.Result = connectionGroup;
             return response;
         }
     }

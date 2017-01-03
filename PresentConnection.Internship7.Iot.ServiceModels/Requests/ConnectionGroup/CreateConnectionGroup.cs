@@ -3,7 +3,7 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    [Route("/connectionGroups", "POST", Summary = "Create Connection Group")]
+    [Route("/connection-groups", "POST", Summary = "Create Connection Group")]
     public class CreateConnectionGroup : IReturn<CreateConnectionGroupResponse>
     {
         public CreateConnectionGroup()

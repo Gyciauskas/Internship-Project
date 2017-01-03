@@ -13,8 +13,11 @@ namespace PresentConnection.Internship7.Iot.Services
             var response = new UpdateConnectionGroupResponse();
 
 
-            var connectionGroup = ConnectionGroupService.GetConnectionGroup(request.Id).PopulateWith(request);
+            var connectionGroup = ConnectionGroupService.GetConnectionGroup(request.Id);
+            connectionGroup = connectionGroup?.PopulateWith(request);
             ConnectionGroupService.UpdateConnectionGroup(connectionGroup);
+
+            response.Result = connectionGroup;
 
             return response;
         }

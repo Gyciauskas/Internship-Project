@@ -2,7 +2,7 @@
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    [Route("/connectionGroups/{Id}", "PUT", Summary = "Update Connection Group")]
+    [Route("/connection-groups/{Id}", "PUT", Summary = "Update Connection Group")]
     public class UpdateConnectionGroup : IReturn<UpdateConnectionGroupResponse>
     {
         public string Id { get; set; }
