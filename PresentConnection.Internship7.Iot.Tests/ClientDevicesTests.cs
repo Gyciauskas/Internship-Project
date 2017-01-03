@@ -328,12 +328,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             {
                 Db.DeleteOne<ClientDevice>(x => x.Id == clientDevice.Id);
             }
-
-            var simulations = Db.Find<RunningDeviceSimulation>(_ => true);
-            foreach (var simulation in simulations)
-            {
-                Db.DeleteOne<RunningDeviceSimulation>(x => x.Id == simulation.Id);
-            }
         }
     }
 }
