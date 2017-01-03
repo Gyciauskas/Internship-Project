@@ -11,8 +11,6 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class ClientDeviceService : IClientDeviceService
     {
-        public IRunningDeviceSimulationsService RunningDeviceSimulationsService { get; set; }
-
         public void CreateClientDevice(ClientDevice clientDevice, string responsibleClientId)
         {
             var validator = new ClientDeviceValidator(responsibleClientId);
@@ -115,45 +113,14 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
         public void DeviceStarted(string id, string responsibleClientId)
         {
-            RunningDeviceSimulationsService = new RunningDeviceSimulationsService();
             var clientDevice = GetClientDevice(id, responsibleClientId);
-            if (clientDevice == null) return;
-            clientDevice.AddDeviceStatus(DeviceStatus.Connected);
-            if (clientDevice.IsSimulationDevice)
-            {
-                var runningDeviceSimulation = new RunningDeviceSimulation
-                {
-                    DeviceId = clientDevice.DeviceId,
-                    SimulationType = clientDevice.SimulationType
-                };
-                RunningDeviceSimulationsService.CreateRunningDeviceSimulations(runningDeviceSimulation);
-            }
-            else
-            {
-                // should rise notification?
-            }
+            clientDevice?.AddDeviceStatus(DeviceStatus.Connected);
         }
 
         public void DeviceStopped(string id, string responsibleClientId)
         {
-            RunningDeviceSimulationsService = new RunningDeviceSimulationsService();
             var clientDevice = GetClientDevice(id, responsibleClientId);
-            if (clientDevice == null) return;
-            clientDevice.AddDeviceStatus(DeviceStatus.Disconnected);
-            if (clientDevice.IsSimulationDevice)
-            {
-                var simulations =
-                    RunningDeviceSimulationsService.GetAllRunningDeviceSimulations(clientDevice.DeviceId);
-                if (simulations == null) return;
-                foreach (var simulation in simulations)
-                {
-                    RunningDeviceSimulationsService.DeleteRunningDeviceSimulations(simulation.Id.ToString());
-                }
-            }
-            else
-            {
-                // should rise notification?
-            }
+            clientDevice?.AddDeviceStatus(DeviceStatus.Disconnected);
         }
     }
 }

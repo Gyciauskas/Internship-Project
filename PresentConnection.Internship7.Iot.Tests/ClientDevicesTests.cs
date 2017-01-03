@@ -15,7 +15,6 @@ namespace PresentConnection.Internship7.Iot.Tests
     public class ClientDevicesTests
     {
         private IClientDeviceService clientDeviceService;
-        private IRunningDeviceSimulationsService runningDeviceSimulationsService;
         private ClientDevice goodDevice;
         private ClientDevice goodDevice2;
         private ClientDevice goodDevice3;
@@ -24,7 +23,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void SetUp()
         {
             clientDeviceService = new ClientDeviceService();
-            runningDeviceSimulationsService = new RunningDeviceSimulationsService();
             goodDevice = new ClientDevice
             {
                 //UserId, DeviceId, DeviceDisplayId, Latitude, Longitude, AuthKey1, AuthKey2 mandatory fields
@@ -287,52 +285,6 @@ namespace PresentConnection.Internship7.Iot.Tests
                 .ShouldNotBeNull("Received different error message");
 
             exception.Message.ShouldEqual("You don't have permissions to update this client device");
-        }
-
-        [Test]
-        [Category("IntegrationTests")]
-        [Category("UserDevices")]
-        public void Can_create_running_device_simulation_when_client_device_is_started_and_is_simulation()
-        {
-            goodDevice.IsSimulationDevice = true;
-            goodDevice.SimulationType = SimulationType.GPS;
-            clientDeviceService.CreateClientDevice(goodDevice, "Lukas");
-
-            goodDevice.ShouldNotBeNull();
-            goodDevice.Id.ShouldNotBeNull();
-
-            clientDeviceService.DeviceStarted(goodDevice.Id.ToString(), "Lukas");
-            var simulations = runningDeviceSimulationsService.GetAllRunningDeviceSimulations(goodDevice.DeviceId);
-            (simulations.Count > 0).ShouldBeTrue();
-        }
-
-        [Test]
-        [Category("IntegrationTests")]
-        [Category("UserDevices")]
-        public void Can_delete_running_device_simulation_when_client_device_is_stopped_and_is_simulation()
-        {
-            goodDevice.IsSimulationDevice = true;
-            goodDevice.SimulationType = SimulationType.GPS;
-            clientDeviceService.CreateClientDevice(goodDevice, "Lukas");
-
-            goodDevice.ShouldNotBeNull();
-            goodDevice.Id.ShouldNotBeNull();
-
-            var runningDeviceSimulation = new RunningDeviceSimulation
-            {
-                DeviceId = goodDevice.DeviceId,
-                SimulationType = goodDevice.SimulationType
-            };
-            runningDeviceSimulationsService.CreateRunningDeviceSimulations(runningDeviceSimulation);
-            runningDeviceSimulation.ShouldNotBeNull();
-            runningDeviceSimulation.Id.ShouldNotBeNull();
-
-            clientDeviceService.DeviceStopped(goodDevice.Id.ToString(), "Lukas");
-            var simulationFromDb =
-                runningDeviceSimulationsService.GetRunningDeviceSimulations(runningDeviceSimulation.Id.ToString());
-            simulationFromDb.ShouldNotBeNull();
-            simulationFromDb.Id.ShouldEqual(ObjectId.Empty);
-
         }
 
         [Test]
