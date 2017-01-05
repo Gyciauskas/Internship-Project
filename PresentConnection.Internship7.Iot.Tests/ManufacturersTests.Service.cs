@@ -137,7 +137,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             createManufacturerResponse2.Result.Id.ShouldBeNotBeTheSameAs(ObjectId.Empty);
 
             // Get all
-
             var getManufacturersRequest = new GetManufacturers
             {
                 Name = string.Empty
