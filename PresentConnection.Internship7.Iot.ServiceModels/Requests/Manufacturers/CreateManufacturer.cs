@@ -9,11 +9,12 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
     {
         public CreateManufacturer()
         {
-            Images = new Dictionary<DisplayImage, byte[]>();
+            
         }
 
         public string Name { get; set; }
         public string UniqueName { get; set; }
-        public Dictionary<DisplayImage, byte[]> Images { get; set; }
+        public DisplayImage Image { get; set; }
+        public byte[] ImageBytes { get; set; }
     }
 }

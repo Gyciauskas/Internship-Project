@@ -20,8 +20,7 @@ namespace PresentConnection.Internship7.Iot.Services
                 manufacturerName = manufacturer.Name;
             }
 
-            Manufacturer manufacturer = ManufacturerService.GetManufacturer(request.Id);
-            if (manufacturer.Images != null)
+            if (manufacturer?.Images != null)
             {
                 foreach (var imageId in manufacturer.Images)
                 {
