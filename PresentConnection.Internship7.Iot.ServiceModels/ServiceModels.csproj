@@ -101,6 +101,11 @@
     <Compile Include="Requests\Devices\GetDevice.cs" />
     <Compile Include="Requests\Devices\GetDevices.cs" />
     <Compile Include="Requests\Devices\UpdateDevice.cs" />
+    <Compile Include="Requests\ConnectionGroup\CreateConnectionGroup.cs" />
+    <Compile Include="Requests\ConnectionGroup\DeleteConnectionGroup.cs" />
+    <Compile Include="Requests\ConnectionGroup\GetConnectionGroup.cs" />
+    <Compile Include="Requests\ConnectionGroup\GetConnectionGroups.cs" />
+    <Compile Include="Requests\ConnectionGroup\UpdateConnectionGroup.cs" />
     <Compile Include="Requests\RecipeConnections\CreateRecipeConnnection.cs" />
     <Compile Include="Requests\RecipeConnections\DeleteRecipeConnection.cs" />
     <Compile Include="Requests\RecipeConnections\GetRecipeConnection.cs" />
@@ -161,6 +166,11 @@
     <Compile Include="Responses\Connections\GetConnectionResponse.cs" />
     <Compile Include="Responses\Connections\UpdateConnectionResponse.cs" />
     <Compile Include="Requests\Manufacturers\UpdateManufacturer.cs" />
+    <Compile Include="Responses\ConnectionGroup\CreateConnectionGroupResponse.cs" />
+    <Compile Include="Responses\ConnectionGroup\DeleteConnectionGroupResponse.cs" />
+    <Compile Include="Responses\ConnectionGroup\GetConnectionGroupResponse.cs" />
+    <Compile Include="Responses\ConnectionGroup\GetConnectionGroupsResponse.cs" />
+    <Compile Include="Responses\ConnectionGroup\UpdateConnectionGroupResponse.cs" />
     <Compile Include="Responses\RecipeConnections\CreateRecipeConnectionResponse.cs" />
     <Compile Include="Responses\RecipeConnections\DeleteRecipeConnectionResponse.cs" />
     <Compile Include="Responses\RecipeConnections\GetRecipeConnectionResponse.cs" />
