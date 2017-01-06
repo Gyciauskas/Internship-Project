@@ -32,7 +32,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Device")]
         public void Can_insert_device_to_database()
         {
@@ -42,7 +41,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Device")]
         public void Cannot_insert_device_to_database_when_modelname_is_not_provided()
         {
@@ -52,7 +50,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Device")]
         public void Cannot_insert_device_to_database_when_uniquename_is_not_provided()
         {
@@ -62,7 +59,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Device")]
         public void Cannot_insert_device_to_database_when_image_is_not_provided()
         {
@@ -78,7 +74,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Device")]
         public void Cannot_insert_device_to_database_when_such_unique_name_exist()
         {
@@ -108,7 +103,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Device")]
         public void Cannot_insert_device_to_database_when_uniquename_is_not_in_correct_format()
         {
@@ -126,7 +120,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Device")]
         public void Cannot_insert_device_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
         {
@@ -144,7 +137,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Device")]
         public void Can_get_device_by_id()
         {
@@ -160,7 +152,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Device")]
         public void Can_get_all_devices()
         {
@@ -189,7 +180,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
 
         [Test]
-        [Category("IntegrationTests")]
+        
         [Category("Device")]
         public void Can_get_all_devices_by_name()
         {
@@ -242,7 +233,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
+        
         [Category("Device")]
         public void Can_get_all_devices_by_case_insensetive_name()
         {
@@ -295,7 +286,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
+        
         [Category("Device")]
         public void Can_get_all_devices_by_incomplete_name()
         {
@@ -348,7 +339,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
+        
         [Category("Device")]
         public void Can_update_device_to_database()
         {
@@ -375,7 +366,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
+        
         [Category("Device")]
         public void Cannot_update_device_to_database_when_such_unique_name_already_exist()
         {
@@ -409,7 +400,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
+        
         [Category("Device")]
         public void Can_delete_device_from_database()
         {

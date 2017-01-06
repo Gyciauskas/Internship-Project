@@ -36,7 +36,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Can_insert_connection_to_database()
         {
@@ -47,7 +46,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Cannot_insert_connection_to_database_when_uniquename_is_not_provided()
         {
@@ -58,7 +56,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Cannot_insert_connection_to_database_when_such_uniquename_exist()
         {
@@ -88,7 +85,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Cannot_insert_connection_to_database_when_uniquename_is_not_in_correct_format()
         {
@@ -106,7 +102,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Cannot_insert_connection_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
         {
@@ -124,7 +119,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Cannot_update_connection_to_database_when_such_uniquename_already_exist()
         {
@@ -160,7 +154,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Cannot_insert_connection_to_database_when_name_is_not_provided()
         {
@@ -171,7 +164,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Cannot_insert_connection_to_database_when_image_is_not_provided()
         {
@@ -187,7 +179,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Cannot_insert_connection_to_database_when_url_is_not_provided()
         {
@@ -198,7 +189,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Cannot_insert_connection_to_database_when_description_is_not_provided()
         {
@@ -209,7 +199,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Can_get_connection_by_id()
         {
@@ -225,7 +214,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Can_get_all_connections()
         {
@@ -254,7 +242,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Can_get_all_connections_by_name()
         {
@@ -297,7 +284,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Can_get_all_connections_by_case_insensetive_name()
         {
@@ -340,7 +326,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Can_get_all_connections_by_incomplete_name()
         {
@@ -383,7 +368,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Can_update_connection_to_database()
         {
@@ -401,7 +385,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("Connection")]
         public void Can_delete_connection_from_database()
         {

@@ -34,7 +34,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ConnectionGroup")]
         public void Can_insert_connectionGroup_to_database()
         {
@@ -45,7 +44,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_uniquename_is_not_provided()
         {
@@ -56,7 +54,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_such_uniquename_exist()
         {
@@ -84,7 +81,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_uniquename_is_not_in_correct_format()
         {
@@ -102,7 +98,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
         {
@@ -120,7 +115,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
+        
         [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_name_is_not_provided()
         {
@@ -131,7 +126,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_image_is_not_provided()
         {
@@ -147,7 +141,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ConnectionGroup")]
         public void Can_get_connectionGroup_by_id()
         {
@@ -163,7 +156,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ConnectionGroup")]
         public void Can_get_all_connectionGroups()
         {
@@ -190,7 +182,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ConnectionGroup")]
         public void Can_update_connectionGroup_to_database()
         {
@@ -208,7 +199,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ConnectionGroup")]
         public void Can_delete_connectionGroup_from_database()
         {

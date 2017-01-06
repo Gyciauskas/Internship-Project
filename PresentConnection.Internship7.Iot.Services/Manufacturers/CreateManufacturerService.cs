@@ -31,6 +31,11 @@ namespace PresentConnection.Internship7.Iot.Services
 
             ManufacturerService.CreateManufacturer(manufacturer);
 
+            var cacheKey = CacheKeys.Manufacturers.List;
+            Request.RemoveFromCache(Cache, cacheKey);
+            
+
+            response.Result = manufacturer;
             return response;
         }
     }

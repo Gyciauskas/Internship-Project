@@ -35,7 +35,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientConnection")]
         public void Can_insert_client_connection_to_database()
         {
@@ -47,7 +46,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientConnection")]
         public void Cannot_insert_when_code_user_wants_to_compromise_data_and_pass_different_client_id()
         {
@@ -65,7 +63,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientConnection")]
         public void Cannot_insert_client_connection_to_database_when_client_id_is_not_provided()
         {
@@ -76,7 +73,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientConnection")]
         public void Cannot_insert_client_connection_to_database_when_connection_id_is_not_provided()
         {
@@ -87,7 +83,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientConnection")]
         public void Can_get_client_connection_by_id()
         {
@@ -106,7 +101,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientConnection")]
         public void Can_get_all_client_connections()
         {
@@ -134,7 +128,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientConnection")]
         public void Can_get_all_client_connections_by_clientId()
         {
@@ -174,7 +167,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientConnection")]
         public void Cannot_get_other_client_connections()
         {
@@ -218,7 +210,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
+        
         [Category("ClientConnection")]
         public void Can_update_client_connection_to_database()
         {
@@ -238,7 +230,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientConnection")]
         public void Cannot_update_other_client_connection()
         {
@@ -266,7 +257,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientConnection")]
         public void Can_delete_client_connection_from_database()
         {
@@ -281,7 +271,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        [Category("IntegrationTests")]
         [Category("ClientConnection")]
         public void Cannot_delete_other_client_connection()
         {

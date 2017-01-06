@@ -84,6 +84,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConnectionGroup\CreateConnectionGroupService.cs" />
+    <Compile Include="ConnectionGroup\DeleteConnectionGroupService.cs" />
+    <Compile Include="ConnectionGroup\GetConnectionGroupService.cs" />
+    <Compile Include="ConnectionGroup\GetConnectionGroupsService.cs" />
+    <Compile Include="ConnectionGroup\UpdateConnectionGroupService.cs" />
     <Compile Include="ServiceBase.cs" />
     <Compile Include="ClientConnection\CreateClientConnectionService.cs" />
     <Compile Include="ClientConnection\DeleteClientConnectionService.cs" />
