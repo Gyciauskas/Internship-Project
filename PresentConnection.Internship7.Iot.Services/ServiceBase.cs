@@ -12,7 +12,13 @@ namespace PresentConnection.Internship7.Iot.Services
                 public static readonly string ListWithProvidedName = "urn:manufacturers:name-{0}";
                 public static readonly string Item = "urn:manufacturers:{0}";
             }
-            
+
+            internal static class Devices
+            {
+                public static readonly string List = "urn:devices";
+                public static readonly string ListWithProvidedName = "urn:devices:name-{0}";
+                public static readonly string Item = "urn:devices:{0}";
+            }
         }
 
         

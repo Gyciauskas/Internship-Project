@@ -10,27 +10,8 @@ using PresentConnection.Internship7.Iot.Utils;
 namespace PresentConnection.Internship7.Iot.Tests
 {
     [TestFixture]
-    public class DevicesTests
+    public partial class DevicesTests
     {
-        private IDeviceService deviceService;
-        private Device goodDevice;
-
-        [SetUp]
-        public void SetUp()
-        {
-            deviceService = new DeviceService();
-            goodDevice = new Device
-            {
-                ModelName = "Raspberry PI 3",
-                UniqueName = "raspberry-pi-3",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                }
-            };
-
-        }
-
         [Test]
         [Category("Device")]
         public void Can_insert_device_to_database()
@@ -416,14 +397,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             deviceFromDb.Id.ShouldEqual(ObjectId.Empty);
         }
 
-        [TearDown]
-        public void Dispose()
-        {
-            var devices = deviceService.GetAllDevices();
-            foreach (var device in devices)
-            {
-                deviceService.DeleteDevice(device.Id.ToString());
-            }
-        }
+        
     }
 }

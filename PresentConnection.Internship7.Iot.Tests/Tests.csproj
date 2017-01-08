@@ -137,6 +137,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <Compile Include="DevicesTests.Service.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
