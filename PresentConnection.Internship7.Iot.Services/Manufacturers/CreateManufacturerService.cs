@@ -16,13 +16,13 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new CreateManufacturerResponse();
 
-            List<string> imageIds = new List<string> {ImagesService.InsertImage(request.Image, request.ImageBytes)};
+            string imageId = ImagesService.AddImage(request.Image, request.ImageBytes);
 
             var manufacturer = new Manufacturer
             {
                 Name = request.Name,
                 UniqueName = request.UniqueName,
-                Images =  imageIds
+                Images = { imageId }
             };
 
             ManufacturerService.CreateManufacturer(manufacturer);

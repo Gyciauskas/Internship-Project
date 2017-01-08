@@ -36,7 +36,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("Images")]
         public void Can_insert_image_to_database()
         {
-            imageService.InsertImage(goodDisplayImage, imageBytes);
+            imageService.AddImage(goodDisplayImage, imageBytes);
 
             goodDisplayImage.ShouldNotBeNull();
             goodDisplayImage.Id.ShouldNotBeNull();
@@ -47,7 +47,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("Images")]
         public void Can_store_image_in_server_when_inserting_to_database()
         {
-            imageService.InsertImage(goodDisplayImage, imageBytes);
+            imageService.AddImage(goodDisplayImage, imageBytes);
             goodDisplayImage.ShouldNotBeNull();
             goodDisplayImage.Id.ShouldNotBeNull();
 
@@ -62,18 +62,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
             goodDisplayImage.SeoFileName = null;
 
-            var exception = typeof(BusinessException).ShouldBeThrownBy(() => imageService.InsertImage(goodDisplayImage, imageBytes));
-            exception.Message.ShouldEqual("Cannot insert image to database");
-        }
-
-        [Test]
-        [Category("IntegrationTests")]
-        [Category("Images")]
-        public void Cannot_insert_image_to_database_when_mimetype_is_not_provided()
-        {
-            goodDisplayImage.MimeType = null;
-
-            var exception = typeof(BusinessException).ShouldBeThrownBy(() => imageService.InsertImage(goodDisplayImage, imageBytes));
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => imageService.AddImage(goodDisplayImage, imageBytes));
             exception.Message.ShouldEqual("Cannot insert image to database");
         }
 
@@ -82,7 +71,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("Images")]
         public void Can_get_image_by_id()
         {
-            imageService.InsertImage(goodDisplayImage, imageBytes);
+            imageService.AddImage(goodDisplayImage, imageBytes);
 
             goodDisplayImage.ShouldNotBeNull();
             goodDisplayImage.Id.ShouldNotBeNull();
@@ -98,14 +87,14 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("Images")]
         public void Can_get_all_images()
         {
-            imageService.InsertImage(goodDisplayImage, imageBytes);
+            imageService.AddImage(goodDisplayImage, imageBytes);
             var image2 = new DisplayImage
             {
                 SeoFileName = "tempName",
                 MimeType = Path.GetExtension(testImagePath)
             };
 
-            imageService.InsertImage(image2, imageBytes);
+            imageService.AddImage(image2, imageBytes);
             image2.ShouldNotBeNull();
             image2.Id.ShouldNotBeNull();
 
@@ -119,7 +108,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("Images")]
         public void Can_delete_image_from_database()
         {
-            imageService.InsertImage(goodDisplayImage, imageBytes);
+            imageService.AddImage(goodDisplayImage, imageBytes);
 
             goodDisplayImage.ShouldNotBeNull();
             goodDisplayImage.Id.ShouldNotBeNull();
@@ -137,7 +126,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("Images")]
         public void Can_delete_image_from_server_when_deleting_from_database()
         {
-            imageService.InsertImage(goodDisplayImage, imageBytes);
+            imageService.AddImage(goodDisplayImage, imageBytes);
             goodDisplayImage.ShouldNotBeNull();
             goodDisplayImage.Id.ShouldNotBeNull();
 

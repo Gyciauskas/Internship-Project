@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using MongoDB.Bson;
@@ -21,6 +22,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         private IManufacturerService manufacturerService;
         private Manufacturer goodManufacturer;
         private IManufacturerService manufacturerServiceMock;
+        private static readonly string testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
 
         private void SetupMocks()
         {
@@ -114,7 +116,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             {
                 Name = goodManufacturer.Name,
                 UniqueName = goodManufacturer.UniqueName,
-//                Images = goodManufacturer.Images
+//                Image = goodManufacturer.Image
             };
 
             var createManufacturerResponse = client.Post(createRequest);
@@ -127,7 +129,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             {
                 Name = goodManufacturer.Name + "2",
                 UniqueName = goodManufacturer.UniqueName + "-2",
-//                Images = goodManufacturer.Images
+//                Image = goodManufacturer.Images
             };
 
             var createManufacturerResponse2 = client.Post(createRequest2);

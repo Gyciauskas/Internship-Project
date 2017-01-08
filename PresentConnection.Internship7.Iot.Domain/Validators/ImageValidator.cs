@@ -6,7 +6,6 @@ namespace PresentConnection.Internship7.Iot.Domain
     {
         public ImageValidator()
         {
-            RuleFor(r => r.MimeType).NotEmpty();
             RuleFor(r => r.SeoFileName).NotEmpty();
         }
     }
