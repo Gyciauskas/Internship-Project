@@ -2,6 +2,8 @@
 using CodeMash.Net;
 using System.Collections.Generic;
 using System.Linq;
+using FluentValidation.Results;
+using PresentConnection.Internship7.Iot.Utils;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
@@ -16,6 +18,7 @@ namespace PresentConnection.Internship7.Iot.Domain
             PowerResource = new PowerResource();
             SimulationType = SimulationType.NotSet;
             DeviceStatuses = new List<DeviceStatus>();
+            AddDeviceStatus(DeviceStatus.Registered);
         }
 
         public string ClientId { get; set; }
@@ -27,7 +30,7 @@ namespace PresentConnection.Internship7.Iot.Domain
         // when user establishes connection from device
         public bool IsConnected => DeviceStatuses.Last() == DeviceStatus.Connected;
 
-        public List<DeviceStatus> DeviceStatuses { get; set; }
+        private List<DeviceStatus> DeviceStatuses { get; }
         public PowerResource PowerResource { get; set; }// see below description
         public string SerialNumber { get; set; }
         public string FirmwareVersion { get; set; }// GetDefaultVersion From Device
@@ -41,5 +44,20 @@ namespace PresentConnection.Internship7.Iot.Domain
         public SimulationType SimulationType { get; set; }
         public bool IsSimulationDevice { get; set; }
         public string CreatedBy { get; set; }
+
+        public void AddDeviceStatus(DeviceStatus deviceStatus)
+        {
+            var validator = new DeviceStatusValidator(deviceStatus);
+            ValidationResult results = validator.Validate(DeviceStatuses);
+            bool validationSucceeded = results.IsValid;
+            if (validationSucceeded)
+            {
+                DeviceStatuses.Add(deviceStatus);
+            }
+            else
+            {
+                throw new BusinessException("Cannot insert device status", results.Errors);
+            }
+        }
     }
 }

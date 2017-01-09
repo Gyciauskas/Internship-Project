@@ -16,6 +16,10 @@ namespace PresentConnection.Internship7.Iot.Services
             var device = new Device().PopulateWith(request);
             DeviceService.CreateDevice(device);
 
+            var casheKey = CacheKeys.Devices.List;
+            Request.RemoveFromCache(Cache, casheKey);
+
+            response.Result = device;
             return response;
         }
     }

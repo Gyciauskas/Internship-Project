@@ -10,5 +10,7 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
         bool DeleteClientDevice(string id, string responsibleClientId);
         List<ClientDevice> GetClientDevices(string clientId, string responsibleClientId);
         ClientDevice GetClientDevice(string id, string responsibleClientId);
+        void DeviceStarted(string id, string responsibleClientId);
+        void DeviceStopped(string id, string responsibleClientId);
     }
 }
