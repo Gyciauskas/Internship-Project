@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using CodeMash.Net;
-using MongoDB.Bson.Serialization.Attributes;
-using Newtonsoft.Json;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {

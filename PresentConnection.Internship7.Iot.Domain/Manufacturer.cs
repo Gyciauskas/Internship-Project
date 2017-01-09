@@ -1,6 +1,5 @@
 ﻿using CodeMash.Net;
 using System.Collections.Generic;
-using Newtonsoft.Json;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
