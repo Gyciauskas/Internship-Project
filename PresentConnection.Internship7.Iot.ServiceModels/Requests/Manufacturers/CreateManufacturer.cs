@@ -7,14 +7,12 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
     [Route("/manufacturers", "POST", Summary = "Create manufacturer")]
     public class CreateManufacturer : IReturn<CreateManufacturerResponse>
     {
-        public CreateManufacturer()
-        {
-            
-        }
 
         public string Name { get; set; }
         public string UniqueName { get; set; }
-        public DisplayImage Image { get; set; }
+
         public byte[] ImageBytes { get; set; }
+        public string SeoFileName { get; set; }
+        public string MimeType { get; set; }
     }
 }

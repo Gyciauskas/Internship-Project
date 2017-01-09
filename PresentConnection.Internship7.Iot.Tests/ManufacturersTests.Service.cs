@@ -25,6 +25,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         private string testImagePath;
         private byte[] imageBytes;
         private DisplayImage goodDisplayImage;
+        private string imagesDir;
         private IImageService imageService;
 
         private void SetupMocks()
@@ -109,6 +110,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 SeoFileName = Path.GetFileNameWithoutExtension(testImagePath),
                 MimeType = Path.GetExtension(testImagePath)
             };
+            imagesDir = "~/images".MapHostAbsolutePath();
             testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
             imageBytes = File.ReadAllBytes(testImagePath);
 
@@ -128,8 +130,9 @@ namespace PresentConnection.Internship7.Iot.Tests
             {
                 Name = goodManufacturer.Name,
                 UniqueName = goodManufacturer.UniqueName,
-                Image = goodDisplayImage,
-                ImageBytes = imageBytes
+                ImageBytes = imageBytes,
+                SeoFileName = goodDisplayImage.SeoFileName,
+                MimeType = goodDisplayImage.MimeType
             };
 
             var createManufacturerResponse = client.Post(createRequest);
@@ -142,8 +145,9 @@ namespace PresentConnection.Internship7.Iot.Tests
             {
                 Name = goodManufacturer.Name + "2",
                 UniqueName = goodManufacturer.UniqueName + "-2",
-                Image = goodDisplayImage,
-                ImageBytes = imageBytes
+                ImageBytes = imageBytes,
+                SeoFileName = goodDisplayImage.SeoFileName + "2",
+                MimeType = goodDisplayImage.MimeType
             };
 
             var createManufacturerResponse2 = client.Post(createRequest2);
@@ -239,6 +243,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Dispose()
         {
             appHost.Dispose();
+            Directory.Delete(imagesDir, true);
 
             var manufacturers = manufacturerService.GetAllManufacturers();
 

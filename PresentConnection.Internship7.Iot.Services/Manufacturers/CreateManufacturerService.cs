@@ -15,8 +15,13 @@ namespace PresentConnection.Internship7.Iot.Services
         public CreateManufacturerResponse Any(CreateManufacturer request)
         {
             var response = new CreateManufacturerResponse();
+            var image = new DisplayImage
+            {
+                SeoFileName = request.SeoFileName,
+                MimeType = request.MimeType
+            };
 
-            string imageId = ImagesService.AddImage(request.Image, request.ImageBytes);
+            string imageId = ImagesService.AddImage(image, request.ImageBytes);
 
             var manufacturer = new Manufacturer
             {
