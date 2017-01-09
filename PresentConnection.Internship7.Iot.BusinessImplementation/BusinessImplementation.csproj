@@ -71,6 +71,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
@@ -91,6 +92,7 @@
     <Compile Include="ConnectionGroupService.cs" />
     <Compile Include="DeviceService.cs" />
     <Compile Include="ImageService.cs" />
+    <Compile Include="ImageService.toDatabase.cs" />
     <Compile Include="LookupService.cs" />
     <Compile Include="ManufacturerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

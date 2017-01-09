@@ -10,5 +10,9 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
         DisplayImage GetImage(string id);
         bool DeleteImage(string id);
         string AddImage(DisplayImage displayImage, byte[] imageBytes);
+        string GetOriginalImagePath(string id);
+        string GetMediumImagePath(string id);
+        string GetSmallImagePath(string id);
+        string GetThumbImagePath(string id);
     }
 }

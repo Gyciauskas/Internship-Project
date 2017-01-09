@@ -5,17 +5,13 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
-using CodeMash.Net;
-using MongoDB.Bson;
-using MongoDB.Driver;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
-using PresentConnection.Internship7.Iot.Utils;
 using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
-    public class ImageService : IImageService
+    public partial class ImageService : IImageService
     {
         public ImageService()
         {
@@ -26,17 +22,17 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
         }
 
 
-        readonly string ImagesDir = "~/images".MapHostAbsolutePath();
-        readonly int MaxImageSize = 1000;
+        readonly string ImagesDir = "~/images".MapHostAbsolutePath();        
         readonly List<string> SizeNames = new List<string> {"medium", "small", "thumbnail"};
-        
+        readonly int MaxImageSize = 1000;
 
-        private Image ConvertBytesToImage(byte[] image)
-        {
-            var ms = new MemoryStream(image) {Position = 0};
-            return Image.FromStream(ms);
-        }
-
+        /// <summary>
+        /// Resizes Image and crops image to specified height and width.
+        /// </summary>
+        /// <param name="image">Instance of image.</param>
+        /// <param name="newWidth">The width to resize to.</param>
+        /// <param name="newHeight">The height to resize to.</param>
+        /// <returns>New resized image instance.</returns>
         private Image ResizeImage(Image image, int newWidth, int newHeight)
         {
             var ratioX = (double)newWidth / image.Width;
@@ -58,7 +54,16 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             return image;
         }
 
-        public static Image Crop(Image Image, int newWidth, int newHeight, int startX = 0, int startY = 0)
+        /// <summary>
+        /// Crops image.
+        /// </summary>
+        /// <param name="Image">Instance of image.</param>
+        /// <param name="newWidth">The width to crop to.</param>
+        /// <param name="newHeight">The height to crop to.</param>
+        /// <param name="startX">From there to start cropping in x cordinate.</param>
+        /// <param name="startY">From there to start cropping in y cordinate.</param>
+        /// <returns>Croped image.</returns>
+        private static Image Crop(Image Image, int newWidth, int newHeight, int startX = 0, int startY = 0)
         {
             if (Image.Height < newHeight)
                 newHeight = Image.Height;
@@ -85,7 +90,13 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             }
         }
 
-        private Image CompresImage(Image image, long size)
+        /// <summary>
+        /// Compresses image.
+        /// </summary>
+        /// <param name="image">Instance of image.</param>
+        /// <param name="size">Original image size</param>
+        /// <returns>Compressed image.</returns>
+        private Image CompressImage(Image image, long size)
         {
             var quality = 100;
             var msImage = new MemoryStream();
@@ -116,6 +127,9 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             return Image.FromStream(msImage);
         }
 
+        /// <summary>
+        /// Returns the image codec with the given mime type 
+        /// </summary>
         private static ImageCodecInfo GetEncoderInfo(string mimeType)
         {
             // Get image codecs for all image formats 
@@ -129,12 +143,21 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             return null;
         }
 
+        /// <summary>
+        /// Inserts image with given filename.
+        /// </summary>
+        /// <param name="image">Instance of image.</param>
+        /// <param name="nameWithExtension">Image name with extension</param>
         private void InsertToDirectory(Image image, string nameWithExtension)
         {
            
             image.Save(ImagesDir.CombineWith(nameWithExtension));
         }
 
+        /// <summary>
+        /// Deletes image and all images with diff size from directory.
+        /// </summary>
+        /// <param name="id">Image id in database.</param>
         private void DeleteFromDirectory(string id)
         {
             var image = GetImage(id);
@@ -153,48 +176,29 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             }
         }
 
-        public string InsertImage(DisplayImage displayImage)
+        /// <summary>
+        /// Converts byte array to image.
+        /// </summary>
+        /// <param name="image">Image bytes.</param>
+        /// <returns>Instance of image.</returns>
+        private Image ConvertBytesToImage(byte[] image)
         {
-
-            var validator = new ImageValidator();
-            var results = validator.Validate(displayImage);
-            var validationSucceeded = results.IsValid;
-
-            if (validationSucceeded)
-            {
-                Db.InsertOne(displayImage);
-            }
-            else
-            {
-                throw new BusinessException("Cannot insert image to database", results.Errors);
-            }
-            return displayImage.Id.ToString();
+            var ms = new MemoryStream(image) { Position = 0 };
+            return Image.FromStream(ms);
         }
 
-        public List<DisplayImage> GetAllImages()
-        {
-            return Db.Find(Builders<DisplayImage>.Filter.Empty);
-        }
-
-        public DisplayImage GetImage(string id)
-        {
-            return Db.FindOneById<DisplayImage>(id);
-        }
-
-        public bool DeleteImageFromDb(string id)
-        {
-            var deleteResult = Db.DeleteOne<DisplayImage>(x => x.Id == ObjectId.Parse(id));
-            return deleteResult.DeletedCount == 1;
-        }
-
-        //----------ConnectImageToDatabaseObject------------------------------------------
-
+        /// <summary>
+        /// Create image for service.
+        /// </summary>
+        /// <param name="displayImage">Image object in database.</param>
+        /// <param name="imageBytes">Image bytes.</param>
+        /// <returns>Image id.</returns>
         public string AddImage(DisplayImage displayImage, byte[] imageBytes)
         {
             var original = ConvertBytesToImage(imageBytes);
             if (imageBytes.Length / 1000 >= MaxImageSize)
             {
-                original = CompresImage(original, imageBytes.Length / 1000);
+                original = CompressImage(original, imageBytes.Length / 1000);
                 displayImage.MimeType = ".jpg";
             }
             // if mimetype not provided 
@@ -211,25 +215,54 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
                 // Inser resized images to hdd
                 List<Image> Images = new List<Image>
                 {
-                    ResizeImage(original, 600, 300),
-                    ResizeImage(original, 400, 200),
-                    ResizeImage(original, 200, 50)
+                    ResizeImage(original, Convert.ToInt16(ConfigurationManager.AppSettings["ImageWidth-medium"]), Convert.ToInt16(ConfigurationManager.AppSettings["ImageHeight-medium"])),
+                    ResizeImage(original, Convert.ToInt16(ConfigurationManager.AppSettings["ImageWidth-small"]), Convert.ToInt16(ConfigurationManager.AppSettings["ImageHeight-small"])),
+                    ResizeImage(original, Convert.ToInt16(ConfigurationManager.AppSettings["ImageWidth-thumb"]), Convert.ToInt16(ConfigurationManager.AppSettings["ImageHeight-thumb"]))
                 };
                 for (int i = 0; i < Images.Count; i++)
                 {
-                    Directory.CreateDirectory(ImagesDir);
+                    
                     InsertToDirectory(Images[i], SizeNames[i] + "//" + displayImage.UniqueImageName + ".jpg");
                 }
             }
             return id;
         }
 
+        /// <summary>
+        /// Deletes image from db and storage.
+        /// </summary>
+        /// <param name="id">Image id.</param>
+        /// <returns>True if deleted from db.</returns>
         public bool DeleteImage(string id)
         {
 
             DeleteFromDirectory(id);
             return DeleteImageFromDb(id);
-        }      
+        }   
+        
+        public string GetOriginalImagePath(string id)
+        {
+            var image = GetImage(id);
+            return ImagesDir + "//" + image?.UniqueImageName + image?.MimeType;
+        }
+
+        public string GetMediumImagePath(string id)
+        {
+            var image = GetImage(id);
+            return ImagesDir + "//" + image?.UniqueImageName + ".jpg";
+        }
+
+        public string GetSmallImagePath(string id)
+        {
+            var image = GetImage(id);
+            return ImagesDir + "//" + image?.UniqueImageName + ".jpg";
+        }
+
+        public string GetThumbImagePath(string id)
+        {
+            var image = GetImage(id);
+            return ImagesDir + "//thumbnail//" + image?.UniqueImageName + ".jpg";
+        }
 
     }
 }
