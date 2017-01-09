@@ -1,6 +1,5 @@
 ﻿using CodeMash.Net;
 using System.Collections.Generic;
-using MongoDB.Bson.Serialization.Attributes;
 
 namespace PresentConnection.Internship7.Iot.Domain
 {
@@ -15,7 +14,6 @@ namespace PresentConnection.Internship7.Iot.Domain
         public string Name { get; set; } // e.g. Raspberry PI
         public string Description { get; set; }
         public string UniqueName { get; set; } // e.g. raspberry-pi
-        [BsonIgnore]
         public List<string> Images { get; set; } // see description for class DisplayImage
         public string Url { get; set; } // manufacturer Url
         public bool IsVisible { get; set; }
