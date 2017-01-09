@@ -110,5 +110,17 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             }
             throw new BusinessException("You don't have permissions to get client device", results.Errors);
         }
+
+        public void DeviceStarted(string id, string responsibleClientId)
+        {
+            var clientDevice = GetClientDevice(id, responsibleClientId);
+            clientDevice?.AddDeviceStatus(DeviceStatus.Connected);
+        }
+
+        public void DeviceStopped(string id, string responsibleClientId)
+        {
+            var clientDevice = GetClientDevice(id, responsibleClientId);
+            clientDevice?.AddDeviceStatus(DeviceStatus.Disconnected);
+        }
     }
 }
