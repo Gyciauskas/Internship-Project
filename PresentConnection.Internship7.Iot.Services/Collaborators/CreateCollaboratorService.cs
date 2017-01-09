@@ -16,11 +16,16 @@ namespace PresentConnection.Internship7.Iot.Services
             var collaborator = new Collaborator
             {
                 Email = request.Email,
-                UserId = request.UserId
+                UserId = request.UserId,
+                Name = request.Name
             };
 
             CollaboratorService.CreateCollaborator(collaborator);
 
+            var cacheKey = CacheKeys.Collaborators.List;
+            Request.RemoveFromCache(Cache, cacheKey);
+
+            response.Result = collaborator;
             return response;
         }
     }
