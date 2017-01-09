@@ -22,7 +22,10 @@ namespace PresentConnection.Internship7.Iot.Tests
         private IManufacturerService manufacturerService;
         private Manufacturer goodManufacturer;
         private IManufacturerService manufacturerServiceMock;
-        private static readonly string testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
+        private string testImagePath;
+        private byte[] imageBytes;
+        private DisplayImage goodDisplayImage;
+        private IImageService imageService;
 
         private void SetupMocks()
         {
@@ -86,6 +89,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 .Start(BaseUri);
             
             manufacturerService = new ManufacturerService();
+            imageService = new ImageService();
 
             goodManufacturer = new Manufacturer
             {
@@ -99,6 +103,14 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Url = "url",
                 IsVisible = true
             };
+            
+            goodDisplayImage = new DisplayImage()
+            {
+                SeoFileName = Path.GetFileNameWithoutExtension(testImagePath),
+                MimeType = Path.GetExtension(testImagePath)
+            };
+            testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
+            imageBytes = File.ReadAllBytes(testImagePath);
 
             SetupMocks();
         }
@@ -116,7 +128,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             {
                 Name = goodManufacturer.Name,
                 UniqueName = goodManufacturer.UniqueName,
-//                Image = goodManufacturer.Image
+                Image = goodDisplayImage,
+                ImageBytes = imageBytes
             };
 
             var createManufacturerResponse = client.Post(createRequest);
@@ -129,7 +142,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             {
                 Name = goodManufacturer.Name + "2",
                 UniqueName = goodManufacturer.UniqueName + "-2",
-//                Image = goodManufacturer.Images
+                Image = goodDisplayImage,
+                ImageBytes = imageBytes
             };
 
             var createManufacturerResponse2 = client.Post(createRequest2);

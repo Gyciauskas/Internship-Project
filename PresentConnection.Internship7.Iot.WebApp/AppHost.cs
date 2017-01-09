@@ -5,9 +5,7 @@ using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Services;
 using ServiceStack;
 using ServiceStack.Caching;
-using ServiceStack.ProtoBuf;
 using ServiceStack.Text;
-using ServiceStack.Validation;
 
 namespace PresentConnection.Internship7.Iot.WebApp
 {
@@ -86,7 +84,6 @@ namespace PresentConnection.Internship7.Iot.WebApp
                 allowedHeaders: "Content-Type, X-Requested-With, X-FormSchemaApiToken",
                 allowCredentials: true));
             Plugins.Add(new PostmanFeature());
-            Plugins.Add(new ProtoBufFormat());
 
             // Plugins.Add(new RegistrationFeature()); 
 
