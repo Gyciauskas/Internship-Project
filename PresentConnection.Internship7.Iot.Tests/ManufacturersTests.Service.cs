@@ -1,15 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using MongoDB.Bson;
 using NSubstitute;
-using NSubstitute.Core.Arguments;
 using NUnit.Framework;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
-using PresentConnection.Internship7.Iot.Services;
 using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Tests
@@ -26,53 +23,100 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
             manufacturerServiceMock = Substitute.For<IManufacturerService>();
 
-            // when pass any parameter (Id) to manufacturerService.GetManufacturer, return goodManufacturer with passed id
             manufacturerServiceMock.GetManufacturer(Arg.Any<string>()).Returns(info => 
             {
                 goodManufacturer.Id = ObjectId.Parse(info.ArgAt<string>(0));
                 return goodManufacturer;
             });
-            
+
+            manufacturerServiceMock.DeleteManufacturer(Arg.Any<string>()).Returns(info => true);
             
             // when we are trying get manufacturers, just return generated list
-            manufacturerServiceMock.GetAllManufacturers(string.Empty).Returns(info =>
+            manufacturerServiceMock.GetAllManufacturers(Arg.Is<string>(x => x.IsNullOrEmpty())).Returns(info =>
             {
                 var list = new List<Manufacturer>();
 
                 goodManufacturer.Id = ObjectId.GenerateNewId();
                 list.Add(goodManufacturer);
 
-                goodManufacturer.Id = ObjectId.GenerateNewId();
-                goodManufacturer.Name = "Object1";
-                list.Add(goodManufacturer);
+                var manufacturer2 = new Manufacturer
+                {
+                    Name = "Arduino 2",
+                    Description = "description",
+                    UniqueName = "raspberry-pi-2",
+                    Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                    Url = "url",
+                    IsVisible = true
+                };
+                manufacturer2.Id = ObjectId.GenerateNewId();
+                manufacturer2.Name = "Object1";
+                list.Add(manufacturer2);
 
-                goodManufacturer.Id = ObjectId.GenerateNewId();
-                goodManufacturer.Name = "Object2";
-                list.Add(goodManufacturer);
+                var manufacturer3 = new Manufacturer
+                {
+                    Name = "Arduino 3",
+                    Description = "description",
+                    UniqueName = "raspberry-pi-1",
+                    Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                    Url = "url",
+                    IsVisible = true
+                };
+                manufacturer3.Id = ObjectId.GenerateNewId();
+                manufacturer3.Name = "Object2";
+                list.Add(manufacturer2);
 
                 return list;
             });
 
             // when we are trying get manufacturers by name, just generate list and filter by name
-            manufacturerServiceMock.GetAllManufacturers(Arg.Any<string>()).Returns(info =>
+            manufacturerServiceMock.GetAllManufacturers(Arg.Is<string>(x => x.Length >= 1)).Returns(info =>
             {
                 var list = new List<Manufacturer>();
 
                 goodManufacturer.Id = ObjectId.GenerateNewId();
                 list.Add(goodManufacturer);
 
-                goodManufacturer.Id = ObjectId.GenerateNewId();
-                goodManufacturer.Name = "Object1";
-                list.Add(goodManufacturer);
+                var manufacturer2 = new Manufacturer
+                {
+                    Name = "Arduino 2",
+                    Description = "description",
+                    UniqueName = "raspberry-pi-2",
+                    Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                    Url = "url",
+                    IsVisible = true
+                };
+                manufacturer2.Id = ObjectId.GenerateNewId();
+                manufacturer2.Name = "Object1";
+                list.Add(manufacturer2);
 
-                goodManufacturer.Id = ObjectId.GenerateNewId();
-                goodManufacturer.Name = "Object2";
-                list.Add(goodManufacturer);
+                var manufacturer3 = new Manufacturer
+                {
+                    Name = "Arduino 3",
+                    Description = "description",
+                    UniqueName = "raspberry-pi-1",
+                    Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                    Url = "url",
+                    IsVisible = true
+                };
+                manufacturer3.Id = ObjectId.GenerateNewId();
+                manufacturer3.Name = "Object2";
+                list.Add(manufacturer2);
 
                 return list.Where(x => x.Name.Contains(info.ArgAt<string>(0))).ToList();
             });
             
-
         }
 
         [SetUp]
@@ -82,7 +126,11 @@ namespace PresentConnection.Internship7.Iot.Tests
             appHost = new AppHost()
                 .Init()
                 .Start(BaseUri);
+
+            var container = appHost.Container;
+
             
+
             manufacturerService = new ManufacturerService();
 
             goodManufacturer = new Manufacturer
@@ -99,6 +147,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             };
 
             SetupMocks();
+
+            container.Register(manufacturerServiceMock);
         }
 
 
@@ -146,13 +196,13 @@ namespace PresentConnection.Internship7.Iot.Tests
             var getManufacturersResponse = client.Get(getManufacturersRequest);
             getManufacturersResponse.ShouldNotBeNull();
             getManufacturersResponse.Result.ShouldNotBeNull();
-            getManufacturersResponse.Result.Count.ShouldEqual(2);
+            getManufacturersResponse.Result.Count.ShouldEqual(3);
             
             // Get by name
             // Get find by name works in "LIKE '%Name%'" manner, so I provide name which is one in db e.g. Arduino2
             var getManufacturersByNameRequest = new GetManufacturers
             {
-                Name = goodManufacturer.Name + "2"
+                Name = goodManufacturer.Name
             };
 
             var getManufacturersByNameResponse = client.Get(getManufacturersByNameRequest);
