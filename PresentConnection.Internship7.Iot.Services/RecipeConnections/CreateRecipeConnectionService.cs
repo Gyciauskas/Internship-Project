@@ -13,10 +13,18 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new CreateRecipeConnectionResponse();
 
-            var recipeconnection = new RecipeConnection().PopulateWith(request);
+            var recipeConnection = new RecipeConnection
+            {
+                Name = request.Name,
+                UniqueName = request.UniqueName
+            };
 
-            RecipeConnectionService.CreateRecipeConnection(recipeconnection);
+            RecipeConnectionService.CreateRecipeConnection(recipeConnection);
 
+            var cacheKey = CacheKeys.RecipeConnections.List;
+            Request.RemoveFromCache(Cache, cacheKey);
+
+            response.Result = recipeConnection;
             return response;
         }
     }

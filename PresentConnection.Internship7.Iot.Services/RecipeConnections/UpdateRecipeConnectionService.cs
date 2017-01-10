@@ -12,11 +12,26 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new UpdateRecipeConnectionResponse();
 
-            // Get and replace
-            var recipeconnection = RecipeConnectionService.GetRecipeConnection(request.Id).PopulateWith(request);
+            var recipeConnection = RecipeConnectionService.GetRecipeConnection(request.Id);
+            var recipeConnectionName = string.Empty;
 
-            RecipeConnectionService.UpdateRecipeConnection(recipeconnection);
+            if (recipeConnection != null)
+            {
+                recipeConnectionName = recipeConnection.Name;
+                recipeConnection = recipeConnection.PopulateWith(request);
+            }
 
+            RecipeConnectionService.UpdateRecipeConnection(recipeConnection);
+
+            var cacheKeyForListWithName = CacheKeys.RecipeConnections.ListWithProvidedName.Fmt(recipeConnectionName);
+            var cacheKeyForList = CacheKeys.RecipeConnections.List;
+            var cacheKeyForItem = CacheKeys.RecipeConnections.Item.Fmt(request.Id);
+
+            Request.RemoveFromCache(Cache, cacheKeyForList);
+            Request.RemoveFromCache(Cache, cacheKeyForListWithName);
+            Request.RemoveFromCache(Cache, cacheKeyForItem);
+
+            response.Result = recipeConnection;
             return response;
         }
     }
