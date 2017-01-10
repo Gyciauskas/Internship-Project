@@ -24,7 +24,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
             // reusable services
 
-            container.Register<IManufacturerService>(new ManufacturerService());
+//            container.Register<IManufacturerService>(new ManufacturerService());
             container.Register<IDeviceService>(new DeviceService());
             container.Register<IConnectionService>(new ConectionService());
             container.Register<IRecipeService>(new RecipeService());
