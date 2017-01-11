@@ -76,6 +76,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContracts\GetManufacturerDto.cs" />
+    <Compile Include="DataContracts\GetManufacturersDto.cs" />
     <Compile Include="Requests\ClientDevice\AddDeviceToClient.cs" />
     <Compile Include="Requests\ClientDevice\DeleteClientDevice.cs" />
     <Compile Include="Requests\ClientDevice\GetClientDevice.cs" />
@@ -171,6 +173,7 @@
     <Compile Include="Responses\ConnectionGroup\GetConnectionGroupResponse.cs" />
     <Compile Include="Responses\ConnectionGroup\GetConnectionGroupsResponse.cs" />
     <Compile Include="Responses\ConnectionGroup\UpdateConnectionGroupResponse.cs" />
+    <Compile Include="Responses\ListResponseBase.cs" />
     <Compile Include="Responses\RecipeConnections\CreateRecipeConnectionResponse.cs" />
     <Compile Include="Responses\RecipeConnections\DeleteRecipeConnectionResponse.cs" />
     <Compile Include="Responses\RecipeConnections\GetRecipeConnectionResponse.cs" />
@@ -213,6 +216,10 @@
     <ProjectReference Include="..\PresentConnection.Internship7.Iot.Domain\Domain.csproj">
       <Project>{4cea827c-9f55-4a5d-9cfc-6da307ff132e}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PresentConnection.Internship7.Iot.Utils\Utils.csproj">
+      <Project>{A7016AFA-C2D5-4251-B7D7-C5015B6A001B}</Project>
+      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

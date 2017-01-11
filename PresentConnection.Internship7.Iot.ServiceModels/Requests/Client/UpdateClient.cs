@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
     [Route("/clients/{Id}", "PUT", Summary = "Update client")]
-    public class UpdateClient
+    public class UpdateClient : IReturn<UpdateClientResponse>
     {
         public UpdateClient()
         {

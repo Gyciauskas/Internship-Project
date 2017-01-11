@@ -16,8 +16,8 @@ namespace PresentConnection.Internship7.Iot.Services
             var manufacturer = new Manufacturer
             {
                 Name = request.Name,
-                UniqueName = request.UniqueName,
-                Images = request.Images
+                UniqueName = request.Name, // TODO - make unique name from Name
+                //Images = request.Images
             };
 
             ManufacturerService.CreateManufacturer(manufacturer);

@@ -1,12 +1,17 @@
 ﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using Funq;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Services;
+using PresentConnection.Internship7.Iot.WebApp.Controllers;
 using ServiceStack;
 using ServiceStack.Caching;
+using ServiceStack.Mvc;
 using ServiceStack.Text;
 using ServiceStack.Validation;
+
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(PresentConnection.Internship7.Iot.WebApp.AppHost), "Start")]
 
 namespace PresentConnection.Internship7.Iot.WebApp
 {
@@ -85,13 +90,18 @@ namespace PresentConnection.Internship7.Iot.WebApp
             //container.RegisterValidators(typeof(CreateManufacturerService).Assembly, typeof(CreateManufacturer).Assembly);
             
             //Set MVC to use the same Funq IOC as ServiceStack
-            // ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));
-            // ServiceStackController.CatchAllController = reqCtx => container.TryResolve<HomeController>();
+            ControllerBuilder.Current.SetControllerFactory(new FunqControllerFactory(container));
+            ServiceStackController.CatchAllController = reqCtx => container.TryResolve<HomeController>();
 
 
             //Config examples
             Plugins.Add(new PostmanFeature());
             //this.Plugins.Add(new CorsFeature());
+        }
+
+        public static void Start()
+        {
+            new AppHost().Init();
         }
     }
 }

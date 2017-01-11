@@ -160,11 +160,10 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             // Create
 
-            var createRequest = new CreateManufacturer
+            var createRequest = new CreateManufacturer()
             {
                 Name = goodManufacturer.Name,
-                UniqueName = goodManufacturer.UniqueName,
-                Images = goodManufacturer.Images
+                // Images = goodManufacturer.Images
             };
 
             var createManufacturerResponse = client.Post(createRequest);
@@ -176,8 +175,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest2 = new CreateManufacturer
             {
                 Name = goodManufacturer.Name + "2",
-                UniqueName = goodManufacturer.UniqueName + "-2",
-                Images = goodManufacturer.Images
+                // Images = goodManufacturer.Images
             };
 
             var createManufacturerResponse2 = client.Post(createRequest2);

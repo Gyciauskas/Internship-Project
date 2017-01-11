@@ -19,11 +19,24 @@ namespace PresentConnection.Internship7.Iot.Services
                 CacheKeys.Manufacturers.Item.Fmt(request.Id),
                 expireInTimespan,
                  
-                () => {
-                    var response = new GetManufacturerResponse
+                () =>
+                {
+
+                    var manufacturer = ManufacturerService.GetManufacturer(request.Id);
+
+                    var response = new GetManufacturerResponse();
+
+                    if (manufacturer != null)
                     {
-                        Result = ManufacturerService.GetManufacturer(request.Id)
-                    };
+                        response.Result = new GetManufacturerDto
+                        {
+                            Id = manufacturer.Id.ToString(),
+                            ImagePath = "", // get image path regarding image service.
+                            Name = manufacturer.Name,
+                            UniqueName = manufacturer.UniqueName
+                        };
+                    }
+                    
                     return response;
                 });
         }

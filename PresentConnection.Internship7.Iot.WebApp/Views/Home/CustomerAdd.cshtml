@@ -1,0 +1,9 @@
+﻿@model PresentConnection.Internship7.Iot.WebApp.Models.CustomerViewModel
+
+@using (Html.BeginForm("CustomerAdd"))
+{
+    <span>First Name</span> @Html.TextBoxFor(x => x.FirstName)
+    @Html.ValidationMessageFor(x => x.FirstName)
+    @Html.TextBoxFor(x => x.LastName)
+    <input type="submit" value="Insert"/>
+}

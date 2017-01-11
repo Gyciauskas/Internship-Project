@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
@@ -26,12 +28,22 @@ namespace PresentConnection.Internship7.Iot.Services
                 cacheKey,
                 expireInTimespan,
 
-                () => {
-                    var response = new GetManufacturersResponse
-                    {
-                        Result = ManufacturerService.GetAllManufacturers(request.Name)
-                    };
+                () =>
+                {
+                    var response = new GetManufacturersResponse();
 
+                    var manufacturers = ManufacturerService.GetAllManufacturers(request.Name);
+                    if (manufacturers != null && manufacturers.Any())
+                    {
+                        response.Result = new List<GetManufacturersDto>();
+                        foreach (var manufacturer in manufacturers)
+                        {
+                            var imagePath = ""; // call image service and get image path
+
+                            var item = new GetManufacturersDto {Name = manufacturer.Name, ImagePath = imagePath};
+                            response.Result.Add(item);
+                        }
+                    }
                     return response;
                 });
 
