@@ -26,7 +26,7 @@ namespace PresentConnection.Internship7.Iot.Services
             Request.RemoveFromCache(Cache, cacheKey);
             
 
-            response.Result = manufacturer;
+            response.Result = manufacturer.Id.ToString();
             return response;
         }
     }

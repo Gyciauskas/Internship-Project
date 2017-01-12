@@ -11,6 +11,8 @@ namespace PresentConnection.Internship7.Iot.Services
     {
         public IManufacturerService ManufacturerService { get; set; }
 
+        public IImageService ImageService { get; set; }
+
         public object Any(GetManufacturers request)
         {
             var expireInTimespan = new TimeSpan(1, 0, 0);
@@ -35,12 +37,14 @@ namespace PresentConnection.Internship7.Iot.Services
                     var manufacturers = ManufacturerService.GetAllManufacturers(request.Name);
                     if (manufacturers != null && manufacturers.Any())
                     {
-                        response.Result = new List<GetManufacturersDto>();
+                        response.Result = new List<ManufacturerDto>();
                         foreach (var manufacturer in manufacturers)
                         {
-                            var imagePath = ""; // call image service and get image path
+                            var item = ManufacturerDto.With(ImageService)
+                                                .Map(manufacturer)
+                                                .ApplyImages(manufacturer.Images)
+                                                .Build();
 
-                            var item = new GetManufacturersDto {Name = manufacturer.Name, ImagePath = imagePath};
                             response.Result.Add(item);
                         }
                     }

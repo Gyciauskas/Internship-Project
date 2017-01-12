@@ -14,9 +14,27 @@ namespace PresentConnection.Internship7.Iot.WebApp
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "customers",
-                url: "customers",
-                defaults: new { controller = "Home", action = "Customers" }
+                name: "manufacturers-list",
+                url: "manufacturers",
+                defaults: new { controller = "Manufacturer", action = "List" }
+            );
+
+            routes.MapRoute(
+                name: "manufacturers-create",
+                url: "manufacturers/new",
+                defaults: new { controller = "Manufacturer", action = "Create" }
+            );
+
+            routes.MapRoute(
+                name: "manufacturer-edit",
+                url: "manufacturers/{id}",
+                defaults: new { controller = "Manufacturer", action = "Edit" }
+            );
+
+            routes.MapRoute(
+                name: "manufacturer-delete",
+                url: "manufacturers/{id}/delete",
+                defaults: new { controller = "Manufacturer", action = "Delete" }
             );
 
             routes.MapRoute(

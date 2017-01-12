@@ -1,28 +1,29 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.IO;
+using System.Web;
+using System.Web.Mvc;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using PresentConnection.Internship7.Iot.Services;
 using PresentConnection.Internship7.Iot.WebApp.Extensions;
 using PresentConnection.Internship7.Iot.WebApp.Models;
+using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.WebApp.Controllers
 {
     public class ManufacturerController : ControllerBase
     {
-
         public ActionResult List(string name = "")
         {
-            var viewModel = new ListViewModelBase<GetManufacturersDto>();
+            var viewModel = new ListViewModelBase<ManufacturerDto>();
 
             using (var service = ResolveService<GetManufacturersService>())
             {
-                var request = new GetManufacturers
-                {
-                    Name = name
-                };
+                var request = new GetManufacturers { Name = name };
 
                 var response = service.Any(request) as GetManufacturersResponse;
                 if (response.HasData())
                 {
+                    viewModel.TotalCount = response.TotalCount;
                     viewModel.Items = response.Result;
                 }
             }
@@ -32,26 +33,38 @@ namespace PresentConnection.Internship7.Iot.WebApp.Controllers
 
         public ActionResult Create()
         {
-            var viewModel = new CreateManufacturerViewModel();
+            var viewModel = new ManufacturerDto();
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Create(CreateManufacturerViewModel viewModel)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ManufacturerDto viewModel, HttpPostedFileBase file)
         {
+            if (file == null)
+            {
+                ModelState.AddModelError("file-upload", "Please upload file");
+            }
+            else
+            {
+                var extension = Path.GetExtension(file.FileName);
+
+                if (extension != MimeTypes.ImageJpg && extension != MimeTypes.ImagePng)
+                {
+                    ModelState.AddModelError("file-extension", "Please upload right format file");
+                }
+            }
+
             if (ModelState.IsValid)
             {
                 using (var service = ResolveService<CreateManufacturerService>())
                 {
                     var request = new CreateManufacturer
                     {
-                        Name = viewModel.Name
+                        Name = viewModel.Name,
+                        FileName = file.FileName,
+                        Image = ReadFileExtensions.ReadFully(file.InputStream)
                     };
-
-                    if (viewModel.Image != null && viewModel.Image.ContentLength > 0)
-                    {
-                        request.Image = viewModel.Image.InputStream.ReadFully();
-                    }
 
                     var response = service.Any(request);
                     if (response.HasData())
@@ -61,36 +74,29 @@ namespace PresentConnection.Internship7.Iot.WebApp.Controllers
                 }
             }
             return View(viewModel);
-
         }
 
 
         public ActionResult Update(string id)
         {
-            var viewModel = new EditManufacturerViewModel(string.Empty);
+            var viewModel = new ManufacturerDto();
 
             using (var service = ResolveService<GetManufacturerService>())
             {
-                var request = new GetManufacturer
-                {
-                    Id = id
-                };
+                var request = new GetManufacturer { Id = id };
                 var response = service.Any(request) as GetManufacturerResponse;
+
                 if (response.HasData())
                 {
-                    viewModel = new EditManufacturerViewModel(response.Result.UniqueName)
-                    {
-                        Id = id,
-                        Name = response.Result.Name,
-                        ImagePath = response.Result.ImagePath
-                    };
+                    viewModel = response.Result;
                 }
             }
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult Update(EditManufacturerViewModel viewModel)
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(ManufacturerDto viewModel)
         {
             if (ModelState.IsValid)
             {
@@ -98,13 +104,13 @@ namespace PresentConnection.Internship7.Iot.WebApp.Controllers
                 {
                     var request = new UpdateManufacturer
                     {
-                        Name = viewModel.Name,
                         Id = viewModel.Id,
+                        Name = viewModel.Name,
                         UniqueName = viewModel.UniqueName
                     };
 
                     var response = service.Any(request);
-                    if (response.HasData())
+                    if (response.WasOk())
                     {
                         return Redirect("/manufacturers");
                     }
@@ -118,13 +124,14 @@ namespace PresentConnection.Internship7.Iot.WebApp.Controllers
         {
             using (var service = ResolveService<DeleteManufacturerService>())
             {
-                var request = new DeleteManufacturer
-                {
-                    Id = id
-                };
-                service.Any(request);
+                var request = new DeleteManufacturer { Id = id };
+                var response = service.Any(request);
+                //if (response.WasOk())
+                //{
+                //    return Redirect("/manufacturers");
+                //}
             }
-            return Redirect("/manufacturers");
+            return View("/manufacturers");
         }
     }
 }

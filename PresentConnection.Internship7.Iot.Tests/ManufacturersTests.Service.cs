@@ -160,7 +160,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             // Create
 
-            var createRequest = new CreateManufacturer()
+            var createRequest = new CreateManufacturer
             {
                 Name = goodManufacturer.Name,
                 // Images = goodManufacturer.Images
@@ -169,8 +169,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createManufacturerResponse = client.Post(createRequest);
             createManufacturerResponse.ShouldNotBeNull();
             createManufacturerResponse.Result.ShouldNotBeNull();
-            createManufacturerResponse.Result.Id.ShouldNotBeNull();
-            createManufacturerResponse.Result.Id.ShouldBeNotBeTheSameAs(ObjectId.Empty);
+            createManufacturerResponse.Result.ShouldNotBeNull();
+            createManufacturerResponse.Result.ShouldBeNotBeTheSameAs(ObjectId.Empty);
 
             var createRequest2 = new CreateManufacturer
             {
@@ -181,8 +181,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createManufacturerResponse2 = client.Post(createRequest2);
             createManufacturerResponse2.ShouldNotBeNull();
             createManufacturerResponse2.Result.ShouldNotBeNull();
-            createManufacturerResponse2.Result.Id.ShouldNotBeNull();
-            createManufacturerResponse2.Result.Id.ShouldBeNotBeTheSameAs(ObjectId.Empty);
+            createManufacturerResponse2.Result.ShouldNotBeNull();
+            createManufacturerResponse2.Result.ShouldBeNotBeTheSameAs(ObjectId.Empty);
 
             // Get all
             var getManufacturersRequest = new GetManufacturers
@@ -212,35 +212,27 @@ namespace PresentConnection.Internship7.Iot.Tests
             // I will update first inserted item 
             var updateManufacturerRequest = new UpdateManufacturer
             {
-                Id = createManufacturerResponse.Result.Id.ToString(),
-                Name = createManufacturerResponse.Result.Name + "Updated",
-                UniqueName = createManufacturerResponse.Result.UniqueName + "-updated"
+                Id = createManufacturerResponse.Result,
+                Name = createRequest.Name + "Updated",
+                UniqueName = /* TODO : call sluggify service*/ createRequest.Name.Trim().ToLower() + "-updated"
             };
 
             var updateManufacturerResponse = client.Put(updateManufacturerRequest);
             updateManufacturerResponse.ShouldNotBeNull();
             updateManufacturerResponse.Result.ShouldNotBeNull();
             
-
             // Get by id
-            var getManufacturerById = new GetManufacturer
-            {
-                Id = updateManufacturerResponse.Result.Id.ToString()
-
-            };
+            var getManufacturerById = new GetManufacturer { Id = createManufacturerResponse.Result };
 
             var getManufacturerByIdResponse = client.Get(getManufacturerById);
             getManufacturerByIdResponse.ShouldNotBeNull();
             getManufacturerByIdResponse.Result.ShouldNotBeNull();
-            getManufacturerByIdResponse.Result.UniqueName.ShouldEqual(createManufacturerResponse.Result.UniqueName + "-updated");
-            getManufacturerByIdResponse.Result.Name.ShouldEqual(createManufacturerResponse.Result.Name + "Updated");
+            getManufacturerByIdResponse.Result.UniqueName.ShouldEqual(/* TODO : call sluggify service*/ createRequest.Name.Trim().ToLower() + "-updated");
+            getManufacturerByIdResponse.Result.Name.ShouldEqual(createRequest.Name + "Updated");
 
 
             // Delete 
-            var deleteRequest = new DeleteManufacturer
-            {
-                Id = getManufacturerByIdResponse.Result.Id.ToString()
-            };
+            var deleteRequest = new DeleteManufacturer { Id = getManufacturerByIdResponse.Result.Id };
 
             var deleteRequestResponse = client.Delete(deleteRequest);
 

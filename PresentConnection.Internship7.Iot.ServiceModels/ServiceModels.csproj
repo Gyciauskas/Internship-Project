@@ -66,6 +66,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
@@ -76,8 +77,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataContracts\GetManufacturerDto.cs" />
-    <Compile Include="DataContracts\GetManufacturersDto.cs" />
+    <Compile Include="DataContracts\DisplayImageDto.cs" />
+    <Compile Include="DataContracts\ManufacturerDto.cs" />
+    <Compile Include="DataContracts\PictureDto.cs" />
     <Compile Include="Requests\ClientDevice\AddDeviceToClient.cs" />
     <Compile Include="Requests\ClientDevice\DeleteClientDevice.cs" />
     <Compile Include="Requests\ClientDevice\GetClientDevice.cs" />
@@ -213,6 +215,10 @@
     <Compile Include="Responses\ResponseBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PresentConnection.Internship7.Iot.BusinessContracts\BusinessContracts.csproj">
+      <Project>{EF3DCE32-83CB-444F-9FCC-F5FA58D47B73}</Project>
+      <Name>BusinessContracts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PresentConnection.Internship7.Iot.Domain\Domain.csproj">
       <Project>{4cea827c-9f55-4a5d-9cfc-6da307ff132e}</Project>
       <Name>Domain</Name>

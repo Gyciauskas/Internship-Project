@@ -13,6 +13,11 @@ namespace PresentConnection.Internship7.Iot.WebApp.Extensions
         {
             return obj?.Result != null;
         }
+
+        public static bool WasOk(this ResponseBase<bool> obj) 
+        {
+            return obj != null && obj.Result;
+        }
         
         
     }

@@ -8,6 +8,7 @@ namespace PresentConnection.Internship7.Iot.Services
     public class GetManufacturerService : ServiceBase
     {
         public IManufacturerService ManufacturerService { get; set; }
+        public IImageService ImageService { get; set; }
         
         public object Any(GetManufacturer request)
         {
@@ -28,13 +29,12 @@ namespace PresentConnection.Internship7.Iot.Services
 
                     if (manufacturer != null)
                     {
-                        response.Result = new GetManufacturerDto
-                        {
-                            Id = manufacturer.Id.ToString(),
-                            ImagePath = "", // get image path regarding image service.
-                            Name = manufacturer.Name,
-                            UniqueName = manufacturer.UniqueName
-                        };
+
+
+                        response.Result = ManufacturerDto.With(ImageService)
+                                                .Map(manufacturer)
+                                                .ApplyImages(manufacturer.Images)
+                                                .Build();
                     }
                     
                     return response;

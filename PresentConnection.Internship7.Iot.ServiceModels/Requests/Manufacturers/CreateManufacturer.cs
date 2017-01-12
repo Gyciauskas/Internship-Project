@@ -7,5 +7,6 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
     {
         public string Name { get; set; }
         public byte[] Image { get; set; }
+        public string FileName { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    public class GetManufacturersResponse : ListResponseBase<List<GetManufacturersDto>>
+    public class GetManufacturersResponse : ListResponseBase<List<ManufacturerDto>>
     { 
     }
 }
