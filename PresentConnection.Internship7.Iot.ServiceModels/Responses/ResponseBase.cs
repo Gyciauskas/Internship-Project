@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.Serialization;
 using MongoDB.Bson.Serialization.Attributes;
+using PresentConnection.Internship7.Iot.Utils;
 using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.ServiceModels

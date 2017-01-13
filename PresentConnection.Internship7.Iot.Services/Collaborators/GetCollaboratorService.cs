@@ -1,6 +1,7 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
+using System;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
@@ -8,14 +9,23 @@ namespace PresentConnection.Internship7.Iot.Services
     {
         public ICollaboratorService CollaboratorService { get; set; }
 
-        public GetCollaboratorResponse Any(GetCollaborator request)
+        public object Any(GetCollaborator request)
         {
-            var response = new GetCollaboratorResponse
-            {
-                Result = CollaboratorService.GetCollaborator(request.Id)
-            };
+            var expireInTimespan = new TimeSpan(1, 0, 0);
 
-            return response;
+            return Request.ToOptimizedResultUsingCache(
+
+                Cache,
+                CacheKeys.Collaborators.Item.Fmt(request.Id),
+                expireInTimespan,
+
+                () => {
+                    var response = new GetCollaboratorResponse
+                    {
+                        Result = CollaboratorService.GetCollaborator(request.Id)
+                    };
+                    return response;
+                });
         }
     }
 }

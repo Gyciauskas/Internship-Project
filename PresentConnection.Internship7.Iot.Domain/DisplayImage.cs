@@ -27,5 +27,7 @@ namespace PresentConnection.Internship7.Iot.Domain
         public string MimeType { get; set; }
         public Guid UniqueImageName { get; set; }
         public string Tag { get; set; }
+
+        public string Size { get; set; }
     }
 }

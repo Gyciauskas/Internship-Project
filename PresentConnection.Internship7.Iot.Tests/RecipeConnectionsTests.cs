@@ -11,42 +11,26 @@ using System.Linq;
 namespace PresentConnection.Internship7.Iot.Tests
 {
     [TestFixture]
-    public class RecipeConnectionsTests
+    public partial class RecipeConnectionsTests
     {
-        private IRecipeConnectionService recipeconnService;
-        private RecipeConnection recipeconnection;
-
-        [SetUp]
-        public void SetUp()
-        {
-            recipeconnService = new RecipeConnectionService();
-
-            // Create recipe connection
-            recipeconnection = new RecipeConnection
-            {
-                Name = "abc",
-                UniqueName = "123"
-            };
-        }
-
         [Test]
         [Category("RecipeConnection")]
         public void Can_insert_recipe_connection_to_database()
         {
             // Insert to db
-            recipeconnService.CreateRecipeConnection(recipeconnection);
+            recipeConnectionService.CreateRecipeConnection(goodRecipeConnection);
 
             // test result, if passed, than means validated successfully
-            recipeconnService.ShouldNotBeNull();
+            recipeConnectionService.ShouldNotBeNull();
         }
 
         [Test]
         [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_name_is_not_provided()
         {
-            recipeconnection.Name = string.Empty;
+            goodRecipeConnection.Name = string.Empty;
 
-            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeconnService.CreateRecipeConnection(recipeconnection));
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeConnectionService.CreateRecipeConnection(goodRecipeConnection));
             exception.Message.ShouldEqual("Couldn't create recipe connection");
         }
 
@@ -54,9 +38,9 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_uniquename_is_not_provided()
         {
-            recipeconnection.UniqueName = string.Empty;
+            goodRecipeConnection.UniqueName = string.Empty;
 
-            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeconnService.CreateRecipeConnection(recipeconnection));
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeConnectionService.CreateRecipeConnection(goodRecipeConnection));
             exception.Message.ShouldEqual("Couldn't create recipe connection");
         }
 
@@ -64,7 +48,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_such_uniquename_exist()
         {
-            recipeconnService.CreateRecipeConnection(recipeconnection);
+            recipeConnectionService.CreateRecipeConnection(goodRecipeConnection);
 
             var recipeconnection2 = new RecipeConnection
             {
@@ -72,7 +56,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Name = "abc",
             };
 
-            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeconnService.CreateRecipeConnection(recipeconnection2));
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeConnectionService.CreateRecipeConnection(recipeconnection2));
 
             var businessException = exception as BusinessException;
             businessException.ShouldNotBeNull();
@@ -87,9 +71,9 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_uniquename_is_not_in_correct_format()
         {
-            recipeconnection.UniqueName = "Raspberry PI 3";
+            goodRecipeConnection.UniqueName = "Raspberry PI 3";
 
-            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeconnService.CreateRecipeConnection(recipeconnection));
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeConnectionService.CreateRecipeConnection(goodRecipeConnection));
 
             var businessException = exception as BusinessException;
             businessException.ShouldNotBeNull();
@@ -104,9 +88,9 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("RecipeConnection")]
         public void Cannot_insert_recipe_connection_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
         {
-            recipeconnection.UniqueName = "raspberry-PI-3";
+            goodRecipeConnection.UniqueName = "raspberry-PI-3";
 
-            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeconnService.CreateRecipeConnection(recipeconnection));
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => recipeConnectionService.CreateRecipeConnection(goodRecipeConnection));
 
             var businessException = exception as BusinessException;
             businessException.ShouldNotBeNull();
@@ -122,13 +106,13 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Can_get_recipe_connection_by_id()
         {
             // Insert to db
-            recipeconnService.CreateRecipeConnection(recipeconnection);
+            recipeConnectionService.CreateRecipeConnection(goodRecipeConnection);
 
-            recipeconnection.ShouldNotBeNull();
-            recipeconnection.Id.ShouldNotBeNull();
+            goodRecipeConnection.ShouldNotBeNull();
+            goodRecipeConnection.Id.ShouldNotBeNull();
 
             // now get the same record from db
-            var recipeconnFromDB = recipeconnService.GetRecipeConnection(recipeconnection.Id.ToString());
+            var recipeconnFromDB = recipeConnectionService.GetRecipeConnection(goodRecipeConnection.Id.ToString());
 
             recipeconnFromDB.ShouldNotBeNull();
             recipeconnFromDB.Id.ShouldNotBeNull();
@@ -147,11 +131,11 @@ namespace PresentConnection.Internship7.Iot.Tests
             };
 
             // |Insert to db
-            recipeconnService.CreateRecipeConnection(recipeconnection);
-            recipeconnService.CreateRecipeConnection(recipeconnection2);
+            recipeConnectionService.CreateRecipeConnection(goodRecipeConnection);
+            recipeConnectionService.CreateRecipeConnection(recipeconnection2);
 
             // get all documents
-            var recipeconnections = recipeconnService.GetAllRecipeConnections();
+            var recipeconnections = recipeConnectionService.GetAllRecipeConnections();
 
             recipeconnections.ShouldBe<List<RecipeConnection>>();
             (recipeconnections.Count > 0).ShouldBeTrue();
@@ -169,16 +153,16 @@ namespace PresentConnection.Internship7.Iot.Tests
             };
 
             // |Insert to db
-            recipeconnService.CreateRecipeConnection(recipeconnection);
-            recipeconnService.CreateRecipeConnection(recipeconnection2);
+            recipeConnectionService.CreateRecipeConnection(goodRecipeConnection);
+            recipeConnectionService.CreateRecipeConnection(recipeconnection2);
 
-            recipeconnection.ShouldNotBeNull();
-            recipeconnection.Id.ShouldNotBeNull();
+            goodRecipeConnection.ShouldNotBeNull();
+            goodRecipeConnection.Id.ShouldNotBeNull();
             recipeconnection2.ShouldNotBeNull();
             recipeconnection2.Id.ShouldNotBeNull();
 
             // get document
-            var recipeconnections = recipeconnService.GetAllRecipeConnections(recipeconnection.Name);
+            var recipeconnections = recipeConnectionService.GetAllRecipeConnections(goodRecipeConnection.Name);
 
             recipeconnections.ShouldBe<List<RecipeConnection>>();
             recipeconnections.Count.ShouldEqual(1);
@@ -189,17 +173,17 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Can_update_recipe_connection_to_database()
         {
             // Insert to db
-            recipeconnService.CreateRecipeConnection(recipeconnection);
+            recipeConnectionService.CreateRecipeConnection(goodRecipeConnection);
 
-            recipeconnection.ShouldNotBeNull();
-            recipeconnection.Id.ShouldNotBeNull();
+            goodRecipeConnection.ShouldNotBeNull();
+            goodRecipeConnection.Id.ShouldNotBeNull();
 
             // update
-            recipeconnection.Name = "def";
-            recipeconnService.UpdateRecipeConnection(recipeconnection);
+            goodRecipeConnection.Name = "def";
+            recipeConnectionService.UpdateRecipeConnection(goodRecipeConnection);
 
             // get the same document from db and check value
-            var recipeconnFromdb = recipeconnService.GetRecipeConnection(recipeconnection.Id.ToString());
+            var recipeconnFromdb = recipeConnectionService.GetRecipeConnection(goodRecipeConnection.Id.ToString());
             recipeconnFromdb.ShouldNotBeNull();
             recipeconnFromdb.Name.ShouldEqual("def");
         }
@@ -209,31 +193,19 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Can_delete_recipe_connection_from_database()
         {
             // Insert to db
-            recipeconnService.CreateRecipeConnection(recipeconnection);
+            recipeConnectionService.CreateRecipeConnection(goodRecipeConnection);
 
-            recipeconnection.ShouldNotBeNull();
-            recipeconnection.Id.ShouldNotBeNull();
+            goodRecipeConnection.ShouldNotBeNull();
+            goodRecipeConnection.Id.ShouldNotBeNull();
 
             // delete the same record
-            recipeconnService.DeleteRecipeConnection(recipeconnection.Id.ToString());
+            recipeConnectionService.DeleteRecipeConnection(goodRecipeConnection.Id.ToString());
 
             // try get deleted document
-            var recipeconnFromdb = recipeconnService.GetRecipeConnection(recipeconnection.Id.ToString());
+            var recipeconnFromdb = recipeConnectionService.GetRecipeConnection(goodRecipeConnection.Id.ToString());
 
             recipeconnFromdb.ShouldNotBeNull();
             recipeconnFromdb.Id.ShouldEqual(ObjectId.Empty);
-        }
-
-        // After every test, delete all records from db
-        [TearDown]
-        public void Dispose()
-        {
-            var recipeConnections = Db.Find<RecipeConnection>(_ => true);
-
-            foreach (var recipeConnection in recipeConnections)
-            {
-                Db.DeleteOne<RecipeConnection>(x => x.Id == recipeConnection.Id);
-            }
         }
     }
 }

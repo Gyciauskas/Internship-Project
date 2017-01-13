@@ -8,5 +8,6 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
         // To pass validator  are required these properties
         public string Email { get; set; }
         public string UserId { get; set; }
+        public string Name { get; set; }
     }
 }
