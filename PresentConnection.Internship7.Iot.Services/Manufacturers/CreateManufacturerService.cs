@@ -20,10 +20,18 @@ namespace PresentConnection.Internship7.Iot.Services
             var sizes = new List<string> { "standart", "medium", "thumbnail"};
             var imageIds = new List<string>();
 
+            // Origina image
+            var image = new DisplayImage
+            {
+                SeoFileName = Path.GetFileNameWithoutExtension(request.FileName),
+                MimeType = Path.GetExtension(request.FileName),
+            };
+            imageIds.Add(ImagesService.AddImage(image, request.Image));
 
+            // Different sizes
             foreach (var size in sizes)
             {
-                var image = new DisplayImage
+                image = new DisplayImage
                 {
                     SeoFileName = Path.GetFileNameWithoutExtension(request.FileName),
                     MimeType = Path.GetExtension(request.FileName),

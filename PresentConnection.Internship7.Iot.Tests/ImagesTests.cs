@@ -33,7 +33,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             {
                 SeoFileName = Path.GetFileNameWithoutExtension(testImagePath),
                 MimeType = Path.GetExtension(testImagePath),
-                Size = "standart"
             };
         }
 

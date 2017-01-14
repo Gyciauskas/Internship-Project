@@ -30,9 +30,12 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
         {
             var id = CreateDisplayImage(displayImage);
 
-            image = ResizeImage(image,
+            if (displayImage.Size != null)
+            {
+                image = ResizeImage(image,
                 Convert.ToInt16(ConfigurationManager.AppSettings[$"ImageWidth-{displayImage.Size}"]),
                 Convert.ToInt16(ConfigurationManager.AppSettings[$"ImageHeight-{displayImage.Size}"]));
+            }            
 
             if (image.Length / 1000 >= MaxImageSize)
             {
