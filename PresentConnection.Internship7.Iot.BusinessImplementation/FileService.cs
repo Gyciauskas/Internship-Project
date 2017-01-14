@@ -104,7 +104,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             string path = EnsureEndWithSlash(dir);
             try
             {
-                return File.Exists(path);
+                return Directory.Exists(path);
             }
             catch (Exception ex)
             {

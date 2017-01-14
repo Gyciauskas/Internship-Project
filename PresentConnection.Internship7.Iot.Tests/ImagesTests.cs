@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Configuration;
 using System.IO;
 using System.Linq;
 using CodeMash.Net;
-using MongoDB.Bson;
-using MongoDB.Driver;
 using NUnit.Framework;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.BusinessImplementation;
@@ -16,23 +14,27 @@ namespace PresentConnection.Internship7.Iot.Tests
     [TestFixture]
     public class ImagesTests
     {
-        private IImageService imageService;
-        private readonly string imagesDir = "~/images".MapHostAbsolutePath();
         private static readonly string testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
         private readonly byte[] imageBytes = File.ReadAllBytes(testImagePath);
+
+        private IImageService imageService;
+        private readonly string imagesDir = ConfigurationManager.AppSettings["ImagesPath"].MapHostAbsolutePath();
         private DisplayImage goodDisplayImage;
 
         [SetUp]
         public void SetUp()
         {
-            imageService = new ImageService();
-            imageService.DisplayImageService = new DisplayImageService();
-            imageService.fileService = new FileService();
+            imageService = new ImageService
+            {
+                DisplayImageService = new DisplayImageService(),
+                FileService = new FileService()
+            };
 
             goodDisplayImage = new DisplayImage()
             {
                 SeoFileName = Path.GetFileNameWithoutExtension(testImagePath),
-                MimeType = Path.GetExtension(testImagePath)
+                MimeType = Path.GetExtension(testImagePath),
+                Size = "standart"
             };
         }
 
@@ -56,7 +58,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             goodDisplayImage.ShouldNotBeNull();
             goodDisplayImage.Id.ShouldNotBeNull();
 
-            string goodImagePath = imagesDir + "\\" + goodDisplayImage.UniqueImageName + goodDisplayImage.MimeType;
+            string goodImagePath = Path.Combine(imagesDir, goodDisplayImage.UniqueImageName + goodDisplayImage.MimeType);
             File.Exists(goodImagePath).ShouldBeTrue();
         }
 
@@ -82,40 +84,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             exception.Message.ShouldEqual("Cannot insert image to database");
         }
 
-//        [Test]
-//        [Category("IntegrationTests")]
-//        [Category("Images")]
-//        public void Can_get_image_by_id()
-//        {
-//            imageService.AddImage(goodDisplayImage, imageBytes);
-//
-//            goodDisplayImage.ShouldNotBeNull();
-//            goodDisplayImage.Id.ShouldNotBeNull();
-//
-//            var imageFromDb = imageService.GetImage(goodDisplayImage.Id.ToString());
-//            imageFromDb.ShouldNotBeNull();
-//            imageFromDb.Id.ShouldNotBeNull();
-//            imageFromDb.SeoFileName.ShouldEqual(goodDisplayImage.SeoFileName);
-//        }
-
-
-        [Test]
-        [Category("IntegrationTests")]
-        [Category("Images")]
-        public void Can_get_image()
-        {
-            imageService.AddImage(goodDisplayImage, imageBytes);
-
-            goodDisplayImage.ShouldNotBeNull();
-            goodDisplayImage.Id.ShouldNotBeNull();
-
-            imageService.DeleteImage(goodDisplayImage.Id.ToString());
-
-            var imagePath = imageService.GetImagePath(goodDisplayImage.Id.ToString());
-
-            imagePath.ShouldNotBeNull();
-        }
-
         [Test]
         [Category("IntegrationTests")]
         [Category("Images")]
@@ -125,7 +93,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             goodDisplayImage.ShouldNotBeNull();
             goodDisplayImage.Id.ShouldNotBeNull();
 
-            string goodImagePath = imagesDir + "\\" + goodDisplayImage.UniqueImageName + goodDisplayImage.MimeType;
+            string goodImagePath = Path.Combine(imagesDir, goodDisplayImage.UniqueImageName + goodDisplayImage.MimeType);
+
             File.Exists(goodImagePath).ShouldBeTrue();
             imageService.DeleteImage(goodDisplayImage.Id.ToString());
             File.Exists(goodImagePath).ShouldBeFalse();
@@ -134,9 +103,13 @@ namespace PresentConnection.Internship7.Iot.Tests
         [TearDown]
         public void Dispose()
         {
-            imageService.DeleteImage(goodDisplayImage.Id.ToString());
-            var filter = Builders<DisplayImage>.Filter.Empty;
-            Db.DeleteMany(filter);
+            var images = Db.Find<DisplayImage>(_ => true);
+
+            foreach (var image in images)
+            {
+                imageService.DeleteImage(image.Id.ToString());
+                Db.DeleteOne<DisplayImage>(x => x.Id == image.Id);                
+            }                                      
         }
     }
 }

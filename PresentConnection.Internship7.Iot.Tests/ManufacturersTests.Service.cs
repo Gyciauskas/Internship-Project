@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using MongoDB.Bson;
@@ -17,13 +18,12 @@ namespace PresentConnection.Internship7.Iot.Tests
     {
         private ServiceStackHost appHost;
         private IManufacturerService manufacturerService;
-        private Manufacturer goodManufacturer;
         private IManufacturerService manufacturerServiceMock;
+
+        private Manufacturer goodManufacturer;
         private string testImagePath;
         private byte[] imageBytes;
-        private DisplayImage goodDisplayImage;
-        private string imagesDir;
-        private IImageService imageService;
+        private string imageDir;
 
         private void SetupMocks()
         {
@@ -135,10 +135,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var container = appHost.Container;
 
-            
-
             manufacturerService = new ManufacturerService();
-            imageService = new ImageService();
 
             goodManufacturer = new Manufacturer
             {
@@ -151,15 +148,10 @@ namespace PresentConnection.Internship7.Iot.Tests
                 },
                 Url = "url",
                 IsVisible = true
-            };
-            
-            goodDisplayImage = new DisplayImage()
-            {
-                SeoFileName = Path.GetFileNameWithoutExtension(testImagePath),
-                MimeType = Path.GetExtension(testImagePath)
-            };
-            imagesDir = "~/images".MapHostAbsolutePath();
+            };            
+
             testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
+            imageDir = ConfigurationManager.AppSettings["ImagesPath"].MapHostAbsolutePath();
             imageBytes = File.ReadAllBytes(testImagePath);
 
             SetupMocks();
@@ -179,10 +171,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest = new CreateManufacturer
             {
                 Name = goodManufacturer.Name,
-//                UniqueName = goodManufacturer.UniqueName,
-//                ImageBytes = imageBytes,
-//                SeoFileName = goodDisplayImage.SeoFileName,
-//                MimeType = goodDisplayImage.MimeType
+                FileName = "test.jpg",
+                Image = imageBytes
             };
 
             var createManufacturerResponse = client.Post(createRequest);
@@ -194,10 +184,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest2 = new CreateManufacturer
             {
                 Name = goodManufacturer.Name + "2",
-//                UniqueName = goodManufacturer.UniqueName + "-2",
-//                ImageBytes = imageBytes,
-//                SeoFileName = goodDisplayImage.SeoFileName + "2",
-//                MimeType = goodDisplayImage.MimeType
+                FileName = "test.jpg",
+                Image = imageBytes
             };
 
             var createManufacturerResponse2 = client.Post(createRequest2);
@@ -284,15 +272,19 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Dispose()
         {
             appHost.Dispose();
-            Directory.Delete(imagesDir, true);
-
+            
             var manufacturers = manufacturerService.GetAllManufacturers();
 
             foreach (var manufacturer in manufacturers)
             {
                 manufacturerService.DeleteManufacturer(manufacturer.Id.ToString());
             }
-            
+
+            var files = Directory.GetFiles(imageDir);
+            foreach (var file in files)
+            {
+                File.Delete(file);
+            }
         }
     }
 }

@@ -18,16 +18,18 @@ namespace PresentConnection.Internship7.Iot.Services
             if (manufacturer != null)
             {
                 manufacturerName = manufacturer.Name;
-            }
 
-            if (manufacturer?.Images != null)
-            {
-                foreach (var imageId in manufacturer.Images)
+                // Deleting all images before completely deleting manufacturer ?
+                if (manufacturer.Images != null)
                 {
-                    ImagesService.DeleteImage(imageId);
+                    foreach (var imageId in manufacturer.Images)
+                    {
+                        ImagesService.DeleteImage(imageId);
+                    }
                 }
             }
 
+            
             var response = new DeleteManufacturerResponse
             {
                 Result = ManufacturerService.DeleteManufacturer(request.Id)

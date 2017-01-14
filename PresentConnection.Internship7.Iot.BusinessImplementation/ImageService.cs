@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -13,12 +12,11 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class ImageService : IImageService
     {
-        readonly string ImagesDir = "~/images".MapHostAbsolutePath();        
-        readonly List<string> SizeNames = new List<string> {"medium", "small", "thumbnail"};
+        readonly string ImagesDir = ConfigurationManager.AppSettings["ImagesPath"].MapHostAbsolutePath();
         readonly int MaxImageSize = 1000;
 
         public IDisplayImageService DisplayImageService { get; set; }
-        public IFileService fileService { get; set; }
+        public IFileService FileService { get; set; }
 
         /// <summary>
         /// Create image for service.
@@ -30,36 +28,22 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
         {
             var id = DisplayImageService.CreateDisplayImage(displayImage);
 
-
             if (image.Length / 1000 >= MaxImageSize)
             {
                 image = CompressImage(image, image.Length / 1000);
                 displayImage.MimeType = ".png";
             }
 
-            if (!fileService.ExistFolder(ImagesDir))
-            {
-               fileService.CreateFolder(ImagesDir); 
-            }
-            fileService.UploadFile(ImagesDir, displayImage.UniqueImageName + displayImage.MimeType, image);          
+            image = ResizeImage(image,
+                Convert.ToInt16(ConfigurationManager.AppSettings[$"ImageWidth-{displayImage.Size}"]),
+                Convert.ToInt16(ConfigurationManager.AppSettings[$"ImageHeight-{displayImage.Size}"]));
 
-            // Insert resized images to hdd
-            List<byte[]> Images = new List<byte[]>
+            if (!FileService.ExistFolder(ImagesDir))
             {
-                ResizeImage(image, Convert.ToInt16(ConfigurationManager.AppSettings["ImageWidth-medium"]), Convert.ToInt16(ConfigurationManager.AppSettings["ImageHeight-medium"])),
-                ResizeImage(image, Convert.ToInt16(ConfigurationManager.AppSettings["ImageWidth-small"]), Convert.ToInt16(ConfigurationManager.AppSettings["ImageHeight-small"])),
-                ResizeImage(image, Convert.ToInt16(ConfigurationManager.AppSettings["ImageWidth-thumb"]), Convert.ToInt16(ConfigurationManager.AppSettings["ImageHeight-thumb"]))
-            };
-            for (int i = 0; i < Images.Count; i++)
-            {
-                var newDir = fileService.ConcatDirs(ImagesDir, SizeNames[i]);
-                if (!fileService.ExistFolder(newDir))
-                {
-                    fileService.CreateFolder(newDir);
-                }
-                fileService.UploadFile(newDir, displayImage.UniqueImageName + ".jpg", Images[i]);    
+               FileService.CreateFolder(ImagesDir); 
             }
-
+            FileService.UploadFile(ImagesDir, displayImage.UniqueImageName + displayImage.MimeType, image);          
+          
             return id;
         }
 
@@ -73,24 +57,14 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             var image = DisplayImageService.GetDisplayImage(id);
             var filename = image.UniqueImageName + image.MimeType;
 
-            if (DisplayImageService.DeleteDisplayImage(id))
+            bool sal1 = DisplayImageService.DeleteDisplayImage(id);
+            bool sal2 = FileService.ExistFolder(ImagesDir);
+            if (sal1 && sal2)
             {
-                if (fileService.ExistFolder(ImagesDir))
-                {
-                    fileService.DeleteFile(ImagesDir, filename);
-                }
-
-                foreach (var sizeName in SizeNames)
-                {
-                    var dir = fileService.ConcatDirs(ImagesDir, sizeName);
-                    if (fileService.ExistFolder(dir))
-                    {
-                        fileService.DeleteFile(dir, filename);
-                    }
-                }
+                FileService.DeleteFile(ImagesDir, filename);
                 return true;
             }
-            
+
             return false;
         }
 
@@ -221,39 +195,6 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
             return null;
         }
-
-        public string GetImagePath(string id)
-        {
-            try
-            {
-                var image = DisplayImageService.GetDisplayImage(id);
-                return fileService.ConcatDirs(ImagesDir, image.UniqueImageName + image.MimeType);
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-        }
-
-        
-        //
-        //        public string GetMediumImagePath(string id)
-        //        {
-        //            var image = GetImage(id);
-        //            return ImagesDir + "//" + image?.UniqueImageName + ".jpg";
-        //        }
-        //
-        //        public string GetSmallImagePath(string id)
-        //        {
-        //            var image = GetImage(id);
-        //            return ImagesDir + "//" + image?.UniqueImageName + ".jpg";
-        //        }
-        //
-        //        public string GetThumbImagePath(string id)
-        //        {
-        //            var image = GetImage(id);
-        //            return ImagesDir + "//thumbnail//" + image?.UniqueImageName + ".jpg";
-        //        }
-
+     
     }
 }

@@ -24,13 +24,18 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
             // reusable services
 
-//            container.Register<IManufacturerService>(new ManufacturerService());
+            container.Register<IManufacturerService>(new ManufacturerService());
             container.Register<IDeviceService>(new DeviceService());
             container.Register<IConnectionService>(new ConectionService());
             container.Register<IRecipeService>(new RecipeService());
             container.Register<ICollaboratorService>(new CollaboratorService());
             container.Register<IRecipeConnectionService>(new RecipeConnectionService());
-            container.Register<IImageService>(new ImageService());
+            container.Register<IImageService>(new ImageService
+            {
+                DisplayImageService = new DisplayImageService(),
+                FileService = new FileService()
+            });
+            container.Register<IDisplayImageService>(new DisplayImageService());
             container.Register<IComponentService>(new ComponentService());
 
             // Caching

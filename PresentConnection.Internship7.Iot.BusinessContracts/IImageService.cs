@@ -6,8 +6,5 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
     {
         string AddImage(DisplayImage displayImage, byte[] image);
         bool DeleteImage(string id);
-        string GetImagePath(string id);
-        IDisplayImageService DisplayImageService { get; set; }
-        IFileService fileService { get; set; }
     }
 }

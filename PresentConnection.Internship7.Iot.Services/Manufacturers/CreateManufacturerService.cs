@@ -16,19 +16,27 @@ namespace PresentConnection.Internship7.Iot.Services
         public CreateManufacturerResponse Any(CreateManufacturer request)
         {
             var response = new CreateManufacturerResponse();
-            var image = new DisplayImage
+
+            var sizes = new List<string> { "standart", "medium", "thumbnail"};
+            var imageIds = new List<string>();
+
+
+            foreach (var size in sizes)
             {
-                SeoFileName = Path.GetFileNameWithoutExtension(request.FileName),
-                MimeType = Path.GetExtension(request.FileName)
-            };
-
-            string imageId = ImagesService.AddImage(image, request.Image);
-
+                var image = new DisplayImage
+                {
+                    SeoFileName = Path.GetFileNameWithoutExtension(request.FileName),
+                    MimeType = Path.GetExtension(request.FileName),
+                    Size = size
+                };
+                imageIds.Add(ImagesService.AddImage(image, request.Image));
+            }
+            
             var manufacturer = new Manufacturer
             {
                 Name = request.Name,
                 UniqueName = request.Name, // TODO - make unique name from Name
-                Images = { imageId }
+                Images = imageIds
             };
 
             ManufacturerService.CreateManufacturer(manufacturer);
