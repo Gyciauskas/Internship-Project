@@ -30,7 +30,7 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
             };
         }
 
-        public static Builder With(IDisplayImageService imageService)
+        public static Builder With(IImageService imageService)
         {
             return new Builder(imageService);
         }
@@ -39,13 +39,13 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
         {
 //            private readonly IImageService imageService;
 
-            private readonly IDisplayImageService imageService;
+            private readonly IImageService imageService;
 
             public List<DisplayImageDto> Images { get; set; }
 
             public ManufacturerDto ManufacturerDto { get; set; }
 
-            public Builder(IDisplayImageService imageService)
+            public Builder(IImageService imageService)
             {
                 Images = new List<DisplayImageDto>();
                 this.imageService = imageService;
@@ -57,7 +57,7 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
                 {
                     foreach (var imageId in imageIds)
                     {
-                        var image = imageService.GetDisplayImage(imageId);
+                        var image = imageService.GetImage(imageId);
                         var imageDto = (DisplayImageDto) image;
 
                         var pathToTheImages = ConfigurationManager.AppSettings["ImagesPath"].MapHostAbsolutePath();

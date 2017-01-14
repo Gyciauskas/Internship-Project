@@ -26,7 +26,6 @@ namespace PresentConnection.Internship7.Iot.Tests
         {
             imageService = new ImageService
             {
-                DisplayImageService = new DisplayImageService(),
                 FileService = new FileService()
             };
 
@@ -108,7 +107,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             foreach (var image in images)
             {
                 imageService.DeleteImage(image.Id.ToString());
-                Db.DeleteOne<DisplayImage>(x => x.Id == image.Id);                
             }                                      
         }
     }

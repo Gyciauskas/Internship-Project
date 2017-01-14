@@ -101,7 +101,6 @@
     <Compile Include="RunningDeviceSimulationsService.cs" />
     <Compile Include="SettingsService.cs" />
     <Compile Include="ClientDeviceService.cs" />
-    <Compile Include="DisplayImageService.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>

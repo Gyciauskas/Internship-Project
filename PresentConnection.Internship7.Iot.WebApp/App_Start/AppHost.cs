@@ -73,10 +73,8 @@ namespace PresentConnection.Internship7.Iot.WebApp
             container.Register<ICollaboratorService>(new CollaboratorService());
             container.Register<IImageService>(new ImageService
             {
-                DisplayImageService = new DisplayImageService(),
                 FileService = new FileService()
             });
-            container.Register<IDisplayImageService>(new DisplayImageService());
 
             container.Register<IRecipeConnectionService>(new RecipeConnectionService());
             container.Register<IComponentService>(new ComponentService());
