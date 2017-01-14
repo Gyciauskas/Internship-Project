@@ -88,6 +88,8 @@
     <Compile Include="IConnectionGroupService.cs" />
     <Compile Include="IConnectionService.cs" />
     <Compile Include="IDeviceService.cs" />
+    <Compile Include="IDisplayImageService.cs" />
+    <Compile Include="IFileService.cs" />
     <Compile Include="IImageService.cs" />
     <Compile Include="ILookupService.cs" />
     <Compile Include="IManufacturerService.cs" />

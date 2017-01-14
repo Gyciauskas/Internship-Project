@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
@@ -17,17 +18,17 @@ namespace PresentConnection.Internship7.Iot.Services
             var response = new CreateManufacturerResponse();
             var image = new DisplayImage
             {
-                SeoFileName = request.SeoFileName,
-                MimeType = request.MimeType
+                SeoFileName = Path.GetFileNameWithoutExtension(request.FileName),
+                MimeType = Path.GetExtension(request.FileName)
             };
 
-            string imageId = ImagesService.AddImage(image, request.ImageBytes);
+            string imageId = ImagesService.AddImage(image, request.Image);
 
             var manufacturer = new Manufacturer
             {
                 Name = request.Name,
                 UniqueName = request.Name, // TODO - make unique name from Name
-                //Images = request.Images
+                Images = { imageId }
             };
 
             ManufacturerService.CreateManufacturer(manufacturer);

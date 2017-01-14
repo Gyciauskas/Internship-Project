@@ -11,20 +11,88 @@ using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
-    public partial class ImageService : IImageService
+    public class ImageService : IImageService
     {
-        public ImageService()
-        {
-            // Checks if directory exists if not creates one.
-            Directory.CreateDirectory(ImagesDir);
-            for (int i = 0; i < SizeNames.Count; i++)
-                Directory.CreateDirectory(Path.Combine(ImagesDir, SizeNames[i]));
-        }
-
-
         readonly string ImagesDir = "~/images".MapHostAbsolutePath();        
         readonly List<string> SizeNames = new List<string> {"medium", "small", "thumbnail"};
         readonly int MaxImageSize = 1000;
+
+        public IDisplayImageService DisplayImageService { get; set; }
+        public IFileService fileService { get; set; }
+
+        /// <summary>
+        /// Create image for service.
+        /// </summary>
+        /// <param name="displayImage">Image object in database.</param>
+        /// <param name="image"></param>
+        /// <returns>Image id.</returns>
+        public string AddImage(DisplayImage displayImage, byte[] image)
+        {
+            var id = DisplayImageService.CreateDisplayImage(displayImage);
+
+
+            if (image.Length / 1000 >= MaxImageSize)
+            {
+                image = CompressImage(image, image.Length / 1000);
+                displayImage.MimeType = ".png";
+            }
+
+            if (!fileService.ExistFolder(ImagesDir))
+            {
+               fileService.CreateFolder(ImagesDir); 
+            }
+            fileService.UploadFile(ImagesDir, displayImage.UniqueImageName + displayImage.MimeType, image);          
+
+            // Insert resized images to hdd
+            List<byte[]> Images = new List<byte[]>
+            {
+                ResizeImage(image, Convert.ToInt16(ConfigurationManager.AppSettings["ImageWidth-medium"]), Convert.ToInt16(ConfigurationManager.AppSettings["ImageHeight-medium"])),
+                ResizeImage(image, Convert.ToInt16(ConfigurationManager.AppSettings["ImageWidth-small"]), Convert.ToInt16(ConfigurationManager.AppSettings["ImageHeight-small"])),
+                ResizeImage(image, Convert.ToInt16(ConfigurationManager.AppSettings["ImageWidth-thumb"]), Convert.ToInt16(ConfigurationManager.AppSettings["ImageHeight-thumb"]))
+            };
+            for (int i = 0; i < Images.Count; i++)
+            {
+                var newDir = fileService.ConcatDirs(ImagesDir, SizeNames[i]);
+                if (!fileService.ExistFolder(newDir))
+                {
+                    fileService.CreateFolder(newDir);
+                }
+                fileService.UploadFile(newDir, displayImage.UniqueImageName + ".jpg", Images[i]);    
+            }
+
+            return id;
+        }
+
+        /// <summary>
+        /// Deletes image from db and storage.
+        /// </summary>
+        /// <param name="id">Image id.</param>
+        /// <returns>True if deleted from db.</returns>
+        public bool DeleteImage(string id)
+        {
+            var image = DisplayImageService.GetDisplayImage(id);
+            var filename = image.UniqueImageName + image.MimeType;
+
+            if (DisplayImageService.DeleteDisplayImage(id))
+            {
+                if (fileService.ExistFolder(ImagesDir))
+                {
+                    fileService.DeleteFile(ImagesDir, filename);
+                }
+
+                foreach (var sizeName in SizeNames)
+                {
+                    var dir = fileService.ConcatDirs(ImagesDir, sizeName);
+                    if (fileService.ExistFolder(dir))
+                    {
+                        fileService.DeleteFile(dir, filename);
+                    }
+                }
+                return true;
+            }
+            
+            return false;
+        }
 
         /// <summary>
         /// Resizes Image and crops image to specified height and width.
@@ -33,25 +101,33 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
         /// <param name="newWidth">The width to resize to.</param>
         /// <param name="newHeight">The height to resize to.</param>
         /// <returns>New resized image instance.</returns>
-        private Image ResizeImage(Image image, int newWidth, int newHeight)
+        private byte[] ResizeImage(byte[] imagebytes, int newWidth, int newHeight)
         {
-            var ratioX = (double)newWidth / image.Width;
-            var ratioY = (double)newHeight / image.Height;
-            var ratio = Math.Max(ratioX, ratioY);
-            var width = (int)(image.Width * ratio);
-            var height = (int)(image.Height * ratio);
-
-            var newImage = new Bitmap(image, width, height);
-            image = newImage;
-
-            if (image.Width != newWidth || image.Height != newHeight)
+            var msImage = new MemoryStream(imagebytes);
+            var image = Image.FromStream(msImage);
+            if (newWidth != image.Width || newHeight != image.Height)
             {
-                var startX = (Math.Max(image.Width, newWidth) - Math.Min(image.Width, newWidth)) / 2;
-                var startY = (Math.Max(image.Height, newHeight) - Math.Min(image.Height, newHeight)) / 2;
-                image = Crop(image, newWidth, newHeight, startX, startY);
+                var ratioX = (double)newWidth / image.Width;
+                var ratioY = (double)newHeight / image.Height;
+                var ratio = Math.Max(ratioX, ratioY);
+                var width = (int)(image.Width * ratio);
+                var height = (int)(image.Height * ratio);
+
+                var newImage = new Bitmap(image, width, height);
+                image = newImage;
+
+                if (image.Width != newWidth || image.Height != newHeight)
+                {
+                    var startX = (Math.Max(image.Width, newWidth) - Math.Min(image.Width, newWidth)) / 2;
+                    var startY = (Math.Max(image.Height, newHeight) - Math.Min(image.Height, newHeight)) / 2;
+                    image = Crop(image, newWidth, newHeight, startX, startY);
+                }
             }
 
-            return image;
+            var ms = new MemoryStream();
+            image.Save(ms, ImageFormat.Png);
+            ms.Position = 0;
+            return ms.ToArray();
         }
 
         /// <summary>
@@ -82,7 +158,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
                     g.DrawImage(Image, new Rectangle(0, 0, newWidth, newHeight), startX, startY, newWidth, newHeight, GraphicsUnit.Pixel);
 
                     var ms = new MemoryStream();
-                    bmp.Save(ms, ImageFormat.Jpeg);
+                    bmp.Save(ms, ImageFormat.Png);
                     Image.Dispose();
                     var outimage = Image.FromStream(ms);
                     return outimage;
@@ -96,11 +172,14 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
         /// <param name="image">Instance of image.</param>
         /// <param name="size">Original image size</param>
         /// <returns>Compressed image.</returns>
-        private Image CompressImage(Image image, long size)
+        private byte[] CompressImage(byte[] imageBytes, long size)
         {
+            var msl = new MemoryStream(imageBytes) { Position = 0 };
+            var image = Image.FromStream(msl);
+
             var quality = 100;
             var msImage = new MemoryStream();
-            
+
             while (size >= MaxImageSize)
             {
                 if (quality < 0 || quality > 100)
@@ -113,9 +192,9 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
                 using (var ms = new MemoryStream()) // estimatedLength can be original fileLength
                 {
                     image.Save(ms, jpegCodec, encoderParams);
-                    size = (ms.Length / 1000);                    
+                    size = (ms.Length / 1000);
                 }
-                quality = quality-10;
+                quality = quality - 10;
 
                 if (size < MaxImageSize)
                 {
@@ -124,7 +203,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
             }
 
-            return Image.FromStream(msImage);
+            return msImage.ToArray();
         }
 
         /// <summary>
@@ -143,126 +222,38 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             return null;
         }
 
-        /// <summary>
-        /// Inserts image with given filename.
-        /// </summary>
-        /// <param name="image">Instance of image.</param>
-        /// <param name="nameWithExtension">Image name with extension</param>
-        private void InsertToDirectory(Image image, string nameWithExtension)
+        public string GetImagePath(string id)
         {
-           
-            image.Save(ImagesDir.CombineWith(nameWithExtension));
-        }
-
-        /// <summary>
-        /// Deletes image and all images with diff size from directory.
-        /// </summary>
-        /// <param name="id">Image id in database.</param>
-        private void DeleteFromDirectory(string id)
-        {
-            var image = GetImage(id);
-            var imagePath = ImagesDir + "//" + image.UniqueImageName + image.MimeType;
-            if (File.Exists(imagePath))
+            try
             {
-                File.Delete(imagePath);
+                var image = DisplayImageService.GetDisplayImage(id);
+                return fileService.ConcatDirs(ImagesDir, image.UniqueImageName + image.MimeType);
             }
-            for (int i = 0; i < SizeNames.Count; i++)
+            catch (Exception e)
             {
-                imagePath = ImagesDir + "//" +  SizeNames[i] + "//" + image.UniqueImageName + ".jpg";
-                if (File.Exists(imagePath))
-                {
-                    File.Delete(imagePath);
-                }
+                return null;
             }
         }
 
-        /// <summary>
-        /// Converts byte array to image.
-        /// </summary>
-        /// <param name="image">Image bytes.</param>
-        /// <returns>Instance of image.</returns>
-        private Image ConvertBytesToImage(byte[] image)
-        {
-            var ms = new MemoryStream(image) { Position = 0 };
-            return Image.FromStream(ms);
-        }
-
-        /// <summary>
-        /// Create image for service.
-        /// </summary>
-        /// <param name="displayImage">Image object in database.</param>
-        /// <param name="imageBytes">Image bytes.</param>
-        /// <returns>Image id.</returns>
-        public string AddImage(DisplayImage displayImage, byte[] imageBytes)
-        {
-            var original = ConvertBytesToImage(imageBytes);
-            if (imageBytes.Length / 1000 >= MaxImageSize)
-            {
-                original = CompressImage(original, imageBytes.Length / 1000);
-                displayImage.MimeType = ".jpg";
-            }
-            // if mimetype not provided 
-            if (displayImage.MimeType == null)
-            {
-                displayImage.MimeType = ".jpg";
-            }
-            var id = InsertImage(displayImage); // try insert image
-
-            if (id != null)
-            {
-                InsertToDirectory(original, displayImage.UniqueImageName + displayImage.MimeType);
-
-                // Inser resized images to hdd
-                List<Image> Images = new List<Image>
-                {
-                    ResizeImage(original, Convert.ToInt16(ConfigurationManager.AppSettings["ImageWidth-medium"]), Convert.ToInt16(ConfigurationManager.AppSettings["ImageHeight-medium"])),
-                    ResizeImage(original, Convert.ToInt16(ConfigurationManager.AppSettings["ImageWidth-small"]), Convert.ToInt16(ConfigurationManager.AppSettings["ImageHeight-small"])),
-                    ResizeImage(original, Convert.ToInt16(ConfigurationManager.AppSettings["ImageWidth-thumb"]), Convert.ToInt16(ConfigurationManager.AppSettings["ImageHeight-thumb"]))
-                };
-                for (int i = 0; i < Images.Count; i++)
-                {
-                    
-                    InsertToDirectory(Images[i], SizeNames[i] + "//" + displayImage.UniqueImageName + ".jpg");
-                }
-            }
-            return id;
-        }
-
-        /// <summary>
-        /// Deletes image from db and storage.
-        /// </summary>
-        /// <param name="id">Image id.</param>
-        /// <returns>True if deleted from db.</returns>
-        public bool DeleteImage(string id)
-        {
-
-            DeleteFromDirectory(id);
-            return DeleteImageFromDb(id);
-        }   
         
-        public string GetOriginalImagePath(string id)
-        {
-            var image = GetImage(id);
-            return ImagesDir + "//" + image?.UniqueImageName + image?.MimeType;
-        }
-
-        public string GetMediumImagePath(string id)
-        {
-            var image = GetImage(id);
-            return ImagesDir + "//" + image?.UniqueImageName + ".jpg";
-        }
-
-        public string GetSmallImagePath(string id)
-        {
-            var image = GetImage(id);
-            return ImagesDir + "//" + image?.UniqueImageName + ".jpg";
-        }
-
-        public string GetThumbImagePath(string id)
-        {
-            var image = GetImage(id);
-            return ImagesDir + "//thumbnail//" + image?.UniqueImageName + ".jpg";
-        }
+        //
+        //        public string GetMediumImagePath(string id)
+        //        {
+        //            var image = GetImage(id);
+        //            return ImagesDir + "//" + image?.UniqueImageName + ".jpg";
+        //        }
+        //
+        //        public string GetSmallImagePath(string id)
+        //        {
+        //            var image = GetImage(id);
+        //            return ImagesDir + "//" + image?.UniqueImageName + ".jpg";
+        //        }
+        //
+        //        public string GetThumbImagePath(string id)
+        //        {
+        //            var image = GetImage(id);
+        //            return ImagesDir + "//thumbnail//" + image?.UniqueImageName + ".jpg";
+        //        }
 
     }
 }

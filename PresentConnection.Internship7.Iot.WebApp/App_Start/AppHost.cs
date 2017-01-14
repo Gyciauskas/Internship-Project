@@ -72,8 +72,10 @@ namespace PresentConnection.Internship7.Iot.WebApp
             container.Register<IRecipeService>(new RecipeService());
             container.Register<ICollaboratorService>(new CollaboratorService());
             container.Register<IImageService>(new ImageService());
-            container.Register<IRecipeConnectionService>(new RecipeConnectionService());
+            container.Register<IDisplayImageService>(new DisplayImageService());
+            container.Register<IFileService>(new FileService());
 
+            container.Register<IRecipeConnectionService>(new RecipeConnectionService());
             container.Register<IComponentService>(new ComponentService());
 
             // Caching

@@ -4,6 +4,10 @@ namespace PresentConnection.Internship7.Iot.BusinessContracts
 {
     public interface IImageService
     {
-        DisplayImage GetImage(string id);
+        string AddImage(DisplayImage displayImage, byte[] image);
+        bool DeleteImage(string id);
+        string GetImagePath(string id);
+        IDisplayImageService DisplayImageService { get; set; }
+        IFileService fileService { get; set; }
     }
 }

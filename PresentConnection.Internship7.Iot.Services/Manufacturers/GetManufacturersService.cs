@@ -11,7 +11,7 @@ namespace PresentConnection.Internship7.Iot.Services
     {
         public IManufacturerService ManufacturerService { get; set; }
 
-        public IImageService ImageService { get; set; }
+        public IDisplayImageService ImageService { get; set; }
 
         public object Any(GetManufacturers request)
         {

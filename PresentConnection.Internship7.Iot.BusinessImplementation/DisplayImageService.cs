@@ -1,18 +1,15 @@
-﻿using System.Collections.Generic;
-using CodeMash.Net;
+﻿using CodeMash.Net;
 using MongoDB.Bson;
-using MongoDB.Driver;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.Utils;
 
 namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
-    public partial class ImageService
+    public class DisplayImageService : IDisplayImageService
     {
-        public string InsertImage(DisplayImage displayImage)
+        public string CreateDisplayImage(DisplayImage displayImage)
         {
-
             var validator = new ImageValidator();
             var results = validator.Validate(displayImage);
             var validationSucceeded = results.IsValid;
@@ -28,17 +25,28 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
             return displayImage.Id.ToString();
         }
 
-        public List<DisplayImage> GetAllImages()
+        public void UpdateDisplayImage(DisplayImage displayImage)
         {
-            return Db.Find(Builders<DisplayImage>.Filter.Empty);
+            var validator = new ImageValidator();
+            var results = validator.Validate(displayImage);
+            var validationSuceeded = results.IsValid;
+
+            if (validationSuceeded)
+            {
+                Db.FindOneAndReplace(x => x.Id == displayImage.Id, displayImage);
+            }
+            else
+            {
+                throw new BusinessException("Cannot update device", results.Errors);
+            }
         }
 
-        public DisplayImage GetImage(string id)
+        public DisplayImage GetDisplayImage(string id)
         {
             return Db.FindOneById<DisplayImage>(id);
         }
 
-        public bool DeleteImageFromDb(string id)
+        public bool DeleteDisplayImage(string id)
         {
             var deleteResult = Db.DeleteOne<DisplayImage>(x => x.Id == ObjectId.Parse(id));
             return deleteResult.DeletedCount == 1;

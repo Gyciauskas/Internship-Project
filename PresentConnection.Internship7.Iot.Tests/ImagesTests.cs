@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using CodeMash.Net;
 using MongoDB.Bson;
+using MongoDB.Driver;
 using NUnit.Framework;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.BusinessImplementation;
@@ -24,6 +26,9 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void SetUp()
         {
             imageService = new ImageService();
+            imageService.DisplayImageService = new DisplayImageService();
+            imageService.fileService = new FileService();
+
             goodDisplayImage = new DisplayImage()
             {
                 SeoFileName = Path.GetFileNameWithoutExtension(testImagePath),
@@ -45,7 +50,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Test]
         [Category("IntegrationTests")]
         [Category("Images")]
-        public void Can_store_image_in_server_when_inserting_to_database()
+        public void Can_store_image()
         {
             imageService.AddImage(goodDisplayImage, imageBytes);
             goodDisplayImage.ShouldNotBeNull();
@@ -69,44 +74,35 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Test]
         [Category("IntegrationTests")]
         [Category("Images")]
-        public void Can_get_image_by_id()
+        public void Cannot_insert_image_to_database_when_mimetype_is_not_provided()
         {
-            imageService.AddImage(goodDisplayImage, imageBytes);
+            goodDisplayImage.MimeType = null;
 
-            goodDisplayImage.ShouldNotBeNull();
-            goodDisplayImage.Id.ShouldNotBeNull();
-
-            var imageFromDb = imageService.GetImage(goodDisplayImage.Id.ToString());
-            imageFromDb.ShouldNotBeNull();
-            imageFromDb.Id.ShouldNotBeNull();
-            imageFromDb.SeoFileName.ShouldEqual(goodDisplayImage.SeoFileName);
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => imageService.AddImage(goodDisplayImage, imageBytes));
+            exception.Message.ShouldEqual("Cannot insert image to database");
         }
+
+//        [Test]
+//        [Category("IntegrationTests")]
+//        [Category("Images")]
+//        public void Can_get_image_by_id()
+//        {
+//            imageService.AddImage(goodDisplayImage, imageBytes);
+//
+//            goodDisplayImage.ShouldNotBeNull();
+//            goodDisplayImage.Id.ShouldNotBeNull();
+//
+//            var imageFromDb = imageService.GetImage(goodDisplayImage.Id.ToString());
+//            imageFromDb.ShouldNotBeNull();
+//            imageFromDb.Id.ShouldNotBeNull();
+//            imageFromDb.SeoFileName.ShouldEqual(goodDisplayImage.SeoFileName);
+//        }
+
 
         [Test]
         [Category("IntegrationTests")]
         [Category("Images")]
-        public void Can_get_all_images()
-        {
-            imageService.AddImage(goodDisplayImage, imageBytes);
-            var image2 = new DisplayImage
-            {
-                SeoFileName = "tempName",
-                MimeType = Path.GetExtension(testImagePath)
-            };
-
-            imageService.AddImage(image2, imageBytes);
-            image2.ShouldNotBeNull();
-            image2.Id.ShouldNotBeNull();
-
-            var images = imageService.GetAllImages();
-            images.ShouldBe<List<DisplayImage>>();
-            (images.Count > 0).ShouldBeTrue();
-        }
-
-        [Test]
-        [Category("IntegrationTests")]
-        [Category("Images")]
-        public void Can_delete_image_from_database()
+        public void Can_get_image()
         {
             imageService.AddImage(goodDisplayImage, imageBytes);
 
@@ -115,16 +111,15 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             imageService.DeleteImage(goodDisplayImage.Id.ToString());
 
-            var imageFromDb = imageService.GetImage(goodDisplayImage.Id.ToString());
+            var imagePath = imageService.GetImagePath(goodDisplayImage.Id.ToString());
 
-            imageFromDb.ShouldNotBeNull();
-            imageFromDb.Id.ShouldEqual(ObjectId.Empty);
+            imagePath.ShouldNotBeNull();
         }
 
         [Test]
         [Category("IntegrationTests")]
         [Category("Images")]
-        public void Can_delete_image_from_server_when_deleting_from_database()
+        public void Can_delete_image()
         {
             imageService.AddImage(goodDisplayImage, imageBytes);
             goodDisplayImage.ShouldNotBeNull();
@@ -139,11 +134,9 @@ namespace PresentConnection.Internship7.Iot.Tests
         [TearDown]
         public void Dispose()
         {
-            var images = imageService.GetAllImages();
-            foreach (var image in images)
-            {
-                imageService.DeleteImage(image.Id.ToString());
-            }
+            imageService.DeleteImage(goodDisplayImage.Id.ToString());
+            var filter = Builders<DisplayImage>.Filter.Empty;
+            Db.DeleteMany(filter);
         }
     }
 }
