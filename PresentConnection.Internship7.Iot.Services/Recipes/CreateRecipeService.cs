@@ -21,6 +21,10 @@ namespace PresentConnection.Internship7.Iot.Services
 
             RecipeService.CreateRecipe(recipe);
 
+            var cacheKey = CacheKeys.Recipes.List;
+            Request.RemoveFromCache(Cache, cacheKey);
+
+            response.Result = recipe.Id.ToString();
             return response;
         }
     }
