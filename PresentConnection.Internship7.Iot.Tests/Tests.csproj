@@ -128,6 +128,7 @@
     <Compile Include="RecipeConnectionsTests.cs" />
     <Compile Include="RecipeConnectionsTests.Service.cs" />
     <Compile Include="RecipeTests.cs" />
+    <Compile Include="RecipeTests.Service.cs" />
     <Compile Include="SettingsTests.cs" />
     <Compile Include="RunningDeviceSimulationsTests.cs" />
     <Compile Include="TestExtensions.cs" />

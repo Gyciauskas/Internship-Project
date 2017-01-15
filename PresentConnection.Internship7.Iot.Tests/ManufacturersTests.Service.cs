@@ -207,8 +207,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             getManufacturersByNameResponse.Result.ShouldNotBeNull();
             getManufacturersByNameResponse.Result.Count.ShouldEqual(1);
             
-            
-            // Get by name
+
             // I will update first inserted item 
             var updateManufacturerRequest = new UpdateManufacturer
             {

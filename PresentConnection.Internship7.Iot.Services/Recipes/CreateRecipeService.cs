@@ -16,7 +16,8 @@ namespace PresentConnection.Internship7.Iot.Services
             var recipe = new Recipe
             {
                 Name = request.Name,
-                UniqueName = request.UniqueName
+                UniqueName = request.UniqueName,
+                Images = request.Images
             };
 
             RecipeService.CreateRecipe(recipe);
