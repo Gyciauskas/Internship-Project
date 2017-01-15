@@ -30,6 +30,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             recipeServiceMock.GetRecipe(Arg.Any<string>()).Returns(info =>
             {
                 goodRecipe.Id = ObjectId.Parse(info.ArgAt<string>(0));
+
                 return goodRecipe;
             });
 

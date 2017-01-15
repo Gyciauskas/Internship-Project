@@ -12,50 +12,6 @@ namespace PresentConnection.Internship7.Iot.Tests
     [TestFixture]
     public partial class RecipeTests
     {
-        /*private IRecipeService recipeService;
-        private Recipe goodRecipe;
-        private Recipe goodRecipe1;
-        private Recipe goodRecipe2;*/
-
-        /*[SetUp]
-        public void SetUp()
-        {
-            recipeService = new RecipeService();
-            goodRecipe = new Recipe
-            {
-                UniqueName = "raspberry-pi-1",
-                Name = "Recipe name",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Description = "description",
-                IsVisible = true
-            };
-            goodRecipe1 = new Recipe
-            {
-                UniqueName = "raspberry-pi-2",
-                Name = "Recipe name2",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Description = "description",
-                IsVisible = true
-            };
-            goodRecipe2 = new Recipe
-            {
-                UniqueName = "raspberry-pi-3",
-                Name = "Recipe name3",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Description = "description",
-                IsVisible = true
-            };
-        }*/
-
         [Test]
         [Category("Recipe")]
         public void Can_insert_recipe_to_database()
@@ -276,15 +232,5 @@ namespace PresentConnection.Internship7.Iot.Tests
             recipeFromDB.ShouldNotBeNull();
             recipeFromDB.Id.ShouldEqual(ObjectId.Empty);
         }
-
-        /*[TearDown]
-        public void Dispose()
-        {
-            var recipes = recipeService.GetAllRecipes();
-            foreach (var recipe in recipes)
-            {
-                recipeService.DeleteRecipe(recipe.Id.ToString());
-            }
-        }*/
     }
 }
