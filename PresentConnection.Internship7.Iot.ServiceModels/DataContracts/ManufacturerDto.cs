@@ -37,8 +37,6 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
 
         public class Builder
         {
-//            private readonly IImageService imageService;
-
             private readonly IImageService imageService;
 
             public List<DisplayImageDto> Images { get; set; }
@@ -60,8 +58,9 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
                         var image = imageService.GetImage(imageId);
                         var imageDto = (DisplayImageDto) image;
 
-                        var pathToTheImages = ConfigurationManager.AppSettings["ImagesPath"].MapHostAbsolutePath();
-                        imageDto.Url = Path.Combine(pathToTheImages, image.UniqueImageName.ToString());
+                        var pathToTheImages = ConfigurationManager.AppSettings["ImagesPath"]
+                            .MapHostAbsolutePath().SplitOnLast(Path.DirectorySeparatorChar).Last();
+                        imageDto.Url = Path.Combine(pathToTheImages, image.UniqueImageName + image.MimeType);
 
                         Images.Add(imageDto);
                     }

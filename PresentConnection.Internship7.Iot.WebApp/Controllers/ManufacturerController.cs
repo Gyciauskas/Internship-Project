@@ -47,7 +47,7 @@ namespace PresentConnection.Internship7.Iot.WebApp.Controllers
             }
             else
             {
-                var extension = Path.GetExtension(file.FileName);
+                var extension = file.ContentType;
 
                 if (extension != MimeTypes.ImageJpg && extension != MimeTypes.ImagePng)
                 {
@@ -126,10 +126,10 @@ namespace PresentConnection.Internship7.Iot.WebApp.Controllers
             {
                 var request = new DeleteManufacturer { Id = id };
                 var response = service.Any(request);
-                //if (response.WasOk())
-                //{
-                //    return Redirect("/manufacturers");
-                //}
+                if (response.WasOk())
+                {
+                    return Redirect("/manufacturers");
+                }
             }
             return Redirect("/manufacturers");
         }

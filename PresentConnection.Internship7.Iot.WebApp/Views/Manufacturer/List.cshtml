@@ -4,7 +4,7 @@
 <ul>
     @foreach (var manufacturer in Model.Items)
     {
-        <li><img src="@manufacturer.Picture.Thumbnail" alt="@manufacturer.Picture.Thumbnail.AltAttribute" /><a href="/manufacturers/@manufacturer.Id">@manufacturer.Name</a> - <a data-name="@manufacturer.Name" class="delete-button" href="/manufacturers/@manufacturer.Id/delete">Delete</a></li>
+        <li><img src="@manufacturer.Picture.Thumbnail.Url" alt="@manufacturer.Picture.Thumbnail.AltAttribute" /><a href="/manufacturers/@manufacturer.Id">@manufacturer.Name</a> - <a data-name="@manufacturer.Name" class="delete-button" href="/manufacturers/@manufacturer.Id/delete">Delete</a></li>
     }
 </ul>
 

@@ -14,23 +14,23 @@ namespace PresentConnection.Internship7.Iot.Services
 
         public object Any(GetManufacturers request)
         {
-            var expireInTimespan = new TimeSpan(1, 0, 0);
-
-            var cacheKey = CacheKeys.Manufacturers.List;
-
-            if (!string.IsNullOrEmpty(request.Name))
-            {
-                cacheKey = CacheKeys.Manufacturers.ListWithProvidedName.Fmt(request.Name);
-            }
-
-            return Request.ToOptimizedResultUsingCache(
-
-                Cache,
-                cacheKey,
-                expireInTimespan,
-
-                () =>
-                {
+//            var expireInTimespan = new TimeSpan(1, 0, 0);
+//
+//            var cacheKey = CacheKeys.Manufacturers.List;
+//
+//            if (!string.IsNullOrEmpty(request.Name))
+//            {
+//                cacheKey = CacheKeys.Manufacturers.ListWithProvidedName.Fmt(request.Name);
+//            }
+//
+//            return Request.ToOptimizedResultUsingCache(
+//
+//                Cache,
+//                cacheKey,
+//                expireInTimespan,
+//
+//                () =>
+//                {
                     var response = new GetManufacturersResponse();
 
                     var manufacturers = ManufacturerService.GetAllManufacturers(request.Name);
@@ -48,7 +48,7 @@ namespace PresentConnection.Internship7.Iot.Services
                         }
                     }
                     return response;
-                });
+//                });
 
            
         }
