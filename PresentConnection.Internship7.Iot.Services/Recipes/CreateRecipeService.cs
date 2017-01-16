@@ -16,11 +16,16 @@ namespace PresentConnection.Internship7.Iot.Services
             var recipe = new Recipe
             {
                 Name = request.Name,
-                UniqueName = request.UniqueName
+                UniqueName = request.UniqueName,
+                Images = request.Images
             };
 
             RecipeService.CreateRecipe(recipe);
 
+            var cacheKey = CacheKeys.Recipes.List;
+            Request.RemoveFromCache(Cache, cacheKey);
+
+            response.Result = recipe.Id.ToString();
             return response;
         }
     }

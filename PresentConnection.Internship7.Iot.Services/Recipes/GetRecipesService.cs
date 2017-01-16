@@ -1,6 +1,7 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
+using System;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
@@ -8,14 +9,32 @@ namespace PresentConnection.Internship7.Iot.Services
     {
         public IRecipeService RecipeService { get; set; }
 
-        public GetRecipesResponse Any(GetRecipes request)
+        public object Any(GetRecipes request)
         {
-            var response = new GetRecipesResponse
-            {
-                Result = RecipeService.GetAllRecipes(request.Name)
-            };
+            var expireInTimespan = new TimeSpan(1, 0, 0);
 
-            return response;
+            var cacheKey = CacheKeys.Recipes.List;
+
+            if (!string.IsNullOrEmpty(request.Name))
+            {
+                cacheKey = CacheKeys.Recipes.ListWithProvidedName.Fmt(request.Name);
+            }
+
+            return Request.ToOptimizedResultUsingCache(
+
+                Cache,
+                cacheKey,
+                expireInTimespan,
+
+                () => {
+
+                    var response = new GetRecipesResponse
+                    {
+                        Result = RecipeService.GetAllRecipes(request.Name)
+                    };
+
+                    return response;
+                });
         }
     }
 }
