@@ -30,7 +30,10 @@ namespace PresentConnection.Internship7.Iot.Tests
             container.Register<IRecipeService>(new RecipeService());
             container.Register<ICollaboratorService>(new CollaboratorService());
             container.Register<IRecipeConnectionService>(new RecipeConnectionService());
-
+            container.Register<IImageService>(new ImageService
+            {
+                FileService = new FileService()
+            });
             container.Register<IComponentService>(new ComponentService());
 
             // Caching

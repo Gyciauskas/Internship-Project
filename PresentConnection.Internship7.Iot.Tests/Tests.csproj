@@ -98,6 +98,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
   </ItemGroup>
   <Choose>
@@ -121,6 +122,7 @@
     <Compile Include="ConnectionsTests.cs" />
     <Compile Include="DeviceStatusesTests.cs" />
     <Compile Include="DevicesTests.cs" />
+    <Compile Include="ImagesTests.cs" />
     <Compile Include="LookupsTests.cs" />
     <Compile Include="ManufacturersTests.Service.cs" />
     <Compile Include="ManufacturersTests.cs" />

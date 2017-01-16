@@ -131,7 +131,7 @@ namespace PresentConnection.Internship7.Iot.WebApp.Controllers
                 //    return Redirect("/manufacturers");
                 //}
             }
-            return View("/manufacturers");
+            return Redirect("/manufacturers");
         }
     }
 }
