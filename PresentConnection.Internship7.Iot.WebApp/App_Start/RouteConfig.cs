@@ -28,7 +28,7 @@ namespace PresentConnection.Internship7.Iot.WebApp
             routes.MapRoute(
                 name: "manufacturer-edit",
                 url: "manufacturers/{id}",
-                defaults: new { controller = "Manufacturer", action = "Edit" }
+                defaults: new { controller = "Manufacturer", action = "Update" }
             );
 
             routes.MapRoute(

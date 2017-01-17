@@ -58,8 +58,9 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
                         var image = imageService.GetImage(imageId);
                         var imageDto = (DisplayImageDto) image;
 
-                        var pathToTheImages = ConfigurationManager.AppSettings["ImagesPath"]
-                            .MapHostAbsolutePath().SplitOnLast(Path.DirectorySeparatorChar).Last();
+//                        var pathToTheImages = ConfigurationManager.AppSettings["ImagesPath"]
+//                            .MapHostAbsolutePath().SplitOnLast(Path.DirectorySeparatorChar).Last();
+                        var pathToTheImages = "images";
                         imageDto.Url = Path.Combine(pathToTheImages, image.UniqueImageName + image.MimeType);
 
                         Images.Add(imageDto);

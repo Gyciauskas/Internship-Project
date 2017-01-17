@@ -1,12 +1,17 @@
 ﻿@model PresentConnection.Internship7.Iot.WebApp.Models.ListViewModelBase<PresentConnection.Internship7.Iot.ServiceModels.ManufacturerDto>
 
-<a href="/manufacturers/new">Add new Manufacturer</a>
-<ul>
+<a href="/manufacturers/new" class="btn btn-primary">Add new Manufacturer</a>
+<hr/>
+<ul class="list-group">
     @foreach (var manufacturer in Model.Items)
     {
-        <li><img src="@manufacturer.Picture.Thumbnail.Url" alt="@manufacturer.Picture.Thumbnail.AltAttribute" /><a href="/manufacturers/@manufacturer.Id">@manufacturer.Name</a> - <a data-name="@manufacturer.Name" class="delete-button" href="/manufacturers/@manufacturer.Id/delete">Delete</a></li>
+        <li class="list-group-item">
+            <img src="@manufacturer.Picture.Thumbnail.Url" alt="@manufacturer.Picture.Thumbnail.AltAttribute" />
+            <a href="/manufacturers/@manufacturer.Id">@manufacturer.Name</a>
+            <a data-name="@manufacturer.Name" href="/manufacturers/@manufacturer.Id/delete">Delete</a>
+        </li>
     }
-</ul>
+</ul>    
 
 <script type="text/javascript">
     $(function() {

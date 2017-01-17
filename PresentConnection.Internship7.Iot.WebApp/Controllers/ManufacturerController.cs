@@ -21,6 +21,7 @@ namespace PresentConnection.Internship7.Iot.WebApp.Controllers
                 var request = new GetManufacturers { Name = name };
 
                 var response = service.Any(request) as GetManufacturersResponse;
+                
                 if (response.HasData())
                 {
                     viewModel.TotalCount = response.TotalCount;
