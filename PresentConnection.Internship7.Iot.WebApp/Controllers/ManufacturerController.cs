@@ -7,6 +7,7 @@ using PresentConnection.Internship7.Iot.Services;
 using PresentConnection.Internship7.Iot.WebApp.Extensions;
 using PresentConnection.Internship7.Iot.WebApp.Models;
 using ServiceStack;
+using ServiceStack.Caching;
 
 namespace PresentConnection.Internship7.Iot.WebApp.Controllers
 {
