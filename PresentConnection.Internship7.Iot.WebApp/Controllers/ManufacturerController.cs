@@ -1,13 +1,10 @@
-﻿using System;
-using System.IO;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using PresentConnection.Internship7.Iot.Services;
 using PresentConnection.Internship7.Iot.WebApp.Extensions;
 using PresentConnection.Internship7.Iot.WebApp.Models;
 using ServiceStack;
-using ServiceStack.Caching;
 
 namespace PresentConnection.Internship7.Iot.WebApp.Controllers
 {

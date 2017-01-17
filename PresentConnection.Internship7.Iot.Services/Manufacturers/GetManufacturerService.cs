@@ -40,7 +40,7 @@ namespace PresentConnection.Internship7.Iot.Services
                     return response;
                 });
 
-                return Request.GetCacheClient().Get<GetManufacturerResponse>(CacheKeys.Manufacturers.Item.Fmt(request.Id));
+                return Cache.Get<GetManufacturerResponse>(CacheKeys.Manufacturers.Item.Fmt(request.Id));
         }
     }
 }
