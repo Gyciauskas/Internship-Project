@@ -14,14 +14,14 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var expireInTimespan = new TimeSpan(1, 0, 0);
 
-//            return Request.ToOptimizedResultUsingCache(
-//                
-//                Cache, 
-//                CacheKeys.Manufacturers.Item.Fmt(request.Id),
-//                expireInTimespan,
-//                 
-//                () =>
-//                {
+            Request.ToOptimizedResultUsingCache(
+                
+                Cache, 
+                CacheKeys.Manufacturers.Item.Fmt(request.Id),
+                expireInTimespan,
+                 
+                () =>
+                {
 
                     var manufacturer = ManufacturerService.GetManufacturer(request.Id);
 
@@ -38,7 +38,9 @@ namespace PresentConnection.Internship7.Iot.Services
                     }
                     
                     return response;
-//                });
+                });
+
+                return Cache.Get<GetManufacturerResponse>(CacheKeys.Manufacturers.Item.Fmt(request.Id));
         }
     }
 }

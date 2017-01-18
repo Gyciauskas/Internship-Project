@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using PresentConnection.Internship7.Iot.Services;

@@ -9,6 +9,7 @@ using ServiceStack;
 using ServiceStack.Caching;
 using ServiceStack.Mvc;
 using ServiceStack.Text;
+using WebGrease;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(PresentConnection.Internship7.Iot.WebApp.AppHost), "Start")]
 
@@ -84,7 +85,7 @@ namespace PresentConnection.Internship7.Iot.WebApp
             container.Register<ICacheClient>(new MemoryCacheClient());
 
             //ConfigureAuthAsync(container, database);
-            
+
 
             // Plugins
             Plugins.Add(new CorsFeature(
