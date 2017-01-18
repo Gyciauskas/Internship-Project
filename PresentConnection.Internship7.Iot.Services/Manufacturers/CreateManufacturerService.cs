@@ -4,6 +4,7 @@ using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
+using PresentConnection.Internship7.Iot.Utils;
 using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
@@ -47,7 +48,19 @@ namespace PresentConnection.Internship7.Iot.Services
                 Images = imageIds
             };
 
-            ManufacturerService.CreateManufacturer(manufacturer);
+            // If can't create manufacturer delete images form storage and db
+            try
+            {
+                ManufacturerService.CreateManufacturer(manufacturer);
+            }
+            catch (BusinessException e)
+            {
+                foreach (var imageId in manufacturer.Images)
+                {
+                    ImagesService.DeleteImage(imageId);
+                }
+                throw;
+            }
 
             var cacheKey = CacheKeys.Manufacturers.List;
             Request.RemoveFromCache(Cache, cacheKey);

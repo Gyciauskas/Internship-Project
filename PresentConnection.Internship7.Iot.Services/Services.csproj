@@ -172,6 +172,10 @@
       <Project>{53E82AC1-DD1D-4C66-B55F-F9F4ACFB2F40}</Project>
       <Name>ServiceModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\PresentConnection.Internship7.Iot.Utils\Utils.csproj">
+      <Project>{A7016AFA-C2D5-4251-B7D7-C5015B6A001B}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

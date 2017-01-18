@@ -87,8 +87,8 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             goodRecipe = new Recipe
             {
-                UniqueName = "raspberry-pi-2",
                 Name = "Recipe name",
+                UniqueName = "recipe-name",
                 Images =
                 {
                     "5821dcc11e9f341d4c6d0994"
@@ -110,7 +110,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest = new CreateRecipe
             {
                 Name = goodRecipe.Name,
-                UniqueName = goodRecipe.UniqueName,
                 Images = goodRecipe.Images
             };
 
@@ -123,7 +122,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest2 = new CreateRecipe
             {
                 Name = "raspberry-pi-zero",
-                UniqueName = "raspberry-pi-zero-125fv",
                 Images = goodRecipe.Images
             };
 
@@ -176,7 +174,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             var getRecipeByIdResponse = client.Get(getRecipeById);
             getRecipeByIdResponse.ShouldNotBeNull();
             getRecipeByIdResponse.Result.Name.ShouldEqual(createRequest.Name + "-Updated");
-            getRecipeByIdResponse.Result.UniqueName.ShouldEqual(createRequest.UniqueName + "+updated");
 
             // Delete 
             var deleteRequest = new DeleteRecipe { Id = getRecipeByIdResponse.Result.Id.ToString() };
