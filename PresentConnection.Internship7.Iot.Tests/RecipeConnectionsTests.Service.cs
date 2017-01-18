@@ -12,6 +12,8 @@ using PresentConnection.Internship7.Iot.ServiceModels;
 using PresentConnection.Internship7.Iot.Services;
 using ServiceStack;
 using CodeMash.Net;
+using System.IO;
+using System.Configuration;
 
 namespace PresentConnection.Internship7.Iot.Tests
 {
@@ -20,8 +22,12 @@ namespace PresentConnection.Internship7.Iot.Tests
     {
         private ServiceStackHost appHost;
         private IRecipeConnectionService recipeConnectionService;
-        private RecipeConnection goodRecipeConnection;
         private IRecipeConnectionService recipeConnectionServiceMock;
+
+        private RecipeConnection goodRecipeConnection;
+        private string testImagePath;
+        private byte[] imageBytes;
+        private string imageDir;
 
         private void SetupMocks()
         {
@@ -90,6 +96,10 @@ namespace PresentConnection.Internship7.Iot.Tests
                 UniqueName = "123"
             };
 
+            testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
+            imageDir = ConfigurationManager.AppSettings["ImagesPath"].MapHostAbsolutePath();
+            imageBytes = File.ReadAllBytes(testImagePath);
+
             SetupMocks();
         }
 
@@ -103,26 +113,26 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest = new CreateRecipeConnnection
             {
                 Name = goodRecipeConnection.Name,
-                UniqueName = goodRecipeConnection.UniqueName,
+                FileName = "test.jpg",
+                Image = imageBytes
             };
 
             var createRecipeConnectionResponse = client.Post(createRequest);
             createRecipeConnectionResponse.ShouldNotBeNull();
             createRecipeConnectionResponse.Result.ShouldNotBeNull();
-            createRecipeConnectionResponse.Result.Id.ShouldNotBeNull();
-            createRecipeConnectionResponse.Result.Id.ShouldBeNotBeTheSameAs(ObjectId.Empty);
+            createRecipeConnectionResponse.Result.ShouldBeNotBeTheSameAs(ObjectId.Empty);
 
             var createRequest2 = new CreateRecipeConnnection
             {
                 Name = goodRecipeConnection.Name + "2",
-                UniqueName = goodRecipeConnection.UniqueName + "-2",
+                FileName = "test.jpg",
+                Image = imageBytes
             };
 
             var createRecipeConnectionResponse2 = client.Post(createRequest2);
             createRecipeConnectionResponse2.ShouldNotBeNull();
             createRecipeConnectionResponse2.Result.ShouldNotBeNull();
-            createRecipeConnectionResponse2.Result.Id.ShouldNotBeNull();
-            createRecipeConnectionResponse2.Result.Id.ShouldBeNotBeTheSameAs(ObjectId.Empty);
+            createRecipeConnectionResponse2.Result.ShouldBeNotBeTheSameAs(ObjectId.Empty);
 
             // Get all
             var getRequests = new GetRecipeConnections
@@ -149,9 +159,9 @@ namespace PresentConnection.Internship7.Iot.Tests
             // Update
             var updateRequest = new UpdateRecipeConnection
             {
-                Id = createRecipeConnectionResponse.Result.Id.ToString(),
-                Name = createRecipeConnectionResponse.Result.Name + "Updated",
-                UniqueName = createRecipeConnectionResponse.Result.UniqueName + "-updated"
+                Name = createRequest.Name + "+Updated",
+                UniqueName = createRequest.Name.Trim().ToLower() + "-updated",
+                Id = createRecipeConnectionResponse.Result,
             };
 
             var updateResponse = client.Put(updateRequest);
@@ -161,22 +171,23 @@ namespace PresentConnection.Internship7.Iot.Tests
             // Get by Id
             var getByIdRequest = new GetRecipeConnection
             {
-                Id = createRecipeConnectionResponse.Result.Id.ToString()
+                Id = createRecipeConnectionResponse.Result
             };
 
             var getByIdResponse = client.Get(getByIdRequest);
             getByIdResponse.ShouldNotBeNull();
             getByIdResponse.Result.ShouldNotBeNull();
-            getByIdResponse.Result.UniqueName.ShouldEqual(createRecipeConnectionResponse.Result.UniqueName + "-updated");
-            getByIdResponse.Result.Name.ShouldEqual(createRecipeConnectionResponse.Result.Name + "Updated");
+            getByIdResponse.Result.UniqueName.ShouldEqual(createRequest.Name.Trim().ToLower() + "-updated");
+            getByIdResponse.Result.Name.ShouldEqual(createRequest.Name + "+Updated");
 
             // Delete
             var deleteRequest = new DeleteRecipeConnection
             {
-                Id = createRecipeConnectionResponse.Result.Id.ToString()
+                Id = createRecipeConnectionResponse.Result
             };
 
             var deleteResponse = client.Delete(deleteRequest);
+
             deleteResponse.ShouldNotBeNull();
             deleteResponse.Result.ShouldNotBeNull();
             deleteResponse.Result.ShouldEqual(true);

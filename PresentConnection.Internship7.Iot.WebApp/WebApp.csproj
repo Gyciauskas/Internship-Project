@@ -179,6 +179,9 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\View.cshtml" />
+    <Content Include="Views\RecipeConnection\List.cshtml" />
+    <Content Include="Views\RecipeConnection\Create.cshtml" />
+    <Content Include="Views\RecipeConnection\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -213,6 +216,7 @@
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManufacturerController.cs" />
+    <Compile Include="Controllers\RecipeConnectionController.cs" />
     <Compile Include="Extensions\IsNullExtension.cs" />
     <Compile Include="Extensions\ServiceStackResponseExtensions.cs" />
     <Compile Include="Global.asax.cs">

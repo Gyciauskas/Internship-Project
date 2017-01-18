@@ -1,0 +1,25 @@
+﻿@model PresentConnection.Internship7.Iot.WebApp.Models.ListViewModelBase<PresentConnection.Internship7.Iot.ServiceModels.RecipeConnectionDto>
+
+<a href="/recipeConnections/new" class="btn btn-primary">Add new Recipe Connection</a>
+<hr />
+<ul class="list-group">
+    @foreach (var recipeConnection in Model.Items)
+    {
+        <li class="list-group-item">
+            <img src="@recipeConnection.Picture.Thumbnail.Url" alt="@recipeConnection.Picture.Thumbnail.AltAttribute" />
+            <a href="/recipeConnections/@recipeConnection.Id">@recipeConnection.Name</a>
+            <a data-name="@recipeConnection.Name" href="/recipeConnections/@recipeConnection.Id/delete">Delete</a>
+        </li>
+    }
+</ul>
+
+<script type="text/javascript">
+    $(function() {
+        $(".delete-button").click(function(e) {
+            var recipeConnectionName = $(this).data("name");
+            if (!confirm("Ar you sure want to delete recipe connection :'" + recipeConnectionName + "' ?")) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>

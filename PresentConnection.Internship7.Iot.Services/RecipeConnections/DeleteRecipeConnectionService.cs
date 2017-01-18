@@ -7,6 +7,7 @@ namespace PresentConnection.Internship7.Iot.Services
     public class DeleteRecipeConnectionService : ServiceBase
     {
         public IRecipeConnectionService RecipeConnectionService { get; set; }
+        public IImageService ImagesService { get; set; }
 
         public DeleteRecipeConnectionResponse Any(DeleteRecipeConnection request)
         {
@@ -16,6 +17,16 @@ namespace PresentConnection.Internship7.Iot.Services
             if (recipeConnection != null)
             {
                 recipeConnectionName = recipeConnection.Name;
+
+                // Delete all images before delete recipe connection
+                if (recipeConnection.Images != null)
+                {
+                    foreach (var imageId in recipeConnection.Images)
+                    {
+                        // what if delete image fails? 
+                        ImagesService.DeleteImage(imageId);
+                    }
+                }
             }
 
             var response = new DeleteRecipeConnectionResponse
