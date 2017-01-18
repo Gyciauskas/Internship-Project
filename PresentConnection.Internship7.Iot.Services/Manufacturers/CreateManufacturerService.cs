@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using PresentConnection.Internship7.Iot.BusinessContracts;
+using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
@@ -42,7 +43,8 @@ namespace PresentConnection.Internship7.Iot.Services
             var manufacturer = new Manufacturer
             {
                 Name = request.Name,
-                UniqueName = request.Name.ToLower().Replace(" ", "-"), // TODO - make unique name from Name
+//                UniqueName = request.Name.ToLower().Replace(" ", "-"), // TODO - make unique name from Name
+                UniqueName = SeoService.GetSeName(request.Name), 
                 Images = imageIds
             };
 
