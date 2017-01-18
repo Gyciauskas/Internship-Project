@@ -17,9 +17,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
         private static readonly ISettingsService settingsService = new SettingsService();
 
         #endregion
-
         
-
         #region General        
 
         /// <summary>
@@ -29,18 +27,17 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
         /// <returns>Result</returns>
         public static string GetSeName(string name)
         {
-            var settings = new Settings
-            {
-                SettingsAsJson = new BsonDocument
-                {
-                    {"ModelName", "Display"}                   
-                }
-            };
-            settingsService.UpdateOrInsertSettings(settings);
-
             var seoSettings = settingsService.GetSettings();
-            return GetSeName(name, seoSettings.SettingsAsJson.GetValue("ConvertNonWesternChars", true).AsBoolean, 
+
+            if (seoSettings != null)
+            {
+                return GetSeName(name, seoSettings.SettingsAsJson.GetValue("ConvertNonWesternChars", true).AsBoolean,
                 seoSettings.SettingsAsJson.GetValue("AllowUnicodeCharsInUrls", true).AsBoolean);
+            }
+            else
+            {
+                return GetSeName(name, true, true);
+            }
         }
 
         /// <summary>
@@ -50,7 +47,7 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
         /// <param name="convertNonWesternChars">A value indicating whether non western chars should be converted</param>
         /// <param name="allowUnicodeCharsInUrls">A value indicating whether Unicode chars are allowed</param>
         /// <returns>Result</returns>
-        public static string GetSeName(string name, bool convertNonWesternChars, bool allowUnicodeCharsInUrls)
+        public static string GetSeName(string name, bool convertNonWesternChars, bool allowUnicodeCharsInUrls )
         {
             if (String.IsNullOrEmpty(name))
                 return name;
