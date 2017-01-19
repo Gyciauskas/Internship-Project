@@ -5,6 +5,7 @@ using System.Linq;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
 using ServiceStack;
+using ServiceStack.DataAnnotations;
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {

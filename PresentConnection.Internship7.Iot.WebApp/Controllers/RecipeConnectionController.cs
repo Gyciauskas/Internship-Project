@@ -130,6 +130,7 @@ namespace PresentConnection.Internship7.Iot.WebApp.Controllers
                     return Redirect("/recipeConnections");
                 }
             }
+
             return Redirect("/recipeConnections");
         }
     }

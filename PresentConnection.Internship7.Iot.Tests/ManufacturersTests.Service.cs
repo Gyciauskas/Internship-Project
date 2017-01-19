@@ -10,6 +10,7 @@ using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
+using System;
 
 namespace PresentConnection.Internship7.Iot.Tests
 {
@@ -148,9 +149,11 @@ namespace PresentConnection.Internship7.Iot.Tests
                 },
                 Url = "url",
                 IsVisible = true
-            };            
+            };
 
-            testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
+            string projectPath = Environment.CurrentDirectory;
+            testImagePath = Directory.EnumerateFiles(projectPath + "\\PresentConnection.Internship7.Iot.Tests\\Images".MapHostAbsolutePath()).Last();
+            //testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
             imageDir = ConfigurationManager.AppSettings["ImagesPath"].MapHostAbsolutePath();
             imageBytes = File.ReadAllBytes(testImagePath);
 
@@ -171,7 +174,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest = new CreateManufacturer
             {
                 Name = goodManufacturer.Name,
-                FileName = "test.jpg",
+                FileName = "computer-case-fan.png",
                 Image = imageBytes
             };
 
@@ -184,7 +187,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest2 = new CreateManufacturer
             {
                 Name = goodManufacturer.Name + "2",
-                FileName = "test.jpg",
+                FileName = "computer-case-fan.png",
                 Image = imageBytes
             };
 

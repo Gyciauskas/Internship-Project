@@ -52,7 +52,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var recipeconnection2 = new RecipeConnection
             {
-                UniqueName = "123",
+                UniqueName = "123abc",
                 Name = "abc",
             };
 
