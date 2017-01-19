@@ -88,11 +88,11 @@ namespace PresentConnection.Internship7.Iot.Tests
             goodDevice = new Device
             {
                 ModelName = "Raspberry PI 3",
-                UniqueName = "raspberry-pi-3",
                 Images =
                 {
                     "5821dcc11e9f341d4c6d0994"
-                }
+                },
+                UniqueName = "raspberry-pi-3"
             };
 
             SetupMocks();
@@ -110,7 +110,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest = new CreateDevice
             {
                 ModelName = goodDevice.ModelName,
-                UniqueName = goodDevice.UniqueName,
                 Images = goodDevice.Images
             };
 
@@ -123,7 +122,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest2 = new CreateDevice
             {
                 ModelName = goodDevice.ModelName + "2",
-                UniqueName = goodDevice.UniqueName + "-2",
                 Images = goodDevice.Images
             };
 

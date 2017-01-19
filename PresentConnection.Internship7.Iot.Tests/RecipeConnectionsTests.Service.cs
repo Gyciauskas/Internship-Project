@@ -87,7 +87,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             goodRecipeConnection = new RecipeConnection
             {
                 Name = "abc",
-                UniqueName = "123"
+                UniqueName = "abc"
             };
 
             SetupMocks();
@@ -102,8 +102,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             // Create request
             var createRequest = new CreateRecipeConnnection
             {
-                Name = goodRecipeConnection.Name,
-                UniqueName = goodRecipeConnection.UniqueName,
+                Name = goodRecipeConnection.Name
             };
 
             var createRecipeConnectionResponse = client.Post(createRequest);
@@ -115,7 +114,6 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest2 = new CreateRecipeConnnection
             {
                 Name = goodRecipeConnection.Name + "2",
-                UniqueName = goodRecipeConnection.UniqueName + "-2",
             };
 
             var createRecipeConnectionResponse2 = client.Post(createRequest2);

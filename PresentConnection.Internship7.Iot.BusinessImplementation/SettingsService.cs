@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
-    public class SettingsService : ISetingsService
+    public class SettingsService : ISettingsService
     {
         public void UpdateOrInsertSettings(Settings settings)
         {

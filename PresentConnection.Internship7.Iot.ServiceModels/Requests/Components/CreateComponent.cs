@@ -6,6 +6,5 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
     public class CreateComponent : IReturn<CreateComponentResponse>
     {
         public string ModelName { get; set; }
-        public string UniqueName { get; set; }
     }
 }

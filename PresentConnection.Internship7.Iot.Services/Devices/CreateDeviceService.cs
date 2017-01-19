@@ -1,4 +1,5 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
+using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
@@ -14,6 +15,8 @@ namespace PresentConnection.Internship7.Iot.Services
             var response = new CreateDeviceResponse();
 
             var device = new Device().PopulateWith(request);
+            device.UniqueName = SeoService.GetSeName(request.ModelName);
+
             DeviceService.CreateDevice(device);
 
             var casheKey = CacheKeys.Devices.List;

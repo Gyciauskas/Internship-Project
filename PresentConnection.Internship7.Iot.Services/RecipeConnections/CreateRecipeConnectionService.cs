@@ -1,4 +1,5 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
+using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
@@ -16,7 +17,7 @@ namespace PresentConnection.Internship7.Iot.Services
             var recipeConnection = new RecipeConnection
             {
                 Name = request.Name,
-                UniqueName = request.UniqueName
+                UniqueName = SeoService.GetSeName(request.Name)
             };
 
             RecipeConnectionService.CreateRecipeConnection(recipeConnection);

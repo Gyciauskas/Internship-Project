@@ -1,5 +1,6 @@
 ﻿using ServiceStack;
 using PresentConnection.Internship7.Iot.BusinessContracts;
+using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
 
@@ -14,6 +15,7 @@ namespace PresentConnection.Internship7.Iot.Services
             var response = new CreateConnectionResponse();
 
             var connection = new Connection().PopulateWith(request);
+            connection.UniqueName = SeoService.GetSeName(request.Name);
 
             ConnectionService.CreateConnection(connection);
             return response;

@@ -1,4 +1,5 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
+using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
 
@@ -19,6 +20,7 @@ namespace PresentConnection.Internship7.Iot.Services
             {
                 manufacturerName = manufacturer.Name;
                 manufacturer = manufacturer.PopulateWith(request);
+                manufacturer.UniqueName = SeoService.GetSeName(request.UniqueName);
             }
             
             ManufacturerService.UdpdateManufacturer(manufacturer);

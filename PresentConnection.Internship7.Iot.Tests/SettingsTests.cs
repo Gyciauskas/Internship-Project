@@ -14,7 +14,7 @@ namespace PresentConnection.Internship7.Iot.Tests
     [TestFixture]
     public class SettingsTests
     {
-        private ISetingsService settingsService;
+        private ISettingsService settingsService;
 
         private BsonDocument item = new BsonDocument
         {

@@ -99,6 +99,7 @@
     <Compile Include="RecipeConnectionService.cs" />
     <Compile Include="RecipeService.cs" />
     <Compile Include="RunningDeviceSimulationsService.cs" />
+    <Compile Include="SeoService.cs" />
     <Compile Include="SettingsService.cs" />
     <Compile Include="ClientDeviceService.cs" />
     <Compile Include="UserService.cs" />
