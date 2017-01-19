@@ -34,7 +34,7 @@ namespace PresentConnection.Internship7.Iot.Services
             Request.RemoveFromCache(Cache, cacheKeyForListWithName);
             Request.RemoveFromCache(Cache, cacheKeyForItem);
 
-            response.Result = device;
+            response.Result = true;
             return response;
         }
     }
