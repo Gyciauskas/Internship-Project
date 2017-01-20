@@ -1,8 +1,6 @@
-﻿using PresentConnection.Internship7.Iot.Domain;
-
-namespace PresentConnection.Internship7.Iot.ServiceModels
+﻿namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    public class CreateDeviceResponse : ResponseBase<Device>
+    public class CreateDeviceResponse : ResponseBase<string>
     {
     }
 }

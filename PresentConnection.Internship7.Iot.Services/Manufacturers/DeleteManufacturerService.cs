@@ -1,4 +1,5 @@
-﻿using PresentConnection.Internship7.Iot.BusinessContracts;
+﻿using System.Collections.Generic;
+using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
 
@@ -13,21 +14,13 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var manufacturer = ManufacturerService.GetManufacturer(request.Id);
             var manufacturerName = string.Empty;
+            var manufacturerImages = new List<string>();
 
             if (manufacturer != null)
             {
                 manufacturerName = manufacturer.Name;
-
-                // Deleting all images before completely deleting manufacturer ?
-                if (manufacturer.Images != null)
-                {
-                    foreach (var imageId in manufacturer.Images)
-                    {
-                        ImagesService.DeleteImage(imageId);
-                    }
-                }
+                manufacturerImages = manufacturer.Images;
             }
-
             
             var response = new DeleteManufacturerResponse
             {
@@ -36,6 +29,11 @@ namespace PresentConnection.Internship7.Iot.Services
 
             if (response.Result)
             {
+                foreach (var imageId in manufacturerImages)
+                {
+                    ImagesService.DeleteImage(imageId);
+                }
+
                 var cacheKeyForListWithName = CacheKeys.Manufacturers.ListWithProvidedName.Fmt(manufacturerName);
                 var cacheKeyForList = CacheKeys.Manufacturers.List;
                 var cacheKeyForItem = CacheKeys.Manufacturers.Item.Fmt(request.Id);
