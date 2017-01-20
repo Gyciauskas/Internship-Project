@@ -226,7 +226,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             {
                 Id = createManufacturerResponse.Result,
                 Name = createRequest.Name + "Updated",
-                UniqueName = /* TODO : call sluggify service*/ createRequest.Name.Trim().ToLower() + "-updated"
+                UniqueName = SeoService.GetSeName(createRequest.Name) + "-updated"
             };
 
             var updateManufacturerResponse = client.Put(updateManufacturerRequest);
@@ -239,7 +239,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             var getManufacturerByIdResponse = client.Get(getManufacturerById);
             getManufacturerByIdResponse.ShouldNotBeNull();
             getManufacturerByIdResponse.Result.ShouldNotBeNull();
-            getManufacturerByIdResponse.Result.UniqueName.ShouldEqual(/* TODO : call sluggify service*/ createRequest.Name.Trim().ToLower() + "-updated");
+            getManufacturerByIdResponse.Result.UniqueName.ShouldEqual(SeoService.GetSeName(createRequest.Name) + "-updated");
             getManufacturerByIdResponse.Result.Name.ShouldEqual(createRequest.Name + "Updated");
 
 

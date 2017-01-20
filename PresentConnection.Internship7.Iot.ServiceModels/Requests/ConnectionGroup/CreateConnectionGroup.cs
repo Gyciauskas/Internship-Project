@@ -12,7 +12,6 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
             Images = new List<string>();
         }
 
-        public string UniqueName { get; set; }
         public string Name { get; set; }
         public List<string> RelatedConnections { get; set; }
         public List<string> Images { get; set; }

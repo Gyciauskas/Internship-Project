@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using PresentConnection.Internship7.Iot.BusinessContracts;
+using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
+using PresentConnection.Internship7.Iot.Utils;
 using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
@@ -42,11 +44,23 @@ namespace PresentConnection.Internship7.Iot.Services
             var manufacturer = new Manufacturer
             {
                 Name = request.Name,
-                UniqueName = request.Name.ToLower().Replace(" ", "-"), // TODO - make unique name from Name
+                UniqueName = SeoService.GetSeName(request.Name), 
                 Images = imageIds
             };
 
-            ManufacturerService.CreateManufacturer(manufacturer);
+            // If can't create manufacturer delete images form storage and db
+            try
+            {
+                ManufacturerService.CreateManufacturer(manufacturer);
+            }
+            catch (BusinessException e)
+            {
+                foreach (var imageId in manufacturer.Images)
+                {
+                    ImagesService.DeleteImage(imageId);
+                }
+                throw;
+            }
 
             var cacheKey = CacheKeys.Manufacturers.List;
             Request.RemoveFromCache(Cache, cacheKey);

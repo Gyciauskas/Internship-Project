@@ -50,7 +50,7 @@ namespace PresentConnection.Internship7.Iot.Tests
           
             var recipe2 = new Recipe
             {
-                UniqueName = "raspberry-pi-2",
+                UniqueName = "recipe-name",
                 Name = "Recipe name",
                 Images =
                 {

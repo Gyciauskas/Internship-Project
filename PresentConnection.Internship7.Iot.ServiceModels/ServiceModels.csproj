@@ -77,6 +77,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataContracts\DeviceDto.cs" />
     <Compile Include="DataContracts\DisplayImageDto.cs" />
     <Compile Include="DataContracts\ManufacturerDto.cs" />
     <Compile Include="DataContracts\PictureDto.cs" />

@@ -182,6 +182,9 @@
     <Content Include="Views\RecipeConnection\List.cshtml" />
     <Content Include="Views\RecipeConnection\Create.cshtml" />
     <Content Include="Views\RecipeConnection\Update.cshtml" />
+    <Content Include="Views\Device\Create.cshtml" />
+    <Content Include="Views\Device\List.cshtml" />
+    <Content Include="Views\Device\Update.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -214,6 +217,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
+    <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManufacturerController.cs" />
     <Compile Include="Controllers\RecipeConnectionController.cs" />

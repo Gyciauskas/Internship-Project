@@ -64,6 +64,30 @@ namespace PresentConnection.Internship7.Iot.WebApp
 
             // Default
             routes.MapRoute(
+                name: "devices-list",
+                url: "devices",
+                defaults: new { controller = "Device", action = "List" }
+            );
+
+            routes.MapRoute(
+                name: "devices-create",
+                url: "devices/new",
+                defaults: new { controller = "Device", action = "Create" }
+            );
+
+            routes.MapRoute(
+                name: "device-edit",
+                url: "devices/{id}",
+                defaults: new { controller = "Device", action = "Update" }
+            );
+
+            routes.MapRoute(
+                name: "device-delete",
+                url: "devices/{id}/delete",
+                defaults: new { controller = "Device", action = "Delete" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

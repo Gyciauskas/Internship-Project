@@ -7,7 +7,6 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
     public class CreateRecipe : IReturn<CreateRecipeResponse>
     {
         public string Name { get; set; }
-        public string UniqueName { get; set; }
         public List<string> Images { get; set; }
     }
 }

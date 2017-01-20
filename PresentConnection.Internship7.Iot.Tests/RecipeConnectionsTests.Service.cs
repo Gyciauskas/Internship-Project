@@ -94,7 +94,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             goodRecipeConnection = new RecipeConnection
             {
                 Name = "abc",
-                UniqueName = "123abc"
+                UniqueName = "abc"
             };
 
             // This maked because of uploaded picture to tests project, Images folder.
