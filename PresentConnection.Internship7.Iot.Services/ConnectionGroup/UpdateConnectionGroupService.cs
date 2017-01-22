@@ -12,13 +12,26 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new UpdateConnectionGroupResponse();
 
-
             var connectionGroup = ConnectionGroupService.GetConnectionGroup(request.Id);
-            connectionGroup = connectionGroup?.PopulateWith(request);
+            var connectionGroupName = string.Empty;
+
+            if (connectionGroup != null)
+            {
+                connectionGroupName = connectionGroup.Name;
+                connectionGroup = connectionGroup.PopulateWith(request);
+            }
+
             ConnectionGroupService.UpdateConnectionGroup(connectionGroup);
 
-            response.Result = connectionGroup;
+            var cacheKeyForListWithName = CacheKeys.ConnectionGroup.ListWithProvidedName.Fmt(connectionGroupName);
+            var cacheKeyForList = CacheKeys.ConnectionGroup.List;
+            var cacheKeyForItem = CacheKeys.ConnectionGroup.Item.Fmt(request.Id);
 
+            Request.RemoveFromCache(Cache, cacheKeyForList);
+            Request.RemoveFromCache(Cache, cacheKeyForListWithName);
+            Request.RemoveFromCache(Cache, cacheKeyForItem);
+
+            response.Result = connectionGroup;
             return response;
         }
     }

@@ -110,11 +110,14 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AppHost.cs" />
+    <Compile Include="ClientDevicesTests.Service.cs" />
     <Compile Include="ClientRecipeTests.cs" />
+    <Compile Include="ClientRecipeTests.Service.cs" />
     <Compile Include="ClientsTests.cs" />
     <Compile Include="ClientConnectionsTests.cs" />
     <Compile Include="CollaboratorTests.cs" />
     <Compile Include="CollaboratorTests.Service.cs" />
+    <Compile Include="ConnectionGroupsTests.Service.cs" />
     <Compile Include="DashboardTests.cs" />
     <Compile Include="ComponentsTests.cs" />
     <Compile Include="ConnectionGroupsTests.cs" />

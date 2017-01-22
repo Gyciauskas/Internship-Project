@@ -1,6 +1,7 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
+using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
 {
@@ -21,6 +22,10 @@ namespace PresentConnection.Internship7.Iot.Services
 
             ClientRecipeService.CreateClientRecipe(clientRecipe, UserSession.UserAuthId);
 
+            var cacheKey = CacheKeys.ClientRecipes.List;
+            Request.RemoveFromCache(Cache, cacheKey);
+
+            response.Result = clientRecipe;
             return response;
         }
     }

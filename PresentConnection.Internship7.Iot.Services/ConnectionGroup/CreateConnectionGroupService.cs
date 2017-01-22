@@ -22,8 +22,12 @@ namespace PresentConnection.Internship7.Iot.Services
             };
 
             ConnectionGroupService.CreateConnectionGroup(connectionGroup);
-            
+
+            var cacheKey = CacheKeys.ConnectionGroup.List;
+            Request.RemoveFromCache(Cache, cacheKey);
+
             response.Result = connectionGroup;
+
             return response;
         }
     }

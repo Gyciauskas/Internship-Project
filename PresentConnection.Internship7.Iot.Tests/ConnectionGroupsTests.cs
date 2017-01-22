@@ -13,26 +13,8 @@ using PresentConnection.Internship7.Iot.Utils;
 namespace PresentConnection.Internship7.Iot.Tests
 {
     [TestFixture]
-    public class ConnectionGroupsTests
+    public partial class ConnectionGroupsTests
     {
-        private IConnectionGroupService connectionGroupService;
-        private ConnectionGroup goodConnectionGroup;
-
-        [SetUp]
-        public void SetUp()
-        {
-            connectionGroupService = new ConnectionGroupService();
-            goodConnectionGroup = new ConnectionGroup
-            {
-                UniqueName = "raspberry-pi-3",
-                Name = "Name",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                }
-            };
-        }
-
         [Test]
         [Category("ConnectionGroup")]
         public void Can_insert_connectionGroup_to_database()
@@ -47,16 +29,17 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_uniquename_is_not_provided()
         {
-           goodConnectionGroup.UniqueName =string.Empty;
+            goodConnectionGroup.UniqueName = string.Empty;
 
-           var exception = typeof(BusinessException).ShouldBeThrownBy(() => connectionGroupService.CreateConnectionGroup(goodConnectionGroup));
-           exception.Message.ShouldEqual("Cannot create connection group");
+            var exception = typeof(BusinessException).ShouldBeThrownBy(() => connectionGroupService.CreateConnectionGroup(goodConnectionGroup));
+            exception.Message.ShouldEqual("Cannot create connection group");
         }
 
         [Test]
         [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_such_uniquename_exist()
         {
+            goodConnectionGroup.UniqueName = "raspberry-pi-3";
             connectionGroupService.CreateConnectionGroup(goodConnectionGroup);
 
             var connectionGroup2 = new ConnectionGroup
@@ -101,7 +84,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_uniquename_is_not_in_correct_format_unique_name_with_upercases()
         {
-            goodConnectionGroup.UniqueName = "raspberry-PI-3";
+            goodConnectionGroup.UniqueName = "raspberry-pi-3";
 
             var exception = typeof(BusinessException).ShouldBeThrownBy(() => connectionGroupService.CreateConnectionGroup(goodConnectionGroup));
 
@@ -115,7 +98,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         }
 
         [Test]
-        
+
         [Category("ConnectionGroup")]
         public void Cannot_insert_connectionGroup_to_database_when_name_is_not_provided()
         {
@@ -144,6 +127,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("ConnectionGroup")]
         public void Can_get_connectionGroup_by_id()
         {
+            goodConnectionGroup.UniqueName = "raspberry-pi-3";
             connectionGroupService.CreateConnectionGroup(goodConnectionGroup);
 
             goodConnectionGroup.ShouldNotBeNull();
@@ -202,7 +186,7 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("ConnectionGroup")]
         public void Can_delete_connectionGroup_from_database()
         {
-           
+
             connectionGroupService.CreateConnectionGroup(goodConnectionGroup);
 
             goodConnectionGroup.ShouldNotBeNull();
@@ -213,16 +197,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             connectionGroupFromDb.ShouldNotBeNull();
             connectionGroupFromDb.Id.ShouldEqual(ObjectId.Empty);
-        }
-
-        [TearDown]
-        public void Dispose()
-        {
-            var connectionGroups = connectionGroupService.GetAllConnectionGroups();
-            foreach (var connectionGroup in connectionGroups)
-            {
-                connectionGroupService.DeleteConnectionGroup(connectionGroup.Id.ToString());
-            }
         }
     }
 }

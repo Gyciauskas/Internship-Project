@@ -34,6 +34,27 @@ namespace PresentConnection.Internship7.Iot.Services
                 public static readonly string Item = "urn:recipeConnections:{0}";
 
             }
+
+            internal static class ClientDevices
+            {
+                public static readonly string List = "urn:clientDevice";
+                public static readonly string ListWithProvidedName = "urn:clientDevice:name-{0}";
+                public static readonly string Item = "urn:clientDevice:{0}";
+            }
+
+            internal static class ClientRecipes
+            {
+                public static readonly string List = "urn:clientRecipe";
+                public static readonly string ListWithProvidedName = "urn:clientRecipe:name-{0}";
+                public static readonly string Item = "urn:clientRecipe:{0}";
+            }
+
+            internal static class ConnectionGroup
+            {
+                public static readonly string List = "urn:connectionGroup";
+                public static readonly string ListWithProvidedName = "urn:connectionGroup:name-{0}";
+                public static readonly string Item = "urn:connectionGroup:{0}";
+            }
         }
         
 
