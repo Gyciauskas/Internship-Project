@@ -151,9 +151,9 @@ namespace PresentConnection.Internship7.Iot.Tests
                 IsVisible = true
             };
 
+            // This maked because of uploaded picture to tests project, Images folder. Otherwise it would throw exception
             string projectPath = Environment.CurrentDirectory;
             testImagePath = Directory.EnumerateFiles(projectPath + "\\PresentConnection.Internship7.Iot.Tests\\Images".MapHostAbsolutePath()).Last();
-            testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
             imageDir = ConfigurationManager.AppSettings["ImagesPath"].MapHostAbsolutePath();
             imageBytes = File.ReadAllBytes(testImagePath);
 

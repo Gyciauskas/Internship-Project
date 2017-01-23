@@ -1,5 +1,7 @@
 ﻿@model PresentConnection.Internship7.Iot.ServiceModels.RecipeConnectionDto
 
+@{  ViewBag.Title = "Update";   }
+
 @using (Html.BeginForm("Update", "RecipeConnection", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()

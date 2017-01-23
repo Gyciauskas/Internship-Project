@@ -97,7 +97,7 @@ namespace PresentConnection.Internship7.Iot.Tests
                 UniqueName = "abc"
             };
 
-            // This maked because of uploaded picture to tests project, Images folder.
+            // This maked because of uploaded picture to tests project, Images folder. Otherwise it would throw exception
             string projectPath = Environment.CurrentDirectory;
             testImagePath = Directory.EnumerateFiles(projectPath + "\\PresentConnection.Internship7.Iot.Tests\\Images".MapHostAbsolutePath()).Last();
             imageDir = ConfigurationManager.AppSettings["ImagesPath"].MapHostAbsolutePath();
