@@ -208,6 +208,13 @@ namespace PresentConnection.Internship7.Iot.Tests
             {
                 Db.DeleteOne<RecipeConnection>(x => x.Id == recipeConnection.Id);
             }
+
+            // Delete all images that was saved in Tests/bin/Images folder
+            var files = Directory.GetFiles(imageDir);
+            foreach (var file in files)
+            {
+                File.Delete(file);
+            }
         }
     }
 }

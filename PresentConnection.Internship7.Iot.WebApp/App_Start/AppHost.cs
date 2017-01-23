@@ -65,8 +65,9 @@ namespace PresentConnection.Internship7.Iot.WebApp
 
 
             container.Register<IDeviceService>(new DeviceService());
-            
 
+            container.Register<IClientDeviceService>(new ClientDeviceService());
+            container.Register<IRunningDeviceSimulationsService>(new RunningDeviceSimulationsService());
 
             container.Register<IConnectionService>(new ConectionService());
 

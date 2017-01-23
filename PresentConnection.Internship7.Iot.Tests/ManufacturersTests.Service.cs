@@ -153,7 +153,7 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             string projectPath = Environment.CurrentDirectory;
             testImagePath = Directory.EnumerateFiles(projectPath + "\\PresentConnection.Internship7.Iot.Tests\\Images".MapHostAbsolutePath()).Last();
-            //testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
+            testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
             imageDir = ConfigurationManager.AppSettings["ImagesPath"].MapHostAbsolutePath();
             imageBytes = File.ReadAllBytes(testImagePath);
 

@@ -53,7 +53,7 @@ namespace PresentConnection.Internship7.Iot.Services
             {
                 DeviceService.CreateDevice(device);
             }
-            catch (BusinessException e)
+            catch (Exception)
             {
                 foreach (var imageId in device.Images)
                 {
