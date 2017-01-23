@@ -18,7 +18,8 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new CreateManufacturerResponse();
 
-            var sizes = new List<string> { "standard", "medium", "thumbnail"};
+            #region Old code
+            /*var sizes = new List<string> { "standard", "medium", "thumbnail"};
             var imageIds = new List<string>();
 
             // Original image
@@ -39,8 +40,11 @@ namespace PresentConnection.Internship7.Iot.Services
                     Size = size
                 };
                 imageIds.Add(ImagesService.AddImage(image, request.Image));
-            }
-            
+            }*/
+            #endregion
+
+            var imageIds = ImagesService.GenerateImagesIds(request.FileName, request.Image);
+
             var manufacturer = new Manufacturer
             {
                 Name = request.Name,

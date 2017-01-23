@@ -19,28 +19,7 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new CreateDeviceResponse();
 
-            var sizes = new List<string> { "standard", "medium", "thumbnail" };
-            var imageIds = new List<string>();
-
-            // Original image
-            var image = new DisplayImage
-            {
-                SeoFileName = Path.GetFileNameWithoutExtension(request.FileName),
-                MimeType = Path.GetExtension(request.FileName),
-            };
-            imageIds.Add(ImagesService.AddImage(image, request.Image));
-
-            // Different sizes
-            foreach (var size in sizes)
-            {
-                image = new DisplayImage
-                {
-                    SeoFileName = Path.GetFileNameWithoutExtension(request.FileName),
-                    MimeType = Path.GetExtension(request.FileName),
-                    Size = size
-                };
-                imageIds.Add(ImagesService.AddImage(image, request.Image));
-            }
+            var imageIds = ImagesService.GenerateImagesIds(request.FileName, request.Image);
 
             var device = new Device
             {
