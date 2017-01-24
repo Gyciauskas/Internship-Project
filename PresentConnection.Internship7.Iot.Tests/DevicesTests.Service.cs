@@ -13,6 +13,7 @@ using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using PresentConnection.Internship7.Iot.Services;
 using ServiceStack;
+using System;
 
 namespace PresentConnection.Internship7.Iot.Tests
 {
@@ -101,7 +102,9 @@ namespace PresentConnection.Internship7.Iot.Tests
                 UniqueName = "raspberry-pi-3"
             };
 
-            testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
+            // This maked because of uploaded picture to tests project, Images folder. Otherwise it would throw exception
+            string projectPath = Environment.CurrentDirectory;
+            testImagePath = Directory.EnumerateFiles(projectPath + "\\PresentConnection.Internship7.Iot.Tests\\Images".MapHostAbsolutePath()).Last();
             imageDir = ConfigurationManager.AppSettings["ImagesPath"].MapHostAbsolutePath();
             imageBytes = File.ReadAllBytes(testImagePath);
 

@@ -8,13 +8,18 @@ using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.Utils;
 using ServiceStack;
+using System;
 
 namespace PresentConnection.Internship7.Iot.Tests
 {
     [TestFixture]
     public class ImagesTests
     {
-        private static readonly string testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
+        // This maked because of uploaded picture to tests project, Images folder.
+        private static readonly string projectPath = Environment.CurrentDirectory;
+        private static readonly string testImagePath = Directory.EnumerateFiles(projectPath + "\\PresentConnection.Internship7.Iot.Tests\\Images".MapHostAbsolutePath()).Last();
+
+        //private static readonly string testImagePath = Directory.EnumerateFiles("~/testImages".MapHostAbsolutePath()).Last();
         private readonly byte[] imageBytes = File.ReadAllBytes(testImagePath);
 
         private IImageService imageService;

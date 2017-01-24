@@ -81,6 +81,7 @@
     <Compile Include="DataContracts\DisplayImageDto.cs" />
     <Compile Include="DataContracts\ManufacturerDto.cs" />
     <Compile Include="DataContracts\PictureDto.cs" />
+    <Compile Include="DataContracts\RecipeConnectionDto.cs" />
     <Compile Include="Requests\ClientDevice\AddDeviceToClient.cs" />
     <Compile Include="Requests\ClientDevice\DeleteClientDevice.cs" />
     <Compile Include="Requests\ClientDevice\GetClientDevice.cs" />

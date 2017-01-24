@@ -5,25 +5,24 @@ using System.Linq;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
 using ServiceStack;
-using ServiceStack.DataAnnotations;
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    public class ManufacturerDto 
+    public class RecipeConnectionDto
     {
         public string Id { get; set; }
         public string Name { get; set; }
         public string UniqueName { get; set; }
         public PictureDto Picture { get; set; }
-        
-        public static explicit operator ManufacturerDto(Manufacturer source)
+
+        public static explicit operator RecipeConnectionDto(RecipeConnection source)
         {
             if (source == null)
             {
                 return null;
             }
 
-            return new ManufacturerDto
+            return new RecipeConnectionDto
             {
                 Id = source.Id.ToString(),
                 Name = source.Name,
@@ -42,14 +41,14 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
 
             public List<DisplayImageDto> Images { get; set; }
 
-            public ManufacturerDto ManufacturerDto { get; set; }
+            public RecipeConnectionDto RecipeConnectionDto { get; set; }
 
             public Builder(IImageService imageService)
             {
                 Images = new List<DisplayImageDto>();
                 this.imageService = imageService;
             }
-            
+
             public Builder ApplyImages(List<string> imageIds)
             {
                 if (imageIds != null && imageIds.Any())
@@ -57,34 +56,34 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
                     foreach (var imageId in imageIds)
                     {
                         var image = imageService.GetImage(imageId);
-                        var imageDto = (DisplayImageDto) image;
+                        var imageDto = (DisplayImageDto)image;
 
-//                        var pathToTheImages = ConfigurationManager.AppSettings["ImagesPath"]
-//                            .MapHostAbsolutePath().SplitOnLast(Path.DirectorySeparatorChar).Last();
                         var pathToTheImages = "images";
                         imageDto.Url = Path.Combine(pathToTheImages, image.UniqueImageName + image.MimeType);
 
                         Images.Add(imageDto);
                     }
                 }
+
                 return this;
             }
 
-            public Builder Map(Manufacturer manufacturer)
+            public Builder Map(RecipeConnection recipeConnection)
             {
-                ManufacturerDto = (ManufacturerDto) manufacturer;
+                RecipeConnectionDto = (RecipeConnectionDto)recipeConnection;
                 return this;
             }
 
-            public ManufacturerDto Build()
+            public RecipeConnectionDto Build()
             {
-                if (ManufacturerDto != null)
+                if (RecipeConnectionDto != null)
                 {
-                    ManufacturerDto.Picture = (PictureDto)Images;
+                    RecipeConnectionDto.Picture = (PictureDto)Images;
                 }
-                return ManufacturerDto;
+
+                return RecipeConnectionDto;
             }
         }
-
     }
 }
+

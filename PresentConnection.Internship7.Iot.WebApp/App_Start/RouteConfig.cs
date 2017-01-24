@@ -37,6 +37,32 @@ namespace PresentConnection.Internship7.Iot.WebApp
                 defaults: new { controller = "Manufacturer", action = "Delete" }
             );
 
+            // Recipe Connections routes
+            routes.MapRoute(
+                name: "recipeConnections-list",
+                url: "recipeConnections",
+                defaults: new { controller = "RecipeConnection", action = "List" }
+            );
+
+            routes.MapRoute(
+                name: "recipeConnection-create",
+                url: "recipeConnections/new",
+                defaults: new { controller = "RecipeConnection", action = "Create" }
+            );
+
+            routes.MapRoute(
+                name: "recipeConnection-edit",
+                url: "recipeConnections/{id}",
+                defaults: new { controller = "RecipeConnection", action = "Update" }
+            );
+
+            routes.MapRoute(
+                name: "recipeConnection-delete",
+                url: "recipeConnections/{id}/delete",
+                defaults: new { controller = "RecipeConnection", action = "Delete" }
+            );
+
+            // Default
             routes.MapRoute(
                 name: "devices-list",
                 url: "devices",

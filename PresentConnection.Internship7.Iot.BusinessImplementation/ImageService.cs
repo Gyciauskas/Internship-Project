@@ -10,6 +10,7 @@ using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.Utils;
 using ServiceStack;
+using System.Collections.Generic;
 
 namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
@@ -20,8 +21,40 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 
         public IFileService FileService { get; set; }
 
+        // Generate 4 type images: original, standard, medium, thumbnail and pass it to AddImage method.
+        // Return these 4 generated images Id's.
+        public List<string> GenerateImagesIds (string fileName, byte[] imageByteArray)
+        {
+            var sizes = new List<string> { "standard", "medium", "thumbnail" };
+            var imageIds = new List<string>();
+
+            // Original image
+            var image = new DisplayImage
+            {
+                SeoFileName = Path.GetFileNameWithoutExtension(fileName),
+                MimeType = Path.GetExtension(fileName),
+            };
+
+            imageIds.Add(AddImage(image, imageByteArray));
+
+            // Different sizes
+            foreach (var size in sizes)
+            {
+                image = new DisplayImage
+                {
+                    SeoFileName = Path.GetFileNameWithoutExtension(fileName),
+                    MimeType = Path.GetExtension(fileName),
+                    Size = size
+                };
+                imageIds.Add(AddImage(image, imageByteArray));
+            }
+
+            // return list with generated images Id's
+            return imageIds;
+        }
+
         /// <summary>
-        /// Create resized image and store ind dir.
+        /// Create resized image and store in dir.
         /// </summary>
         /// <param name="displayImage">Image object in database.</param>
         /// <param name="image">Bute array of image.</param>

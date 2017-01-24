@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - PS Intership ASP.NET MVC Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -22,8 +22,8 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("Manufacturer", "List", "Manufacturer")</li>
+                    <li>@Html.ActionLink("Recipe Connection", "List", "RecipeConnection")</li>
                     <li>@Html.ActionLink("Device", "List", "Device")</li>
-                    
                 </ul>
             </div>
         </div>
@@ -32,7 +32,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - PS Intership ASP.NET MVC Application</p>
         </footer>
     </div>
 
