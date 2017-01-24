@@ -1,17 +1,19 @@
 ﻿using System.Collections.Generic;
-using System.Configuration;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Linq;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
-using ServiceStack;
-using ServiceStack.DataAnnotations;
+
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
+    
     public class ManufacturerDto 
     {
         public string Id { get; set; }
+        
+        [Required]
         public string Name { get; set; }
         public string UniqueName { get; set; }
         public PictureDto Picture { get; set; }

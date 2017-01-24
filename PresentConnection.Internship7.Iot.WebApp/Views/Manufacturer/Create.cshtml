@@ -4,6 +4,8 @@
 
 @using (Html.BeginForm("Create", "Manufacturer", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
+
+    @Html.ValidationSummary()
     @Html.AntiForgeryToken()
 
     <div class="form-group">

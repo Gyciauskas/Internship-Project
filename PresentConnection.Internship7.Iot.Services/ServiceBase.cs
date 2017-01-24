@@ -56,14 +56,17 @@ namespace PresentConnection.Internship7.Iot.Services
                 public static readonly string ListWithProvidedName = "urn:connectionGroup:name-{0}";
                 public static readonly string Item = "urn:connectionGroup:{0}";
 
+                
+            }
+
             internal static class Recipes
             {
                 public static readonly string List = "urn:recipe";
                 public static readonly string ListWithProvidedName = "urn:recipe:name-{0}";
                 public static readonly string Item = "urn:recipe:{0}";
             }
+
         }
-        
 
         public AuthUserSession UserSession => SessionAs<AuthUserSession>();
     }
