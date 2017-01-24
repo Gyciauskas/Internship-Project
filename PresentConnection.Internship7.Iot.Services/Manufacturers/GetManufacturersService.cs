@@ -10,7 +10,6 @@ namespace PresentConnection.Internship7.Iot.Services
     public class GetManufacturersService : ServiceBase
     {
         public IManufacturerService ManufacturerService { get; set; }
-
         public IImageService ImageService { get; set; }
 
         public object Any(GetManufacturers request)
@@ -24,7 +23,7 @@ namespace PresentConnection.Internship7.Iot.Services
                 cacheKey = CacheKeys.Manufacturers.ListWithProvidedName.Fmt(request.Name);
             }
 
-            return Request.ToOptimizedResultUsingCache(
+            Request.ToOptimizedResultUsingCache(
 
                 Cache,
                 cacheKey,
@@ -51,7 +50,9 @@ namespace PresentConnection.Internship7.Iot.Services
                     return response;
                 });
 
-           
+            return Cache.Get<GetManufacturersResponse>(cacheKey);
+
+
         }
     }
 }

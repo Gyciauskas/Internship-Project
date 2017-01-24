@@ -12,6 +12,7 @@ namespace PresentConnection.Internship7.Iot.Tests
     [TestFixture]
     public partial class ManufacturersTests
     {
+
         [Test]
         [Category("Manufacturer")]
         public void Can_insert_manufacturer_to_database()

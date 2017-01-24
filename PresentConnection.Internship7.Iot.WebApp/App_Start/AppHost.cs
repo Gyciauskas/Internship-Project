@@ -9,7 +9,7 @@ using ServiceStack;
 using ServiceStack.Caching;
 using ServiceStack.Mvc;
 using ServiceStack.Text;
-using ServiceStack.Validation;
+using WebGrease;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(PresentConnection.Internship7.Iot.WebApp.AppHost), "Start")]
 
@@ -62,12 +62,23 @@ namespace PresentConnection.Internship7.Iot.WebApp
             // reusable services
 
             container.Register<IManufacturerService>(new ManufacturerService());
+
+
             container.Register<IDeviceService>(new DeviceService());
+
+            container.Register<IClientDeviceService>(new ClientDeviceService());
+            container.Register<IRunningDeviceSimulationsService>(new RunningDeviceSimulationsService());
+
             container.Register<IConnectionService>(new ConectionService());
+
             container.Register<IRecipeService>(new RecipeService());
             container.Register<ICollaboratorService>(new CollaboratorService());
-            container.Register<IRecipeConnectionService>(new RecipeConnectionService());
+            container.Register<IImageService>(new ImageService
+            {
+                FileService = new FileService()
+            });
 
+            container.Register<IRecipeConnectionService>(new RecipeConnectionService());
             container.Register<IComponentService>(new ComponentService());
 
             // Caching
@@ -75,7 +86,7 @@ namespace PresentConnection.Internship7.Iot.WebApp
             container.Register<ICacheClient>(new MemoryCacheClient());
 
             //ConfigureAuthAsync(container, database);
-            
+
 
             // Plugins
             Plugins.Add(new CorsFeature(

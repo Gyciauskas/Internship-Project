@@ -10,52 +10,8 @@ using PresentConnection.Internship7.Iot.Utils;
 namespace PresentConnection.Internship7.Iot.Tests
 {
     [TestFixture]
-    public class RecipeTests
+    public partial class RecipeTests
     {
-        private IRecipeService recipeService;
-        private Recipe goodRecipe;
-        private Recipe goodRecipe1;
-        private Recipe goodRecipe2;
-
-        [SetUp]
-        public void SetUp()
-        {
-            recipeService = new RecipeService();
-            goodRecipe = new Recipe
-            {
-                UniqueName = "raspberry-pi-1",
-                Name = "Recipe name",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Description = "description",
-                IsVisible = true
-            };
-            goodRecipe1 = new Recipe
-            {
-                UniqueName = "raspberry-pi-2",
-                Name = "Recipe name2",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Description = "description",
-                IsVisible = true
-            };
-            goodRecipe2 = new Recipe
-            {
-                UniqueName = "raspberry-pi-3",
-                Name = "Recipe name3",
-                Images =
-                {
-                    "5821dcc11e9f341d4c6d0994"
-                },
-                Description = "description",
-                IsVisible = true
-            };
-        }
-
         [Test]
         [Category("Recipe")]
         public void Can_insert_recipe_to_database()
@@ -94,7 +50,7 @@ namespace PresentConnection.Internship7.Iot.Tests
           
             var recipe2 = new Recipe
             {
-                UniqueName = "raspberry-pi-1",
+                UniqueName = "recipe-name",
                 Name = "Recipe name",
                 Images =
                 {
@@ -183,6 +139,18 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("Recipe")]
         public void Can_get_all_recipes()
         {
+            var goodRecipe1 = new Recipe
+            {
+                UniqueName = "raspberry-pi-3",
+                Name = "Recipe name2",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Description = "description",
+                IsVisible = true
+            };
+
             recipeService.CreateRecipe(goodRecipe);
             recipeService.CreateRecipe(goodRecipe1);
 
@@ -196,6 +164,30 @@ namespace PresentConnection.Internship7.Iot.Tests
         [Category("Recipe")]
         public void Can_get_all_recipes_by_name()
         {
+            var goodRecipe1 = new Recipe
+            {
+                UniqueName = "raspberry-pi-1",
+                Name = "Recipe name2",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Description = "description",
+                IsVisible = true
+            };
+
+            var goodRecipe2 = new Recipe
+            {
+                UniqueName = "raspberry-pi-3",
+                Name = "Recipe name3",
+                Images =
+                {
+                    "5821dcc11e9f341d4c6d0994"
+                },
+                Description = "description",
+                IsVisible = true
+            };
+
             recipeService.CreateRecipe(goodRecipe);
             recipeService.CreateRecipe(goodRecipe1);
             recipeService.CreateRecipe(goodRecipe2);
@@ -239,16 +231,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             recipeFromDB.ShouldNotBeNull();
             recipeFromDB.Id.ShouldEqual(ObjectId.Empty);
-        }
-
-        [TearDown]
-        public void Dispose()
-        {
-            var recipes = recipeService.GetAllRecipes();
-            foreach (var recipe in recipes)
-            {
-                recipeService.DeleteRecipe(recipe.Id.ToString());
-            }
         }
     }
 }

@@ -8,6 +8,7 @@ namespace PresentConnection.Internship7.Iot.Services
     public class GetRecipeConnectionService : ServiceBase
     {
         public IRecipeConnectionService RecipeConnectionService { get; set; }
+        public IImageService ImageService { get; set; }
 
         public object Any(GetRecipeConnection request)
         {
@@ -19,11 +20,20 @@ namespace PresentConnection.Internship7.Iot.Services
                 CacheKeys.RecipeConnections.Item.Fmt(request.Id),
                 expireInTimespan,
 
-                () => {
-                    var response = new GetRecipeConnectionResponse
+                () => 
+                {
+                    var recipeConnection = RecipeConnectionService.GetRecipeConnection(request.Id);
+
+                    var response = new GetRecipeConnectionResponse();
+
+                    if (recipeConnection != null)
                     {
-                        Result = RecipeConnectionService.GetRecipeConnection(request.Id)
-                    };
+                        response.Result = RecipeConnectionDto.With(ImageService)
+                                                .Map(recipeConnection)
+                                                .ApplyImages(recipeConnection.Images)
+                                                .Build();
+                    }
+
                     return response;
                 });
         }

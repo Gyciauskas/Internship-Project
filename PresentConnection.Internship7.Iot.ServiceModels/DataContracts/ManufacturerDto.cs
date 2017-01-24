@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.Domain;
+using ServiceStack;
+using ServiceStack.DataAnnotations;
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
@@ -57,8 +59,10 @@ namespace PresentConnection.Internship7.Iot.ServiceModels
                         var image = imageService.GetImage(imageId);
                         var imageDto = (DisplayImageDto) image;
 
-                        var pathToTheImages = ConfigurationManager.AppSettings["ImagesPath"];
-                        imageDto.Url = Path.Combine(pathToTheImages, image.UniqueImageName.ToString());
+//                        var pathToTheImages = ConfigurationManager.AppSettings["ImagesPath"]
+//                            .MapHostAbsolutePath().SplitOnLast(Path.DirectorySeparatorChar).Last();
+                        var pathToTheImages = "images";
+                        imageDto.Url = Path.Combine(pathToTheImages, image.UniqueImageName + image.MimeType);
 
                         Images.Add(imageDto);
                     }

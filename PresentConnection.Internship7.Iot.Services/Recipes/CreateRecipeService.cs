@@ -1,4 +1,5 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
+using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
@@ -16,11 +17,16 @@ namespace PresentConnection.Internship7.Iot.Services
             var recipe = new Recipe
             {
                 Name = request.Name,
-                UniqueName = request.UniqueName
+                UniqueName = SeoService.GetSeName(request.Name),
+                Images = request.Images
             };
 
             RecipeService.CreateRecipe(recipe);
 
+            var cacheKey = CacheKeys.Recipes.List;
+            Request.RemoveFromCache(Cache, cacheKey);
+
+            response.Result = recipe.Id.ToString();
             return response;
         }
     }

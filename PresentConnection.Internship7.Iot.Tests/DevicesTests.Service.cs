@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using MongoDB.Bson;
@@ -11,6 +13,7 @@ using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using PresentConnection.Internship7.Iot.Services;
 using ServiceStack;
+using System;
 
 namespace PresentConnection.Internship7.Iot.Tests
 {
@@ -19,8 +22,12 @@ namespace PresentConnection.Internship7.Iot.Tests
     {
         private ServiceStackHost appHost;
         private IDeviceService deviceService;
-        private Device goodDevice;
         private IDeviceService deviceServiceMock;
+
+        private Device goodDevice;
+        private string testImagePath;
+        private byte[] imageBytes;
+        private string imageDir;
 
         private void SetupMocks()
         {
@@ -88,12 +95,18 @@ namespace PresentConnection.Internship7.Iot.Tests
             goodDevice = new Device
             {
                 ModelName = "Raspberry PI 3",
-                UniqueName = "raspberry-pi-3",
                 Images =
                 {
                     "5821dcc11e9f341d4c6d0994"
-                }
+                },
+                UniqueName = "raspberry-pi-3"
             };
+
+            // This maked because of uploaded picture to tests project, Images folder. Otherwise it would throw exception
+            string projectPath = Environment.CurrentDirectory;
+            testImagePath = Directory.EnumerateFiles(projectPath + "\\PresentConnection.Internship7.Iot.Tests\\Images".MapHostAbsolutePath()).Last();
+            imageDir = ConfigurationManager.AppSettings["ImagesPath"].MapHostAbsolutePath();
+            imageBytes = File.ReadAllBytes(testImagePath);
 
             SetupMocks();
         }
@@ -110,28 +123,26 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest = new CreateDevice
             {
                 ModelName = goodDevice.ModelName,
-                UniqueName = goodDevice.UniqueName,
-                Images = goodDevice.Images
+                FileName = "test.jpg",
+                Image = imageBytes
             };
 
             var createDeviceResponse = client.Post(createRequest);
             createDeviceResponse.ShouldNotBeNull();
             createDeviceResponse.Result.ShouldNotBeNull();
-            createDeviceResponse.Result.Id.ShouldNotBeNull();
-            createDeviceResponse.Result.Id.ShouldBeNotBeTheSameAs(ObjectId.Empty);
+            createDeviceResponse.Result.ShouldBeNotBeTheSameAs(ObjectId.Empty);
 
             var createRequest2 = new CreateDevice
             {
                 ModelName = goodDevice.ModelName + "2",
-                UniqueName = goodDevice.UniqueName + "-2",
-                Images = goodDevice.Images
+                FileName = "test.jpg",
+                Image = imageBytes
             };
 
             var createDeviceResponse2 = client.Post(createRequest2);
             createDeviceResponse2.ShouldNotBeNull();
             createDeviceResponse2.Result.ShouldNotBeNull();
-            createDeviceResponse2.Result.Id.ShouldNotBeNull();
-            createDeviceResponse2.Result.Id.ShouldBeNotBeTheSameAs(ObjectId.Empty);
+            createDeviceResponse2.Result.ShouldBeNotBeTheSameAs(ObjectId.Empty);
 
             // Get all
 
@@ -162,9 +173,9 @@ namespace PresentConnection.Internship7.Iot.Tests
             // I will update first inserted item 
             var updateDeviceRequest = new UpdateDevice
             {
-                Id = createDeviceResponse.Result.Id.ToString(),
-                ModelName = createDeviceResponse.Result.ModelName + "Updated",
-                UniqueName = createDeviceResponse.Result.UniqueName + "-updated"
+                Id = createDeviceResponse.Result,
+                ModelName = createRequest.ModelName + "Updated",
+                UniqueName = SeoService.GetSeName(createRequest.ModelName) + "-updated"
             };
 
             var updateDeviceResponse = client.Put(updateDeviceRequest);
@@ -175,21 +186,21 @@ namespace PresentConnection.Internship7.Iot.Tests
             // Get by id
             var getDeviceById = new GetDevice
             {
-                Id = updateDeviceResponse.Result.Id.ToString()
+                Id = createDeviceResponse.Result
 
             };
 
             var getDeviceByIdResponse = client.Get(getDeviceById);
             getDeviceByIdResponse.ShouldNotBeNull();
             getDeviceByIdResponse.Result.ShouldNotBeNull();
-            getDeviceByIdResponse.Result.UniqueName.ShouldEqual(createDeviceResponse.Result.UniqueName + "-updated");
-            getDeviceByIdResponse.Result.ModelName.ShouldEqual(createDeviceResponse.Result.ModelName + "Updated");
+            getDeviceByIdResponse.Result.UniqueName.ShouldEqual(SeoService.GetSeName(createRequest.ModelName) + "-updated");
+            getDeviceByIdResponse.Result.ModelName.ShouldEqual(createRequest.ModelName + "Updated");
 
 
             // Delete 
             var deleteRequest = new DeleteDevice
             {
-                Id = getDeviceByIdResponse.Result.Id.ToString()
+                Id = getDeviceByIdResponse.Result.Id
             };
 
             var deleteRequestResponse = client.Delete(deleteRequest);
@@ -209,6 +220,12 @@ namespace PresentConnection.Internship7.Iot.Tests
             foreach (var device in devices)
             {
                 deviceService.DeleteDevice(device.Id.ToString());
+            }
+
+            var files = Directory.GetFiles(imageDir);
+            foreach (var file in files)
+            {
+                File.Delete(file);
             }
 
         }

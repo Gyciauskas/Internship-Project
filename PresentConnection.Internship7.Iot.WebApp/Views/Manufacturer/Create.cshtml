@@ -1,5 +1,7 @@
 ﻿@model PresentConnection.Internship7.Iot.ServiceModels.ManufacturerDto
 
+@{  ViewBag.Title = "Create";   }
+
 @using (Html.BeginForm("Create", "Manufacturer", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
@@ -9,6 +11,14 @@
         <div class="col-sm-10">
             @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
             @Html.ValidationMessageFor(x => x.Name)            
+        </div>
+    </div>
+
+    <div class="form-group">
+        
+        <label for="file" class="col-sm-2 control-label">Upload Image</label>
+        <div class="col-sm-10">
+            <input type="file" name="file" id="file" /><br><br>
         </div>
     </div>
 
@@ -28,4 +38,5 @@
             <button class="btn btn-primary" type="submit">Save changes</button>
         </div>
     </div>
+@*    @ViewBag.Message*@
 }

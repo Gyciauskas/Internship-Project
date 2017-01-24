@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Web;
+﻿using System.Web;
 using System.Web.Mvc;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using PresentConnection.Internship7.Iot.Services;
@@ -21,6 +19,7 @@ namespace PresentConnection.Internship7.Iot.WebApp.Controllers
                 var request = new GetManufacturers { Name = name };
 
                 var response = service.Any(request) as GetManufacturersResponse;
+                
                 if (response.HasData())
                 {
                     viewModel.TotalCount = response.TotalCount;
@@ -47,7 +46,7 @@ namespace PresentConnection.Internship7.Iot.WebApp.Controllers
             }
             else
             {
-                var extension = Path.GetExtension(file.FileName);
+                var extension = file.ContentType;
 
                 if (extension != MimeTypes.ImageJpg && extension != MimeTypes.ImagePng)
                 {
@@ -126,12 +125,12 @@ namespace PresentConnection.Internship7.Iot.WebApp.Controllers
             {
                 var request = new DeleteManufacturer { Id = id };
                 var response = service.Any(request);
-                //if (response.WasOk())
-                //{
-                //    return Redirect("/manufacturers");
-                //}
+                if (response.WasOk())
+                {
+                    return Redirect("/manufacturers");
+                }
             }
-            return View("/manufacturers");
+            return Redirect("/manufacturers");
         }
     }
 }

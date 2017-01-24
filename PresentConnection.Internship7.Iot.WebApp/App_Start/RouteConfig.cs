@@ -28,13 +28,63 @@ namespace PresentConnection.Internship7.Iot.WebApp
             routes.MapRoute(
                 name: "manufacturer-edit",
                 url: "manufacturers/{id}",
-                defaults: new { controller = "Manufacturer", action = "Edit" }
+                defaults: new { controller = "Manufacturer", action = "Update" }
             );
 
             routes.MapRoute(
                 name: "manufacturer-delete",
                 url: "manufacturers/{id}/delete",
                 defaults: new { controller = "Manufacturer", action = "Delete" }
+            );
+
+            // Recipe Connections routes
+            routes.MapRoute(
+                name: "recipeConnections-list",
+                url: "recipeConnections",
+                defaults: new { controller = "RecipeConnection", action = "List" }
+            );
+
+            routes.MapRoute(
+                name: "recipeConnection-create",
+                url: "recipeConnections/new",
+                defaults: new { controller = "RecipeConnection", action = "Create" }
+            );
+
+            routes.MapRoute(
+                name: "recipeConnection-edit",
+                url: "recipeConnections/{id}",
+                defaults: new { controller = "RecipeConnection", action = "Update" }
+            );
+
+            routes.MapRoute(
+                name: "recipeConnection-delete",
+                url: "recipeConnections/{id}/delete",
+                defaults: new { controller = "RecipeConnection", action = "Delete" }
+            );
+
+            // Default
+            routes.MapRoute(
+                name: "devices-list",
+                url: "devices",
+                defaults: new { controller = "Device", action = "List" }
+            );
+
+            routes.MapRoute(
+                name: "devices-create",
+                url: "devices/new",
+                defaults: new { controller = "Device", action = "Create" }
+            );
+
+            routes.MapRoute(
+                name: "device-edit",
+                url: "devices/{id}",
+                defaults: new { controller = "Device", action = "Update" }
+            );
+
+            routes.MapRoute(
+                name: "device-delete",
+                url: "devices/{id}/delete",
+                defaults: new { controller = "Device", action = "Delete" }
             );
 
             routes.MapRoute(

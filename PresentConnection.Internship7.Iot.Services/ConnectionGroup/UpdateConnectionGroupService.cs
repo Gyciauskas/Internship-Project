@@ -1,4 +1,5 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
+using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
 
@@ -13,12 +14,13 @@ namespace PresentConnection.Internship7.Iot.Services
             var response = new UpdateConnectionGroupResponse();
 
             var connectionGroup = ConnectionGroupService.GetConnectionGroup(request.Id);
+
             var connectionGroupName = string.Empty;
 
             if (connectionGroup != null)
             {
-                connectionGroupName = connectionGroup.Name;
                 connectionGroup = connectionGroup.PopulateWith(request);
+                connectionGroup.UniqueName = SeoService.GetSeName(request.UniqueName);
             }
 
             ConnectionGroupService.UpdateConnectionGroup(connectionGroup);

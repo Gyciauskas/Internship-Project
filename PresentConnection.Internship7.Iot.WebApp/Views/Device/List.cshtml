@@ -1,0 +1,25 @@
+﻿@model PresentConnection.Internship7.Iot.WebApp.Models.ListViewModelBase<PresentConnection.Internship7.Iot.ServiceModels.DeviceDto>
+
+<a href="/devices/new" class="btn btn-primary">Add new Device</a>
+<hr />
+<ul class="list-group">
+    @foreach (var device in Model.Items)
+    {
+        <li class="list-group-item">
+            <img src="@device.Picture.Thumbnail.Url" alt="@device.Picture.Thumbnail.AltAttribute" />
+            <a href="/devices/@device.Id">@device.ModelName</a>
+            <a data-name="@device.ModelName" href="/devices/@device.Id/delete">Delete</a>
+        </li>
+    }
+</ul>
+
+<script type="text/javascript">
+    $(function() {
+        $(".delete-button").click(function(e) {
+            var deviceName = $(this).data("name");
+            if (!confirm("Ar you sure want to delete device :'" + deviceName + "' ?")) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>

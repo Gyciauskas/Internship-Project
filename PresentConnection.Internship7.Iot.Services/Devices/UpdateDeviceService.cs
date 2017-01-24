@@ -1,4 +1,5 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
+using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
@@ -20,6 +21,7 @@ namespace PresentConnection.Internship7.Iot.Services
             {
                 deviceName = device.ModelName;
                 device = device.PopulateWith(request);
+                device.UniqueName = SeoService.GetSeName(request.UniqueName);
             }
 
             DeviceService.UpdateDevice(device);
@@ -32,7 +34,7 @@ namespace PresentConnection.Internship7.Iot.Services
             Request.RemoveFromCache(Cache, cacheKeyForListWithName);
             Request.RemoveFromCache(Cache, cacheKeyForItem);
 
-            response.Result = device;
+            response.Result = true;
             return response;
         }
     }

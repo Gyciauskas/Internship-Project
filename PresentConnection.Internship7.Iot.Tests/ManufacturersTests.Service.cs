@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using MongoDB.Bson;
 using NSubstitute;
@@ -8,6 +10,7 @@ using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.Domain;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
+using System;
 
 namespace PresentConnection.Internship7.Iot.Tests
 {
@@ -16,8 +19,12 @@ namespace PresentConnection.Internship7.Iot.Tests
     {
         private ServiceStackHost appHost;
         private IManufacturerService manufacturerService;
-        private Manufacturer goodManufacturer;
         private IManufacturerService manufacturerServiceMock;
+
+        private Manufacturer goodManufacturer;
+        private string testImagePath;
+        private byte[] imageBytes;
+        private string imageDir;
 
         private void SetupMocks()
         {
@@ -129,8 +136,6 @@ namespace PresentConnection.Internship7.Iot.Tests
 
             var container = appHost.Container;
 
-            
-
             manufacturerService = new ManufacturerService();
 
             goodManufacturer = new Manufacturer
@@ -145,6 +150,12 @@ namespace PresentConnection.Internship7.Iot.Tests
                 Url = "url",
                 IsVisible = true
             };
+
+            // This maked because of uploaded picture to tests project, Images folder. Otherwise it would throw exception
+            string projectPath = Environment.CurrentDirectory;
+            testImagePath = Directory.EnumerateFiles(projectPath + "\\PresentConnection.Internship7.Iot.Tests\\Images".MapHostAbsolutePath()).Last();
+            imageDir = ConfigurationManager.AppSettings["ImagesPath"].MapHostAbsolutePath();
+            imageBytes = File.ReadAllBytes(testImagePath);
 
             SetupMocks();
 
@@ -163,7 +174,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest = new CreateManufacturer
             {
                 Name = goodManufacturer.Name,
-                // Images = goodManufacturer.Images
+                FileName = "computer-case-fan.png",
+                Image = imageBytes
             };
 
             var createManufacturerResponse = client.Post(createRequest);
@@ -175,7 +187,8 @@ namespace PresentConnection.Internship7.Iot.Tests
             var createRequest2 = new CreateManufacturer
             {
                 Name = goodManufacturer.Name + "2",
-                // Images = goodManufacturer.Images
+                FileName = "computer-case-fan.png",
+                Image = imageBytes
             };
 
             var createManufacturerResponse2 = client.Post(createRequest2);
@@ -207,14 +220,13 @@ namespace PresentConnection.Internship7.Iot.Tests
             getManufacturersByNameResponse.Result.ShouldNotBeNull();
             getManufacturersByNameResponse.Result.Count.ShouldEqual(1);
             
-            
-            // Get by name
+
             // I will update first inserted item 
             var updateManufacturerRequest = new UpdateManufacturer
             {
                 Id = createManufacturerResponse.Result,
                 Name = createRequest.Name + "Updated",
-                UniqueName = /* TODO : call sluggify service*/ createRequest.Name.Trim().ToLower() + "-updated"
+                UniqueName = SeoService.GetSeName(createRequest.Name) + "-updated"
             };
 
             var updateManufacturerResponse = client.Put(updateManufacturerRequest);
@@ -227,7 +239,7 @@ namespace PresentConnection.Internship7.Iot.Tests
             var getManufacturerByIdResponse = client.Get(getManufacturerById);
             getManufacturerByIdResponse.ShouldNotBeNull();
             getManufacturerByIdResponse.Result.ShouldNotBeNull();
-            getManufacturerByIdResponse.Result.UniqueName.ShouldEqual(/* TODO : call sluggify service*/ createRequest.Name.Trim().ToLower() + "-updated");
+            getManufacturerByIdResponse.Result.UniqueName.ShouldEqual(SeoService.GetSeName(createRequest.Name) + "-updated");
             getManufacturerByIdResponse.Result.Name.ShouldEqual(createRequest.Name + "Updated");
 
 
@@ -262,14 +274,19 @@ namespace PresentConnection.Internship7.Iot.Tests
         public void Dispose()
         {
             appHost.Dispose();
-
+            
             var manufacturers = manufacturerService.GetAllManufacturers();
 
             foreach (var manufacturer in manufacturers)
             {
                 manufacturerService.DeleteManufacturer(manufacturer.Id.ToString());
             }
-            
+
+            var files = Directory.GetFiles(imageDir);
+            foreach (var file in files)
+            {
+                File.Delete(file);
+            }
         }
     }
 }

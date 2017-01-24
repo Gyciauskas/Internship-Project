@@ -1,4 +1,5 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
+using PresentConnection.Internship7.Iot.BusinessImplementation;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
 
@@ -12,8 +13,14 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new UpdateComponentResponse();
 
+            var component = ComponentService.GetComponent(request.Id);
 
-            var component = ComponentService.GetComponent(request.Id).PopulateWith(request);
+            if (component != null)
+            {
+                component = component.PopulateWith(request);
+                component.UniqueName = SeoService.GetSeName(request.UniqueName);
+            }
+
             ComponentService.UpdateComponent(component);
 
             return response;

@@ -2,42 +2,102 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6e8bd68c-6dd7-44f2-8ec6-c6f447b4ec8a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ClientDevice/CreateClientDevice.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ClientDevice/DeleteClientDevice.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ClientDevice/GetClientDevice.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ClientDevice/GetClientDevices.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ClientDevice/UpdateClientDevice.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ClientRecipe/CreateClientRecipe.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ClientRecipe/DeleteClientRecipe.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ClientRecipe/GetClientRecipe.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ClientRecipe/GetClientRecipes.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ClientRecipe/UpdateClientRecipe.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/ClientDevice/CreateClientDeviceResponse.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/ClientDevice/DeleteClientDeviceResponse.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/ClientDevice/GetClientDeviceResponse.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/ClientDevice/GetClientDevicesResponse.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/ClientDevice/UpdateClientDeviceResponse.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/ClientRecipe/CreateClientRecipeResponse.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/ClientRecipe/DeleteClientRecipeResponse.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/ClientRecipe/GetClientRecipeResponse.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/ClientRecipe/GetClientRecipesResponse.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/ClientRecipe/UpdateClientRecipeResponse.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ClientDevice/CreateClientDeviceService.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ClientDevice/DeleteClientDeviceService.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ClientDevice/GetClientDeviceService.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ClientDevice/GetClientDevicesService.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ClientDevice/UpdateClientDeviceService.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ClientRecipe/CreateClientRecipeService.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ClientRecipe/DeleteClientRecipeService.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ClientRecipe/GetClientRecipeService.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ClientRecipe/GetClientRecipesService.cs" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ClientRecipe/UpdateClientRecipeService.cs" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.idea.PC Internship 7/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/.idea.PC Internship 7/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.idea.PC Internship 7/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/.idea.PC Internship 7/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/Images/computer-case-fan.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessContracts/IFileService.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessImplementation/FileService.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessImplementation/ImageService.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessImplementation/SeoService.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Domain/Validators/ImageValidator.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/DataContracts/DeviceDto.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/DataContracts/RecipeConnectionDto.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/ImagesTests.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/RecipeTests.Service.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/SeoTests.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Controllers/DeviceController.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Controllers/RecipeConnectionController.cs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/Device/Create.cshtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/Device/List.cshtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/Device/Update.cshtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/RecipeConnection/Create.cshtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/RecipeConnection/List.cshtml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/RecipeConnection/Update.cshtml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.idea.PC Internship 7/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/.idea.PC Internship 7/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.idea.PC Internship 7/riderModule.iml" afterPath="$PROJECT_DIR$/.idea/.idea.PC Internship 7/riderModule.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessContracts/BusinessContracts.csproj" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessContracts/BusinessContracts.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessContracts/IImageService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessContracts/IImageService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessContracts/ISettingsService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessContracts/ISettingsService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessImplementation/BusinessImplementation.csproj" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessImplementation/BusinessImplementation.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessImplementation/SettingsService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessImplementation/SettingsService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessImplementation/UserService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.BusinessImplementation/UserService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Domain/Domain.csproj" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Domain/Domain.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/DataContracts/ManufacturerDto.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/DataContracts/ManufacturerDto.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/Components/CreateComponent.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/Components/CreateComponent.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ConnectionGroup/CreateConnectionGroup.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ConnectionGroup/CreateConnectionGroup.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/Connections/CreateConnection.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/Connections/CreateConnection.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/Devices/CreateDevice.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/Devices/CreateDevice.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/Devices/GetDevices.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/Devices/GetDevices.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/RecipeConnections/CreateRecipeConnnection.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/RecipeConnections/CreateRecipeConnnection.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/RecipeConnections/GetRecipeConnections.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/RecipeConnections/GetRecipeConnections.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/Recipes/CreateRecipe.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/Recipes/CreateRecipe.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/Recipes/GetRecipe.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/Recipes/GetRecipe.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/Devices/CreateDeviceResponse.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/Devices/CreateDeviceResponse.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/Devices/GetDeviceResponse.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/Devices/GetDeviceResponse.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/Devices/GetDevicesResponse.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/Devices/GetDevicesResponse.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/Devices/UpdateDeviceResponse.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/Devices/UpdateDeviceResponse.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/RecipeConnections/CreateRecipeConnectionResponse.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/RecipeConnections/CreateRecipeConnectionResponse.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/RecipeConnections/GetRecipeConnectionResponse.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/RecipeConnections/GetRecipeConnectionResponse.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/RecipeConnections/GetRecipeConnectionsResponse.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/RecipeConnections/GetRecipeConnectionsResponse.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/RecipeConnections/UpdateRecipeConnectionResponse.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/RecipeConnections/UpdateRecipeConnectionResponse.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/Recipes/CreateRecipeResponse.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/Recipes/CreateRecipeResponse.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/Recipes/UpdateRecipeResponse.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Responses/Recipes/UpdateRecipeResponse.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/ServiceModels.csproj" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/ServiceModels.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Components/CreateComponentService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Components/CreateComponentService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Components/UpdateComponentService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Components/UpdateComponentService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ConnectionGroup/CreateConnectionGroupService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ConnectionGroup/CreateConnectionGroupService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ConnectionGroup/UpdateConnectionGroupService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ConnectionGroup/UpdateConnectionGroupService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Connections/CreateConnectionService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Connections/CreateConnectionService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Connections/UpdateConnectionService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Connections/UpdateConnectionService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Devices/CreateDeviceService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Devices/CreateDeviceService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Devices/DeleteDeviceService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Devices/DeleteDeviceService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Devices/GetDeviceService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Devices/GetDeviceService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Devices/GetDevicesService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Devices/GetDevicesService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Devices/UpdateDeviceService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Devices/UpdateDeviceService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Manufacturers/CreateManufacturerService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Manufacturers/CreateManufacturerService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Manufacturers/DeleteManufacturerService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Manufacturers/DeleteManufacturerService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Manufacturers/GetManufacturerService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Manufacturers/GetManufacturerService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Manufacturers/GetManufacturersService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Manufacturers/GetManufacturersService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Manufacturers/UpdateManufacturerService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Manufacturers/UpdateManufacturerService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/RecipeConnections/CreateRecipeConnectionService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/RecipeConnections/CreateRecipeConnectionService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/RecipeConnections/DeleteRecipeConnectionService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/RecipeConnections/DeleteRecipeConnectionService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/RecipeConnections/GetRecipeConnectionService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/RecipeConnections/GetRecipeConnectionService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/RecipeConnections/GetRecipeConnectionsService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/RecipeConnections/GetRecipeConnectionsService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/RecipeConnections/UpdateRecipeConnectionService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/RecipeConnections/UpdateRecipeConnectionService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Recipes/CreateRecipeService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Recipes/CreateRecipeService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Recipes/DeleteRecipeService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Recipes/DeleteRecipeService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Recipes/GetRecipeService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Recipes/GetRecipeService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Recipes/GetRecipesService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Recipes/GetRecipesService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Recipes/UpdateRecipeService.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Recipes/UpdateRecipeService.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ServiceBase.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ServiceBase.cs" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Services.csproj" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Services.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/App.config" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/App.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/AppHost.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/AppHost.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/DevicesTests.Service.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/DevicesTests.Service.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/ManufacturersTests.Service.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/ManufacturersTests.Service.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/ManufacturersTests.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/ManufacturersTests.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/RecipeConnectionsTests.Service.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/RecipeConnectionsTests.Service.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/RecipeConnectionsTests.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/RecipeConnectionsTests.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/RecipeTests.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/RecipeTests.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/SettingsTests.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/SettingsTests.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/Tests.csproj" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/Tests.csproj" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/App_Start/AppHost.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/App_Start/AppHost.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/App_Start/RouteConfig.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/App_Start/RouteConfig.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Content/Site.css" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Content/Site.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Controllers/ManufacturerController.cs" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Controllers/ManufacturerController.cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/Manufacturer/Create.cshtml" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/Manufacturer/Create.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/Manufacturer/List.cshtml" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/Manufacturer/List.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/Shared/_Layout.cshtml" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/Shared/_Layout.cshtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/Web.config" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Views/Web.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Web.config" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/Web.config" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/WebApp.csproj" afterPath="$PROJECT_DIR$/PresentConnection.Internship7.Iot.WebApp/WebApp.csproj" />
     </list>
     <ignored path="PC Internship 7.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,6 +112,10 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="hideWarnings" value="true" />
+    <option name="HIDE_WARNINGS" value="true" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="PC Internship 7" />
@@ -61,21 +125,10 @@
       <file leaf-file-name="Services.csproj" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Services.csproj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
+            <state relative-caret-position="2431">
               <caret line="143" column="63" lean-forward="false" selection-start-line="143" selection-start-column="63" selection-end-line="143" selection-end-column="63" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CreateClientDevice.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ClientDevice/CreateClientDevice.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="24" />
               <folding>
-                <marker date="1482388465000" expanded="true" signature="78:328" ph="{...}" />
-                <marker date="1482388465000" expanded="true" signature="224:326" ph="{...}" />
+                <marker date="1485248312000" expanded="true" signature="10369:10625" ph="..." />
               </folding>
             </state>
           </provider>
@@ -91,32 +144,48 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DeviceStatusesTests.cs" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DeviceStatusesTests.cs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/DeviceStatusesTests.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="36" lean-forward="false" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+            <state relative-caret-position="34">
+              <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ServiceBase.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ServiceBase.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1482388450000" expanded="true" signature="6:123" ph="..." />
-                <marker date="1482388450000" expanded="true" signature="174:4910" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="231:4908" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="333:408" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="480:946" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="725:814" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="1018:1410" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="1262:1350" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="1485:1883" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="1732:1823" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="1958:2356" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="2205:2296" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="2436:2886" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="2738:2827" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="2973:3554" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="3334:3423" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="3641:4223" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="4001:4089" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="4313:4901" ph="{...}" />
-                <marker date="1482388450000" expanded="true" signature="4676:4767" ph="{...}" />
+                <marker date="1485248360000" expanded="true" signature="114:2852" ph="{...}" />
+                <marker date="1485248360000" expanded="true" signature="160:2850" ph="{...}" />
+                <marker date="1485248360000" expanded="true" signature="218:497" ph="{...}" />
+                <marker date="1485248360000" expanded="true" signature="546:825" ph="{...}" />
+                <marker date="1485248360000" expanded="true" signature="868:1129" ph="{...}" />
+                <marker date="1485248360000" expanded="true" signature="1182:1474" ph="{...}" />
+                <marker date="1485248360000" expanded="true" signature="1524:1800" ph="{...}" />
+                <marker date="1485248360000" expanded="true" signature="1849:2125" ph="{...}" />
+                <marker date="1485248360000" expanded="true" signature="2176:2758" ph="{...}" />
+                <marker date="1485248360000" expanded="true" signature="2490:2748" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UpdateConnectionGroupService.cs" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ConnectionGroup/UpdateConnectionGroupService.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1485248413000" expanded="true" signature="6:197" ph="..." />
+                <marker date="1485248413000" expanded="true" signature="251:1549" ph="{...}" />
+                <marker date="1485248413000" expanded="true" signature="312:1547" ph="{...}" />
+                <marker date="1485248413000" expanded="true" signature="475:1541" ph="{...}" />
+                <marker date="1485248413000" expanded="true" signature="734:922" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -138,12 +207,14 @@
         <option value="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Services/Services.csproj" />
         <option value="$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ManufacturersTests.cs" />
         <option value="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Services.csproj" />
+        <option value="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ServiceBase.cs" />
+        <option value="$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ConnectionGroup/UpdateConnectionGroupService.cs" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="236" />
-    <option name="y" value="93" />
+    <option name="x" value="282" />
+    <option name="y" value="44" />
     <option name="width" value="2083" />
     <option name="height" value="1260" />
   </component>
@@ -187,7 +258,25 @@
               <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Tests" />
+              <option name="myItemId" value="Services" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerViewPane$ProjectViewPaneTreeStructure$createRoot$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PC Internship 7 (8 projects)" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Services" />
+              <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ConnectionGroup" />
               <option name="myItemType" value="com.jetbrains.resharper.projectView.solutionExplorer.SolutionExplorerNodeRider" />
             </PATH_ELEMENT>
           </PATH>
@@ -244,11 +333,12 @@
       <workItem from="1481117252406" duration="903000" />
       <workItem from="1481553357400" duration="862000" />
       <workItem from="1482388835325" duration="471000" />
+      <workItem from="1485248267077" duration="185000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4043000" />
+    <option name="totallyTimeSpent" value="4228000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -260,30 +350,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="236" y="93" width="2083" height="1260" extended-state="0" />
-    <editor active="false" />
+    <frame x="282" y="44" width="2083" height="1260" extended-state="0" />
+    <editor active="true" />
     <layout>
+      <window_info id="Change Signature" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1621754" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Errors in solution" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37350428" sideWeight="0.20627144" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32905984" sideWeight="0.49828514" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32905984" sideWeight="0.5017148" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32942328" sideWeight="0.49744245" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="UnitTesting" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.37350428" sideWeight="0.7937286" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="UnitTesting" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37350428" sideWeight="0.7907888" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="NuGet" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Change Signature" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16070554" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4115347" sideWeight="0.47570333" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4115347" sideWeight="0.47570333" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -340,6 +430,32 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Services.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2431">
+          <caret line="143" column="63" lean-forward="false" selection-start-line="143" selection-start-column="63" selection-end-line="143" selection-end-column="63" />
+          <folding>
+            <marker date="1485248312000" expanded="true" signature="10369:10625" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/DevicesTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/DeviceStatusesTests.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ComponentsTests.cs" />
     <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ConnectionsTests.cs" />
     <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.BusinessImplementation/ConectionService.cs" />
@@ -377,23 +493,15 @@
     <entry file="file://$PROJECT_DIR$/../../PresentConnection.Internship7.Iot.Tests/ManufacturersTests.cs" />
     <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/Services.csproj">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
+        <state relative-caret-position="2431">
           <caret line="143" column="63" lean-forward="false" selection-start-line="143" selection-start-column="63" selection-end-line="143" selection-end-column="63" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ClientDevice/CreateClientDevice.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="24" />
           <folding>
-            <marker date="1482388465000" expanded="true" signature="78:328" ph="{...}" />
-            <marker date="1482388465000" expanded="true" signature="224:326" ph="{...}" />
+            <marker date="1485248312000" expanded="true" signature="10369:10625" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.ServiceModels/Requests/ClientDevice/CreateClientDevice.cs" />
     <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/DevicesTests.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -404,29 +512,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.Tests/DeviceStatusesTests.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="36" lean-forward="false" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+        <state relative-caret-position="34">
+          <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ServiceBase.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1482388450000" expanded="true" signature="6:123" ph="..." />
-            <marker date="1482388450000" expanded="true" signature="174:4910" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="231:4908" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="333:408" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="480:946" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="725:814" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="1018:1410" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="1262:1350" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="1485:1883" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="1732:1823" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="1958:2356" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="2205:2296" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="2436:2886" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="2738:2827" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="2973:3554" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="3334:3423" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="3641:4223" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="4001:4089" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="4313:4901" ph="{...}" />
-            <marker date="1482388450000" expanded="true" signature="4676:4767" ph="{...}" />
+            <marker date="1485248360000" expanded="true" signature="114:2852" ph="{...}" />
+            <marker date="1485248360000" expanded="true" signature="160:2850" ph="{...}" />
+            <marker date="1485248360000" expanded="true" signature="218:497" ph="{...}" />
+            <marker date="1485248360000" expanded="true" signature="546:825" ph="{...}" />
+            <marker date="1485248360000" expanded="true" signature="868:1129" ph="{...}" />
+            <marker date="1485248360000" expanded="true" signature="1182:1474" ph="{...}" />
+            <marker date="1485248360000" expanded="true" signature="1524:1800" ph="{...}" />
+            <marker date="1485248360000" expanded="true" signature="1849:2125" ph="{...}" />
+            <marker date="1485248360000" expanded="true" signature="2176:2758" ph="{...}" />
+            <marker date="1485248360000" expanded="true" signature="2490:2748" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PresentConnection.Internship7.Iot.Services/ConnectionGroup/UpdateConnectionGroupService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1485248413000" expanded="true" signature="6:197" ph="..." />
+            <marker date="1485248413000" expanded="true" signature="251:1549" ph="{...}" />
+            <marker date="1485248413000" expanded="true" signature="312:1547" ph="{...}" />
+            <marker date="1485248413000" expanded="true" signature="475:1541" ph="{...}" />
+            <marker date="1485248413000" expanded="true" signature="734:922" ph="{...}" />
           </folding>
         </state>
       </provider>

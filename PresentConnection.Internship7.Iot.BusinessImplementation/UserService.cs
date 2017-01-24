@@ -12,6 +12,10 @@ namespace PresentConnection.Internship7.Iot.BusinessImplementation
 {
     public class UserService : IUserService
     {
+        // Created DI container, using it
+        public IClientDeviceService clientDeviceService { get; set; }
+        public IComponentService componentService { get; set; }
+        public IRunningDeviceSimulationsService runningDeviceSimulationsService { get; set; }
 
         public void CreateUser(User user)
         {
