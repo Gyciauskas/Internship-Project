@@ -1,5 +1,6 @@
 ﻿using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.ServiceModels;
+using System;
 using ServiceStack;
 
 namespace PresentConnection.Internship7.Iot.Services
@@ -8,14 +9,28 @@ namespace PresentConnection.Internship7.Iot.Services
     {
         public IConnectionGroupService ConnectionGroupService { get; set; }
 
-        public GetConnectionGroupsResponse Any(GetConnectionGroups request)
+        public object Any(GetConnectionGroups request)
         {
-            var response = new GetConnectionGroupsResponse
-            {
-                Result = ConnectionGroupService.GetAllConnectionGroups()
-            };
-
-            return response;
+            var expireInTimespan = new TimeSpan(1, 0, 0);
+            
+            var cacheKey = CacheKeys.ConnectionGroup.List;
+            
+            cacheKey = CacheKeys.ConnectionGroup.ListWithProvidedName.Fmt();
+            
+            return Request.ToOptimizedResultUsingCache(
+            
+                Cache,
+                cacheKey,
+                expireInTimespan,
+            
+                () => {
+                    var response = new GetConnectionGroupsResponse
+                    {
+                        Result = ConnectionGroupService.GetAllConnectionGroups()
+                    };
+                
+                    return response;
+            });
         }
     }
 }

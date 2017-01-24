@@ -8,6 +8,7 @@ namespace PresentConnection.Internship7.Iot.Services
     public class GetManufacturerService : ServiceBase
     {
         public IManufacturerService ManufacturerService { get; set; }
+        public IImageService ImageService { get; set; }
         
         public object Any(GetManufacturer request)
         {
@@ -19,11 +20,23 @@ namespace PresentConnection.Internship7.Iot.Services
                 CacheKeys.Manufacturers.Item.Fmt(request.Id),
                 expireInTimespan,
                  
-                () => {
-                    var response = new GetManufacturerResponse
+                () =>
+                {
+
+                    var manufacturer = ManufacturerService.GetManufacturer(request.Id);
+
+                    var response = new GetManufacturerResponse();
+
+                    if (manufacturer != null)
                     {
-                        Result = ManufacturerService.GetManufacturer(request.Id)
-                    };
+
+
+                        response.Result = ManufacturerDto.With(ImageService)
+                                                .Map(manufacturer)
+                                                .ApplyImages(manufacturer.Images)
+                                                .Build();
+                    }
+                    
                     return response;
                 });
         }

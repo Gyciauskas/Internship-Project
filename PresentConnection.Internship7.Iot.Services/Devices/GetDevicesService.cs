@@ -1,4 +1,5 @@
-﻿using PresentConnection.Internship7.Iot.BusinessContracts;
+﻿using System;
+using PresentConnection.Internship7.Iot.BusinessContracts;
 using PresentConnection.Internship7.Iot.ServiceModels;
 using ServiceStack;
 
@@ -8,13 +9,30 @@ namespace PresentConnection.Internship7.Iot.Services
     {
         public IDeviceService DeviceService { get; set; }
 
-        public GetDevicesResponse Any(GetDevices request)
+        public object Any(GetDevices request)
         {
-            var response = new GetDevicesResponse
+            var expireInTimespan = new TimeSpan(1, 0, 0);
+
+            var cacheKey = CacheKeys.Devices.List;
+
+            if (!string.IsNullOrEmpty(request.Name))
             {
-                Result = DeviceService.GetAllDevices(request.Name)
-            };
-            return response;
+                cacheKey = CacheKeys.Devices.ListWithProvidedName.Fmt(request.Name);
+            }
+
+            return Request.ToOptimizedResultUsingCache(
+
+               Cache,
+               cacheKey,
+               expireInTimespan,
+
+               () => {
+                    var response = new GetDevicesResponse
+                    {
+                        Result = DeviceService.GetAllDevices(request.Name)
+                    };
+                    return response;
+               });
         }
     }
 }

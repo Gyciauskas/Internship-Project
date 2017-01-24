@@ -14,10 +14,24 @@ namespace PresentConnection.Internship7.Iot.Services
             var response = new UpdateClientDeviceResponse();
 
             var clientDevice = ClientDeviceService.GetClientDevice(request.Id, UserSession.UserAuthId);
-
             clientDevice = clientDevice?.PopulateWith(request);
+            var clientDeviceName = string.Empty;
+
+            if (clientDevice != null)
+            {
+                clientDeviceName = clientDevice.DeviceId;
+                clientDevice = clientDevice.PopulateWith(request);
+            }
 
             ClientDeviceService.UpdateClientDevice(clientDevice, request.Id);
+
+            var cacheKeyForListWithName = CacheKeys.ClientDevices.ListWithProvidedName.Fmt(clientDeviceName);
+            var cacheKeyForList = CacheKeys.ClientDevices.List;
+            var cacheKeyForItem = CacheKeys.ClientDevices.Item.Fmt(request.Id);
+
+            Request.RemoveFromCache(Cache, cacheKeyForList);
+            Request.RemoveFromCache(Cache, cacheKeyForListWithName);
+            Request.RemoveFromCache(Cache, cacheKeyForItem);
 
             response.Result = clientDevice;
             return response;

@@ -110,10 +110,14 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AppHost.cs" />
+    <Compile Include="ClientDevicesTests.Service.cs" />
     <Compile Include="ClientRecipeTests.cs" />
+    <Compile Include="ClientRecipeTests.Service.cs" />
     <Compile Include="ClientsTests.cs" />
     <Compile Include="ClientConnectionsTests.cs" />
     <Compile Include="CollaboratorTests.cs" />
+    <Compile Include="CollaboratorTests.Service.cs" />
+    <Compile Include="ConnectionGroupsTests.Service.cs" />
     <Compile Include="DashboardTests.cs" />
     <Compile Include="ComponentsTests.cs" />
     <Compile Include="ConnectionGroupsTests.cs" />
@@ -125,6 +129,7 @@
     <Compile Include="ManufacturersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecipeConnectionsTests.cs" />
+    <Compile Include="RecipeConnectionsTests.Service.cs" />
     <Compile Include="RecipeTests.cs" />
     <Compile Include="SettingsTests.cs" />
     <Compile Include="RunningDeviceSimulationsTests.cs" />
@@ -137,6 +142,7 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <Compile Include="DevicesTests.Service.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

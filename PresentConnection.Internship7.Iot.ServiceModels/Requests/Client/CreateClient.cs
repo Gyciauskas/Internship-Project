@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
     [Route("/clients", "POST", Summary = "Create client")]
-    public class CreateClient
+    public class CreateClient : IReturn<CreateClientResponse>
     {
         public CreateClient()
         {

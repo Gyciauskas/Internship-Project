@@ -88,7 +88,6 @@
     <Compile Include="Collaborator.cs" />
     <Compile Include="ClientRecipe.cs" />
     <Compile Include="DeviceStatus.cs" />
-    <Compile Include="IDeviceStatus.cs" />
     <Compile Include="IEntityWithSensitiveData.cs" />
     <Compile Include="IEntityWithUniqueName.cs" />
     <Compile Include="PowerResource.cs" />
@@ -147,7 +146,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PresentConnection.Internship7.Iot.Utils\Utils.csproj">
+      <Project>{a7016afa-c2d5-4251-b7d7-c5015b6a001b}</Project>
+      <Name>Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

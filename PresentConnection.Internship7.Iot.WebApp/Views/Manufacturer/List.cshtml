@@ -1,0 +1,20 @@
+﻿@model PresentConnection.Internship7.Iot.WebApp.Models.ListViewModelBase<PresentConnection.Internship7.Iot.ServiceModels.ManufacturerDto>
+
+<a href="/manufacturers/new">Add new Manufacturer</a>
+<ul>
+    @foreach (var manufacturer in Model.Items)
+    {
+        <li><img src="@manufacturer.Picture.Thumbnail" alt="@manufacturer.Picture.Thumbnail.AltAttribute" /><a href="/manufacturers/@manufacturer.Id">@manufacturer.Name</a> - <a data-name="@manufacturer.Name" class="delete-button" href="/manufacturers/@manufacturer.Id/delete">Delete</a></li>
+    }
+</ul>
+
+<script type="text/javascript">
+    $(function() {
+        $(".delete-button").click(function(e) {
+            var manufacturerName = $(this).data("name");
+            if (!confirm("Ar you sure want to delete manufacturer :'" + manufacturerName + "' ?")) {
+                e.preventDefault();
+            }
+        });
+    });
+</script>

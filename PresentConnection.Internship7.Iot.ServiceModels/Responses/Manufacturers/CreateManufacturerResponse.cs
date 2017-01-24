@@ -2,7 +2,7 @@
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    public class CreateManufacturerResponse : ResponseBase<Manufacturer>
+    public class CreateManufacturerResponse : ResponseBase<string>
     {
     }
 }

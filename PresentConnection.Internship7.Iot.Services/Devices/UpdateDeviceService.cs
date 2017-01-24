@@ -13,10 +13,26 @@ namespace PresentConnection.Internship7.Iot.Services
         {
             var response = new UpdateDeviceResponse();
 
-            var device = DeviceService.GetDevice(request.Id).PopulateWith(request);
+            var device = DeviceService.GetDevice(request.Id);
+            var deviceName = string.Empty;
+
+            if (device != null)
+            {
+                deviceName = device.ModelName;
+                device = device.PopulateWith(request);
+            }
 
             DeviceService.UpdateDevice(device);
 
+            var cacheKeyForListWithName = CacheKeys.Devices.ListWithProvidedName.Fmt(deviceName);
+            var cacheKeyForList = CacheKeys.Devices.List;
+            var cacheKeyForItem = CacheKeys.Devices.Item.Fmt(request.Id);
+
+            Request.RemoveFromCache(Cache, cacheKeyForList);
+            Request.RemoveFromCache(Cache, cacheKeyForListWithName);
+            Request.RemoveFromCache(Cache, cacheKeyForItem);
+
+            response.Result = device;
             return response;
         }
     }

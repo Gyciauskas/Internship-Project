@@ -1,9 +1,8 @@
-﻿using PresentConnection.Internship7.Iot.Domain;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace PresentConnection.Internship7.Iot.ServiceModels
 {
-    public class GetManufacturersResponse : ResponseBase<List<Manufacturer>>
+    public class GetManufacturersResponse : ListResponseBase<List<ManufacturerDto>>
     { 
     }
 }
