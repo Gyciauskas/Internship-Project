@@ -1,8 +1,12 @@
 "GreenField" C# back-end project
 
-This is that make-it 5-6 people group with lector, during 3 months intership in the "Present Connection".
+This is that we maked 5 people group and project leader, during 3 months internship in the "Present Connection" software development company.
 
-Database we used is MongoDB. WEB service written with ServiceStack. 
-For our code we maked tests with NUnit and NSubstitute. 
-For client side we used ASP.NET MVC.
-Everything written with Visual Studio 2015
+Technologies:
+
+Database - MongoDB. 
+WEB service - ServiceStack. 
+For CRUD and REST architecture we maked tests with NUnit. 
+For client side we used ASP.NET MVC. 
+IDE - Visual Studio 2015.
+Version control system  - Git, remote repository - BitBucket.
