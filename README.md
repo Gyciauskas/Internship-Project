@@ -1,6 +1,6 @@
 "GreenField" C# back-end project
 
-This is that we maked 5 people group and project leader, during 3 months internship in the "Present Connection" software development company.
+This is that we make 5 people group and mentor, during 3 months internship in the "Present Connection" software development company.
 
 Technologies:
 
